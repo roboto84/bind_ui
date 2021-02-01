@@ -23,6 +23,15 @@
                 font-family: verdana,serif;
                 font-size: 20px;
             }
+            .message_element{
+                margin-bottom: 5px;
+            }
+            .app_title{
+                color: white;
+            }
+            .app_message{
+                color: #939393;
+            }
             #update_time{
                 font-family: verdana,serif;
                 font-size: 20px;
@@ -31,7 +40,7 @@
             }
             #message_container{
                 font-family: verdana,serif;
-                font-size: 25px;
+                font-size: 18px;
                 height: 90%;
                 width: 99%;
                 display: flex;
@@ -56,32 +65,45 @@
         </style>
          <script>
              const get_api_messages = async () => {
-                const response = await fetch('http://192.168.0.169:8000/');
+                const host = 'http://192.168.0.169'
+                const response = await fetch(host+':8000/');
                 const messages = await response.json();
-                document.getElementById('message_history').textContent = '';
-                document.getElementById('latest_message').textContent = '';
+
+                const currentTime = new Date();
+                const cDate = currentTime.getFullYear() + '-' + (currentTime.getMonth() + 1) + '-' + currentTime.getDate();
+                const cTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+                document.getElementById('update_time').innerText = cDate + ' ' + cTime;
+
+                if (messages.message.length){
+                   document.getElementById('message_history').textContent = '';
+                   document.getElementById('latest_message').textContent = '';
+                }
 
                 messages.message.forEach(function(message, index) {
-                    const currentTime = new Date();
-                    const cDate = currentTime.getFullYear() + '-' + (currentTime.getMonth() + 1) + '-' + currentTime.getDate();
-                    const cTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
-                    const dateTime = cDate + ' ' + cTime;
-
-                    const update_time = document.getElementById('update_time');
                     const message_history = document.getElementById('message_history');
                     const latest_message = document.getElementById('latest_message');
                     const element = document.createElement('div');
-                    element.innerText = message;
+                    const app_title = document.createElement('span');
+                    const app_message = document.createElement('span');
+
+                    app_title.classList.add('app_title')
+                    app_message.classList.add('app_message')
+                    element.classList.add('message_element')
+
+                    app_title.innerText = message.id+' ('+message.time+'): '
+                    app_message.innerText = message.message
+                    element.appendChild(app_title)
+                    element.appendChild(app_message)
 
                     if(index === messages.message.length-1) {
                         latest_message.appendChild(element)
-                        update_time.innerText = dateTime
                     }
                     else
                         message_history.appendChild(element)
                 });
             }
 
+            get_api_messages()
             setInterval(get_api_messages, 5000);
          </script>
     </head>
