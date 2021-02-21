@@ -1,0 +1,169 @@
+html {
+    background-color: rgb(20, 21, 21);
+}
+body {
+    font-family: arial, sans-serif;
+    font-size: 16px;
+    text-align: left;
+    color: white;
+    height: 100%;
+    width: 99%;
+}
+h1 {
+    font-size: 70px;
+    margin: 40px 40px 20px 40px;
+}
+h2 {
+    font-size: 40px;
+    margin: 40px 40px 20px 40px;
+}
+h3 {
+    font-size: 30px;
+    margin: 40px 40px 20px 40px;
+}
+#update_time{
+    color: #939393;
+    font-size: 20px;
+    margin: 20px 40px 40px 45px;
+}
+#app_container{
+    height: 90%;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+}
+#app_container .weather{
+    font-size: 20px;
+    height: 85%;
+    width: 95%;
+    margin: 0 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row
+}
+#app_container .weather .weather_title{
+    font-size: 25px;
+    color: #535353;
+    margin: 5px;
+    padding: 5px;
+    border-bottom: #2F3436 solid 4px;
+    text-align: center;
+}
+#app_container .weather #current_temperature{
+    font-size: 70px;
+    margin: 30px 30px 5px 30px;
+}
+#app_container .weather #apparent_temp{
+    margin: 0 20px;
+    font-size: 25px;
+    color: #737373;
+    text-align: center;
+}
+#app_container .weather #moon_phase{
+    margin: 20px 20px 40px 20px;
+}
+#app_container .weather #weather_code{
+    margin: 30px 20px 20px 20px;
+    text-align: center;
+}
+#app_container .weather .weather_data{
+    border-bottom: #2F3436 solid 1px;
+    color: #ccc;
+    padding: 16px;
+}
+#app_container .weather .weather_forecast{
+    border-top: #2F3436 solid 1px;
+    color: #959595;
+    margin: 4px;
+    padding: 4px;
+}
+#app_container .weather .weather_forecast_temperature{
+    font-size: 35px;
+    margin: 15px 5px 5px 5px;
+    padding: 5px;
+    text-align: center;
+}
+#app_container .weather .weather_forecast_temperature_apparent{
+    font-size: 20px;
+    color: #737373;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+#app_container .weather .weather_forecast_summary{
+    font-size: 20px;
+    margin: 5px 5px 20px 5px;
+    padding: 5px;
+    text-align: center;
+}
+#app_container .weather .weather_subcategory{
+    border: 10px solid #444;
+    margin: 20px 20px 40px 20px;
+    flex-direction: column;
+}
+#app_container #current_weather{
+    margin-top: 20px;
+    border-top: #2F3436 solid 1px;
+}
+#app_container #forecast_weather{
+    margin-top: 20px;
+    border-top: #2F3436 solid 1px;
+}
+table {
+    border-collapse: collapse;
+    width: 85%;
+    margin: 15px 30px 30px 50px;
+    flex-grow: 0;
+}
+td, th {
+    border: 8px solid #404448;
+    text-align: left;
+    padding: 8px;
+    color: #fffdfa;
+    width: 20px
+}
+tr:nth-child(even) {
+    background-color: #2F3436;
+}
+.no_display{
+    display: none;
+}
+#app_container .table_switch{
+    display: flex;
+    margin-right: 100px;
+    justify-content: right;
+}
+a:link, a:visited {
+    border: #373737 5px solid;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    transition: 0.4s;
+}
+a:hover, a:active {
+    background-color: #c7ff0094;
+    border-color: #a3ff0000;
+    color: black;
+    cursor: pointer;
+}
+#app_container .button {
+    border: #373737 5px solid;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    transition: 0.4s;
+}
+#app_container .button:hover, .button:active{
+    background-color: #c7ff0094;
+    border-color: #a3ff0000;
+    color: black;
+    cursor: pointer;
+}

@@ -1,118 +1,17 @@
 <!DOCTYPE html>
 <html lang='en'>
-    <head>
-        <title>Dash</title>
-        <meta charset='utf-8'/>
-        <style>
-            html {
-                background-color: rgb(20, 21, 21);
-            }
-            body {
-                background-color: rgb(20, 21, 21);
-                height: 100%;
-                width: 99%;
-            }
-            h1 {
-                font-family: verdana,serif;
-                font-size: 70px;
-                color: white;
-                text-align: left;
-                margin: 40px 40px 20px 40px;
-            }
-            p {
-                font-family: verdana,serif;
-                font-size: 20px;
-            }
-            .message_element{
-                margin-bottom: 5px;
-            }
-            .app_title{
-                color: white;
-            }
-            .app_message{
-                color: #939393;
-            }
-            #update_time{
-                font-family: verdana,serif;
-                font-size: 20px;
-                color: #939393;
-                margin: 20px 40px 40px 45px;
-            }
-            #message_container{
-                font-family: verdana,serif;
-                font-size: 18px;
-                height: 90%;
-                width: 99%;
-                display: flex;
-                justify-content: center;
-            }
-            #message_history{
-                border: #373737 10px solid;
-                color: #939393;
-                padding: 20px;
-                margin: 20px;
-                min-width:700px;
-                flex-grow: 0;
-            }
-            #latest_message{
-                border: #278e02 10px solid;
-                color: white;
-                padding: 20px;
-                margin: 20px;
-                min-width:700px;
-                flex-grow: 0;
-            }
-        </style>
-         <script>
-             const get_api_messages = async () => {
-                const host = 'http://192.168.0.169'
-                const response = await fetch(host+':8000/');
-                const messages = await response.json();
-
-                const currentTime = new Date();
-                const cDate = currentTime.getFullYear() + '-' + (currentTime.getMonth() + 1) + '-' + currentTime.getDate();
-                const cTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
-                document.getElementById('update_time').innerText = cDate + ' ' + cTime;
-
-                if (messages.message.length){
-                   document.getElementById('message_history').textContent = '';
-                   document.getElementById('latest_message').textContent = '';
-                }
-
-                messages.message.forEach(function(message, index) {
-                    const message_history = document.getElementById('message_history');
-                    const latest_message = document.getElementById('latest_message');
-                    const element = document.createElement('div');
-                    const app_title = document.createElement('span');
-                    const app_message = document.createElement('span');
-
-                    app_title.classList.add('app_title')
-                    app_message.classList.add('app_message')
-                    element.classList.add('message_element')
-
-                    app_title.innerText = message.id+' ('+message.time+'): '
-                    app_message.innerText = message.message
-                    element.appendChild(app_title)
-                    element.appendChild(app_message)
-
-                    if(index === messages.message.length-1) {
-                        latest_message.appendChild(element)
-                    }
-                    else
-                        message_history.appendChild(element)
-                });
-            }
-
-            get_api_messages()
-            setInterval(get_api_messages, 5000);
-         </script>
-    </head>
-    <body>
-        <h1>Dash</h1>
-        <div id='update_time'>last update time</div>
-        <div id='message_container'>
-            <div id='message_history'></div>
-            <div id='latest_message'></div>
+<head>
+    <meta charset='UTF-8'>
+    <title>Dash</title>
+    <link rel='stylesheet' href='index.css'>
+</head>
+<body>
+    <h1>Dash</h1>
+    <div id='app_container'>
+        <div id='link_container'>
+            <a href='air/'>Air</a>
+            <a href='debug/'>Debug</a>
         </div>
-    </body>
-</html> 
+    </div>
+</body>
+</html>

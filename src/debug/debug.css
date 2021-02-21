@@ -1,0 +1,54 @@
+html {
+    background-color: rgb(20, 21, 21);
+}
+body {
+    background-color: rgb(20, 21, 21);
+    height: 100%;
+    width: 99%;
+}
+h1 {
+    font-family: verdana,serif;
+    font-size: 70px;
+    color: white;
+    text-align: left;
+    margin: 40px 40px 20px 40px;
+}
+.message_element{
+    margin-bottom: 5px;
+}
+.app_title{
+    color: white;
+}
+.app_message{
+    color: #939393;
+}
+#update_time{
+    font-family: verdana,serif;
+    font-size: 20px;
+    color: #939393;
+    margin: 20px 40px 40px 45px;
+}
+#message_container{
+    font-family: verdana,serif;
+    font-size: 18px;
+    height: 90%;
+    width: 99%;
+    display: flex;
+    justify-content: center;
+}
+#message_history{
+    border: #373737 10px solid;
+    color: #939393;
+    padding: 20px;
+    margin: 20px;
+    min-width:700px;
+    flex-grow: 0;
+}
+#latest_message{
+    border: #278e02 10px solid;
+    color: white;
+    padding: 20px;
+    margin: 20px;
+    min-width:700px;
+    flex-grow: 0;
+}
