@@ -2,15 +2,23 @@ html {
     background-color: rgb(20, 21, 21);
 }
 body {
-    background-color: rgb(20, 21, 21);
     height: 100%;
     width: 99%;
+    color: white;
 }
 h1 {
     font-family: verdana,serif;
     font-size: 70px;
     color: white;
     text-align: left;
+    margin: 40px 40px 20px 40px;
+}
+h2 {
+    font-size: 40px;
+    margin: 40px 40px 20px 40px;
+}
+h3 {
+    font-size: 30px;
     margin: 40px 40px 20px 40px;
 }
 .message_element{
@@ -30,18 +38,19 @@ h1 {
 }
 #message_container{
     font-family: verdana,serif;
-    font-size: 18px;
+    font-size: 16px;
     height: 90%;
-    width: 99%;
+    width: 95%;
+    margin: auto;
     display: flex;
     justify-content: center;
 }
 #message_history{
     border: #373737 10px solid;
     color: #939393;
-    padding: 20px;
-    margin: 20px;
-    min-width:700px;
+    padding: 10px;
+    margin: 10px;
+    min-width:100px;
     flex-grow: 0;
 }
 #latest_message{
@@ -49,6 +58,30 @@ h1 {
     color: white;
     padding: 20px;
     margin: 20px;
-    min-width:700px;
+    min-width:375px;
     flex-grow: 0;
+}
+#message_stats{
+    border: #8e3702 10px solid;
+    color: white;
+    padding: 5px;
+    margin: 20px;
+    min-width:350px;
+    flex-grow: 0;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    flex-grow: 0;
+}
+td, th {
+    border-bottom: 4px solid #404448;
+    text-align: center;
+    padding: 8px;
+    color: #fffdfa;
+    width: 20px
+}
+tr:nth-child(even) {
+    background-color: #2F3436;
 }

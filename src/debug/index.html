@@ -7,11 +7,24 @@
         <script src='debug.js'></script>
     </head>
     <body>
-        <h1>Dash</h1>
+        <h1>Debug</h1>
         <div id='update_time'>last update time</div>
         <div id='message_container'>
-            <div id='message_history'></div>
-            <div id='latest_message'></div>
+
+            <div id='latest_message_container'>
+                <h2>Latest Message</h2>
+                <div id='latest_message'></div>
+                <h2>Message Stats</h2>
+                <div id='message_stats'>
+                    <table id='message_stats_table'></table>
+                </div>
+            </div>
+
+            <div id='message_history_container'>
+                <h2>Message History</h2>
+                <div id='message_history'></div>
+            </div>
+
         </div>
     </body>
 </html> 
