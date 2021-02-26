@@ -14,9 +14,12 @@ const switch_table = () => {
 
 const get_time = () => {
     const currentTime = new Date();
-    const cDate = currentTime.getFullYear() + '-' + (currentTime.getMonth() + 1) + '-' + currentTime.getDate();
+    const cDate = (currentTime.getMonth() + 1) + '/' + currentTime.getDate();
     const cTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
-    return cDate + ' ' + cTime
+    return {
+        'date': cDate,
+        'time': cTime
+    }
 }
 
 const replace_quotes = (json_string) => {
@@ -87,9 +90,12 @@ const fill_weather_forecast = (weather_forecast_messages) => {
         const forecast_title = document.createElement('div');
         let date_string_addition = '';
         if (index === 0){
-            date_string_addition = '| today'
+            date_string_addition = '| yesterday'
         }
         else if (index === 1){
+            date_string_addition = '| today'
+        }
+        else if (index === 2){
             date_string_addition = '| tomorrow'
         }
         forecast_title.innerText = json_message.date.substr(5,5).concat(' ', date_string_addition)
@@ -149,16 +155,33 @@ const fill_weather_forecast = (weather_forecast_messages) => {
     })
 }
 
-const parse_weather_subcategory = (response_container, value) => {
-    return response_container.message.filter(message => message['category'] === value);
+const parse_weather_subcategory = (response_container, category, time) => {
+    if (time){
+        return response_container.message.filter(message =>
+            message['category'] === category && message['time'].includes(time));
+    }
+    else{
+        return response_container.message.filter(message => message['category'] === category);
+    }
 }
 
-const parse_messages = (response_container, weather_category, pollution_category, pollen_category) => {
-    return {
-        'weather': parse_weather_subcategory(response_container, weather_category),
-        'pollution': parse_weather_subcategory(response_container, pollution_category),
-        'pollen': parse_weather_subcategory(response_container, pollen_category)
+const parse_messages = (response_container, weather_category, pollution_category, pollen_category, reverse_array,
+                        time_filter) => {
+    if (reverse_array){
+        return {
+            'weather': parse_weather_subcategory(response_container, weather_category, time_filter).reverse(),
+            'pollution': parse_weather_subcategory(response_container, pollution_category, time_filter).reverse(),
+            'pollen': parse_weather_subcategory(response_container, pollen_category, time_filter).reverse()
+        }
     }
+    else{
+        return {
+            'weather': parse_weather_subcategory(response_container, weather_category, time_filter),
+            'pollution': parse_weather_subcategory(response_container, pollution_category, time_filter),
+            'pollen': parse_weather_subcategory(response_container, pollen_category, time_filter)
+        }
+    }
+
 }
 
 const fill_weather_tables = (weather_messages, weather_table, pollution_table, pollen_table) => {
@@ -173,16 +196,36 @@ const get_api_messages = () => {
         .then(response => response.json())
         .then(response_container => {
             if (response_container.message.length) {
-                const weather_messages = parse_messages(response_container, 'air_weather',
-                    'air_pollution', 'air_pollen');
+                const current_time = get_time();
+                const weather_messages = parse_messages(
+                    response_container,
+                    'air_weather',
+                    'air_pollution',
+                    'air_pollen',
+                    true
+                );
 
-                fill_weather_tables (weather_messages, 'weather_table',
-                    'pollution_table', 'pollen_table', )
+                fill_weather_tables (
+                    weather_messages,
+                    'weather_table',
+                    'pollution_table',
+                    'pollen_table'
+                )
 
-                const weather_forecast_messages = parse_messages(response_container, 'air_weather_forecast',
-                    'air_pollution_forecast', 'air_pollen_forecast');
-                fill_weather_tables (weather_forecast_messages, 'weather_forecast_table',
-                    'pollution_forecast_table', 'pollen_forecast_table')
+                const weather_forecast_messages = parse_messages(
+                    response_container,
+                    'air_weather_forecast',
+                    'air_pollution_forecast',
+                    'air_pollen_forecast',
+                    false,
+                    current_time.date
+                );
+                fill_weather_tables (
+                    weather_forecast_messages,
+                    'weather_forecast_table',
+                    'pollution_forecast_table',
+                    'pollen_forecast_table'
+                )
 
                 fill_current_weather({
                     'weather': replace_quotes(weather_messages.weather[0].message),
@@ -192,10 +235,11 @@ const get_api_messages = () => {
                 });
 
                 fill_weather_forecast(weather_forecast_messages);
-                document.getElementById('update_time').innerText = get_time();
+                document.getElementById('update_time').innerText = current_time.date.concat(' ',
+                    current_time.time);
             }
         });
 }
 
 get_api_messages()
-setInterval(get_api_messages, 5000);
+//setInterval(get_api_messages, 5000);
