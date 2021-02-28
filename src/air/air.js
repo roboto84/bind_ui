@@ -12,13 +12,18 @@ const switch_table = () => {
     }
 }
 
-const get_time = () => {
-    const currentTime = new Date();
-    const cDate = (currentTime.getMonth() + 1) + '/' + currentTime.getDate();
-    const cTime = currentTime.getHours() + ":" + currentTime.getMinutes() + ":" + currentTime.getSeconds();
+const pad_time = (time_value) => {
+    return String(time_value).padStart(2, '0')
+}
+
+const get_standard_time = (date) => {
+    const date_value = (date.getMonth() + 1) + '/' + date.getDate();
+    const hours = date.getHours() + ":" + pad_time(date.getMinutes());
+    const seconds = pad_time(date.getSeconds())
     return {
-        'date': cDate,
-        'time': cTime
+        'date': date_value,
+        'time': hours,
+        'seconds': seconds
     }
 }
 
@@ -49,7 +54,19 @@ const fill_table = (table_type, messages) => {
                 table_row_td.innerText = json_message[column_header].value
             }
             else{
-                table_row_td.innerText = json_message[column_header]
+                if(column_header === 'date'){
+                    const reformatted_date = get_standard_time(
+                        new Date(
+                            Date.parse(
+                                json_message[column_header].substring(0, json_message[column_header].length - 6)
+                            )
+                        )
+                    )
+                    table_row_td.innerText = reformatted_date.date.concat(' ', reformatted_date.time);
+                }
+                else{
+                    table_row_td.innerText = json_message[column_header]
+                }
             }
             table_row_tr.appendChild(table_row_td)
             table.appendChild(table_row_tr)
@@ -75,7 +92,7 @@ const fill_current_weather = (latest_message) => {
         .concat(' ', latest_message.pollution['epaIndex'].unit, ' (', latest_message.pollution['epaHealthConcern'], ')');
     document.getElementById('pressure').innerText = latest_message.weather['pressureSurfaceLevel'].value
         .concat(' ', latest_message.weather['pressureSurfaceLevel'].unit, ' Pressure');
-    document.getElementById('pollen_index').innerText = 'n/a'.concat(' Pollen Scale');
+    document.getElementById('pollen_index').innerText = 'Pollen '.concat(latest_message.pollen['treeIndex']);
 }
 
 const fill_weather_forecast = (weather_forecast_messages) => {
@@ -90,15 +107,16 @@ const fill_weather_forecast = (weather_forecast_messages) => {
         const forecast_title = document.createElement('div');
         let date_string_addition = '';
         if (index === 0){
-            date_string_addition = '| yesterday'
+            date_string_addition = ' | yesterday'
         }
         else if (index === 1){
-            date_string_addition = '| today'
+            date_string_addition = ' | today'
         }
         else if (index === 2){
-            date_string_addition = '| tomorrow'
+            date_string_addition = ' | tomorrow'
         }
-        forecast_title.innerText = json_message.date.substr(5,5).concat(' ', date_string_addition)
+
+        forecast_title.innerText = get_standard_time(new Date(json_message.date)).date.concat(date_string_addition)
         forecast_title.classList.add('weather_title')
 
         const forecast_temperature = document.createElement('div');
@@ -123,7 +141,8 @@ const fill_weather_forecast = (weather_forecast_messages) => {
         forecast_humidity.classList.add('weather_forecast')
 
         const forecast_pressure = document.createElement('div');
-        forecast_pressure.innerText = json_message.pressureSurfaceLevel.value.concat(' ', json_message.pressureSurfaceLevel.unit)
+        forecast_pressure.innerText = json_message.pressureSurfaceLevel.value.concat(' ',
+            json_message.pressureSurfaceLevel.unit, ' Pressure')
         forecast_pressure.classList.add('weather_forecast')
 
         const forecast_precipitation = document.createElement('div');
@@ -133,12 +152,12 @@ const fill_weather_forecast = (weather_forecast_messages) => {
 
         const pollution_forecast = replace_quotes(weather_forecast_messages.pollution[index].message)
         const forecast_aqi = document.createElement('div');
-        forecast_aqi.innerText = pollution_forecast.epaIndex.value.concat(' Air Quality (', pollution_forecast.epaHealthConcern, ')')
+        forecast_aqi.innerText = pollution_forecast.epaHealthConcern.concat(' Air Quality (', pollution_forecast.epaIndex.value, ')')
         forecast_aqi.classList.add('weather_forecast')
 
         const pollen_forecast = replace_quotes(weather_forecast_messages.pollen[index].message)
         const forecast_pollen = document.createElement('div');
-        forecast_pollen.innerText = 'n/a Pollen'
+        forecast_pollen.innerText = 'Pollen '.concat(pollen_forecast.treeIndex)
         forecast_pollen.classList.add('weather_forecast')
 
         forecast.appendChild(forecast_title)
@@ -147,6 +166,7 @@ const fill_weather_forecast = (weather_forecast_messages) => {
         forecast.appendChild(forecast_summary)
         forecast.appendChild(forecast_precipitation)
         forecast.appendChild(forecast_humidity)
+        forecast.appendChild(forecast_pressure)
         forecast.appendChild(forecast_aqi)
         forecast.appendChild(forecast_pollen)
         forecast.appendChild(forecast_moon_phase)
@@ -196,7 +216,7 @@ const get_api_messages = () => {
         .then(response => response.json())
         .then(response_container => {
             if (response_container.message.length) {
-                const current_time = get_time();
+                const current_time = get_standard_time(new Date());
                 const weather_messages = parse_messages(
                     response_container,
                     'air_weather',
@@ -236,10 +256,10 @@ const get_api_messages = () => {
 
                 fill_weather_forecast(weather_forecast_messages);
                 document.getElementById('update_time').innerText = current_time.date.concat(' ',
-                    current_time.time);
+                    current_time.time, ':', current_time.seconds);
             }
         });
 }
 
 get_api_messages()
-//setInterval(get_api_messages, 5000);
+setInterval(get_api_messages, 5000);
