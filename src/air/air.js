@@ -17,8 +17,8 @@ const pad_time = (time_value) => {
 }
 
 const get_standard_time = (date) => {
-    const date_value = (date.getMonth() + 1) + '/' + date.getDate();
-    const hours = date.getHours() + ":" + pad_time(date.getMinutes());
+    const date_value = (pad_time(date.getMonth() + 1)) + '/' + pad_time(date.getDate());
+    const hours = pad_time(date.getHours()) + ":" + pad_time(date.getMinutes());
     const seconds = pad_time(date.getSeconds())
     return {
         'date': date_value,
@@ -240,6 +240,7 @@ const get_api_messages = () => {
                     false,
                     current_time.date
                 );
+
                 fill_weather_tables (
                     weather_forecast_messages,
                     'weather_forecast_table',
