@@ -32,46 +32,46 @@ const replace_quotes = (json_string) => {
 }
 
 const fill_table = (table_type, messages) => {
-    const message_keys = Object.keys(JSON.parse(messages[0].message.replace(/[']/g, "\"")));
-    const table = document.getElementById(table_type);
-    const table_header_tr = document.createElement('tr');
-    table.innerText = '';
-
-    message_keys.forEach(column_header => {
-        const table_header_th = document.createElement('th');
-        table_header_th.innerText = column_header
-        table_header_tr.appendChild(table_header_th)
-        table.appendChild(table_header_tr)
-    });
-
-    messages.forEach(element => {
-        const table_row_tr = document.createElement('tr');
-        const json_message = replace_quotes(element.message)
+    if(messages.length) {
+        const message_keys = Object.keys(JSON.parse(messages[0].message.replace(/[']/g, "\"")));
+        const table = document.getElementById(table_type);
+        const table_header_tr = document.createElement('tr');
+        table.innerText = '';
 
         message_keys.forEach(column_header => {
-            const table_row_td = document.createElement('td');
-            if (typeof json_message[column_header] == 'object'){
-                table_row_td.innerText = json_message[column_header].value
-            }
-            else{
-                if(column_header === 'date'){
-                    const reformatted_date = get_standard_time(
-                        new Date(
-                            Date.parse(
-                                json_message[column_header].substring(0, json_message[column_header].length - 6)
+            const table_header_th = document.createElement('th');
+            table_header_th.innerText = column_header
+            table_header_tr.appendChild(table_header_th)
+            table.appendChild(table_header_tr)
+        });
+
+        messages.forEach(element => {
+            const table_row_tr = document.createElement('tr');
+            const json_message = replace_quotes(element.message)
+
+            message_keys.forEach(column_header => {
+                const table_row_td = document.createElement('td');
+                if (typeof json_message[column_header] == 'object') {
+                    table_row_td.innerText = json_message[column_header].value
+                } else {
+                    if (column_header === 'date') {
+                        const reformatted_date = get_standard_time(
+                            new Date(
+                                Date.parse(
+                                    json_message[column_header].substring(0, json_message[column_header].length - 6)
+                                )
                             )
                         )
-                    )
-                    table_row_td.innerText = reformatted_date.date.concat(' ', reformatted_date.time);
+                        table_row_td.innerText = reformatted_date.date.concat(' ', reformatted_date.time);
+                    } else {
+                        table_row_td.innerText = json_message[column_header]
+                    }
                 }
-                else{
-                    table_row_td.innerText = json_message[column_header]
-                }
-            }
-            table_row_tr.appendChild(table_row_td)
-            table.appendChild(table_row_tr)
+                table_row_tr.appendChild(table_row_td)
+                table.appendChild(table_row_tr)
+            });
         });
-    });
+    }
 }
 
 const fill_current_weather = (latest_message) => {
@@ -98,7 +98,6 @@ const fill_current_weather = (latest_message) => {
 const fill_weather_forecast = (weather_forecast_messages) => {
     const forecast_container = document.getElementById('forecast');
     forecast_container.innerText = '';
-    console.log(weather_forecast_messages)
     weather_forecast_messages.weather.forEach((element, index) => {
         const json_message = replace_quotes(element.message)
         const forecast = document.createElement('div');
@@ -252,7 +251,8 @@ const get_api_messages = () => {
                     'weather': replace_quotes(weather_messages.weather[0].message),
                     'pollen': replace_quotes(weather_messages.pollen[0].message),
                     'pollution': replace_quotes(weather_messages.pollution[0].message),
-                    'moon_phase': replace_quotes(weather_forecast_messages.weather[0].message).moonPhase
+                    'moon_phase': weather_forecast_messages.length ?
+                        replace_quotes(weather_forecast_messages.weather[0].message).moonPhase : 'n/a'
                 });
 
                 fill_weather_forecast(weather_forecast_messages);
