@@ -251,7 +251,7 @@ const get_api_messages = () => {
                     'weather': replace_quotes(weather_messages.weather[0].message),
                     'pollen': replace_quotes(weather_messages.pollen[0].message),
                     'pollution': replace_quotes(weather_messages.pollution[0].message),
-                    'moon_phase': weather_forecast_messages.length ?
+                    'moon_phase': weather_forecast_messages.weather.length ?
                         replace_quotes(weather_forecast_messages.weather[0].message).moonPhase : 'n/a'
                 });
 
