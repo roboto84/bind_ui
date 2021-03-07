@@ -1,26 +1,11 @@
-html {
-    background-color: rgb(20, 21, 21);
+
+/* Base Elements */
+td, th {
+    border-bottom: 4px solid #404448;
+    text-align: center;
 }
-body {
-    height: 100%;
-    width: 99%;
-    color: white;
-}
-h1 {
-    font-family: verdana,serif;
-    font-size: 70px;
-    color: white;
-    text-align: left;
-    margin: 40px 40px 20px 40px;
-}
-h2 {
-    font-size: 40px;
-    margin: 40px 40px 20px 40px;
-}
-h3 {
-    font-size: 30px;
-    margin: 40px 40px 20px 40px;
-}
+
+/* Classes */
 .message_element{
     margin-bottom: 5px;
 }
@@ -30,15 +15,11 @@ h3 {
 .app_message{
     color: #939393;
 }
-#update_time{
-    font-family: verdana,serif;
-    font-size: 20px;
-    color: #939393;
-    margin: 20px 40px 40px 45px;
-}
+
+/* Unique Ids */
 #message_container{
     font-family: verdana,serif;
-    font-size: 16px;
+    font-size: 14px;
     height: 90%;
     width: 95%;
     margin: auto;
@@ -68,20 +49,4 @@ h3 {
     margin: 20px;
     min-width:350px;
     flex-grow: 0;
-}
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: auto;
-    flex-grow: 0;
-}
-td, th {
-    border-bottom: 4px solid #404448;
-    text-align: center;
-    padding: 8px;
-    color: #fffdfa;
-    width: 20px
-}
-tr:nth-child(even) {
-    background-color: #2F3436;
 }

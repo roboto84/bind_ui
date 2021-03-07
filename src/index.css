@@ -1,18 +1,4 @@
-html {
-    background-color: rgb(20, 21, 21);
-}
-body {
-    background-color: rgb(20, 21, 21);
-    height: 100%;
-    width: 99%;
-}
-h1 {
-    font-family: verdana,serif;
-    font-size: 70px;
-    color: white;
-    text-align: left;
-    margin: 40px 40px 20px 40px;
-}
+/* Unique Ids */
 #app_container{
     font-family: verdana,serif;
     font-size: 30px;
@@ -30,21 +16,4 @@ h1 {
     display: flex;
     flex-direction: column;
     margin: auto;
-}
-a:link, a:visited {
-    border: #373737 10px solid;
-    color: #939393;
-    padding: 20px;
-    margin: 20px;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 3px;
-    word-spacing: 10px;
-    transition: 0.4s;
-}
-a:hover, a:active {
-    background-color: #c7ff0094;
-    border-color: #a3ff0000;
-    color: black;
-    cursor: pointer;
 }

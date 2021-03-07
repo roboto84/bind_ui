@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Air</title>
+    <link rel='stylesheet' href='../main.css'>
     <link rel='stylesheet' href='air.css'>
+    <script src='../utils.js'></script>
     <script src='air.js'></script>
+    <script>
+       get_api_messages()
+       setInterval(get_api_messages, 60000);
+    </script>
 </head>
 <body>
     <h1>Air</h1>

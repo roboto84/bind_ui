@@ -12,25 +12,6 @@ const switch_table = () => {
     }
 }
 
-const pad_time = (time_value) => {
-    return String(time_value).padStart(2, '0')
-}
-
-const get_standard_time = (date) => {
-    const date_value = (pad_time(date.getMonth() + 1)) + '/' + pad_time(date.getDate());
-    const hours = pad_time(date.getHours()) + ":" + pad_time(date.getMinutes());
-    const seconds = pad_time(date.getSeconds())
-    return {
-        'date': date_value,
-        'time': hours,
-        'seconds': seconds
-    }
-}
-
-const replace_quotes = (json_string) => {
-    return JSON.parse(json_string.replace(/[']/g, "\""))
-}
-
 const fill_table = (table_type, messages) => {
     if(messages.length) {
         const message_keys = Object.keys(JSON.parse(messages[0].message.replace(/[']/g, "\"")));
@@ -75,24 +56,26 @@ const fill_table = (table_type, messages) => {
 }
 
 const fill_current_weather = (latest_message) => {
-    document.getElementById('current_temperature').innerText = latest_message.weather['temperature'].value.concat(' ',
-        latest_message.weather['temperature'].unit);
-    document.getElementById('apparent_temp').innerText = '... feels like '.concat(
-        latest_message.weather['temperatureApparent'].value, ' ', latest_message.weather['temperatureApparent'].unit);
-    document.getElementById('weather_code').innerText = latest_message.weather['weatherCode'];
-    document.getElementById('moon_phase').innerText = latest_message.moon_phase;
-    document.getElementById('precipitation').innerText = latest_message.weather['precipitationProbability']
-        .value.concat(' ', latest_message.weather['precipitationProbability'].unit, ' Chance of ',
-            latest_message.weather['precipitationType']);
-    document.getElementById('humidity').innerText = latest_message.weather['humidity'].value
-        .concat(' ', latest_message.weather['humidity'].unit, ' Humidity');
-    document.getElementById('dew_point').innerText = latest_message.weather['dewPoint'].value
-        .concat(' ', latest_message.weather['dewPoint'].unit, ' Dew Point');
-    document.getElementById('epa_index').innerText = latest_message.pollution['epaIndex'].value
-        .concat(' ', latest_message.pollution['epaIndex'].unit, ' (', latest_message.pollution['epaHealthConcern'], ')');
-    document.getElementById('pressure').innerText = latest_message.weather['pressureSurfaceLevel'].value
-        .concat(' ', latest_message.weather['pressureSurfaceLevel'].unit, ' Pressure');
-    document.getElementById('pollen_index').innerText = 'Pollen '.concat(latest_message.pollen['treeIndex']);
+    const weather = latest_message.weather
+    const pollution = latest_message.pollution
+    const pollen = latest_message.pollen
+
+    const current_weather_view_data = [
+        ['current_temperature', `${weather.temperature.value} ${weather.temperature.unit}`],
+        ['apparent_temp', `... feels like ${weather.temperatureApparent.value} ${weather.temperatureApparent.unit}`],
+        ['weather_code', weather.weatherCode],
+        ['moon_phase', latest_message.moon_phase],
+        ['precipitation', `${weather.precipitationProbability.value} ${weather.precipitationProbability.unit} Chance of ${weather['precipitationType']}`],
+        ['humidity', `${weather.humidity.value} ${weather.humidity.unit} Humidity`],
+        ['dew_point', `${weather['dewPoint'].value} ${weather['dewPoint'].unit} Dew Point`],
+        ['epa_index', `${pollution.epaIndex.value} ${pollution['epaIndex'].unit} (${pollution.epaHealthConcern})`],
+        ['pressure', `${weather.pressureSurfaceLevel.value} ${weather.pressureSurfaceLevel.unit} Pressure`],
+        ['pollen_index', `Pollen ${pollen.treeIndex}`]
+    ]
+
+    current_weather_view_data.forEach((current_weather_piece) => {
+        set_element_inner_text(...current_weather_piece)
+    })
 }
 
 const fill_weather_forecast = (weather_forecast_messages) => {
@@ -100,76 +83,41 @@ const fill_weather_forecast = (weather_forecast_messages) => {
     forecast_container.innerText = '';
     weather_forecast_messages.weather.forEach((element, index) => {
         const json_message = replace_quotes(element.message)
+        const pollution_forecast = replace_quotes(weather_forecast_messages.pollution[index].message)
+        const pollen_forecast = replace_quotes(weather_forecast_messages.pollen[index].message)
+
         const forecast = document.createElement('div');
         forecast.classList.add('weather_subcategory')
 
-        const forecast_title = document.createElement('div');
         let date_string_addition = '';
-        if (index === 0){
+        switch(index) {
+          case 0:
             date_string_addition = ' | yesterday'
-        }
-        else if (index === 1){
+            break;
+          case 1:
             date_string_addition = ' | today'
-        }
-        else if (index === 2){
+            break;
+          case 2:
             date_string_addition = ' | tomorrow'
         }
 
-        forecast_title.innerText = get_standard_time(new Date(json_message.date)).date.concat(date_string_addition)
-        forecast_title.classList.add('weather_title')
+        const default_css = 'weather_forecast'
+        const forecast_view_data = [
+            [`${get_standard_time(new Date(json_message.date)).date}${date_string_addition}`, 'weather_title'],
+            [`${json_message.temperature.value} ${json_message.temperature.unit}`, 'weather_forecast_temperature'],
+            [`feels like ${json_message.temperatureApparent.value} ${json_message.temperatureApparent.unit}`, 'weather_forecast_temperature_apparent'],
+            [`${json_message.weatherCode}`, 'weather_forecast_summary'],
+            [`${json_message.precipitationProbability.value} ${json_message.precipitationProbability.unit} chance of ${json_message.precipitationType}`,  default_css],
+            [`${json_message.humidity.value} ${json_message.humidity.unit} Humidity`, default_css],
+            [`${json_message.pressureSurfaceLevel.value} ${json_message.pressureSurfaceLevel.unit} Pressure`, default_css],
+            [`${pollution_forecast.epaHealthConcern} Air Quality (${pollution_forecast.epaIndex.value})`, default_css],
+            [`Pollen ${pollen_forecast.treeIndex}`, default_css],
+            [`${json_message.moonPhase} Moon`, default_css]
+        ]
 
-        const forecast_temperature = document.createElement('div');
-        forecast_temperature.innerText = json_message.temperature.value.concat(' ', json_message.temperature.unit)
-        forecast_temperature.classList.add('weather_forecast_temperature')
-
-        const forecast_temperature_apparent = document.createElement('div');
-        forecast_temperature_apparent.innerText = 'feels like '.concat(json_message.temperatureApparent.value, ' ',
-            json_message.temperatureApparent.unit)
-        forecast_temperature_apparent.classList.add('weather_forecast_temperature_apparent')
-
-        const forecast_summary = document.createElement('div');
-        forecast_summary.innerText = json_message.weatherCode
-        forecast_summary.classList.add('weather_forecast_summary')
-
-        const forecast_moon_phase = document.createElement('div');
-        forecast_moon_phase.innerText = json_message.moonPhase.concat(' Moon')
-        forecast_moon_phase.classList.add('weather_forecast')
-
-        const forecast_humidity = document.createElement('div');
-        forecast_humidity.innerText = json_message.humidity.value.concat(json_message.humidity.unit, ' Humidity')
-        forecast_humidity.classList.add('weather_forecast')
-
-        const forecast_pressure = document.createElement('div');
-        forecast_pressure.innerText = json_message.pressureSurfaceLevel.value.concat(' ',
-            json_message.pressureSurfaceLevel.unit, ' Pressure')
-        forecast_pressure.classList.add('weather_forecast')
-
-        const forecast_precipitation = document.createElement('div');
-        forecast_precipitation.innerText = json_message.precipitationProbability.value.concat(
-            json_message.precipitationProbability.unit, ' chance of ', json_message.precipitationType)
-        forecast_precipitation.classList.add('weather_forecast')
-
-        const pollution_forecast = replace_quotes(weather_forecast_messages.pollution[index].message)
-        const forecast_aqi = document.createElement('div');
-        forecast_aqi.innerText = pollution_forecast.epaHealthConcern.concat(' Air Quality (', pollution_forecast.epaIndex.value, ')')
-        forecast_aqi.classList.add('weather_forecast')
-
-        const pollen_forecast = replace_quotes(weather_forecast_messages.pollen[index].message)
-        const forecast_pollen = document.createElement('div');
-        forecast_pollen.innerText = 'Pollen '.concat(pollen_forecast.treeIndex)
-        forecast_pollen.classList.add('weather_forecast')
-
-        forecast.appendChild(forecast_title)
-        forecast.appendChild(forecast_temperature)
-        forecast.appendChild(forecast_temperature_apparent)
-        forecast.appendChild(forecast_summary)
-        forecast.appendChild(forecast_precipitation)
-        forecast.appendChild(forecast_humidity)
-        forecast.appendChild(forecast_pressure)
-        forecast.appendChild(forecast_aqi)
-        forecast.appendChild(forecast_pollen)
-        forecast.appendChild(forecast_moon_phase)
-
+        forecast_view_data.forEach((forecast_piece) => {
+            element_appender(forecast, forecast_piece)
+        })
         forecast_container.appendChild(forecast)
     })
 }
@@ -252,15 +200,11 @@ const get_api_messages = () => {
                     'pollen': replace_quotes(weather_messages.pollen[0].message),
                     'pollution': replace_quotes(weather_messages.pollution[0].message),
                     'moon_phase': weather_forecast_messages.weather.length ?
-                        replace_quotes(weather_forecast_messages.weather[0].message).moonPhase : 'n/a'
+                        replace_quotes(weather_forecast_messages.weather[1].message).moonPhase : 'n/a'
                 });
 
                 fill_weather_forecast(weather_forecast_messages);
-                document.getElementById('update_time').innerText = current_time.date.concat(' ',
-                    current_time.time, ':', current_time.seconds);
+                document.getElementById('update_time').innerText = `${current_time.date} ${current_time.time}:${current_time.seconds}`
             }
         });
 }
-
-get_api_messages()
-setInterval(get_api_messages, 5000);
