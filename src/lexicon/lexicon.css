@@ -1,0 +1,81 @@
+/* Unique Ids */
+#app_container{
+    height: 90%;
+    width: 99%;
+    display: flex;
+    flex-direction: column;
+}
+#app_container #main_word{
+    display: flex;
+    flex-direction: row;
+}
+#app_container #main_word #word{
+    font-size: 45px;
+    letter-spacing: 3px;
+}
+#app_container #main_word #part_of_speech{
+    margin-left: 19px;
+    margin-top: 19px;
+    color: #606060;
+}
+#app_container #main_word #pronunciation{
+    margin-left: 19px;
+    margin-top: 19px;
+    font-style: italic;
+    color: #9d9d9d;
+}
+
+/* Classes */
+#app_container .search{
+    font-size: 14px;
+    height: 85%;
+    width: 95%;
+    margin: 0 30px;
+    display: flex;
+    justify-content: center;
+}
+#app_container .search_input{
+    border: #373737 5px solid;
+    background-color: #2F3436;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    min-width: 500px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    transition: 0.4s;
+}
+#app_container .search_button{
+    border: #373737 5px solid;
+    background-color: #2F3436;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    transition: 0.4s;
+}
+#app_container .search_button:hover {
+    background-color: #c7ff0094;
+    border-color: #a3ff0000;
+    color: black;
+    cursor: pointer;
+}
+#app_container .word_def{
+    font-size: 25px;
+    height: 85%;
+    width: 95%;
+    margin: 50px;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    color: #d5d5d5;
+}
+#app_container .word_def_sub_section{
+    margin: 20px;
+}
+#app_container .word_def_sub_section_two{
+    margin: 10px 50px;
+}

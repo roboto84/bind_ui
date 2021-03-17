@@ -36,13 +36,7 @@ const fill_table = (table_type, messages) => {
                     table_row_td.innerText = json_message[column_header].value
                 } else {
                     if (column_header === 'date') {
-                        const reformatted_date = get_standard_time(
-                            new Date(
-                                Date.parse(
-                                    json_message[column_header].substring(0, json_message[column_header].length - 6)
-                                )
-                            )
-                        )
+                        const reformatted_date = get_standard_time(new Date(Date.parse(json_message[column_header])))
                         table_row_td.innerText = reformatted_date.date.concat(' ', reformatted_date.time);
                     } else {
                         table_row_td.innerText = json_message[column_header]
@@ -164,6 +158,7 @@ const get_api_messages = () => {
         .then(response_container => {
             if (response_container.message.length) {
                 const current_time = get_standard_time(new Date());
+
                 const weather_messages = parse_messages(
                     response_container,
                     'air_weather',
@@ -171,14 +166,6 @@ const get_api_messages = () => {
                     'air_pollen',
                     true
                 );
-
-                fill_weather_tables (
-                    weather_messages,
-                    'weather_table',
-                    'pollution_table',
-                    'pollen_table'
-                )
-
                 const weather_forecast_messages = parse_messages(
                     response_container,
                     'air_weather_forecast',
@@ -188,6 +175,12 @@ const get_api_messages = () => {
                     current_time.date
                 );
 
+                fill_weather_tables (
+                    weather_messages,
+                    'weather_table',
+                    'pollution_table',
+                    'pollen_table'
+                )
                 fill_weather_tables (
                     weather_forecast_messages,
                     'weather_forecast_table',
