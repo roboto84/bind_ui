@@ -7,33 +7,37 @@
         <link rel='stylesheet' href='lexicon.css'>
         <script src='../utils.js'></script>
         <script src='lexicon.js'></script>
-        <script>
-
-        </script>
     </head>
     <body>
         <h1>Lexicon</h1>
         <div id='app_container'>
-            <div class="search">
-                <input class="search_input" type="text" placeholder="Search Word" id="word_search_input"
-                       onkeypress="click_search(event)" autofocus>
-                <button class="search_button" type="button" onclick="send_search_word()">Search Lexicon</button>
+            <div id='search_container' class='search'>
+                <div id='search_visibility'>
+                    <input class='search_input' type='text' placeholder='Search Word' id='word_search_input'
+                           onkeypress='click_search(event)' autofocus>
+                    <button class='search_button' type='button' onclick='send_search_word()'>Search Lexicon</button>
+                </div>
             </div>
-            <div id="word_definition" class="word_def">
-                <div id="main_word" class="word_def_sub_section">
-                    <div id="word">...</div>
-                    <div id="part_of_speech"></div>
-                    <div id="pronunciation"></div>
-                    <div id="word_audio" class="word_def_sub_section_two">
-                    <audio class="no_display" id="audio" controls="controls">
-                      <source id="audioSource" src=""></source>
-                      Your browser does not support the audio format.
-                    </audio>
-                </div>
-                </div>
-                <div id="main_definitions" class="word_def_sub_section_two"></div>
+            <div class='loader_holder'>
+                <div id='load_visibility' class='no_display loader'></div>
+            </div>
+            <div id='word_definition' class='word_def'>
+                <div id='word_definition_visibility'>
+                    <div id='main_word' class='word_def_sub_section'>
+                        <div id='word'>...</div>
+                        <div id='part_of_speech'></div>
+                        <div id='pronunciation'></div>
+                        <div id='word_audio' class='word_def_sub_section_two'>
+                        <audio class='no_display' id='audio' controls='controls'>
+                          <source id='audioSource' src=''></source>
+                          Your browser does not support the audio format.
+                        </audio>
+                    </div>
+                    </div>
+                    <div id='main_definitions' class='word_def_sub_section_two'></div>
 
-                <div id="word_examples" class="word_def_sub_section_two"></div>
+                    <div id='word_examples' class='word_def_sub_section_two'></div>
+                </div>
             </div>
         </div>
     </body>

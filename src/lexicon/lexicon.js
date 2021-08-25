@@ -1,3 +1,20 @@
+const switch_loader = () => {
+    const load_visibility = document.getElementById('load_visibility')
+    const search_visibility = document.getElementById('search_visibility')
+    const word_definition_visibility = document.getElementById('word_definition_visibility')
+
+    if (load_visibility.classList.contains('no_display')){
+        load_visibility.classList.remove('no_display')
+        search_visibility.classList.add('no_display')
+        word_definition_visibility.classList.add('no_display')
+    }
+    else{
+        load_visibility.classList.add('no_display')
+        search_visibility.classList.remove('no_display')
+        word_definition_visibility.classList.remove('no_display')
+    }
+}
+
 const defined_word = (word_def) => {
     return `${word_def['word']} `
 }
@@ -37,6 +54,7 @@ const click_search = (event) => {
 const send_search_word = () => {
     const host = 'http://192.168.0.169'
     const inputVal = document.getElementById("word_search_input").value;
+    switch_loader()
     fetch(`${host}:8000/lexicon/word_search/${inputVal.toLocaleString().toLowerCase()}`)
         .then(response => response.json())
         .then(response_container => {
@@ -48,5 +66,6 @@ const send_search_word = () => {
             set_element_inner_text('pronunciation', pronunciation(word_def))
             set_element_inner_text('main_definitions', main_definitions(word_def))
             set_element_inner_text('word_examples', word_examples(word_def))
+            switch_loader()
         })
 }
