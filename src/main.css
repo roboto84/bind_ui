@@ -67,3 +67,32 @@ tr:nth-child(even) {
     font-size: 14px;
     margin: 20px 40px 40px 45px;
 }
+
+#header{
+    font-size: 14px;
+    height: 85%;
+    width: 95%;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: row
+}
+
+.title{
+    justify-content: left;
+    width: 50%;
+}
+
+.nav_links{
+    width: 50%;
+    padding-top: 55px;
+    padding-right: 55px;
+    display: flex;
+    justify-content: right;
+}
+
+.nav_container{
+    border-bottom: dotted 5px #373737;
+    border-top: dotted 5px #373737;
+    padding: 31px;
+    height: 22px;
+}
