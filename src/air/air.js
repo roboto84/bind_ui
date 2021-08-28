@@ -197,7 +197,7 @@ const get_api_messages = () => {
                 });
 
                 fill_weather_forecast(weather_forecast_messages);
-                document.getElementById('update_time').innerText = `${current_time.date} ${current_time.time}:${current_time.seconds}`
+                document.getElementById('update_time').innerText = `last updated: ${current_time.date} ${current_time.time}:${current_time.seconds}`
             }
         });
 }

@@ -5,7 +5,7 @@ const get_api_messages = () => {
         .then(response => response.json())
         .then(messages => {
             const current_time = get_standard_time(new Date())
-            document.getElementById('update_time').innerText = `${current_time.date} ${current_time.time}:${current_time.seconds}`
+            document.getElementById('update_time').innerText = `last updated: ${current_time.date} ${current_time.time}:${current_time.seconds}`
 
             const table = document.getElementById('message_stats_table')
             const header_tr = document.createElement('tr')

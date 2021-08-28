@@ -4,6 +4,7 @@
 html {
     background-color: rgb(20, 21, 21);
 }
+
 body {
     font-family: arial, sans-serif;
     font-size: 12px;
@@ -12,19 +13,40 @@ body {
     height: 100%;
     width: 99%;
 }
+
 h1 {
     font-size: 45px;
     margin: 40px 40px 20px 40px;
 }
+
 h2 {
     font-size: 25px;
     margin: 40px 40px 20px 40px;
 }
+
 h3 {
     font-size: 18px;
     margin: 40px 40px 20px 40px;
 }
-a:link, a:visited {
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+    flex-grow: 0;
+}
+
+td, th {
+    padding: 8px;
+    color: #fffdfa;
+    width: 20px
+}
+
+tr:nth-child(even) {
+    background-color: #2F3436;
+}
+
+.button {
     border: #373737 5px solid;
     color: #939393;
     padding: 10px;
@@ -35,46 +57,17 @@ a:link, a:visited {
     word-spacing: 10px;
     transition: 0.4s;
 }
-a:hover, a:active {
+
+.active, .button:hover, .button:active {
     background-color: #c7ff0094;
     border-color: #a3ff0000;
     color: black;
     cursor: pointer;
 }
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: auto;
-    flex-grow: 0;
-}
-td, th {
-    padding: 8px;
-    color: #fffdfa;
-    width: 20px
-}
-tr:nth-child(even) {
-    background-color: #2F3436;
-}
 
 /* Classes */
 .no_display{
     display: none;
-}
-
-/* Unique Ids */
-#update_time{
-    color: #939393;
-    font-size: 14px;
-    margin: 20px 40px 40px 45px;
-}
-
-#header{
-    font-size: 14px;
-    height: 85%;
-    width: 95%;
-    margin: 0 30px;
-    display: flex;
-    flex-direction: row
 }
 
 .title{
@@ -91,8 +84,32 @@ tr:nth-child(even) {
 }
 
 .nav_container{
-    border-bottom: dotted 5px #373737;
-    border-top: dotted 5px #373737;
-    padding: 31px;
+    padding-top: 30px;
     height: 22px;
+}
+
+/* Unique Ids */
+#update_time{
+    color: #939393;
+    font-size: 14px;
+    margin: 20px 40px 25px 45px;
+}
+
+#header{
+    font-size: 14px;
+    margin: 0 30px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1px #373737;
+}
+
+#header a:link, a:visited {
+    margin: 0;
+}
+
+#app_container{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
 }
