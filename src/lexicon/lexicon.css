@@ -1,28 +1,54 @@
-/* Unique Ids */
-#app_container #main_word{
-    display: flex;
-    flex-direction: row;
+/* Classes */
+#app_container li{
+    margin: 10px 0;
+    line-height: 35px;
+    text-transform: capitalize;
 }
 
-#app_container #main_word #word{
-    font-size: 45px;
+#app_container .word_style{
+    font-size: 50px;
     letter-spacing: 3px;
+    margin-top: -3px;
 }
 
-#app_container #main_word #part_of_speech{
+#app_container .date_first_used_style{
+    margin-left: 35px;
+    margin-top: 19px;
+    color: #606060;
+    letter-spacing: 2px;
+}
+
+#app_container .part_of_speech_style{
     margin-left: 19px;
     margin-top: 19px;
     color: #606060;
+    letter-spacing: 2px;
 }
 
-#app_container #main_word #pronunciation{
+#app_container .word_break_style{
+    margin-left: 19px;
+    margin-top: 19px;
+    color: #606060;
+    letter-spacing: 2px;
+}
+
+#app_container .pronunciation_style{
     margin-left: 19px;
     margin-top: 19px;
     font-style: italic;
     color: #9d9d9d;
+    letter-spacing: 3px;
 }
 
-/* Classes */
+#app_container .word_audio_style{
+    margin-left: 70px;
+    margin-top: 9px;
+    font-style: italic;
+    letter-spacing: 3px;
+    border: 1px solid #9d9d9d;
+    border-radius: 5px;
+}
+
 #app_container .search{
     font-size: 6px;
     height: 85%;
@@ -77,7 +103,7 @@
     font-size: 25px;
     height: 85%;
     width: 95%;
-    margin: 50px;
+    margin: 0 50px;
     display: flex;
     justify-content: left;
     flex-direction: column;
@@ -85,11 +111,31 @@
 }
 
 #app_container .word_def_sub_section{
+    display: flex;
+    flex-direction: row;
     margin: 20px;
 }
 
-#app_container .word_def_sub_section_two{
-    margin: 10px 50px;
+#app_container .word_def_stems{
+    margin: 5px 90px;
+    letter-spacing: 3px;
+}
+
+#app_container .word_def_etymology{
+    margin: 40px 50px;
+    letter-spacing: 3px;
+    font-style: italic;
+    color: #606060;
+}
+
+#app_container .word_definitions{
+    margin: 40px 50px;
+}
+
+#app_container .word_examples{
+    margin: 40px 50px;
+    letter-spacing: 3px;
+    font-style: italic;
 }
 
 #app_container .loader_holder {
