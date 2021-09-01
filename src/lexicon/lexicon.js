@@ -111,10 +111,9 @@ const set_elements = (word_def_response) => {
 }
 
 const send_search_word = () => {
-    const host = 'http://192.168.0.169'
     const inputVal = document.getElementById("word_search_input").value;
     switch_loader()
-    fetch(`${host}:8000/lexicon/word_search/${inputVal.toLocaleString().toLowerCase()}`)
+    fetch(`http://${location.hostname}:8000/lexicon/word_search/${inputVal.toLocaleString().toLowerCase()}`)
         .then(response => response.json())
         .then(response_container => {
             console.log(response_container)

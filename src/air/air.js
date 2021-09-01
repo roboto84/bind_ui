@@ -152,8 +152,7 @@ const fill_weather_tables = (weather_messages, weather_table, pollution_table, p
 }
 
 const get_api_messages = () => {
-    const host = 'http://192.168.0.169'
-    fetch(host+':8000/air/')
+    fetch(`http://${location.hostname}:8000/air/`)
         .then(response => response.json())
         .then(response_container => {
             if (response_container.message.length) {
