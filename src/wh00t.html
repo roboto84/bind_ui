@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wh00t</title>
+        <meta charset="UTF-8">
+        <link rel='stylesheet' href='main.css'>
+        <link rel='stylesheet' href='index.css'>
+        <link rel='stylesheet' href='wh00t.css'>
+    </head>
+    <body>
+        <h1>Wh00t Chat</h1>
+        <h2>Your ID: <span id="ws-id"></span></h2>
+        <form action="" onsubmit="sendMessage(event)">
+            <input type="text" id="messageText" autocomplete="off"/>
+            <button>Send</button>
+        </form>
+        <ul id='wh00t_container'>
+        </ul>
+        <script>
+            let client_id = Date.now()
+            document.querySelector("#ws-id").textContent = client_id;
+            let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
+
+            ws.onmessage = function(event) {
+                let parsed_data = JSON.parse(event.data)
+                if (Array.isArray(parsed_data)){
+                    for (element in parsed_data){
+                        let messages = document.getElementById('wh00t_container')
+                        let message = document.createElement('li')
+                        let content = document.createTextNode(
+                            parsed_data[element].username + ' ' +
+                            parsed_data[element].time + ': ' +
+                            parsed_data[element].message
+                            )
+                        message.appendChild(content)
+                        messages.appendChild(message)
+                    }
+                }
+                else{
+                    let messages = document.getElementById('wh00t_container')
+                    let message = document.createElement('li')
+                    let content = document.createTextNode(
+                            parsed_data.username + ' ' +
+                            parsed_data.time + ': ' +
+                            parsed_data.message
+                            )
+                    message.appendChild(content)
+                    messages.appendChild(message)
+                }
+                
+            };
+
+            function sendMessage(event) {
+                let input = document.getElementById("messageText")
+                ws.send(input.value)
+                input.value = ''
+                event.preventDefault()
+            }
+        </script>
+    </body>
+</html>
