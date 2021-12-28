@@ -46,7 +46,7 @@ const get_api_messages = () => {
                 element.appendChild(app_title)
                 element.appendChild(app_message)
 
-                if (index === messages.message.length - 1) {
+                if (index === 0) {
                     latest_message.appendChild(element)
                 }
                 else {
