@@ -16,14 +16,9 @@ const remove_definitions = () => {
     return ol
 }
 
-const main_definitions = (mer_def_array, ox_def_array) => {
+const main_definitions = (def_array) => {
     const ol = remove_definitions()
-    mer_def_array.forEach((definition) => {
-        const li = document.createElement('li');
-        li.appendChild(document.createTextNode(definition));
-        ol.appendChild(li);
-    }, ol)
-    ox_def_array.forEach((definition) => {
+    def_array.forEach((definition) => {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(definition));
         ol.appendChild(li);
@@ -77,29 +72,26 @@ const switch_loader = () => {
     }
 }
 
-const set_elements = (word_def_response) => {
-    const word_def = word_def_response['definition']
-    if(word_def['oxford']['state'] === 'available' && word_def['merriam_webster']['state'] === 'available'){
-        const oxford_word_def = word_def['oxford']
-        const merriam_word_def = word_def['merriam_webster']
-        word_audio(oxford_word_def['audio'])
-        set_element_inner_text('word', defined_word(oxford_word_def['word']))
-        set_element_inner_text('part_of_speech', part_of_speech(oxford_word_def['part_of_speech']))
-        set_element_inner_text('word_break', word_break(merriam_word_def['word_break']))
-        set_element_inner_text('pronunciation', pronunciation(oxford_word_def['pronounce'], merriam_word_def['pronounce']))
-        set_element_inner_text('date_first_used', date_first_used(merriam_word_def['date_first_used']))
-        set_element_inner_text('etymology', etymology(merriam_word_def['etymology']))
-        set_element_inner_text('stems', stems(merriam_word_def['stems']))
+const set_elements = (word_def) => {
+    if(word_def['definition_is_acceptable']){
+        word_audio(word_def['audio'])
+        set_element_inner_text('word', defined_word(word_def['word']))
+        set_element_inner_text('part_of_speech', part_of_speech(word_def['part_of_speech']))
+        set_element_inner_text('word_break', word_break(word_def['word_break']))
+        set_element_inner_text('pronunciation', pronunciation(word_def['pronounce'], word_def['pronounce']))
+        set_element_inner_text('date_first_used', date_first_used(word_def['date_first_used']))
+        set_element_inner_text('etymology', etymology(word_def['etymology']))
+        set_element_inner_text('stems', stems(word_def['stems']))
 
-        main_definitions(merriam_word_def['definition'], oxford_word_def['definition'])
-        set_element_inner_text('word_examples', word_examples(oxford_word_def['example']))
+        main_definitions(word_def['definitions'])
+        set_element_inner_text('word_examples', word_examples(word_def['example']))
     }
     else{
-        const word_not_found = `perhaps "${word_def_response['search_word']}" was misspelled, here are some suggestions...`
+        const word_not_found = `perhaps "${word_def['word']}" was misspelled, here are some suggestions...`
         word_audio('')
         set_element_inner_text('word', defined_word('Not Found'))
         set_element_inner_text('part_of_speech', part_of_speech(word_not_found))
-        set_element_inner_text('stems', stems(word_def_response['spelling_suggestions']))
+        set_element_inner_text('stems', stems(word_def['spelling_suggestions']))
 
         remove_definitions()
         set_element_inner_text('word_break', '')
