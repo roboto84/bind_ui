@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wh00t</title>
+        <meta charset='UTF-8'>
+        <link rel='stylesheet' href='../main.css'>
+        <link rel='stylesheet' href='../index.css'>
+        <link rel='stylesheet' href='wh00t.css'>
+    </head>
+    <body>
+        <div id='header'>
+            <div class='title'>
+                <h1>Wh00t</h1>
+                <div id='update_time'>no automatic update</div>
+            </div>
+            <div class='nav_links'>
+                <div class='nav_container'>
+                    <a class='button' href='../'>/</a>
+                    <a class='button' href='../air/'>Air</a>
+                    <a class='button' href='../lexicon/'>Lexicon</a>
+                    <a class='button active' href='../wh00t/'>Wh00t</a>
+                    <a class='button' href='../debug/'>Debug</a>
+                </div>
+            </div>
+        </div>
+        <div id='app_container'>
+            <h3>Screename: <span id='ws-id'></span></h3>
+            <div id='wh00t_container'></div>
+            <script>
+                let client_id = 'Webby_' + Math.floor(Math.random() * 25 + 1)
+                document.querySelector("#ws-id").textContent = client_id;
+                let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
+
+                ws.onmessage = function(event) {
+                    let parsed_data = JSON.parse(event.data)
+                    const wh00t_container = document.getElementById('wh00t_container');
+
+                    if (Array.isArray(parsed_data)){
+                        for (wh00t_message in parsed_data){
+                            handleMessage(parsed_data[wh00t_message], wh00t_container)
+                        }
+                    }
+                    else{
+                        handleMessage(parsed_data, wh00t_container)
+                    }
+                    wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                };
+
+                function handleMessage(wh00t_message, wh00t_container){
+                    let message_container = document.createElement('div')
+                    let message_username_container = document.createElement('span')
+                    let message_text_container = document.createElement('span')
+                    if (wh00t_message.username === client_id){
+                        message_username_container.classList.add('wh00t_username_color')
+                    }
+                    else{
+                        message_username_container.classList.add('wh00t_other_usernames_color')
+                    }
+                    message_username_container.innerText = `${wh00t_message.username} ${wh00t_message.time}: `
+                    message_text_container.innerHTML = wh00t_message.message
+                    message_container.appendChild(message_username_container)
+                    message_container.appendChild(message_text_container)
+                    wh00t_container.appendChild(message_container)
+                }
+
+                function sendMessage(event) {
+                    let input = document.getElementById('messageText')
+                    if(input.value !== '') {
+                        ws.send(input.value)
+                        input.value = ''
+                    }
+                    event.preventDefault()
+                }
+
+                const send_message_enter = (event) => {
+                    if (event.keyCode === 13) {
+                        sendMessage(event)
+                    }
+                }
+            </script>
+            <form style="padding-left: 10px;" action="" onsubmit="sendMessage(event)">
+                <input class='send_message'
+                       type='text'
+                       placeholder='Message'
+                       id='messageText'
+                       autocomplete='off'
+                       onkeydown='send_message_enter(event)'
+                       autofocus>
+                <button class='send_button' type='button' onclick='send_search_word()'>
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </body>
+</html>

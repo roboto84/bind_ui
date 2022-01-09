@@ -1,0 +1,66 @@
+
+#app_container .send_message{
+    border: #373737 5px solid;
+    background-color: #2F3436;
+    font-size: 18px;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    text-decoration: none;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    transition: 0.4s;
+}
+
+#app_container .send_message:focus{
+    border: #626f3694 5px solid;
+    background-color: #b9e13294;
+    color: #000;
+    outline:none;
+}
+
+#app_container .send_button{
+    border: #373737 5px solid;
+    background-color: #2F3436;
+    font-size: 18px;
+    color: #939393;
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    letter-spacing: 3px;
+    word-spacing: 10px;
+    transition: 0.4s;
+}
+
+#app_container .send_button:hover {
+    background-color: #c7ff0094;
+    border-color: #a3ff0000;
+    color: black;
+    cursor: pointer;
+}
+
+#app_container #wh00t_container{
+    background-color: #1d1f21;
+    color: #f0c674;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 18px;
+    font-family: verdana,serif;
+    font-size: 20px;
+    line-height: 1.5;
+    width: 90%;
+    justify-content: center;
+    overflow: scroll;
+    border: #373737 5px solid;
+    padding: 15px;
+}
+
+.wh00t_username_color{
+    color: #b5bd68
+}
+
+.wh00t_other_usernames_color{
+    color: #de935f
+}
