@@ -12,9 +12,9 @@ const switch_table = () => {
     }
 }
 
-const fill_table = (table_type, messages) => {
-    if(messages.length) {
-        const message_keys = Object.keys(JSON.parse(messages[0].message.replace(/[']/g, "\"")));
+const fill_table = (table_type, weather_data) => {
+    if(weather_data.length) {
+        const message_keys = Object.keys(weather_data[0]);
         const table = document.getElementById(table_type);
         const table_header_tr = document.createElement('tr');
         table.innerText = '';
@@ -26,9 +26,9 @@ const fill_table = (table_type, messages) => {
             table.appendChild(table_header_tr)
         });
 
-        messages.forEach(element => {
+        weather_data.forEach(element => {
             const table_row_tr = document.createElement('tr');
-            const json_message = replace_quotes(element.message)
+            const json_message = element
 
             message_keys.forEach(column_header => {
                 const table_row_td = document.createElement('td');
@@ -49,22 +49,18 @@ const fill_table = (table_type, messages) => {
     }
 }
 
-const fill_current_weather = (latest_message) => {
-    const weather = latest_message.weather
-    const pollution = latest_message.pollution
-    const pollen = latest_message.pollen
-
+const fill_current_weather = (current_weather, moon_phase) => {
     const current_weather_view_data = [
-        ['current_temperature', `${weather.temperature.value} ${weather.temperature.unit}`],
-        ['apparent_temp', `... feels like ${weather.temperatureApparent.value} ${weather.temperatureApparent.unit}`],
-        ['weather_code', weather.weatherCode],
-        ['moon_phase', latest_message.moon_phase],
-        ['precipitation', `${weather.precipitationProbability.value} ${weather.precipitationProbability.unit} Chance of ${weather['precipitationType']}`],
-        ['humidity', `${weather.humidity.value} ${weather.humidity.unit} Humidity`],
-        ['dew_point', `${weather['dewPoint'].value} ${weather['dewPoint'].unit} Dew Point`],
-        ['epa_index', `${pollution.epaIndex.value} ${pollution['epaIndex'].unit} (${pollution.epaHealthConcern})`],
-        ['pressure', `${weather.pressureSurfaceLevel.value} ${weather.pressureSurfaceLevel.unit} Pressure`],
-        ['pollen_index', `Pollen ${pollen.treeIndex}`]
+        ['current_temperature', `${current_weather.temperature}`],
+        ['apparent_temp', `... feels like ${current_weather.temperatureApparent}`],
+        ['weather_code', current_weather.weatherCode],
+        ['moon_phase', moon_phase],
+        ['precipitation', `${current_weather.precipitationProbability} Chance of ${current_weather['precipitationType']}`],
+        ['humidity', `${current_weather.humidity} Humidity`],
+        ['dew_point', `${current_weather['dewPoint']} Dew Point`],
+        ['epa_index', `${current_weather.epaIndex} (${current_weather.epaHealthConcern})`],
+        ['pressure', `${current_weather.pressureSurfaceLevel} Pressure`],
+        ['pollen_index', `Pollen ${current_weather.treeIndex}`]
     ]
 
     current_weather_view_data.forEach((current_weather_piece) => {
@@ -72,14 +68,10 @@ const fill_current_weather = (latest_message) => {
     })
 }
 
-const fill_weather_forecast = (weather_forecast_messages) => {
+const fill_weather_forecast = (weather_forecast) => {
     const forecast_container = document.getElementById('forecast');
     forecast_container.innerText = '';
-    weather_forecast_messages.weather.forEach((element, index) => {
-        const json_message = replace_quotes(element.message)
-        const pollution_forecast = replace_quotes(weather_forecast_messages.pollution[index].message)
-        const pollen_forecast = replace_quotes(weather_forecast_messages.pollen[index].message)
-
+    weather_forecast.forEach((element, index) => {
         const forecast = document.createElement('div');
         forecast.classList.add('weather_subcategory')
 
@@ -97,16 +89,16 @@ const fill_weather_forecast = (weather_forecast_messages) => {
 
         const default_css = 'weather_forecast'
         const forecast_view_data = [
-            [`${get_standard_time(new Date(json_message.date)).date}${date_string_addition}`, 'weather_title'],
-            [`${json_message.temperature.value} ${json_message.temperature.unit}`, 'weather_forecast_temperature'],
-            [`feels like ${json_message.temperatureApparent.value} ${json_message.temperatureApparent.unit}`, 'weather_forecast_temperature_apparent'],
-            [`${json_message.weatherCode}`, 'weather_forecast_summary'],
-            [`${json_message.precipitationProbability.value} ${json_message.precipitationProbability.unit} chance of ${json_message.precipitationType}`,  default_css],
-            [`${json_message.humidity.value} ${json_message.humidity.unit} Humidity`, default_css],
-            [`${json_message.pressureSurfaceLevel.value} ${json_message.pressureSurfaceLevel.unit} Pressure`, default_css],
-            [`${pollution_forecast.epaHealthConcern} Air Quality (${pollution_forecast.epaIndex.value})`, default_css],
-            [`Pollen ${pollen_forecast.treeIndex}`, default_css],
-            [`${json_message.moonPhase} Moon`, default_css]
+            [`${get_standard_time(new Date(element.date)).date}${date_string_addition}`, 'weather_title'],
+            [`${element.temperature}`, 'weather_forecast_temperature'],
+            [`feels like ${element.temperatureApparent}`, 'weather_forecast_temperature_apparent'],
+            [`${element.weatherCode}`, 'weather_forecast_summary'],
+            [`${element.precipitationProbability} chance of ${element.precipitationType}`,  default_css],
+            [`${element.humidity} Humidity`, default_css],
+            [`${element.pressureSurfaceLevel} Pressure`, default_css],
+            [`${element.epaHealthConcern} Air Quality (${element.epaIndex})`, default_css],
+            [`Pollen ${element.treeIndex}`, default_css],
+            [`${element.moonPhase} Moon`, default_css]
         ]
 
         forecast_view_data.forEach((forecast_piece) => {
@@ -116,87 +108,82 @@ const fill_weather_forecast = (weather_forecast_messages) => {
     })
 }
 
-const parse_weather_subcategory = (response_container, category, time) => {
-    if (time){
-        return response_container.message.filter(message =>
-            message['category'] === category && message['time'].includes(time));
-    }
-    else{
-        return response_container.message.filter(message => message['category'] === category);
+const parse_weather_data = (weather_data) => {
+    return {
+        'summary': weather_data.map(weather_obj => {
+            let summary = {
+                date: weather_obj.date,
+                temperature: weather_obj.temperature,
+                temperatureApparent: weather_obj.temperatureApparent,
+                humidity: weather_obj.humidity,
+                dewPoint: weather_obj.dewPoint,
+                weatherCode: weather_obj.weatherCode,
+                precipitationProbability: weather_obj.precipitationProbability,
+                precipitationType: weather_obj.precipitationType,
+                pressureSurfaceLevel: weather_obj.pressureSurfaceLevel
+            }
+            if (weather_obj.moonPhase !== 'n/a'){
+                summary.moonPhase = weather_obj.moonPhase
+            }
+            return summary
+        }),
+        'pollution': weather_data.map(weather_obj => { return {
+            date : weather_obj.date,
+            epaIndex : weather_obj.epaIndex,
+            epaHealthConcern : weather_obj.epaHealthConcern,
+            epaPrimaryPollutant : weather_obj.epaPrimaryPollutant,
+            particulateMatter10 : weather_obj.particulateMatter10,
+            particulateMatter25 : weather_obj.particulateMatter25,
+            pollutantCO : weather_obj.pollutantCO,
+            pollutantNO2 : weather_obj.pollutantNO2,
+            pollutantO3 :  weather_obj.pollutantO3,
+            pollutantSO2 : weather_obj.pollutantSO2
+        }}),
+        'pollen': weather_data.map(weather_obj => { return {
+            date : weather_obj.date,
+            grassIndex : weather_obj.grassIndex,
+            treeIndex : weather_obj.treeIndex,
+            weedIndex : weather_obj.weedIndex
+        }})
     }
 }
 
-const parse_messages = (response_container, weather_category, pollution_category, pollen_category, reverse_array,
-                        time_filter) => {
-    if (reverse_array){
-        return {
-            'weather': parse_weather_subcategory(response_container, weather_category, time_filter).reverse(),
-            'pollution': parse_weather_subcategory(response_container, pollution_category, time_filter).reverse(),
-            'pollen': parse_weather_subcategory(response_container, pollen_category, time_filter).reverse()
-        }
-    }
-    else{
-        return {
-            'weather': parse_weather_subcategory(response_container, weather_category, time_filter),
-            'pollution': parse_weather_subcategory(response_container, pollution_category, time_filter),
-            'pollen': parse_weather_subcategory(response_container, pollen_category, time_filter)
-        }
-    }
-
-}
-
-const fill_weather_tables = (weather_messages, weather_table, pollution_table, pollen_table) => {
-    fill_table(weather_table, weather_messages.weather);
-    fill_table(pollution_table, weather_messages.pollution);
-    fill_table(pollen_table, weather_messages.pollen);
+const fill_weather_tables = (weather_data, weather_table, pollution_table, pollen_table) => {
+    fill_table(weather_table, weather_data.summary);
+    fill_table(pollution_table, weather_data.pollution);
+    fill_table(pollen_table, weather_data.pollen);
 }
 
 const get_api_messages = () => {
-    fetch(`http://${location.hostname}:8000/air/`)
+    fetch(`http://${location.hostname}:8000/air/weather_report`)
         .then(response => response.json())
         .then(response_container => {
-            if (response_container.message.length) {
+            if (response_container.weather_forecast.length && response_container.current_weather) {
                 const current_time = get_standard_time(new Date());
-
-                const weather_messages = parse_messages(
-                    response_container,
-                    'air_weather',
-                    'air_pollution',
-                    'air_pollen',
-                    true
-                );
-                const weather_forecast_messages = parse_messages(
-                    response_container,
-                    'air_weather_forecast',
-                    'air_pollution_forecast',
-                    'air_pollen_forecast',
-                    false,
-                    current_time.date
-                );
-
-                fill_weather_tables (
-                    weather_messages,
-                    'weather_table',
-                    'pollution_table',
-                    'pollen_table'
-                )
+                const weather_forecast_messages = parse_weather_data(response_container.weather_forecast);
+                fill_current_weather(response_container.current_weather, response_container.weather_forecast[1].moonPhase);
+                fill_weather_forecast(response_container.weather_forecast);
                 fill_weather_tables (
                     weather_forecast_messages,
                     'weather_forecast_table',
                     'pollution_forecast_table',
                     'pollen_forecast_table'
-                )
-
-                fill_current_weather({
-                    'weather': replace_quotes(weather_messages.weather[0].message),
-                    'pollen': replace_quotes(weather_messages.pollen[0].message),
-                    'pollution': replace_quotes(weather_messages.pollution[0].message),
-                    'moon_phase': weather_forecast_messages.weather.length ?
-                        replace_quotes(weather_forecast_messages.weather[1].message).moonPhase : 'n/a'
-                });
-
-                fill_weather_forecast(weather_forecast_messages);
+                );
                 document.getElementById('update_time').innerText = `last updated: ${current_time.date} ${current_time.time}:${current_time.seconds}`
+            }
+        });
+
+    fetch(`http://${location.hostname}:8000/air/weather_history`)
+        .then(response => response.json())
+        .then(response_container => {
+            if (response_container.weather_history.length) {
+                const weather_table_rows = parse_weather_data(response_container.weather_history);
+                fill_weather_tables (
+                    weather_table_rows,
+                    'weather_table',
+                    'pollution_table',
+                    'pollen_table'
+                );
             }
         });
 }
