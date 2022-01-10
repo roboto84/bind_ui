@@ -8,30 +8,33 @@
         <link rel='stylesheet' href='wh00t.css'>
     </head>
     <body>
-        <div id='header'>
-            <div class='title'>
-                <h1>Wh00t</h1>
-                <div id='update_time'>no automatic update</div>
-            </div>
-            <div class='nav_links'>
-                <div class='nav_container'>
-                    <a class='button' href='../'>/</a>
-                    <a class='button' href='../air/'>Air</a>
-                    <a class='button' href='../lexicon/'>Lexicon</a>
-                    <a class='button active' href='../wh00t/'>Wh00t</a>
-                    <a class='button' href='../debug/'>Debug</a>
+        <div id='app_container'>
+            <div id='header'>
+                <div class='title no_display-600-s'>
+                    <h1>Wh00t</h1>
+                    <div id='update_time' class='no_display-700-s'>no automatic update</div>
+                </div>
+                <div class='nav_links no_display-600-s'>
+                    <div class='nav_container'>
+                        <a class='button' href='../'>/</a>
+                        <a class='button' href='../air/'>Air</a>
+                        <a class='button' href='../lexicon/'>Lexicon</a>
+                        <a class='button active' href='../wh00t/'>Wh00t</a>
+                        <a class='button' href='../debug/'>Debug</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id='app_container'>
-            <h3>Screename: <span id='ws-id'></span></h3>
-            <div id='wh00t_img'></div>
+            <div class='screename_spacer no_display-700-s'>
+                <h3>Screename: <span id='ws-id'></span></h3>
+            </div>
+            <div id='wh00t_img' class='no_display-700-s'></div>
             <div id='wh00t_container'></div>
             <script>
                 let permission = Notification.requestPermission();
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
+                const update_time_container = document.getElementById('update_time');
                 let client_id = 'Webby_' + Math.floor(Math.random() * 25 + 1)
-                document.querySelector("#ws-id").textContent = client_id;
+                document.querySelector('#ws-id').textContent = client_id;
                 let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
 
                 ws.onmessage = function(event) {
@@ -45,6 +48,7 @@
                     }
                     else{
                         handleMessage(parsed_data, wh00t_container, 'live')
+                        update_time_container.innerText = `last message @ ${parsed_data.time}`
                     }
                     wh00t_container.scrollTop = wh00t_container.scrollHeight;
                 };
@@ -89,18 +93,20 @@
                     }
                 }
             </script>
-            <form style="padding-left: 10px;" action="" onsubmit="sendMessage(event)">
-                <input class='send_message'
-                       type='text'
-                       placeholder='Message'
-                       id='messageText'
-                       autocomplete='off'
-                       onkeydown='send_message_enter(event)'
-                       autofocus>
-                <button class='send_button' type='button' onclick='sendMessage()'>
-                    Send Message
-                </button>
-            </form>
+            <div id='wh00t_chat_input'>
+                <form style="padding-left: 25px;" action="" onsubmit="sendMessage(event)">
+                    <input class='message_input'
+                           type='text'
+                           placeholder='Message'
+                           id='messageText'
+                           autocomplete='off'
+                           onkeydown='send_message_enter(event)'
+                           autofocus>
+                    <button class='send_button' type='button' onclick='sendMessage()'>
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

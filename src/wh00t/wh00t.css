@@ -1,19 +1,26 @@
 
-#app_container .send_message{
+#app_container{
+    height: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+}
+
+#app_container .message_input{
     border: #373737 5px solid;
     background-color: #2F3436;
     font-size: 18px;
     color: #939393;
     padding: 10px;
-    margin: 10px;
-    width: 70%;
     text-decoration: none;
     letter-spacing: 1px;
     word-spacing: 5px;
     transition: 0.4s;
+    width: calc(100% - 239px);
 }
 
-#app_container .send_message:focus{
+#app_container .message_input:focus{
     border: #626f3694 5px solid;
     background-color: #b9e13294;
     color: #000;
@@ -26,7 +33,7 @@
     font-size: 18px;
     color: #939393;
     padding: 10px;
-    margin: 10px;
+    margin-top: 10px;
     text-decoration: none;
     letter-spacing: 3px;
     word-spacing: 10px;
@@ -43,18 +50,20 @@
 #app_container #wh00t_container{
     background-color: #1d1f21;
     color: #f0c674;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    margin: 18px;
+    display: inline;
+    margin: 18px 20px 0 25px;
     font-family: verdana,serif;
     font-size: 20px;
     line-height: 1.5;
-    width: 90%;
-    justify-content: center;
-    overflow: scroll;
     border: #373737 5px solid;
     padding: 15px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+#app_container #wh00t_chat_input{
+    width: 99%;
+    height: 60px;
 }
 
 .wh00t_username_color{
@@ -68,10 +77,26 @@
 #wh00t_img {
     background-image: url('../img/icon.png');
     background-size: 100%;
-    height: 102px;
+    height: 101px;
     width: 217px;
     position: absolute;
-    z-index: 2;
-    top: 190px;
-    left: 65%;
+    z-index: 0;
+    top: 127px;
+    right: 50px;
+}
+
+.screename_spacer{
+    margin: 15px 0 15px 20px;
+}
+
+@media (max-width: 600px) {
+    .no_display-600-s{
+        display: none
+    }
+}
+
+@media (max-width: 700px) {
+    .no_display-700-s{
+        display: none
+    }
 }

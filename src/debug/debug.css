@@ -33,6 +33,8 @@ td, th {
     margin: 10px;
     min-width:100px;
     flex-grow: 0;
+    overflow: auto;
+    max-height: 651px;
 }
 #latest_message{
     border: #278e02 10px solid;
@@ -46,7 +48,9 @@ td, th {
     border: #8e3702 10px solid;
     color: white;
     padding: 5px;
-    margin: 20px;
-    min-width:350px;
+    margin: 0 20px;
+    min-width: 350px;
     flex-grow: 0;
+    overflow: auto;
+    max-height: 479px;
 }
