@@ -64,3 +64,14 @@
 .wh00t_other_usernames_color{
     color: #de935f
 }
+
+#wh00t_img {
+    background-image: url('../img/icon.png');
+    background-size: 100%;
+    height: 102px;
+    width: 217px;
+    position: absolute;
+    z-index: 2;
+    top: 190px;
+    left: 65%;
+}

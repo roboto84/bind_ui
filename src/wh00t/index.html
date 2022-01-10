@@ -25,8 +25,11 @@
         </div>
         <div id='app_container'>
             <h3>Screename: <span id='ws-id'></span></h3>
+            <div id='wh00t_img'></div>
             <div id='wh00t_container'></div>
             <script>
+                let permission = Notification.requestPermission();
+                const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
                 let client_id = 'Webby_' + Math.floor(Math.random() * 25 + 1)
                 document.querySelector("#ws-id").textContent = client_id;
                 let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
@@ -37,16 +40,16 @@
 
                     if (Array.isArray(parsed_data)){
                         for (wh00t_message in parsed_data){
-                            handleMessage(parsed_data[wh00t_message], wh00t_container)
+                            handleMessage(parsed_data[wh00t_message], wh00t_container, 'history')
                         }
                     }
                     else{
-                        handleMessage(parsed_data, wh00t_container)
+                        handleMessage(parsed_data, wh00t_container, 'live')
                     }
                     wh00t_container.scrollTop = wh00t_container.scrollHeight;
                 };
 
-                function handleMessage(wh00t_message, wh00t_container){
+                function handleMessage(wh00t_message, wh00t_container, message_context){
                     let message_container = document.createElement('div')
                     let message_username_container = document.createElement('span')
                     let message_text_container = document.createElement('span')
@@ -55,6 +58,14 @@
                     }
                     else{
                         message_username_container.classList.add('wh00t_other_usernames_color')
+                        if (Notification.permission === 'granted' && message_context === 'live'){
+                            let notification = new Notification('wh00t_web',{
+                                body: `${wh00t_message.username}: ${wh00t_message.message}`,
+                                icon: '../img/icon.png'
+                            });
+                            wh00t_message_alert_sound.play();
+                            setTimeout(() => notification.close(), 5*1000);
+                        }
                     }
                     message_username_container.innerText = `${wh00t_message.username} ${wh00t_message.time}: `
                     message_text_container.innerHTML = wh00t_message.message
@@ -86,7 +97,7 @@
                        autocomplete='off'
                        onkeydown='send_message_enter(event)'
                        autofocus>
-                <button class='send_button' type='button' onclick='send_search_word()'>
+                <button class='send_button' type='button' onclick='sendMessage()'>
                     Send Message
                 </button>
             </form>
