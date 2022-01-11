@@ -3,18 +3,22 @@
     <head>
         <title>Wh00t</title>
         <meta charset='UTF-8'>
+        <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="../img/favicon_io/site.webmanifest">
         <link rel='stylesheet' href='../main.css'>
         <link rel='stylesheet' href='../index.css'>
         <link rel='stylesheet' href='wh00t.css'>
     </head>
     <body>
         <div id='app_container'>
-            <div id='header'>
-                <div class='title no_display-600-s'>
+            <div class='header no_display-600-s no_border'>
+                <div class='title'>
                     <h1>Wh00t</h1>
                     <div id='update_time' class='no_display-700-s'>no automatic update</div>
                 </div>
-                <div class='nav_links no_display-600-s'>
+                <div class='nav_links'>
                     <div class='nav_container'>
                         <a class='button' href='../'>/</a>
                         <a class='button' href='../air/'>Air</a>
@@ -28,6 +32,9 @@
                 <h3>Screename: <span id='ws-id'></span></h3>
             </div>
             <div id='wh00t_img' class='no_display-700-s'></div>
+            <button class='send_button no_display-700-s wh00t_pop_out_button' type='button' onclick='open_popup()'>
+                <i class='arrow right'></i>
+            </button>
             <div id='wh00t_container'></div>
             <script>
                 let permission = Notification.requestPermission();
@@ -92,9 +99,15 @@
                         sendMessage(event)
                     }
                 }
+
+                const open_popup = () => {
+                    let params = `directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=575,height=475'`;
+                    let wh00t_popup = window.open(`http://${location.hostname}:8080/wh00t/`, 'test', params)
+                    let home = open(`http://${location.hostname}:8080/`, '_self');
+                }
             </script>
             <div id='wh00t_chat_input'>
-                <form style="padding-left: 25px;" action="" onsubmit="sendMessage(event)">
+                <form style='padding-left: 25px;' onsubmit='sendMessage(event)'>
                     <input class='message_input'
                            type='text'
                            placeholder='Message'
@@ -103,7 +116,7 @@
                            onkeydown='send_message_enter(event)'
                            autofocus>
                     <button class='send_button' type='button' onclick='sendMessage()'>
-                        Send Message
+                        Send
                     </button>
                 </form>
             </div>

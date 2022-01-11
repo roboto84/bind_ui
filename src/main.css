@@ -95,7 +95,7 @@ tr:nth-child(even) {
     margin: 10px 30px 20px 42px;
 }
 
-#header{
+.header{
     font-size: 14px;
     margin: 0 15px;
     display: flex;
@@ -103,7 +103,7 @@ tr:nth-child(even) {
     border-bottom: solid 1px #373737;
 }
 
-#header a:link, a:visited {
+.header a:link, a:visited {
     margin: 0;
 }
 

@@ -17,7 +17,7 @@
     letter-spacing: 1px;
     word-spacing: 5px;
     transition: 0.4s;
-    width: calc(100% - 239px);
+    width: calc(100% - 124px);
 }
 
 #app_container .message_input:focus{
@@ -85,18 +85,49 @@
     right: 50px;
 }
 
+#app_container .wh00t_pop_out_button{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index: 0;
+    top: 147px;
+    right: 37px;
+    border-radius: 100%;
+}
+
+.arrow {
+    border: solid #939393;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 5px;
+}
+
+.arrow:hover{
+    border: solid white;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 5px;
+}
+
+.right {
+    transform: rotate(-88deg);
+}
+
 .screename_spacer{
     margin: 15px 0 15px 20px;
 }
 
 @media (max-width: 600px) {
     .no_display-600-s{
-        display: none
+        display: none;
     }
 }
 
 @media (max-width: 700px) {
     .no_display-700-s{
-        display: none
+        display: none;
+    }
+    .no_border{
+        border-color: rgb(20, 21, 21);
     }
 }
