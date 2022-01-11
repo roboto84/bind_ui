@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
     <head>
         <title>Wh00t</title>
         <meta charset='UTF-8'>
@@ -37,37 +37,67 @@
             </button>
             <div id='wh00t_container'></div>
             <script>
-                let permission = Notification.requestPermission();
+                const randomIntFromInterval = (min, max) => { // min and max included
+                    return Math.floor(Math.random() * (max - min + 1) + min)
+                }
+
+                Notification.requestPermission();
+                const wh00t_container = document.getElementById('wh00t_container');
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
                 const update_time_container = document.getElementById('update_time');
-                let client_id = 'Webby_' + Math.floor(Math.random() * 25 + 1)
+                let client_id_prefix = ['rabbit', 'raven', 'honeyBadger', 'panda', 'meerkat', 'kitty', 'guineaPig',
+                    'penguin', 'racoon', 'owl']
+                let client_id = client_id_prefix[randomIntFromInterval(0, client_id_prefix.length-1)] + randomIntFromInterval(1, 99)
                 document.querySelector('#ws-id').textContent = client_id;
                 let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
 
+                let connection_state_timer = setInterval(() => {
+                    if(check_connection_status()){
+                        clearInterval(connection_state_timer);
+                        console.log('connection is good, stop timer');
+                    }
+                }, 250);
+
+                const check_connection_status = () =>{
+                    if(ws.readyState){
+                        handleMessage({
+                            username: 'web_client',
+                            time: 'Now',
+                            message: `connected to wh00t as ${client_id}`
+                        }, wh00t_container, 'live')
+                        return true
+                    }
+                    else return false
+                }
+
                 ws.onmessage = function(event) {
                     let parsed_data = JSON.parse(event.data)
-                    const wh00t_container = document.getElementById('wh00t_container');
-
                     if (Array.isArray(parsed_data)){
-                        for (wh00t_message in parsed_data){
-                            handleMessage(parsed_data[wh00t_message], wh00t_container, 'history')
+                        for (let index in parsed_data){
+                            handleMessage(parsed_data[index], wh00t_container, 'history')
                         }
                     }
                     else{
                         handleMessage(parsed_data, wh00t_container, 'live')
                         update_time_container.innerText = `last message @ ${parsed_data.time}`
                     }
-                    wh00t_container.scrollTop = wh00t_container.scrollHeight;
                 };
 
-                function handleMessage(wh00t_message, wh00t_container, message_context){
+                const handleMessage = (wh00t_message, wh00t_container, message_context) => {
                     let message_container = document.createElement('div')
                     let message_username_container = document.createElement('span')
                     let message_text_container = document.createElement('span')
+                    message_text_container.classList.add('message_text')
+                    let container_message
                     if (wh00t_message.username === client_id){
                         message_username_container.classList.add('wh00t_username_color')
+                        container_message = `${wh00t_message.username} ${wh00t_message.time}: `
+                    }
+                    else if (wh00t_message.username === 'web_client'){
+                        container_message = `${wh00t_message.time} `
                     }
                     else{
+                        container_message = `${wh00t_message.username} ${wh00t_message.time}: `
                         message_username_container.classList.add('wh00t_other_usernames_color')
                         if (Notification.permission === 'granted' && message_context === 'live'){
                             let notification = new Notification('wh00t_web',{
@@ -78,14 +108,15 @@
                             setTimeout(() => notification.close(), 5*1000);
                         }
                     }
-                    message_username_container.innerText = `${wh00t_message.username} ${wh00t_message.time}: `
+                    message_username_container.innerText = container_message
                     message_text_container.innerHTML = wh00t_message.message
                     message_container.appendChild(message_username_container)
                     message_container.appendChild(message_text_container)
                     wh00t_container.appendChild(message_container)
+                    wh00t_container.scrollTop = wh00t_container.scrollHeight;
                 }
 
-                function sendMessage(event) {
+                const sendMessage = (event) => {
                     let input = document.getElementById('messageText')
                     if(input.value !== '') {
                         ws.send(input.value)
@@ -102,8 +133,8 @@
 
                 const open_popup = () => {
                     let params = `directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=575,height=475'`;
-                    let wh00t_popup = window.open(`http://${location.hostname}:8080/wh00t/`, 'test', params)
-                    let home = open(`http://${location.hostname}:8080/`, '_self');
+                    window.open(`http://${location.hostname}:8080/wh00t/`, 'test', params)
+                    open(`http://${location.hostname}:8080/`, '_self');
                 }
             </script>
             <div id='wh00t_chat_input'>
@@ -115,7 +146,7 @@
                            autocomplete='off'
                            onkeydown='send_message_enter(event)'
                            autofocus>
-                    <button class='send_button' type='button' onclick='sendMessage()'>
+                    <button class='send_button' type='button' onclick='sendMessage(event)'>
                         Send
                     </button>
                 </form>
