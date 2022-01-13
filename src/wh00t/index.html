@@ -45,32 +45,30 @@
                 const wh00t_container = document.getElementById('wh00t_container');
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
                 const update_time_container = document.getElementById('update_time');
+                let key_log = {}
                 let client_id_prefix = ['rabbit', 'raven', 'honeyBadger', 'panda', 'meerkat', 'kitty', 'guineaPig',
                     'penguin', 'racoon', 'owl']
                 let client_id = client_id_prefix[randomIntFromInterval(0, client_id_prefix.length-1)] + randomIntFromInterval(1, 99)
                 document.querySelector('#ws-id').textContent = client_id;
                 let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
 
-                let connection_state_timer = setInterval(() => {
-                    if(check_connection_status()){
-                        clearInterval(connection_state_timer);
-                        console.log('connection is good, stop timer');
-                    }
-                }, 250);
-
-                const check_connection_status = () =>{
-                    if(ws.readyState){
-                        handleMessage({
-                            username: 'web_client',
-                            time: 'Now',
-                            message: `connected to wh00t as ${client_id}`
-                        }, wh00t_container, 'live')
-                        return true
-                    }
-                    else return false
+                ws.onopen = (event) => {
+                    handleMessage({
+                        username: 'web_client',
+                        time: 'Now',
+                        message: `connected to wh00t as ${client_id}`
+                    }, wh00t_container, 'live')
                 }
 
-                ws.onmessage = function(event) {
+                ws.onerror = (event) => {
+                    handleMessage({
+                        username: 'web_client',
+                        time: 'Now',
+                        message: `an error has occured connecting to wh00t`
+                    }, wh00t_container, 'live')
+                }
+
+                ws.onmessage = (event) => {
                     let parsed_data = JSON.parse(event.data)
                     if (Array.isArray(parsed_data)){
                         for (let index in parsed_data){
@@ -125,9 +123,12 @@
                     event.preventDefault()
                 }
 
-                const send_message_enter = (event) => {
-                    if (event.keyCode === 13) {
-                        sendMessage(event)
+                const key_handler = (event) => {
+                    key_log[event.key] = (event.type === 'keydown');
+                    if(event.type === 'keydown'){
+                        if ((!key_log.Shift || key_log.Shift === false) && key_log.Enter === true) {
+                            sendMessage(event)
+                        }
                     }
                 }
 
@@ -138,14 +139,16 @@
                 }
             </script>
             <div id='wh00t_chat_input'>
-                <form style='padding-left: 25px;' onsubmit='sendMessage(event)'>
-                    <input class='message_input'
-                           type='text'
-                           placeholder='Message'
-                           id='messageText'
-                           autocomplete='off'
-                           onkeydown='send_message_enter(event)'
-                           autofocus>
+                <form class='wh00t_chat_form' onsubmit='sendMessage(event)'>
+                    <textarea rows='1'
+                              class='message_input'
+                              placeholder='Message'
+                              id='messageText'
+                              onkeydown='key_handler(event)'
+                              onkeyup='key_handler(event)'
+                              autocomplete='off'
+                              autofocus
+                    ></textarea>
                     <button class='send_button' type='button' onclick='sendMessage(event)'>
                         Send
                     </button>

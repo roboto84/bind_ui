@@ -50,7 +50,7 @@
     background-color: #1d1f21;
     color: #f0c674;
     display: inline;
-    margin: 18px 20px 0 25px;
+    margin: 18px 20px 10px 25px;
     font-family: verdana,serif;
     font-size: 20px;
     line-height: 1.5;
@@ -76,7 +76,7 @@
     letter-spacing: 1px;
     word-spacing: 5px;
     transition: 0.4s;
-    width: calc(100% - 124px);
+    width: calc(100% - 140px);
 }
 
 #app_container .message_input:focus{
@@ -92,7 +92,7 @@
     font-size: 18px;
     color: #939393;
     padding: 10px;
-    margin-top: 10px;
+    margin: 1px 1px 1px 15px;
     text-decoration: none;
     letter-spacing: 3px;
     word-spacing: 10px;
@@ -104,6 +104,11 @@
     border-color: #a3ff0000;
     color: black;
     cursor: pointer;
+}
+
+.wh00t_chat_form{
+    display: flex;
+    padding-left: 25px
 }
 
 /* Classes */
