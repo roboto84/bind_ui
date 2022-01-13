@@ -17,40 +17,61 @@ td, th {
 }
 
 /* Unique Ids */
-#message_container{
+#app_container{
+    height: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+    width: 99%
+}
+
+#app_container #message_container{
     font-family: verdana,serif;
     font-size: 14px;
-    height: 90%;
-    width: 95%;
     margin: auto;
+    overflow-y: auto;
+    width: 98%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
 }
-#message_history{
-    border: #373737 10px solid;
-    color: #939393;
-    padding: 10px;
-    margin: 10px;
-    min-width:100px;
-    flex-grow: 0;
-    overflow: auto;
-    max-height: 651px;
+
+#latest_message_container{
+    flex-grow: 1;
+    align-items: stretch
 }
+
+#app_container #message_history_container{
+    flex-grow: 3;
+    align-items: stretch
+}
+
 #latest_message{
     border: #278e02 10px solid;
     color: white;
     padding: 20px;
     margin: 20px;
-    min-width:375px;
-    flex-grow: 0;
 }
+
 #message_stats{
     border: #8e3702 10px solid;
     color: white;
-    padding: 5px;
     margin: 0 20px;
     min-width: 350px;
     flex-grow: 0;
     overflow: auto;
-    max-height: 479px;
+    min-height: 100px;
+    max-height: calc(100vh - 435px);
+}
+
+#message_history{
+    border: #373737 10px solid;
+    color: #939393;
+    padding: 10px;
+    min-width:100px;
+    overflow: auto;
+    min-height: 259px;
+    height: calc(100vh - 275px);
 }

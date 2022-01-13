@@ -88,13 +88,6 @@ tr:nth-child(even) {
     height: 22px;
 }
 
-/* Unique Ids */
-#update_time{
-    color: #939393;
-    font-size: 14px;
-    margin: 10px 30px 20px 42px;
-}
-
 .header{
     font-size: 14px;
     margin: 0 15px;
@@ -107,9 +100,14 @@ tr:nth-child(even) {
     margin: 0;
 }
 
+/* Unique Ids */
+#update_time{
+    color: #939393;
+    font-size: 14px;
+    margin: 10px 30px 20px 42px;
+}
+
 #app_container{
     height: 90%;
-    display: flex;
-    flex-direction: column;
     margin: 30px;
 }

@@ -1,4 +1,5 @@
 
+/* Media Sizing */
 @media (max-width: 600px) {
     .no_display-600-s{
         display: none;
@@ -14,12 +15,55 @@
     }
 }
 
+/* Unique Ids */
 #app_container{
     height: 95%;
     position: absolute;
     top: 0;
     left: 0;
     margin: 10px;
+    width: 99%
+}
+
+#wh00t_img {
+    background-image: url('../img/icon.png');
+    background-size: 100%;
+    height: 101px;
+    width: 217px;
+    position: absolute;
+    z-index: 0;
+    top: 127px;
+    right: 50px;
+}
+
+#app_container .wh00t_pop_out_button{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    z-index: 0;
+    top: 147px;
+    right: 37px;
+    border-radius: 100%;
+}
+
+#app_container #wh00t_container{
+    background-color: #1d1f21;
+    color: #f0c674;
+    display: inline;
+    margin: 18px 20px 0 25px;
+    font-family: verdana,serif;
+    font-size: 20px;
+    line-height: 1.5;
+    border: #373737 5px solid;
+    padding: 15px;
+    overflow-y: auto;
+    height: 100%;
+    /*min-height: 200px;*/
+}
+
+#app_container #wh00t_chat_input{
+    width: 99%;
+    height: 60px;
 }
 
 #app_container .message_input{
@@ -62,46 +106,7 @@
     cursor: pointer;
 }
 
-#app_container #wh00t_container{
-    background-color: #1d1f21;
-    color: #f0c674;
-    display: inline;
-    margin: 18px 20px 0 25px;
-    font-family: verdana,serif;
-    font-size: 20px;
-    line-height: 1.5;
-    border: #373737 5px solid;
-    padding: 15px;
-    overflow-y: auto;
-    height: 100%;
-}
-
-#app_container #wh00t_chat_input{
-    width: 99%;
-    height: 60px;
-}
-
-#wh00t_img {
-    background-image: url('../img/icon.png');
-    background-size: 100%;
-    height: 101px;
-    width: 217px;
-    position: absolute;
-    z-index: 0;
-    top: 127px;
-    right: 50px;
-}
-
-#app_container .wh00t_pop_out_button{
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    z-index: 0;
-    top: 147px;
-    right: 37px;
-    border-radius: 100%;
-}
-
+/* Classes */
 .wh00t_username_color{
     color: #b5bd68
 }
@@ -128,10 +133,11 @@
     transform: rotate(-88deg);
 }
 
-.screename_spacer{
+.screen_name_spacer{
     margin: 15px 0 15px 20px;
 }
 
 .message_text{
     white-space: pre;
+    word-break: break-all;
 }

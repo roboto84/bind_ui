@@ -17,37 +17,37 @@
         </script>
     </head>
     <body>
-        <div class='header'>
-            <div class='title'>
-                <h1>Debug</h1>
-                <div id='update_time'>no automatic update</div>
-            </div>
-            <div class='nav_links'>
-                <div class='nav_container'>
-                    <a class='button' href='../'>/</a>
-                    <a class='button' href='../air/'>Air</a>
-                    <a class='button' href='../lexicon/'>Lexicon</a>
-                    <a class='button' href='../wh00t/'>Wh00t</a>
-                    <a class='button active' href='../debug/'>Debug</a>
+        <div id='app_container'>
+            <div class='header no_display-600-s no_border'>
+                <div class='title'>
+                    <h1>Debug</h1>
+                    <div id='update_time'>no automatic update</div>
+                </div>
+                <div class='nav_links'>
+                    <div class='nav_container'>
+                        <a class='button' href='../'>/</a>
+                        <a class='button' href='../air/'>Air</a>
+                        <a class='button' href='../lexicon/'>Lexicon</a>
+                        <a class='button' href='../wh00t/'>Wh00t</a>
+                        <a class='button active' href='../debug/'>Debug</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div id='message_container'>
+            <div id='message_container'>
+                <div id='latest_message_container'>
+                    <h2>Latest Message</h2>
+                    <div id='latest_message'></div>
+                    <h2>Message Stats</h2>
+                    <div id='message_stats'>
+                        <table id='message_stats_table'></table>
+                    </div>
+                </div>
 
-            <div id='latest_message_container'>
-                <h2>Latest Message</h2>
-                <div id='latest_message'></div>
-                <h2>Message Stats</h2>
-                <div id='message_stats'>
-                    <table id='message_stats_table'></table>
+                <div id='message_history_container'>
+                    <h2>Message History</h2>
+                    <div id='message_history'></div>
                 </div>
             </div>
-
-            <div id='message_history_container'>
-                <h2>Message History</h2>
-                <div id='message_history'></div>
-            </div>
-
         </div>
     </body>
 </html> 
