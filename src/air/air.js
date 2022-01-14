@@ -169,7 +169,7 @@ const get_api_messages = () => {
                     'pollution_forecast_table',
                     'pollen_forecast_table'
                 );
-                document.getElementById('update_time').innerText = `last updated: ${current_time.date} ${current_time.time}:${current_time.seconds}`
+                document.getElementById('sub_title').innerText = `last updated: ${current_time.date} ${current_time.time}:${current_time.seconds}`
             }
         });
 

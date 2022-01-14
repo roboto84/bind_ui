@@ -1,19 +1,39 @@
-/* Unique Ids */
-#app_container{
-    font-family: verdana,serif;
-    font-size: 30px;
-    height: 90%;
-    width: 98%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+
+/* Media Sizing */
+@media (max-width: 650px) {
+    .no_display-650-s{
+        display: none;
+    }
 }
+
+@media (max-width: 700px) {
+    .no_display-700-s{
+        display: none;
+    }
+    .no_border{
+        border-color: rgb(20, 21, 21);
+    }
+}
+
+/* Unique Ids */
+#home_container{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: calc(5vh);
+}
+
 #link_container{
     font-family: verdana,serif;
     font-size: 30px;
-    height: 90%;
-    width: 30%;
+    height: 100%;
+    width: 20%;
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-top: 90px;
+    justify-content: center;
+}
+
+#robot_img{
+    justify-content: center;
+    display: flex;
 }

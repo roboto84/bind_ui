@@ -1,4 +1,5 @@
 /* Shared Css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 /* Base Elements */
 html {
@@ -6,7 +7,7 @@ html {
 }
 
 body {
-    font-family: arial, sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 12px;
     text-align: left;
     color: white;
@@ -15,16 +16,19 @@ body {
 }
 
 h1 {
+    font-family: 'Roboto', verdana, sans-serif;
     font-size: 40px;
     margin: 20px 20px 10px 38px;
 }
 
 h2 {
+    font-family: 'Roboto', verdana, sans-serif;
     font-size: 25px;
     margin: 40px 40px 20px 40px;
 }
 
 h3 {
+    font-family: 'Roboto', verdana, sans-serif;
     font-size: 18px;
     margin: 20px 20px 10px 20px;
 }
@@ -39,7 +43,6 @@ table {
 td, th {
     padding: 8px;
     color: #fffdfa;
-    width: 20px
 }
 
 tr:nth-child(even) {
@@ -72,11 +75,11 @@ tr:nth-child(even) {
 
 .title{
     justify-content: left;
-    width: calc(100% - 398px);
+    width: calc(100% - 400px);
 }
 
 .nav_links{
-    width: 388px;
+    width: 390px;
     padding-top: 45px;
     padding-right: 10px;
     display: flex;
@@ -101,13 +104,17 @@ tr:nth-child(even) {
 }
 
 /* Unique Ids */
-#update_time{
+#sub_title{
     color: #939393;
     font-size: 14px;
     margin: 10px 30px 20px 42px;
 }
 
 #app_container{
+    font-size: 15px;
     height: 90%;
-    margin: 30px;
+    width: 98%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }

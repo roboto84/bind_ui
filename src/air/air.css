@@ -1,9 +1,5 @@
 
 /* Base Elements */
-table {
-    width: 85%;
-    margin: 15px 30px 30px 50px;
-}
 td, th {
     border: 8px solid #404448;
     text-align: left;
@@ -14,7 +10,7 @@ td, th {
     font-size: 14px;
     height: 85%;
     width: 95%;
-    margin: 0 30px;
+    margin: 30px 30px 0 30px;
     display: flex;
     justify-content: center;
     flex-direction: row
@@ -80,16 +76,17 @@ td, th {
     flex-direction: column;
 }
 #app_container #current_weather{
-    margin-top: 20px;
+    font-size: 12px;
+    margin: 20px 45px;
     border-top: #2F3436 solid 1px;
 }
 #app_container #forecast_weather{
-    margin-top: 20px;
+    font-size: 12px;
+    margin: 20px 30px 0 45px;
     border-top: #2F3436 solid 1px;
 }
 #app_container .table_switch{
     display: flex;
-    margin-right: 100px;
     justify-content: right;
 }
 #app_container .button {

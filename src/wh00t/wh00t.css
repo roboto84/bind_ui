@@ -1,7 +1,7 @@
 
 /* Media Sizing */
-@media (max-width: 600px) {
-    .no_display-600-s{
+@media (max-width: 650px) {
+    .no_display-650-s{
         display: none;
     }
 }
@@ -21,18 +21,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    margin: 10px;
+    margin-top: 10px;
     width: 99%
 }
 
 #wh00t_img {
-    background-image: url('../img/icon.png');
+    background-image: url('../img/wh00t_icon.png');
     background-size: 100%;
     height: 101px;
     width: 217px;
     position: absolute;
     z-index: 0;
-    top: 127px;
+    top: 117px;
     right: 50px;
 }
 
@@ -108,6 +108,10 @@
     border-color: #a3ff0000;
     color: black;
     cursor: pointer;
+}
+
+.wh00t_title{
+    color: #ff954b;
 }
 
 .wh00t_chat_form{

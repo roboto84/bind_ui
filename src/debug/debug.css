@@ -1,4 +1,21 @@
 
+/* Media Sizing */
+@media (max-width: 650px) {
+    .no_display-650-s{
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .no_display-700-s{
+        display: none;
+    }
+    .no_border{
+        border-color: rgb(20, 21, 21);
+    }
+}
+
+
 /* Base Elements */
 td, th {
     border-bottom: 4px solid #404448;
@@ -22,12 +39,12 @@ td, th {
     position: absolute;
     top: 0;
     left: 0;
-    margin: 10px;
+    margin-top: 10px;
     width: 99%
 }
 
 #app_container #message_container{
-    font-family: verdana,serif;
+    font-family: verdana, sans-serif;
     font-size: 14px;
     margin: auto;
     overflow-y: auto;
@@ -63,7 +80,7 @@ td, th {
     flex-grow: 0;
     overflow: auto;
     min-height: 100px;
-    max-height: calc(100vh - 435px);
+    max-height: calc(100vh - 445px);
 }
 
 #message_history{
@@ -73,5 +90,5 @@ td, th {
     min-width:100px;
     overflow: auto;
     min-height: 259px;
-    height: calc(100vh - 275px);
+    height: calc(100vh - 310px);
 }

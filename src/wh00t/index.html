@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-        <title>Wh00t</title>
+        <title>Roboto | wh00t</title>
         <meta charset='UTF-8'>
         <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon_io/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="../img/favicon_io/site.webmanifest">
         <link rel='stylesheet' href='../main.css'>
-        <link rel='stylesheet' href='../index.css'>
         <link rel='stylesheet' href='wh00t.css'>
     </head>
     <body>
         <div id='app_container'>
-            <div class='header no_display-600-s no_border'>
+            <div class='header no_border'>
                 <div class='title'>
-                    <h1>Wh00t</h1>
-                    <div id='update_time' class='no_display-700-s'>no automatic update</div>
+                    <h1 class='wh00t_title'>&lt;/wh00t&gt;</h1>
+                    <div id='sub_title' class='no_display-700-s'>A-O River Communication System</div>
                 </div>
-                <div class='nav_links'>
+                <div class='nav_links no_display-650-s'>
                     <div class='nav_container'>
                         <a class='button' href='../'>/</a>
                         <a class='button' href='../air/'>Air</a>
                         <a class='button' href='../lexicon/'>Lexicon</a>
-                        <a class='button active' href='../wh00t/'>Wh00t</a>
+                        <a class='button active' href='../wh00t/'>wh00t</a>
                         <a class='button' href='../debug/'>Debug</a>
                     </div>
                 </div>
@@ -44,8 +43,8 @@
                 Notification.requestPermission();
                 const wh00t_container = document.getElementById('wh00t_container');
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
-                const update_time_container = document.getElementById('update_time');
-                const url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
+                const update_time_container = document.getElementById('sub_title');
+                const url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
                 let key_log = {}
                 let client_id_prefix = ['rabbit', 'raven', 'honeyBadger', 'panda', 'meerkat', 'kitty', 'guineaPig',
                     'penguin', 'racoon', 'owl']
@@ -64,8 +63,8 @@
                 ws.onerror = (event) => {
                     handleMessage({
                         username: 'web_client',
-                        time: 'Now',
-                        message: `an error has occured connecting to wh00t`
+                        time: '',
+                        message: `An error has occured connecting to wh00t`
                     }, wh00t_container, 'live')
                 }
 
@@ -83,48 +82,56 @@
                 };
 
                 const handleMessage = (wh00t_message, wh00t_container, message_context) => {
-                    let message_container = document.createElement('div')
-                    let message_username_container = document.createElement('span')
-                    let message_text_container = document.createElement('span')
-                    message_text_container.classList.add('message_text')
-                    let message_prefix
-                    if (wh00t_message.username === client_id){
-                        message_username_container.classList.add('wh00t_username_color')
-                        message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
-                    }
-                    else if (wh00t_message.username === 'web_client'){
-                        message_prefix = `${wh00t_message.time} `
+                    if(false && !is_image_link(wh00t_message.message) && is_hyperlink_link(wh00t_message.message)){
+                        // TODO: get backend to crawl for link's meta data
+                        get_hyperlink_meta_data(wh00t_message.message)
                     }
                     else{
-                        message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
-                        message_username_container.classList.add('wh00t_other_usernames_color')
-                        if (Notification.permission === 'granted' && message_context === 'live'){
-                            let notification = new Notification('wh00t_web',{
-                                body: `${wh00t_message.username}: ${wh00t_message.message}`,
-                                icon: '../img/icon.png'
-                            });
-                            wh00t_message_alert_sound.play();
-                            setTimeout(() => notification.close(), 5*1000);
+                        let message_container = document.createElement('div')
+                        let message_username_container = document.createElement('span')
+                        let message_text_container = document.createElement('span')
+                        message_text_container.classList.add('message_text')
+                        let message_prefix
+                        if (wh00t_message.username === client_id){
+                            message_username_container.classList.add('wh00t_username_color')
+                            message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
                         }
-                    }
-                    message_username_container.innerText = message_prefix
-                    message_container.appendChild(message_username_container)
-                    if(is_image_link(wh00t_message.message)){
-                        message_container.appendChild(image_generator(wh00t_message.message))
-                        wh00t_container.appendChild(message_container)
-                        const scroll_down_time_out = setTimeout(() => {
+                        else if (wh00t_message.username === 'web_client'){
+                            message_prefix = `${wh00t_message.time} `
+                        }
+                        else{
+                            message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
+                            message_username_container.classList.add('wh00t_other_usernames_color')
+                            if (Notification.permission === 'granted' && message_context === 'live'){
+                                let notification = new Notification('wh00t_web',{
+                                    body: `${wh00t_message.username}: ${wh00t_message.message}`,
+                                    icon: '../img/icon.png'
+                                });
+                                wh00t_message_alert_sound.play();
+                                setTimeout(() => notification.close(), 5*1000);
+                            }
+                        }
+                        message_username_container.innerText = message_prefix
+                        message_container.appendChild(message_username_container)
+                        if(is_image_link(wh00t_message.message)){
+                            message_text_container.innerHTML = `${linkify(wh00t_message.message)}&#10;`
+                            message_container.appendChild(message_text_container)
+                            message_container.appendChild(image_generator(wh00t_message.message))
+                            wh00t_container.appendChild(message_container)
+                            const scroll_down_time_out = setTimeout(() => {
+                                wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                            }, 350);
+                        }
+                        else{
+                            message_text_container.innerHTML = linkify(wh00t_message.message)
+                            message_container.appendChild(message_text_container)
+                            wh00t_container.appendChild(message_container)
                             wh00t_container.scrollTop = wh00t_container.scrollHeight;
-                        },250);
-                    }
-                    else{
-                        message_text_container.innerHTML = linkify(wh00t_message.message)
-                        message_container.appendChild(message_text_container)
-                        wh00t_container.appendChild(message_container)
-                        wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                        }
                     }
                 }
 
-                const sendMessage = (event) => {
+                const send_message = (event) => {
                     let input = document.getElementById('messageText')
                     if(input.value !== '') {
                         ws.send(input.value)
@@ -137,7 +144,7 @@
                     key_log[event.key] = (event.type === 'keydown');
                     if(event.type === 'keydown'){
                         if ((!key_log.Shift || key_log.Shift === false) && key_log.Enter === true) {
-                            sendMessage(event)
+                            send_message(event)
                         }
                     }
                 }
@@ -160,19 +167,24 @@
                 }
 
                 const is_image_link = (text) =>{
-                    // TODO: add check for a valid url address before image suffix test
-                    return (text.endsWith('.png') || text.endsWith('.jpg') || text.endsWith('.jpeg') ||
-                            text.endsWith('.webp') || text.endsWith('.gif'));
+                    return is_hyperlink_link(text) && (text.endsWith('.png') || text.endsWith('.jpg')
+                        || text.endsWith('.jpeg') || text.endsWith('.webp') || text.endsWith('.gif'));
+                }
+
+                const is_hyperlink_link = (text) =>{
+                    return url_regex.test(text);
                 }
 
                 const image_generator = (image_link) => {
-                    const img = new Image();
+                    const img = new Image(400);
                     img.src = image_link;
                     return img
                 }
+
+                const get_hyperlink_meta_data = (link) => {}
             </script>
             <div id='wh00t_chat_input'>
-                <form class='wh00t_chat_form' onsubmit='sendMessage(event)'>
+                <form class='wh00t_chat_form' onsubmit='send_message(event)'>
                     <textarea rows='1'
                               class='message_input'
                               placeholder='Message'
@@ -182,7 +194,7 @@
                               autocomplete='off'
                               autofocus
                     ></textarea>
-                    <button class='send_button' type='button' onclick='sendMessage(event)'>
+                    <button class='send_button' type='button' onclick='send_message(event)'>
                         Send
                     </button>
                 </form>
