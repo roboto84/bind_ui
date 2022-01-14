@@ -45,6 +45,7 @@
                 const wh00t_container = document.getElementById('wh00t_container');
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
                 const update_time_container = document.getElementById('update_time');
+                const url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
                 let key_log = {}
                 let client_id_prefix = ['rabbit', 'raven', 'honeyBadger', 'panda', 'meerkat', 'kitty', 'guineaPig',
                     'penguin', 'racoon', 'owl']
@@ -86,16 +87,16 @@
                     let message_username_container = document.createElement('span')
                     let message_text_container = document.createElement('span')
                     message_text_container.classList.add('message_text')
-                    let container_message
+                    let message_prefix
                     if (wh00t_message.username === client_id){
                         message_username_container.classList.add('wh00t_username_color')
-                        container_message = `${wh00t_message.username} ${wh00t_message.time}: `
+                        message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
                     }
                     else if (wh00t_message.username === 'web_client'){
-                        container_message = `${wh00t_message.time} `
+                        message_prefix = `${wh00t_message.time} `
                     }
                     else{
-                        container_message = `${wh00t_message.username} ${wh00t_message.time}: `
+                        message_prefix = `${wh00t_message.username} ${wh00t_message.time}: `
                         message_username_container.classList.add('wh00t_other_usernames_color')
                         if (Notification.permission === 'granted' && message_context === 'live'){
                             let notification = new Notification('wh00t_web',{
@@ -106,12 +107,21 @@
                             setTimeout(() => notification.close(), 5*1000);
                         }
                     }
-                    message_username_container.innerText = container_message
-                    message_text_container.innerHTML = linkify(wh00t_message.message)
+                    message_username_container.innerText = message_prefix
                     message_container.appendChild(message_username_container)
-                    message_container.appendChild(message_text_container)
-                    wh00t_container.appendChild(message_container)
-                    wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                    if(is_image_link(wh00t_message.message)){
+                        message_container.appendChild(image_generator(wh00t_message.message))
+                        wh00t_container.appendChild(message_container)
+                        const scroll_down_time_out = setTimeout(() => {
+                            wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                        },250);
+                    }
+                    else{
+                        message_text_container.innerHTML = linkify(wh00t_message.message)
+                        message_container.appendChild(message_text_container)
+                        wh00t_container.appendChild(message_container)
+                        wh00t_container.scrollTop = wh00t_container.scrollHeight;
+                    }
                 }
 
                 const sendMessage = (event) => {
@@ -140,15 +150,25 @@
 
                 const linkify = (message) => {
                     if(!message) return;
-
-                    var urlRegex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
-                    return message.replace(urlRegex, function (url) {
-                        var hyperlink = url;
+                    return message.replace(url_regex, function (url) {
+                        let hyperlink = url;
                         if (!hyperlink.match('^https?:\/\/')) {
                             hyperlink = 'https://' + hyperlink;
                         }
                         return '<a href="' + hyperlink + '" target="_blank" rel="noopener noreferrer">' + url + '</a>'
                     });
+                }
+
+                const is_image_link = (text) =>{
+                    // TODO: add check for a valid url address before image suffix test
+                    return (text.endsWith('.png') || text.endsWith('.jpg') || text.endsWith('.jpeg') ||
+                            text.endsWith('.webp') || text.endsWith('.gif'));
+                }
+
+                const image_generator = (image_link) => {
+                    const img = new Image();
+                    img.src = image_link;
+                    return img
                 }
             </script>
             <div id='wh00t_chat_input'>
