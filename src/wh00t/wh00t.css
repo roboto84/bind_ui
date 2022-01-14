@@ -61,6 +61,10 @@
     /*min-height: 200px;*/
 }
 
+#app_container #wh00t_container a:link, a:visited {
+    color: #81a2be;
+}
+
 #app_container #wh00t_chat_input{
     width: 99%;
     height: 60px;

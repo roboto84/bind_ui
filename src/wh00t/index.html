@@ -107,7 +107,7 @@
                         }
                     }
                     message_username_container.innerText = container_message
-                    message_text_container.innerHTML = wh00t_message.message
+                    message_text_container.innerHTML = linkify(wh00t_message.message)
                     message_container.appendChild(message_username_container)
                     message_container.appendChild(message_text_container)
                     wh00t_container.appendChild(message_container)
@@ -136,6 +136,19 @@
                     let params = `directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=575,height=475'`;
                     window.open(`http://${location.hostname}:8080/wh00t/`, 'test', params)
                     open(`http://${location.hostname}:8080/`, '_self');
+                }
+
+                const linkify = (message) => {
+                    if(!message) return;
+
+                    var urlRegex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
+                    return message.replace(urlRegex, function (url) {
+                        var hyperlink = url;
+                        if (!hyperlink.match('^https?:\/\/')) {
+                            hyperlink = 'https://' + hyperlink;
+                        }
+                        return '<a href="' + hyperlink + '" target="_blank" rel="noopener noreferrer">' + url + '</a>'
+                    });
                 }
             </script>
             <div id='wh00t_chat_input'>
