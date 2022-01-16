@@ -11,6 +11,9 @@
         <link rel='stylesheet' href='lexicon.css'>
         <script src='../utils.js'></script>
         <script src='lexicon.js'></script>
+        <script>
+            get_word_list()
+        </script>
     </head>
     <body>
         <div id='app_container'>
@@ -42,10 +45,13 @@
                     </button>
                 </div>
             </div>
-            <div class='loader_holder'>
-                <div id='load_visibility' class='no_display loader'></div>
+            <div id='loader' class='loader_holder no_display'>
+                <div id='load_visibility' class='loader'></div>
             </div>
-            <div id='word_definition' class='word_def'>
+            <div id='word_list'>
+                <div id='word_list_container'></div>
+            </div>
+            <div id='word_definition' class='word_def no_display'>
                 <div id='word_definition_visibility'>
                     <div id='main_word' class='word_def_sub_section'>
                         <div id='word' class='word_style'></div>

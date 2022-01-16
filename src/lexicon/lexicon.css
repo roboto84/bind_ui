@@ -1,4 +1,72 @@
+
+/* Media Sizing */
+@media (max-width: 650px) {
+    .no_display-650-s{
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .no_display-700-s{
+        display: none;
+    }
+    .no_border{
+        border-color: rgb(20, 21, 21);
+    }
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Unique Ids */
+#app_container{
+    height: 95%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+    width: 99%
+}
+
 /* Classes */
+#app_container #word_list{
+    font-size: 25px;
+    height: 85%;
+    width: 95%;
+    margin: 0 50px;
+    color: #d5d5d5;
+}
+
+#app_container #word_list #word_list_container{
+    margin: 0 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#app_container #word_list_container .word_list_item{
+    cursor: pointer;
+    padding: 5px;
+    width: 170px;
+    transition: 0.4s;
+}
+
+#app_container #word_list_container .word_list_item:hover{
+    background-color: #c7ff0094;
+    color: black;
+}
+
+#app_container .word_def{
+    font-size: 25px;
+    height: 85%;
+    padding: 0 35px;
+    margin: auto;
+    color: #d5d5d5;
+    overflow: auto;
+}
+
 #app_container li{
     margin: 10px 0;
     line-height: 35px;
@@ -54,7 +122,6 @@
 
 #app_container .search{
     font-size: 6px;
-    height: 85%;
     width: 95%;
     margin: 60px 30px;
     display: flex;
@@ -102,17 +169,6 @@
     cursor: pointer;
 }
 
-#app_container .word_def{
-    font-size: 25px;
-    height: 85%;
-    width: 95%;
-    margin: 0 50px;
-    display: flex;
-    justify-content: left;
-    flex-direction: column;
-    color: #d5d5d5;
-}
-
 #app_container .word_def_sub_section{
     display: flex;
     flex-direction: row;
@@ -147,8 +203,6 @@
     height: 85%;
     width: 95%;
     margin: 0 30px;
-    display: flex;
-    justify-content: center;
 }
 
 #app_container .loader {
@@ -157,10 +211,6 @@
     border-top: 16px solid #fff;
     width: 120px;
     height: 120px;
+    margin: auto;
     animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }

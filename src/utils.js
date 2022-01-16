@@ -13,10 +13,6 @@ const get_standard_time = (date) => {
     }
 }
 
-const replace_quotes = (json_string) => {
-    return JSON.parse(json_string.replace(/[']/g, "\""))
-}
-
 const set_element_inner_text = (element_id, text) => {
     document.getElementById(element_id).innerText = text
 }
@@ -24,7 +20,9 @@ const set_element_inner_text = (element_id, text) => {
 const set_new_element = (text, css_class) => {
     const element = document.createElement('div')
     element.innerText = text
-    element.classList.add(css_class)
+    if(css_class){
+        element.classList.add(css_class)
+    }
     return element
 }
 
