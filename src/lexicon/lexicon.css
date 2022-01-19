@@ -32,15 +32,60 @@
 }
 
 /* Classes */
-#app_container #word_list{
+#app_container #lexicon_home{
     font-size: 25px;
-    height: 85%;
+    height: 99%;
     width: 95%;
-    margin: 0 50px;
+    margin: 20px 50px 0 50px;
     color: #d5d5d5;
 }
 
-#app_container #word_list #word_list_container{
+#app_container #lexicon_home #word_list_section{
+    margin-top: 65px;
+}
+
+#app_container #lexicon_home #word_of_day{
+    margin: 0 75px;
+}
+
+#app_container #lexicon_home #word_of_day #day_word{
+    font-weight: bold;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_date{
+    margin: 0 5px;
+    color: #606060;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_part_of_speech{
+    margin: 0 5px;
+    color: #606060;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_break{
+    margin: 0 5px;
+    color: #606060;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_pronounce{
+    margin: 0 5px;
+    font-style: italic;
+    color: #9d9d9d;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_definitions{
+    margin: 0 5px;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_definition_list{
+    margin: 0 5px;
+}
+
+#app_container #lexicon_home #word_of_day #day_word_example{
+    margin-top: 15px;
+}
+
+#app_container #lexicon_home #word_list_container{
     margin: 0 50px;
     display: flex;
     flex-wrap: wrap;
@@ -61,7 +106,7 @@
 #app_container .word_def{
     font-size: 25px;
     height: 85%;
-    padding: 0 35px;
+    padding: 65px 0 0 35px;
     margin: auto;
     color: #d5d5d5;
     overflow: auto;
@@ -84,28 +129,28 @@
 
 #app_container .date_first_used_style{
     margin-left: 35px;
-    margin-top: 19px;
+    margin-top: 22px;
     color: #606060;
     letter-spacing: 2px;
 }
 
 #app_container .part_of_speech_style{
     margin-left: 19px;
-    margin-top: 19px;
+    margin-top: 22px;
     color: #606060;
     letter-spacing: 2px;
 }
 
 #app_container .word_break_style{
     margin-left: 19px;
-    margin-top: 19px;
+    margin-top: 22px;
     color: #606060;
     letter-spacing: 2px;
 }
 
 #app_container .pronunciation_style{
     margin-left: 19px;
-    margin-top: 19px;
+    margin-top: 22px;
     font-style: italic;
     color: #9d9d9d;
     letter-spacing: 3px;
@@ -123,7 +168,7 @@
 #app_container .search{
     font-size: 6px;
     width: 95%;
-    margin: 60px 30px;
+    margin: 60px 30px 15px 30px;
     display: flex;
     justify-content: center;
 }
@@ -193,7 +238,7 @@
 }
 
 #app_container .word_examples{
-    margin: 40px 50px;
+    margin: 40px 50px 10px 50px;
     letter-spacing: 3px;
     font-style: italic;
 }

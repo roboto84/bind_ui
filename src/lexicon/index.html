@@ -12,6 +12,7 @@
         <script src='../utils.js'></script>
         <script src='lexicon.js'></script>
         <script>
+            get_word_of_day()
             get_word_list()
         </script>
     </head>
@@ -48,8 +49,25 @@
             <div id='loader' class='loader_holder no_display'>
                 <div id='load_visibility' class='loader'></div>
             </div>
-            <div id='word_list'>
-                <div id='word_list_container'></div>
+            <div id='lexicon_home'>
+                <div id='word_of_day_section'>
+                    <h2>Word of Day</h2>
+                    <div id='word_of_day'>
+                        <span id='day_word'></span>
+                        <span id='day_word_date'></span>
+                        <span id='day_word_part_of_speech'></span>
+                        <span id='day_word_break'></span>
+                        <span id='day_word_pronounce'></span>
+                        <div id='day_word_definitions'>
+                            <ol id='day_word_definition_list'></ol>
+                        </div>
+                        <div id='day_word_example'></div>
+                    </div>
+                </div>
+                <div id='word_list_section'>
+                    <h2>Latest Words Searched</h2>
+                    <div id='word_list_container'></div>
+                </div>
             </div>
             <div id='word_definition' class='word_def no_display'>
                 <div id='word_definition_visibility'>

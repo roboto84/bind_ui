@@ -7,8 +7,8 @@ const etymology = (word) => { return `◦ etymology: ${word}`};
 const pronunciation = (ox_pronounce, mer_pronounce) => { return `\\ ${ox_pronounce} \\ ${mer_pronounce} \\` };
 const word_examples = (example) => { return `( e.g. ${example} )`};
 
-const remove_definitions = () => {
-    const ol = document.getElementById("definition_list");
+const remove_definitions = (list_id) => {
+    const ol = document.getElementById(list_id);
 
     while(ol.firstChild){
         ol.removeChild(ol.firstChild);
@@ -16,8 +16,8 @@ const remove_definitions = () => {
     return ol;
 }
 
-const main_definitions = (def_array) => {
-    const ol = remove_definitions();
+const main_definitions = (def_array, list_id) => {
+    const ol = remove_definitions(list_id);
     def_array.forEach((definition) => {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(definition));
@@ -59,13 +59,13 @@ const switch_loader = () => {
     const load_visibility = document.getElementById('loader');
     const search_visibility = document.getElementById('search_visibility');
     const word_definition_visibility = document.getElementById('word_definition');
-    const word_list_container = document.getElementById('word_list');
+    const lexicon_home = document.getElementById('lexicon_home');
 
     if (load_visibility.classList.contains('no_display')){
         load_visibility.classList.remove('no_display');
         search_visibility.classList.add('no_display');
         word_definition_visibility.classList.add('no_display');
-        word_list_container.classList.add('no_display');
+        lexicon_home.classList.add('no_display');
     }
     else{
         load_visibility.classList.add('no_display');
@@ -85,7 +85,7 @@ const set_word_def_elements = (word_def) => {
         set_element_inner_text('etymology', etymology(word_def['etymology']));
         set_element_inner_text('stems', stems(word_def['stems']));
 
-        main_definitions(word_def['definitions'])
+        main_definitions(word_def['definitions'], 'definition_list');
         set_element_inner_text('word_examples', word_examples(word_def['example']));
     }
     else{
@@ -115,6 +115,17 @@ const set_word_list_elements = (word_list) => {
     });
 }
 
+const set_word_of_day_elements = (word_of_day_data) => {
+    set_element_inner_text('day_word', defined_word(word_of_day_data['word']));
+    set_element_inner_text('day_word_part_of_speech', part_of_speech(word_of_day_data['part_of_speech']));
+    set_element_inner_text('day_word_break', word_break(word_of_day_data['word_break']));
+    set_element_inner_text('day_word_pronounce', pronunciation(word_of_day_data['pronounce'], ''));
+    set_element_inner_text('day_word_date', date_first_used(word_of_day_data['date_first_used']));
+
+    main_definitions(word_of_day_data['definitions'], 'day_word_definition_list');
+    set_element_inner_text('day_word_example', word_examples(word_of_day_data['example']));
+}
+
 const send_search_word = () => {
     get_word_def(document.getElementById('word_search_input').value);
 }
@@ -135,5 +146,13 @@ const get_word_list = () => {
         .then(response => response.json())
         .then(response_container => {
             set_word_list_elements(response_container);
+        });
+}
+
+const get_word_of_day = () => {
+    fetch(`http://${location.hostname}:8000/lexicon/word_of_day`)
+        .then(response => response.json())
+        .then(response_container => {
+            set_word_of_day_elements(response_container);
         });
 }
