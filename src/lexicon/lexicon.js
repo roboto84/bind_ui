@@ -162,7 +162,7 @@ const get_word_def = (word) => {
 }
 
 const get_word_list = () => {
-    fetch(`http://${location.hostname}:8000/lexicon/words`)
+    fetch(`http://${location.hostname}:8000/lexicon/words/20`)
         .then(response => response.json())
         .then(response_container => {
             set_word_list_elements(response_container);
