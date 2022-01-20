@@ -53,7 +53,7 @@
                 <div id='word_of_day_section'>
                     <h2>Word of Day</h2>
                     <div id='word_of_day'>
-                        <span id='day_word'></span>
+                        <span id='day_word' class='word_list_item'></span>
                         <span id='day_word_date'></span>
                         <span id='day_word_part_of_speech'></span>
                         <span id='day_word_break'></span>
@@ -77,8 +77,8 @@
                         <div id='part_of_speech' class='part_of_speech_style'></div>
                         <div id='word_break' class='word_break_style'></div>
                         <div id='pronunciation' class='pronunciation_style'></div>
-                        <div id='word_audio' class='word_audio_style'>
-                            <audio class='no_display' id='audio' controls='controls'>
+                        <div id='word_audio' class='word_audio_style no_display'>
+                            <audio id='audio' controls='controls'>
                                 <source id='audioSource' src=''></source>
                                 Your browser does not support the audio format.
                             </audio>

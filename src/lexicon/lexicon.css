@@ -91,14 +91,14 @@
     flex-wrap: wrap;
 }
 
-#app_container #word_list_container .word_list_item{
+#app_container .word_list_item{
     cursor: pointer;
     padding: 5px;
     width: 170px;
     transition: 0.4s;
 }
 
-#app_container #word_list_container .word_list_item:hover{
+#app_container .word_list_item:hover{
     background-color: #c7ff0094;
     color: black;
 }

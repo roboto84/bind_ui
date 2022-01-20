@@ -22,30 +22,44 @@ const main_definitions = (def_array, list_id) => {
         const li = document.createElement('li');
         li.appendChild(document.createTextNode(definition));
         ol.appendChild(li);
-    }, ol)
+    }, ol);
 }
 
-const stems = (stem_array) => {
-    let stem_concat = '';
-    stem_array.forEach((item) => {
-        stem_concat += `${item}, `;
-    });
+const insert_word_suggestions = (container_id, word_suggestions_array) => {
+    const container = document.getElementById(container_id);
+    container.innerHTML = '';
+    word_suggestions_array.forEach((word_suggestion) => {
+        const span = document.createElement('span');
+        const comma_span = document.createElement('span');
+        comma_span.innerText = ',';
+        span.classList.add('word_list_item');
+        span.onclick = () => {
+            get_word_def(word_suggestion);
+        }
+        span.appendChild(document.createTextNode(word_suggestion));
+        container.appendChild(span);
+        container.appendChild(comma_span);
+    }, container);
+    container.removeChild(container.lastChild);
+}
 
-    return `${stem_concat}`;
+const stems = (container_id, stem_array) => {
+    insert_word_suggestions(container_id, stem_array);
 }
 
 const word_audio = (word_audio) => {
+    const word_audio_container = document.getElementById('word_audio');
     const audio = document.getElementById('audio');
-    if (word_audio !== ''){
-        if (audio.classList.contains('no_display')){
-            audio.classList.remove('no_display');
+    if (word_audio !== '' && word_audio !== 'unk' && word_audio !== 'n/a'){
+        if (word_audio_container.classList.contains('no_display')){
+            word_audio_container.classList.remove('no_display');
         }
         const source = document.getElementById('audioSource');
         source.src = word_audio;
         audio.load();
     }
-    else if (word_audio === '' && !audio.classList.contains('no_display')){
-        audio.classList.add('no_display');
+    else if (!word_audio_container.classList.contains('no_display')){
+        word_audio_container.classList.add('no_display');
     }
 }
 
@@ -80,22 +94,22 @@ const set_word_def_elements = (word_def) => {
         set_element_inner_text('word', defined_word(word_def['word']));
         set_element_inner_text('part_of_speech', part_of_speech(word_def['part_of_speech']));
         set_element_inner_text('word_break', word_break(word_def['word_break']));
-        set_element_inner_text('pronunciation', pronunciation(word_def['pronounce'], ''));
+        set_element_inner_text('pronunciation', pronunciation(...word_def['pronounce']));
         set_element_inner_text('date_first_used', date_first_used(word_def['date_first_used']));
         set_element_inner_text('etymology', etymology(word_def['etymology']));
-        set_element_inner_text('stems', stems(word_def['stems']));
+        stems('stems', word_def['stems']);
 
         main_definitions(word_def['definitions'], 'definition_list');
         set_element_inner_text('word_examples', word_examples(word_def['example']));
     }
     else{
-        const word_not_found = `perhaps "${word_def['word']}" was misspelled, here are some suggestions...`;
+        const word_not_found = `perhaps "${word_def['word']}" was misspelled, here are some suggestions`;
         word_audio('');
         set_element_inner_text('word', defined_word('Not Found'));
         set_element_inner_text('part_of_speech', part_of_speech(word_not_found));
-        set_element_inner_text('stems', stems(word_def['spelling_suggestions']));
+        insert_word_suggestions('stems', word_def['spelling_suggestions'])
 
-        remove_definitions();
+        remove_definitions('definition_list');
         set_element_inner_text('word_break', '');
         set_element_inner_text('pronunciation', '');
         set_element_inner_text('date_first_used', '');
@@ -116,10 +130,14 @@ const set_word_list_elements = (word_list) => {
 }
 
 const set_word_of_day_elements = (word_of_day_data) => {
-    set_element_inner_text('day_word', defined_word(word_of_day_data['word']));
+    const day_word = set_element_inner_text('day_word', defined_word(word_of_day_data['word']));
+    day_word.onclick = () => {
+        get_word_def(word_of_day_data['word'])
+    }
+
     set_element_inner_text('day_word_part_of_speech', part_of_speech(word_of_day_data['part_of_speech']));
     set_element_inner_text('day_word_break', word_break(word_of_day_data['word_break']));
-    set_element_inner_text('day_word_pronounce', pronunciation(word_of_day_data['pronounce'], ''));
+    set_element_inner_text('day_word_pronounce', pronunciation(...word_of_day_data['pronounce']));
     set_element_inner_text('day_word_date', date_first_used(word_of_day_data['date_first_used']));
 
     main_definitions(word_of_day_data['definitions'], 'day_word_definition_list');
@@ -132,12 +150,14 @@ const send_search_word = () => {
 
 const get_word_def = (word) => {
     switch_loader()
+    const word_search_input = document.getElementById('word_search_input');
+    word_search_input.value = '';
     fetch(`http://${location.hostname}:8000/lexicon/word_search/${word.toLocaleString().toLowerCase().trim()}`)
         .then(response => response.json())
         .then(response_container => {
-            console.log(response_container);
             set_word_def_elements(response_container);
             switch_loader();
+            word_search_input.focus();
         });
 }
 
