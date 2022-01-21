@@ -33,63 +33,65 @@
                     </div>
                 </div>
             </div>
-            <div id='search_container' class='search'>
-                <div id='search_visibility'>
-                    <input class='search_input'
-                           type='text'
-                           placeholder='Search Word'
-                           id='word_search_input'
-                           onkeydown='click_search(event)'
-                           autofocus>
-                    <button class='search_button' type='button' onclick='send_search_word()'>
-                        Search Lexicon
-                    </button>
-                </div>
-            </div>
-            <div id='loader' class='loader_holder no_display'>
-                <div id='load_visibility' class='loader'></div>
-            </div>
-            <div id='lexicon_home'>
-                <div id='word_of_day_section'>
-                    <h2>Word of Day</h2>
-                    <div id='word_of_day'>
-                        <span id='day_word' class='word_list_item'></span>
-                        <span id='day_word_date'></span>
-                        <span id='day_word_part_of_speech'></span>
-                        <span id='day_word_break'></span>
-                        <span id='day_word_pronounce'></span>
-                        <div id='day_word_definitions'>
-                            <ol id='day_word_definition_list'></ol>
-                        </div>
-                        <div id='day_word_example'></div>
+            <div id='main_container'>
+                <div id='search_container' class='search'>
+                    <div id='search_visibility'>
+                        <input class='search_input'
+                               type='text'
+                               placeholder='Search Word'
+                               id='word_search_input'
+                               onkeydown='click_search(event)'
+                               autofocus>
+                        <button class='search_button' type='button' onclick='send_search_word()'>
+                            Search Lexicon
+                        </button>
                     </div>
                 </div>
-                <div id='word_list_section'>
-                    <h2>Latest 20 Words Searched</h2>
-                    <div id='word_list_container'></div>
+                <div id='loader' class='loader_holder no_display'>
+                    <div id='load_visibility' class='loader'></div>
                 </div>
-            </div>
-            <div id='word_definition' class='word_def no_display'>
-                <div id='word_definition_visibility'>
-                    <div id='main_word' class='word_def_sub_section'>
-                        <div id='word' class='word_style'></div>
-                        <div id='date_first_used' class='date_first_used_style'></div>
-                        <div id='part_of_speech' class='part_of_speech_style'></div>
-                        <div id='word_break' class='word_break_style'></div>
-                        <div id='pronunciation' class='pronunciation_style'></div>
-                        <div id='word_audio' class='word_audio_style no_display'>
-                            <audio id='audio' controls='controls'>
-                                <source id='audioSource' src=''></source>
-                                Your browser does not support the audio format.
-                            </audio>
+                <div id='lexicon_home'>
+                    <div id='word_of_day_section'>
+                        <h2>Word of Day</h2>
+                        <div id='word_of_day'>
+                            <span id='day_word' class='word_list_item'></span>
+                            <span id='day_word_date'></span>
+                            <span id='day_word_part_of_speech'></span>
+                            <span id='day_word_break'></span>
+                            <span id='day_word_pronounce'></span>
+                            <div id='day_word_definitions'>
+                                <ol id='day_word_definition_list'></ol>
+                            </div>
+                            <div id='day_word_example'></div>
                         </div>
                     </div>
-                    <div id='stems' class='word_def_stems'></div>
-                    <div id='etymology' class='word_def_etymology'></div>
-                    <div id='main_definitions' class='word_definitions'>
-                        <ol id='definition_list'></ol>
+                    <div id='word_list_section'>
+                        <h2>Latest 20 Words Searched</h2>
+                        <div id='word_list_container'></div>
                     </div>
-                    <div id='word_examples' class='word_examples'></div>
+                </div>
+                <div id='word_definition' class='word_def no_display'>
+                    <div id='word_definition_visibility'>
+                        <div id='main_word' class='word_def_sub_section'>
+                            <div id='word' class='word_style'></div>
+                            <div id='date_first_used' class='date_first_used_style'></div>
+                            <div id='part_of_speech' class='part_of_speech_style'></div>
+                            <div id='word_break' class='word_break_style'></div>
+                            <div id='pronunciation' class='pronunciation_style'></div>
+                            <div id='word_audio' class='word_audio_style no_display'>
+                                <audio id='audio' controls='controls'>
+                                    <source id='audioSource' src=''></source>
+                                    Your browser does not support the audio format.
+                                </audio>
+                            </div>
+                        </div>
+                        <div id='stems' class='word_def_stems'></div>
+                        <div id='etymology' class='word_def_etymology'></div>
+                        <div id='main_definitions' class='word_definitions'>
+                            <ol id='definition_list'></ol>
+                        </div>
+                        <div id='word_examples' class='word_examples'></div>
+                    </div>
                 </div>
             </div>
         </div>
