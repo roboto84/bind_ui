@@ -13,6 +13,16 @@
     .no_border{
         border-color: rgb(20, 21, 21);
     }
+
+    .width_100{
+        width: 100%
+    }
+}
+
+@media (min-width: 700px) {
+    .width_25{
+        width: 25%
+    }
 }
 
 /* Unique Ids */
@@ -25,15 +35,11 @@
 #link_container{
     font-family: verdana,serif;
     font-size: 30px;
-    height: 100%;
-    width: 20%;
     display: flex;
     flex-direction: column;
     margin-top: 90px;
-    justify-content: center;
 }
 
 #robot_img{
-    justify-content: center;
-    display: flex;
+    opacity: 0.7;
 }

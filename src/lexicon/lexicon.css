@@ -33,18 +33,18 @@
 
 #app_container #main_container{
     overflow-y: auto;
+    height: calc(100vh - 50px);
 }
 
 #app_container #lexicon_home{
     font-size: 25px;
-    height: 99%;
-    width: 95%;
     margin: 20px 50px 0 50px;
     color: #d5d5d5;
+    padding-top: 20px;
 }
 
 #app_container #lexicon_home #word_list_section{
-    margin-top: 65px;
+    margin-top: 85px;
 }
 
 #app_container #lexicon_home #word_of_day{
@@ -97,7 +97,7 @@
 /* Classes */
 #app_container .word_list_item{
     cursor: pointer;
-    padding: 5px;
+    padding: 5px 15px;
     width: 170px;
     transition: 0.4s;
 }
@@ -109,7 +109,6 @@
 
 #app_container .word_def{
     font-size: 25px;
-    height: 85%;
     padding: 65px 0 0 35px;
     margin: auto;
     color: #d5d5d5;
@@ -248,10 +247,7 @@
 }
 
 #app_container .loader_holder {
-    font-size: 14px;
-    height: 85%;
-    width: 95%;
-    margin: 0 30px;
+    padding-top: 15vh;
 }
 
 #app_container .loader {
