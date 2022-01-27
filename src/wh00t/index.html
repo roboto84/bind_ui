@@ -44,7 +44,8 @@
                 const wh00t_container = document.getElementById('wh00t_container');
                 const wh00t_message_alert_sound = new Audio('../audio/wh00t7.wav');
                 const update_time_container = document.getElementById('sub_title');
-                const url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
+                const global_url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
+                const single_url_regex =/((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
                 let key_log = {}
                 let client_id_prefix = ['rabbit', 'raven', 'honeyBadger', 'panda', 'meerkat', 'kitty', 'guineaPig',
                     'penguin', 'racoon', 'owl']
@@ -157,7 +158,7 @@
 
                 const linkify = (message) => {
                     if(!message) return;
-                    return message.replace(url_regex, function (url) {
+                    return message.replace(global_url_regex, function (url) {
                         let hyperlink = url;
                         if (!hyperlink.match('^https?:\/\/')) {
                             hyperlink = 'https://' + hyperlink;
@@ -172,7 +173,7 @@
                 }
 
                 const is_hyperlink_link = (text) =>{
-                    return url_regex.test(text);
+                    return single_url_regex.test(text);
                 }
 
                 const image_generator = (image_link) => {
