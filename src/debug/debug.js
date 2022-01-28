@@ -1,6 +1,6 @@
 
 const get_api_messages = () => {
-    fetch(`http://${location.hostname}:8000/`)
+    fetch(`https://${location.hostname}:8000/`)
         .then(response => response.json())
         .then(messages => {
             const current_time = get_standard_time(new Date())

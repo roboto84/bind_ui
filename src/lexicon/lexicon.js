@@ -152,7 +152,7 @@ const get_word_def = (word) => {
     switch_loader()
     const word_search_input = document.getElementById('word_search_input');
     word_search_input.value = '';
-    fetch(`http://${location.hostname}:8000/lexicon/word_search/${word.toLocaleString().toLowerCase().trim()}`)
+    fetch(`https://${location.hostname}:8000/lexicon/word_search/${word.toLocaleString().toLowerCase().trim()}`)
         .then(response => response.json())
         .then(response_container => {
             set_word_def_elements(response_container);
@@ -162,7 +162,7 @@ const get_word_def = (word) => {
 }
 
 const get_word_list = () => {
-    fetch(`http://${location.hostname}:8000/lexicon/words/20`)
+    fetch(`https://${location.hostname}:8000/lexicon/words/20`)
         .then(response => response.json())
         .then(response_container => {
             set_word_list_elements(response_container);
@@ -170,7 +170,7 @@ const get_word_list = () => {
 }
 
 const get_word_of_day = () => {
-    fetch(`http://${location.hostname}:8000/lexicon/word_of_day`)
+    fetch(`https://${location.hostname}:8000/lexicon/word_of_day`)
         .then(response => response.json())
         .then(response_container => {
             set_word_of_day_elements(response_container);

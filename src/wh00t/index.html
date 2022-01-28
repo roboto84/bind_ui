@@ -52,7 +52,7 @@
                     'penguin', 'racoon', 'owl']
                 let client_id = client_id_prefix[randomIntFromInterval(0, client_id_prefix.length-1)] + randomIntFromInterval(1, 99)
                 document.querySelector('#ws-id').textContent = client_id;
-                let ws = new WebSocket(`ws://${location.hostname}:8000/wh00t_chat/${client_id}`);
+                let ws = new WebSocket(`wss://${location.hostname}:8000/wh00t_chat/${client_id}`);
 
                 ws.onopen = (event) => {
                     handleMessage({

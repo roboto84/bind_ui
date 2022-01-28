@@ -155,7 +155,7 @@ const fill_weather_tables = (weather_data, weather_table, pollution_table, polle
 }
 
 const get_api_messages = () => {
-    fetch(`http://${location.hostname}:8000/air/weather_report`)
+    fetch(`https://${location.hostname}:8000/air/weather_report`)
         .then(response => response.json())
         .then(response_container => {
             if (response_container.weather_forecast.length && response_container.current_weather) {
@@ -173,7 +173,7 @@ const get_api_messages = () => {
             }
         });
 
-    fetch(`http://${location.hostname}:8000/air/weather_history`)
+    fetch(`https://${location.hostname}:8000/air/weather_history`)
         .then(response => response.json())
         .then(response_container => {
             if (response_container.weather_history.length) {
