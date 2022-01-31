@@ -4,7 +4,7 @@ const part_of_speech = (part_of_speech) => { return `${part_of_speech.toLowerCas
 const word_break = (word) => { return `${word}`};
 const date_first_used = (word) => { return `${word}`};
 const etymology = (word) => { return `◦ etymology: ${word}`};
-const pronunciation = (ox_pronounce, mer_pronounce) => { return `\\ ${ox_pronounce} \\ ${mer_pronounce} \\` };
+const pronunciation = (ox_pronounce, mer_pronounce) => { return `${ox_pronounce} | ${mer_pronounce}` };
 const word_examples = (example) => { return `( e.g. ${example} )`};
 
 const remove_definitions = (list_id) => {
