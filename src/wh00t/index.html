@@ -107,7 +107,7 @@
                             if (Notification.permission === 'granted' && message_context === 'live'){
                                 let notification = new Notification('wh00t_web',{
                                     body: `${wh00t_message.username}: ${wh00t_message.message}`,
-                                    icon: '../img/icon.png'
+                                    icon: '../img/wh00t_icon.png'
                                 });
                                 wh00t_message_alert_sound.play();
                                 setTimeout(() => notification.close(), 5*1000);
