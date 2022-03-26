@@ -1,5 +1,6 @@
 import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
-import { randomIntFromInterval, WSS_BASE_URL } from '@/utils/utils';
+import { WSS_BASE_URL } from '@/dataSource/urls';
+import { randomIntFromInterval } from '@/utils/utils';
 import { getSimpleDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 

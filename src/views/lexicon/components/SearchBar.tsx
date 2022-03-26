@@ -6,7 +6,7 @@ export function SearchBar() {
   const searchInputRef: React.MutableRefObject<any> = React.useRef();
   const navigate = useNavigate();
   const sendSearchWord = () => {
-    navigate(`search?word=${searchInputRef.current.value}`);
+    navigate(`/lexicon/search?word=${searchInputRef.current.value}`);
   };
   const searchKeyInput = (event: { key: string; }) => {
     if (event.key === 'Enter') {

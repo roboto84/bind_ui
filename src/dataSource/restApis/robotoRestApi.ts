@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 import { AirEndpointsType, LexiconEndpointsType, DebugEndpointsType } from '@/dataSource/types/apiTypes';
-import { API_URL } from '@/utils/utils';
+import { API_URL } from '@/dataSource/urls';
 
 const numOfDays: number = 14;
 const weatherHistoryTimeInterval: number = 24 * numOfDays;
