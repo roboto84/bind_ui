@@ -13,22 +13,6 @@ export const Wh00tMessagesContainer = styled.div`
   overflow-y: auto;
   height: calc(100% - 105px);
   border-radius: 5px;
-  
-  .wh00tUsernameColor{
-    color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.usernameColor};
-  }
-
-  .wh00tOtherUsernamesColor{
-    color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.otherUsernamesColor};
-  }
-
-  .UsernameBaseImageBackgroundColor{
-    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.usernameBaseImageBackgroundColor};
-  }
-
-  .OtherUsernamesBaseImageBackgroundColor{
-    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.otherUsernameBaseImageBackgroundColor};
-  }
 
   a:link, a:visited {
     color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.aLinkColor};

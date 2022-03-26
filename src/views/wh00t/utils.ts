@@ -20,7 +20,8 @@ export function isHyperlinkLink(text: string) {
 
 export function isImageLink(text: string) {
   return isHyperlinkLink(text) && (text.endsWith('.png') || text.endsWith('.jpg')
-    || text.endsWith('.jpeg') || text.endsWith('.webp') || text.endsWith('.gif'));
+    || text.endsWith('.jpeg') || text.endsWith('.webp') || text.endsWith('.gif')
+    || text.endsWith('.gifv'));
 }
 
 export function openPopup() {

@@ -17,6 +17,14 @@ export const Wh00tBaseUserImageContainer = styled.div`
   font-size: 18px;
   text-transform: capitalize;
   text-align: center;
+
+  &.UsernameBaseImageBackgroundColor{
+    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.usernameBaseImageBackgroundColor};
+  }
+
+  &.OtherUsernamesBaseImageBackgroundColor{
+    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.otherUsernameBaseImageBackgroundColor};
+  }
 `;
 
 export const Wh00tMessageBody = styled.div`
@@ -27,6 +35,14 @@ export const Wh00tMessageTitle = styled.div``;
 
 export const Wh00tMessageUsername = styled.span`
   font-weight: 600;
+
+  &.wh00tUsernameColor{
+    color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.usernameColor};
+  }
+
+  &.wh00tOtherUsernamesColor{
+    color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.otherUsernamesColor};
+  }
 `;
 
 export const Wh00tMessageTime = styled.span`

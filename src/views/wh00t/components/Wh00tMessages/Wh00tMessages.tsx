@@ -8,7 +8,7 @@ export function Wh00tMessages() {
   const { state } = useWh00tWebsocket();
   const { currentChatMessage, historicalChatMessages } = state;
   const { clientId } = state.wh00tWebSocket;
-  const endOfMessages = useRef(null);
+  const endOfMessages: React.MutableRefObject<any> = useRef(null);
   const scrollToBottom = () => {
     setTimeout(() => {
       endOfMessages.current?.scrollIntoView();
@@ -17,7 +17,9 @@ export function Wh00tMessages() {
 
   useEffect(() => {
     scrollToBottom();
-    state.wh00tNotifier.stopDocumentTitleNotification();
+    if (document.hasFocus()) {
+      state.wh00tNotifier.stopDocumentTitleNotification();
+    }
   }, [currentChatMessage]);
 
   return (
