@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
 import { pronunciationView } from '@/utils/formatting';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import {
   WordDefinitionIntroduction,
   Word,
@@ -21,7 +21,7 @@ import {
 
 export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const { wordDefinition } = props;
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   let wordAudioComponent: JSX.Element = <span />;
   const wordStemsView: {}[] = wordDefinition.stems.map(
     (wordStem:string, index:number, array:string[]) => {
@@ -58,29 +58,27 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   }
 
   return (
-    <>
-      <WordDefinition>
-        <WordDefinitionIntroduction>
-          <Word>{wordDefinition.word}</Word>
-          <DateFirstUsed>{wordDefinition.dateFirstUsed}</DateFirstUsed>
-          <PartOfSpeech>{wordDefinition.partOfSpeech.toLowerCase()}</PartOfSpeech>
-          <WordBreak>{wordDefinition.wordBreak}</WordBreak>
-          <Pronunciation>{pronunciationView(...wordDefinition.pronounce)}</Pronunciation>
-          {wordAudioComponent}
-        </WordDefinitionIntroduction>
-        <WordDefStems>{wordStemsView}</WordDefStems>
-        <WordDefEtymology>◦ etymology: {wordDefinition.etymology}</WordDefEtymology>
-        <WordDefinitions>
-          <WordDefinitionList>
-            {wordDefinition.definitions.map((definition:string, index:number) => (
-              <li key={'wordDef-'.concat(String(index))}>
-                { definition }
-              </li>
-            ))}
-          </WordDefinitionList>
-        </WordDefinitions>
-        <WordExamples>( e.g. {wordDefinition.example} )</WordExamples>
-      </WordDefinition>
-    </>
+    <WordDefinition>
+      <WordDefinitionIntroduction>
+        <Word>{wordDefinition.word}</Word>
+        <DateFirstUsed>{wordDefinition.dateFirstUsed}</DateFirstUsed>
+        <PartOfSpeech>{wordDefinition.partOfSpeech.toLowerCase()}</PartOfSpeech>
+        <WordBreak>{wordDefinition.wordBreak}</WordBreak>
+        <Pronunciation>{pronunciationView(...wordDefinition.pronounce)}</Pronunciation>
+        {wordAudioComponent}
+      </WordDefinitionIntroduction>
+      <WordDefStems>{wordStemsView}</WordDefStems>
+      <WordDefEtymology>◦ etymology: {wordDefinition.etymology}</WordDefEtymology>
+      <WordDefinitions>
+        <WordDefinitionList>
+          {wordDefinition.definitions.map((definition:string, index:number) => (
+            <li key={'wordDef-'.concat(String(index))}>
+              { definition }
+            </li>
+          ))}
+        </WordDefinitionList>
+      </WordDefinitions>
+      <WordExamples>( e.g. {wordDefinition.example} )</WordExamples>
+    </WordDefinition>
   );
 }

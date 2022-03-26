@@ -1,12 +1,12 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Word } from '@/views/lexicon/styles/wordListStyles';
 import { WordListContainer } from '../styles/lexiconHomeStyles';
 import { LatestWordListProps } from '../types/lexiconTypes';
 
 export function LatestWordList(props: LatestWordListProps) {
   const { wordList } = props;
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   return (
     <WordListContainer>

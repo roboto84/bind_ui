@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from '@/components/Button';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, NavigateFunction } from 'react-router-dom';
 import { NavigationLinkProps } from '@/views/components/Header/types/headerTypes';
 
 function NavigationLink(props: NavigationLinkProps) {
   const { linkTo, children, fontSize, padding, callBack } = props;
   const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const isActive = (): boolean => (
     linkTo && linkTo.length === 1 ? linkTo === pathname : pathname.includes(linkTo)
   );

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiMaximize, FiMinimize } from 'react-icons/fi';
+import { BsFillChatTextFill } from 'react-icons/bs';
 import {
   Wh00tChannelTitle,
   Wh00tChatHeaderButton,
@@ -9,11 +10,10 @@ import {
   Wh00tChatHeaderTitleContainer, Wh00tChatHeaderTitleIcon,
 } from './styles/wh00tChatHeaderStyle';
 import { ElementSize, Wh00tChatHeaderProps } from '../../types/wh00tTypes';
-import { BsFillChatTextFill } from 'react-icons/bs';
 
 export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
   const { headerSize, headerButtons, minimizeSwitch } = props;
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const { state } = useWh00tWebsocket();
   let headerMargin: string = '0';
   let headerBorderRadius: string = '0';

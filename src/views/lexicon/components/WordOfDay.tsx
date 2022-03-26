@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import {
   DayWord,
   DayWordBreak,
@@ -11,7 +11,7 @@ import { WordOfDayProps } from '../types/lexiconTypes';
 
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   return (
     <WordOfDayContainer>

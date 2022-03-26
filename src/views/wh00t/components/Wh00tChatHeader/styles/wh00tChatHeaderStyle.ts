@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { Wh00tChatHeaderContainerProps } from '@/views/wh00t/types/wh00tTypes';
 
-export const Wh00tChatHeaderContainer = styled.div`
+export const Wh00tChatHeaderContainer = styled.div<Wh00tChatHeaderContainerProps>`
   background-color: ${(props: Wh00tChatHeaderContainerProps) => props.theme.wh00t.chatHeader.backgroundColor};
   margin: ${(props: Wh00tChatHeaderContainerProps) => (props.margin || '0')};
   border-radius: ${(props: Wh00tChatHeaderContainerProps) => (props.borderRadius || '0')};

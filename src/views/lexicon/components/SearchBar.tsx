@@ -1,10 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SearchButton, SearchContainer, SearchInput } from '../styles/searchContainer';
 
 export function SearchBar() {
   const searchInputRef: React.MutableRefObject<any> = React.useRef();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const sendSearchWord = () => {
     navigate(`/lexicon/search?word=${searchInputRef.current.value}`);
   };
