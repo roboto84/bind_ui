@@ -12,6 +12,11 @@ export const LightTheme: ThemeType = {
     bgColor: '#d4d4d4',
     textColor: 'black',
     linkColor: '#5dd2f2',
+    code: {
+      backgroundColor: '#e8f5fa',
+      borderColor: 'rgba(11,76,140,.2)',
+      textColor: '#0b4c8c',
+    },
   },
   button: {
     border: 'grey',

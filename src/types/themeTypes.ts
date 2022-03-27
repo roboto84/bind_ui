@@ -57,6 +57,11 @@ type CoreStyleType = {
   bgColor: string,
   textColor: string,
   linkColor: string,
+  code: {
+    backgroundColor: string,
+    borderColor: string,
+    textColor: string
+  }
 }
 
 type AirThemeType = {

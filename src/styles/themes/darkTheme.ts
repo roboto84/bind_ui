@@ -11,6 +11,11 @@ export const DarkTheme: ThemeType = {
     bgColor: customTheme.background,
     textColor: customTheme.textColor,
     linkColor: customTheme.lightBlue,
+    code: {
+      backgroundColor: '#2e3234',
+      borderColor: 'rgb(93, 93, 93)',
+      textColor: '#d88e01',
+    },
   },
   chart: {
     border: '#292929',

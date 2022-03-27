@@ -38,4 +38,16 @@ export const GlobalThemeStyle = createGlobalStyle`
   tr:nth-child(even) {
     background-color: ${(props: GlobalThemeType) => props.theme.air.weatherTable.evenCellsBackgroundColor};
   }
+  
+  code {
+    background: ${(props: GlobalThemeType) => props.theme.core.code.backgroundColor};
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.core.code.borderColor};
+    border-radius: 4px;
+    color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
+    display: inline-block;
+    font-family: monospace;
+    font-size: 85%;
+    padding: 0 4px;
+    white-space: normal;
+  }
 `;

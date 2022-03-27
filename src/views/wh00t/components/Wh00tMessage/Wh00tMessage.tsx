@@ -1,6 +1,6 @@
 import React from 'react';
 import { Wh00tMessageProps } from '@/views/wh00t/types/wh00tTypes';
-import { isImageLink, linkify } from '@/views/wh00t/utils';
+import { isImageLink, noneTokenTextTransform, textTransform } from '@/views/wh00t/utils';
 import { Wh00tBaseUserImage } from '@/views/wh00t/components/Wh00tMessage/components/Wh00tBaseUserImage';
 import { simpleDateTimeFormat } from '@/utils/formatting';
 import {
@@ -27,10 +27,10 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
     let messageTextView: string;
     let messageImage: JSX.Element = null;
     if (isImageLink(messagePackage.message)) {
-      messageTextView = `${linkify(messagePackage.message)}&#10;`;
+      messageTextView = `${noneTokenTextTransform(messagePackage.message)}&#10;`;
       messageImage = imageGenerator(messagePackage.message);
     } else {
-      messageTextView = linkify(messagePackage.message);
+      messageTextView = textTransform(messagePackage.message);
     }
 
     return (
