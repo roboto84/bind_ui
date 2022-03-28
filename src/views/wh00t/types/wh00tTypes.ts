@@ -18,6 +18,10 @@ export type Wh00tMessageProps = {
   messagePackage: Wh00tMessagePackage
 }
 
+export type Wh00tMessageTextProps = {
+  messageText: string
+}
+
 export enum ElementSize {
   SMALL = 'SMALL',
   LARGE = 'LARGE'

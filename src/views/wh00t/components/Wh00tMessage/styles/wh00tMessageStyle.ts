@@ -50,7 +50,7 @@ export const Wh00tMessageTime = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.timeColor};
 `;
 
-export const Wh00tMessageText = styled.span`
+export const Wh00tMessageTextContainer = styled.span`
   white-space: pre;
   word-break: break-all;
   
