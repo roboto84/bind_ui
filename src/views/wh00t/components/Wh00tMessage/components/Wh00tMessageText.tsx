@@ -82,7 +82,7 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
   let messageImage: JSX.Element = null;
   let messageTextView: JSX.Element[];
   if (isImageLink(messageText)) {
-    messageTextView = [<span>${noneTokenTextTransform(messageText)}&#10;</span>];
+    messageTextView = [noneTokenTextSpanElement(noneTokenTextTransform(messageText).concat('&#10'))];
     messageImage = imageGenerator(messageText);
   } else {
     messageTextView = textTransform(messageText);
