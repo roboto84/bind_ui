@@ -26,6 +26,7 @@ export enum ElementSize {
   SMALL = 'SMALL',
   LARGE = 'LARGE'
 }
+
 export type Wh00tChatHeaderProps = {
   headerButtons: HeaderButtons,
   headerSize: ElementSize,
@@ -35,4 +36,18 @@ export type Wh00tChatHeaderProps = {
 export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {
   margin ?: string,
   borderRadius?: string
+}
+
+export enum CssDisplay {
+  flex = 'flex',
+  none = 'none'
+}
+
+export type EmojiSelectorProps = {
+  display: boolean
+  addTextCallback: Function
+}
+
+export interface EmojiSelectorContainerProps extends GlobalThemeType {
+  display: CssDisplay
 }

@@ -1,5 +1,5 @@
 import { Wh00tMessageTextProps } from '@/views/wh00t/types/wh00tTypes';
-import { isImageLink, noneTokenTextTransform } from '@/views/wh00t/utils';
+import { isImageLink, noneTokenTextTransform } from '@/views/wh00t/utils/utils';
 import {
   Wh00tImage,
   Wh00tMessageTextContainer,
