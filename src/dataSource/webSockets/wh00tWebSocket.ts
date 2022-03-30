@@ -3,6 +3,8 @@ import { WSS_BASE_URL } from '@/dataSource/urls';
 import { randomIntFromInterval } from '@/utils/utils';
 import { getSimpleDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
+import { Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
+import { secretFlag } from '@/views/wh00t/utils/chatFlags';
 
 export class Wh00tWebSocket {
   clientId: string;
@@ -41,18 +43,31 @@ export class Wh00tWebSocket {
     this.wh00tDispatch = dispatch;
   }
 
-  handleMessage(messageContext: Wh00tMessageTypeEnum, wh00tMessage: Object): void {
-    this.wh00tDispatch({
+  handleMessage(messageContext: Wh00tMessageTypeEnum, wh00tMessage: Wh00tMessagePackage): void {
+    const newMessage = {
       type: messageContext === Wh00tMessageTypeEnum.SOCKET
         ? Wh00tActionsEnum.NEW_MESSAGE : Wh00tActionsEnum.HISTORICAL_MESSAGE,
       value: wh00tMessage,
-    });
+    };
+    this.wh00tDispatch(newMessage);
+    if (wh00tMessage.message.indexOf(secretFlag) > -1) {
+      this.clearSecretMessage(wh00tMessage);
+    }
   }
 
   sendMessage(message: string) {
     if (message !== '') {
       this.wh00tWS.send(message);
     }
+  }
+
+  clearSecretMessage(message: Wh00tMessagePackage) {
+    setTimeout(() => {
+      this.wh00tDispatch({
+        type: Wh00tActionsEnum.SECRET_MESSAGE,
+        value: message,
+      });
+    }, 60000);
   }
 
   reattemptWh00tSocketConnection() {

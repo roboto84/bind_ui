@@ -42,6 +42,17 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
         historicalChatMessages: state.historicalChatMessages.concat(state.currentChatMessage),
         currentChatMessage: action.value,
       };
+    case Wh00tActionsEnum.SECRET_MESSAGE:
+      return {
+        ...state,
+        historicalChatMessages: state.historicalChatMessages.filter(
+          (historicalMessage) => (
+            historicalMessage.message !== action.value.message),
+        ),
+        currentChatMessage: state.currentChatMessage && (state.currentChatMessage.message === action.value.message)
+          ? null
+          : state.currentChatMessage,
+      };
     case Wh00tActionsEnum.CLEAR_MESSAGES:
       return {
         ...state,
