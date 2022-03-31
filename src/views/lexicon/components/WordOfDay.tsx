@@ -27,8 +27,8 @@ export function WordOfDay(props: WordOfDayProps) {
       <DayWordPronounce>{pronunciationView(...wordDefinition.pronounce)}</DayWordPronounce>
       <DayWordDefinitions>
         <DayWordDefinitionsList>
-          {wordDefinition.definitions.map((definition:string, index:number) => (
-            <li key={'definitionItem'.concat(String(index))}>
+          {wordDefinition.definitions.map((definition:string) => (
+            <li key={'definitionItem'.concat(definition.substring(0, 20))}>
               { definition }
             </li>
           ))}

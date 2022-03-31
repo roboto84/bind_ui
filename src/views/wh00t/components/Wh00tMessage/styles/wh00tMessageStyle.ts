@@ -50,33 +50,33 @@ export const Wh00tMessageTime = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.timeColor};
 `;
 
+export const BoldText = styled.span`
+  color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
+  font-weight: 700;
+`;
+
+export const ItalicText = styled.span`
+  color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
+  font-style: italic;
+`;
+
+export const CodeBlock = styled.div`
+  background: ${(props: GlobalThemeType) => props.theme.core.code.backgroundColor};
+  border: 1px solid ${(props: GlobalThemeType) => props.theme.core.code.borderColor};
+  border-radius: 4px;
+  color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
+  display: block;
+  font-family: monospace;
+  font-size: 85%;
+  padding: 10px;
+  margin: 20px;
+  white-space: pre;
+  word-break: break-all;
+`;
+
 export const Wh00tMessageTextContainer = styled.span`
   white-space: pre;
   word-break: break-all;
-  
-  .bold {
-    color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
-    font-weight: 700;
-  }
-  
-  .italic {
-    color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
-    font-style: italic;
-  }
-  
-  .codeBlock {
-    background: ${(props: GlobalThemeType) => props.theme.core.code.backgroundColor};
-    border: 1px solid ${(props: GlobalThemeType) => props.theme.core.code.borderColor};
-    border-radius: 4px;
-    color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
-    display: block;
-    font-family: monospace;
-    font-size: 85%;
-    padding: 10px;
-    margin: 20px;
-    white-space: pre;
-    word-break: break-all;
-  }
 `;
 
 export const Wh00tImage = styled.img`

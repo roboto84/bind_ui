@@ -12,9 +12,9 @@ export function EmojiSelector(props: EmojiSelectorProps) {
 
   return (
     <EmojiSelectorContainer display={display ? CssDisplay.flex : CssDisplay.none}>
-      {EmojiKeys.map((EmojiKey:string, index:number) => (
+      {EmojiKeys.map((EmojiKey:string) => (
         <EmojiContainer
-          key={'emojiOption'.concat(String(index))}
+          key={'emojiOption-'.concat(EmojiKey)}
           title={EmojiKey}
           onClick={() => (addTextCallback(EmojiOptions[EmojiKey]))}
         >

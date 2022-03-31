@@ -1,16 +1,20 @@
 import { Wh00tMessageTextProps } from '@/views/wh00t/types/wh00tTypes';
 import { isImageLink, noneTokenTextTransform } from '@/views/wh00t/utils/utils';
 import {
+  BoldText,
+  CodeBlock,
+  ItalicText,
   Wh00tImage,
   Wh00tMessageTextContainer,
 } from '@/views/wh00t/components/Wh00tMessage/styles/wh00tMessageStyle';
 import React from 'react';
+import { randomUuid } from '@/utils/utils';
 
 const tokenTransforms: { [key: string]: Function } = {
-  '`': (text: string): JSX.Element => (<code>{text}</code>),
-  '*': (text: string): JSX.Element => (<span className="bold">{text}</span>),
-  '_': (text: string): JSX.Element => (<span className="italic">{text}</span>),
-  '```': (text: string): JSX.Element => (<div className="codeBlock">{text}</div>),
+  '`': (text: string): JSX.Element => (<code key={randomUuid()}>{text}</code>),
+  '*': (text: string): JSX.Element => (<BoldText key={randomUuid()}>{text}</BoldText>),
+  '_': (text: string): JSX.Element => (<ItalicText key={randomUuid()}>{text}</ItalicText>),
+  '```': (text: string): JSX.Element => (<CodeBlock key={randomUuid()}>{text}</CodeBlock>),
 };
 
 function imageGenerator(imageLink: string): JSX.Element {
@@ -18,7 +22,7 @@ function imageGenerator(imageLink: string): JSX.Element {
 }
 
 function noneTokenTextSpanElement(htmlText: string): JSX.Element {
-  return (<span dangerouslySetInnerHTML={{ __html: htmlText }} />);
+  return (<span key={randomUuid()} dangerouslySetInnerHTML={{ __html: htmlText }} />);
 }
 
 export function textTransform(text: string): JSX.Element[] {

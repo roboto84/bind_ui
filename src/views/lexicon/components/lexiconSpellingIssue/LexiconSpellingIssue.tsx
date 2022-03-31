@@ -18,7 +18,7 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
       <SpellingSuggestions>
         <WordListContainer>
           { wordDefinition.spellingSuggestions.map((word: string) => (
-            <div className="word_list_item">
+            <div key={'spelling-suggestion-'.concat(word)} className="word_list_item">
               {word}
             </div>
           )) }

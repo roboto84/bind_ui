@@ -10,11 +10,11 @@ export function LatestWordList(props: LatestWordListProps) {
 
   return (
     <WordListContainer>
-      { wordList.map((word: string, index:number) => (
+      { wordList.map((word: string) => (
         <Word
           className="word_list_item"
           onClick={() => navigate(`/lexicon/search?word=${word}`)}
-          key={'wordListItem'.concat(String(index))}
+          key={'wordListItem'.concat(word)}
         >
           {word}
         </Word>

@@ -13,8 +13,8 @@ export function CurrentWeatherReport(props: CurrentWeatherReportProps) {
       <Weather>
         {
         report.weatherForecast.map(
-          (forecast:WeatherSummary, index:number) => (
-            <ForecastSubTile key={'forecastTile'.concat(String(index))} forecast={forecast} />
+          (forecast:WeatherSummary) => (
+            <ForecastSubTile key={'forecastTile'.concat(String(forecast.date))} forecast={forecast} />
           ),
         )
       }

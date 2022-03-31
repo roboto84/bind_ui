@@ -15,16 +15,16 @@ export function Table(props: TableProps) {
   const keyGenerator = (
     key: string,
     cellTitle: string,
-    index: number,
-  ): string => key.concat(cellTitle, String(index));
+    uniqueId: string,
+  ): string => key.concat(cellTitle, uniqueId);
 
   return (
     <table>
       <thead>
         <tr>
           {
-            tableObject.headers.map((title:string, index:number) => (
-              <th key={keyGenerator(tableObject.key, 'tableHeader', index)}>{title}</th>
+            tableObject.headers.map((title:string) => (
+              <th key={keyGenerator(tableObject.key, 'tableHeader', title)}>{title}</th>
             ))
           }
         </tr>
@@ -32,10 +32,10 @@ export function Table(props: TableProps) {
       <tbody>
         {
           tableObject.cells.map((cellValues:string[], cellIndex:number) => (
-            <tr key={keyGenerator(tableObject.key, 'tableCell', cellIndex)}>
+            <tr key={keyGenerator(tableObject.key, 'tableCell', String(cellIndex))}>
               {
                 cellValues.map((tableValue:string, valueIndex:number) => (
-                  <td key={keyGenerator(tableObject.key, 'valueCell', valueIndex)}>
+                  <td key={keyGenerator(tableObject.key, 'valueCell', String(valueIndex))}>
                     {tableValue}
                   </td>
                 ))

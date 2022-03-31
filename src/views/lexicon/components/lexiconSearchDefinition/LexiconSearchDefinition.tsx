@@ -27,7 +27,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     (wordStem:string, index:number, array:string[]) => {
       const stem: ReactNode = (
         <Stem
-          key={'wordStem-'.concat(String(index))}
+          key={'wordStem-'.concat(wordStem)}
           className="word_list_item"
           onClick={() => navigate(`/lexicon/search?word=${wordStem}`)}
         >
@@ -38,9 +38,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         return stem;
       }
       return (
-        <span key={'wordStemContainer-'.concat(String(index))}>
+        <span key={'wordStemContainer-'.concat(wordStem)}>
           {stem}
-          <span key={'wordStemComma-'.concat(String(index))}>,</span>
+          <span key={'wordStemComma-'.concat(wordStem)}>,</span>
         </span>
       );
     },
@@ -71,8 +71,8 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
       <WordDefEtymology>◦ etymology: {wordDefinition.etymology}</WordDefEtymology>
       <WordDefinitions>
         <WordDefinitionList>
-          {wordDefinition.definitions.map((definition:string, index:number) => (
-            <li key={'wordDef-'.concat(String(index))}>
+          {wordDefinition.definitions.map((definition:string) => (
+            <li key={'wordDef-'.concat(definition.substring(0, 20))}>
               { definition }
             </li>
           ))}
