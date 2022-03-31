@@ -1,6 +1,10 @@
 import React, { useMemo, useReducer, useEffect } from 'react';
 import { ChildrenProps } from '@/types';
-import { Wh00tContextActionType, Wh00tContextStateType } from '@/context/types/wh00tContextTypes';
+import {
+  Wh00tContextActionType,
+  Wh00tContextStateType,
+  Wh00tMessagePackage,
+} from '@/context/types/wh00tContextTypes';
 import { LocalStorageEnum, Wh00tActionsEnum } from '@/context/types/enums';
 import { Wh00tWebSocket } from '@/dataSource/webSockets/wh00tWebSocket';
 import { getLocalStorage } from '@/utils/localStorage';
@@ -39,17 +43,20 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
       return {
         ...state,
         wh00tIsConnected: true,
-        historicalChatMessages: state.historicalChatMessages.concat(state.currentChatMessage),
+        historicalChatMessages: state.currentChatMessage
+          ? state.historicalChatMessages.concat(state.currentChatMessage)
+          : state.historicalChatMessages,
         currentChatMessage: action.value,
       };
     case Wh00tActionsEnum.SECRET_MESSAGE:
       return {
         ...state,
         historicalChatMessages: state.historicalChatMessages.filter(
-          (historicalMessage) => (
+          (historicalMessage: Wh00tMessagePackage) => (
             historicalMessage.message !== action.value.message),
         ),
-        currentChatMessage: state.currentChatMessage && (state.currentChatMessage.message === action.value.message)
+        currentChatMessage: state.currentChatMessage
+        && (state.currentChatMessage.message === action.value.message)
           ? null
           : state.currentChatMessage,
       };

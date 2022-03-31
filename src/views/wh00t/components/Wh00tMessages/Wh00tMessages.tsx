@@ -25,11 +25,9 @@ export function Wh00tMessages() {
   return (
     <Wh00tMessagesContainer>
       {
-        historicalChatMessages.map((
-          historicalMessage: Wh00tMessagePackage,
-        ) => (
+        historicalChatMessages.map((historicalMessage: Wh00tMessagePackage, index: number) => (
           <Wh00tMessage
-            key={'wh00tMessage'.concat(historicalMessage.time)}
+            key={'wh00tMessage-'.concat(String(index))}
             currentClientId={clientId}
             messagePackage={historicalMessage}
           />
