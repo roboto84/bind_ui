@@ -55,8 +55,8 @@ export function textTransform(text: string): JSX.Element[] {
           currentToken.concat(text.substring(currentIndex + 1, i + 1)),
         ));
       }
-    } else if (transformTokens.indexOf(singleCharToken) > -1
-      || transformTokens.indexOf(triCharToken) > -1) {
+    } else if ((transformTokens.indexOf(singleCharToken) > -1
+      || transformTokens.indexOf(triCharToken) > -1) && (text.charAt(i - 1) === ' ')) {
       transformedTextArr.push(noneTokenTextSpanElement(
         noneTokenTextTransform(noneTokenText),
       ));
