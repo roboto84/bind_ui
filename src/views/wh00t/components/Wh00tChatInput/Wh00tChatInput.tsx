@@ -53,8 +53,10 @@ export function Wh00tChatInput() {
         event.preventDefault();
       }
       if (keyLog.ArrowUp === true) {
-        textAreaRef.current.value = lastMessage;
-        event.preventDefault();
+        if (textAreaRef.current.value === '') {
+          textAreaRef.current.value = lastMessage;
+          event.preventDefault();
+        }
       }
     }
   };
