@@ -1,4 +1,8 @@
+import wh00tBackgroundDark from '@/assets/images/wh00t_background_dark.png';
+import wh00tBackgroundLight from '@/assets/images/wh00t_background_light.png';
+
 export const wh00tDark = {
+  backgroundImage: wh00tBackgroundDark,
   miniWh00t: {
     minimizedButton: {
       color: '#939393',
@@ -43,6 +47,7 @@ export const wh00tDark = {
 };
 
 export const wh00tLight = {
+  backgroundImage: wh00tBackgroundLight,
   miniWh00t: {
     minimizedButton: {
       color: '#747474',

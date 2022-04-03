@@ -4,6 +4,9 @@ import { GlobalThemeType } from '@/types';
 
 export const Wh00tMessagesContainer = styled.div`
   background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.backgroundColor};
+  background-image: url(${(props: GlobalThemeType) => props.theme.wh00t.backgroundImage});
+  background-repeat: no-repeat;
+  background-position: 50vw 40vh;
   color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.messageText};
   margin: 0 5px 5px 5px;
   font-family: verdana,serif;

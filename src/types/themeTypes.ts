@@ -77,6 +77,7 @@ type AirThemeType = {
 }
 
 type Wh00tThemeType = {
+  backgroundImage: string,
   miniWh00t: {
     minimizedButton: {
       color: string,
