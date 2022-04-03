@@ -55,20 +55,25 @@ export function textTransform(text: string): JSX.Element[] {
           currentToken.concat(text.substring(currentIndex + 1, i + 1)),
         ));
       }
-    } else if ((transformTokens.indexOf(singleCharToken) > -1
-      || transformTokens.indexOf(triCharToken) > -1) && (text.charAt(i - 1) === ' ')) {
-      transformedTextArr.push(noneTokenTextSpanElement(
-        noneTokenTextTransform(noneTokenText),
-      ));
-      noneTokenText = '';
-
+    } else if ((transformTokens.indexOf(singleCharToken) > -1)
+      || transformTokens.indexOf(triCharToken) > -1) {
       if (transformTokens.indexOf(triCharToken) > -1) {
+        transformedTextArr.push(noneTokenTextSpanElement(
+          noneTokenTextTransform(noneTokenText),
+        ));
+        noneTokenText = '';
         currentToken = triCharToken;
         i += 2;
         currentIndex = i;
-      } else if (transformTokens.indexOf(singleCharToken) > -1) {
+      } else if ((i > 0 && text.charAt(i - 1) === ' ') || (i === 0)) {
+        transformedTextArr.push(noneTokenTextSpanElement(
+          noneTokenTextTransform(noneTokenText),
+        ));
+        noneTokenText = '';
         currentToken = singleCharToken;
         currentIndex = i;
+      } else {
+        noneTokenText = noneTokenText.concat(text.charAt(i));
       }
     } else if (i === (text.length - 1)) {
       transformedTextArr.push(noneTokenTextSpanElement(
