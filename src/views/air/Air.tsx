@@ -6,8 +6,8 @@ import { Loader } from '@/components/Loader';
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { ErrorView } from '@/components/ErrorView';
-import NavigationLink from '@/views/components/Header/NavigationLink';
-import { AirHomeContainer, SubNavigation, SubNavLinkContainer } from './styles/airHomeStyles';
+import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
+import { AirHomeContainer } from './styles/airHomeStyles';
 
 export function Air() {
   const { isLoading, isError, data, error } = useQuery<LiveWeatherReport,
@@ -35,12 +35,7 @@ export function Air() {
   const airCurrentWeatherReport: LiveWeatherReport = camelcaseKeys<LiveWeatherReport>(data);
   return (
     <AirHomeContainer>
-      <SubNavigation>
-        <SubNavLinkContainer style={{ marginRight: '50px' }}>
-          <NavigationLink linkTo="/air/temperature">Charts</NavigationLink>
-          <NavigationLink linkTo="/air/weather">Tables</NavigationLink>
-        </SubNavLinkContainer>
-      </SubNavigation>
+      <AirSubNavigation />
       <CurrentWeatherReport report={airCurrentWeatherReport} />
     </AirHomeContainer>
   );

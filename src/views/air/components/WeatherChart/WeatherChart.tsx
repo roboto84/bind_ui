@@ -5,14 +5,10 @@ import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
-import NavigationLink from '@/views/components/Header/NavigationLink';
 import { LineChart, ChartObject } from '@/components/LineChart';
-import {
-  AirHomeContainer,
-  ChartSubNavigation,
-  SubNavLinkContainer,
-  WeatherTablesStyle,
-} from '../../styles/airHomeStyles';
+import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
+import { WeatherChartSubNavigation } from '@/views/air/components/WeatherChart/WeatherChartSubNavigation';
+import { AirHomeContainer, WeatherSubContainer } from '../../styles/airHomeStyles';
 import { WeatherChartProps, WeatherChartType, WeatherSummary } from '../../types/airTypes';
 
 export function WeatherChart(props: WeatherChartProps) {
@@ -57,31 +53,15 @@ export function WeatherChart(props: WeatherChartProps) {
     ? [29.70, 30.25] : null;
 
   return (
-    <WeatherTablesStyle>
-      <ChartSubNavigation>
-        <SubNavLinkContainer style={{ marginBottom: '10px' }}>
-          <NavigationLink linkTo="/air/temperature">Temperature</NavigationLink>
-          <NavigationLink linkTo="/air/humidity">Humidity</NavigationLink>
-          <NavigationLink linkTo="/air/precipitation">Precipitation</NavigationLink>
-          <NavigationLink linkTo="/air/pressure">Pressure</NavigationLink>
-          <NavigationLink linkTo="/air/epa_index">EPA Index</NavigationLink>
-          <NavigationLink linkTo="/air/particulate_matter_10">PM10</NavigationLink>
-          <NavigationLink linkTo="/air/particulate_matter_25">PM25</NavigationLink>
-          <NavigationLink linkTo="/air/pollutant_co">CO</NavigationLink>
-          <NavigationLink linkTo="/air/pollutant_no2">NO2</NavigationLink>
-          <NavigationLink linkTo="/air/pollutant_o3">O3</NavigationLink>
-          <NavigationLink linkTo="/air/pollutant_so2">SO2</NavigationLink>
-          <NavigationLink linkTo="/air/pollen_grass">Grass</NavigationLink>
-          <NavigationLink linkTo="/air/pollen_tree">Trees</NavigationLink>
-          <NavigationLink linkTo="/air/pollen_weed">Weeds</NavigationLink>
-        </SubNavLinkContainer>
-      </ChartSubNavigation>
+    <WeatherSubContainer>
+      <AirSubNavigation />
+      <WeatherChartSubNavigation />
       <LineChart
         xAxisLabel={chartXAxisLabel}
         yAxisLabel={chartYAxisLabel}
         chartObject={weatherSection}
         yDomainRange={yDomain}
       />
-    </WeatherTablesStyle>
+    </WeatherSubContainer>
   );
 }

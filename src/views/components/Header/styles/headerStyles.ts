@@ -33,7 +33,7 @@ export const Title = styled.h1``;
 export const SubTitle = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.header.subTitleFontColor};
   font-size: 14px;
-  margin: 0 30px 10px 42px;
+  margin: 0 30px 10px 40px;
   
   @media ${device.tablet} {
     display: none;

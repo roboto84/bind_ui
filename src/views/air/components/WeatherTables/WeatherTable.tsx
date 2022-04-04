@@ -6,13 +6,13 @@ import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
-import NavigationLink from '@/views/components/Header/NavigationLink';
 import { Table } from '@/components/Table';
+import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
+import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import {
   AirHomeContainer,
-  SubNavigation,
-  SubNavLinkContainer,
-  WeatherTablesStyle,
+  WeatherSubContainer,
+  WeatherTableContainer
 } from '../../styles/airHomeStyles';
 import {
   SubWeatherSummary,
@@ -102,20 +102,17 @@ export function WeatherTable(props: WeatherTablesProps) {
   );
 
   return (
-    <WeatherTablesStyle>
-      <SubNavigation>
-        <SubNavLinkContainer style={{ marginBottom: '10px' }}>
-          <NavigationLink linkTo="/air/weather">Weather</NavigationLink>
-          <NavigationLink linkTo="/air/pollution">Pollution</NavigationLink>
-          <NavigationLink linkTo="/air/pollen">Pollen</NavigationLink>
-        </SubNavLinkContainer>
-      </SubNavigation>
-      <Table tableObject={{
-        key: weatherSection.title,
-        headers: tableHeaders,
-        cells: cellData,
-      }}
-      />
-    </WeatherTablesStyle>
+    <WeatherSubContainer>
+      <AirSubNavigation />
+      <WeatherTableContainer>
+        <WeatherTableSubNavigation />
+        <Table tableObject={{
+          key: weatherSection.title,
+          headers: tableHeaders,
+          cells: cellData,
+        }}
+        />
+      </WeatherTableContainer>
+    </WeatherSubContainer>
   );
 }

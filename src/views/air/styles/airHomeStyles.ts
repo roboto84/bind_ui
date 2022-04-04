@@ -1,7 +1,6 @@
-import React, { ReactChildren } from 'react';
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { CurrentWeatherProps, WeatherSubcategoryProps } from '../types/airTypes';
+import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
 export const WeatherIconContainer = styled.div`
   margin: -20px 0 -58px 0;
@@ -100,21 +99,16 @@ export const WeatherForecastElement = styled.div`
   padding: 4px;
 `;
 
-export const WeatherTablesStyle = styled.div`
-  font-size: 13px;
-  margin: 55px 4vw 20px 4vw;
+export const WeatherSubContainer = styled.div`
+  margin-top: 20px;
 `;
 
-export const SubNavigation = styled.div`
+export const SubNavigation = styled.div<SubNavigationProps>`
   display: flex;
-  justify-content: right;
+  justify-content: ${(props: SubNavigationProps) => props.justifyContent};
+  margin: ${(props: SubNavigationProps) => props.margin};
 `;
 
-export const ChartSubNavigation = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-export const SubNavLinkContainer = styled.div`
-  display: flex;
+export const WeatherTableContainer = styled.div`
+  margin: 0 20px;
 `;

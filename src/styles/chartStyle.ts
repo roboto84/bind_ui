@@ -4,7 +4,6 @@ import { GlobalThemeType } from '@/types';
 export const LineChartContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   
   .tooltip {
     position: absolute;

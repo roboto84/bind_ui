@@ -28,17 +28,36 @@ export const GlobalThemeStyle = createGlobalStyle`
     background-color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.backgroundColor};
   }
 
-  td, th {
-    color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
+  th {
+    color: ${(props: GlobalThemeType) => props.theme.button.transitionFontColor};
+    background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
     padding: 8px;
-    border: 8px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
+    border: 5px solid ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 2px;
+    transition: 0.4s;
+  }
+
+  td {
+    padding: 10px;
+    border: 5px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
     text-align: left;
   }
 
-  tr:nth-child(even) {
-    background-color: ${(props: GlobalThemeType) => props.theme.air.weatherTable.evenCellsBackgroundColor};
+  tr {
+    color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
+    
+    :nth-child(even) {
+      background-color: ${(props: GlobalThemeType) => props.theme.air.weatherTable.evenCellsBackgroundColor};
+    }
+
+    :hover {
+      color: white;
+      background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    }
   }
-  
+
   code {
     background: ${(props: GlobalThemeType) => props.theme.core.code.backgroundColor};
     border: 1px solid ${(props: GlobalThemeType) => props.theme.core.code.borderColor};

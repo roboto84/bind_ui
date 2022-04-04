@@ -1,6 +1,7 @@
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { GlobalThemeType } from '@/types';
 import { ChartObject, LineChartProps } from '@/components/LineChart';
+import { SubNavigation } from '@/views/air/styles/airHomeStyles';
 
 export type AirStandardTimeView = {
   date: string,
@@ -115,4 +116,9 @@ export type WeatherTableObject<Type> = {
 
 export interface WeatherChartProps {
   chartKey: WeatherChartType
+}
+
+export interface SubNavigationProps extends GlobalThemeType{
+  margin: string,
+  justifyContent: string
 }
