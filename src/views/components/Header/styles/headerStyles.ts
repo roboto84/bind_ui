@@ -28,6 +28,8 @@ export const TitleContainer = styled.div`
   }
 `;
 
+export const Title = styled.h1``;
+
 export const SubTitle = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.header.subTitleFontColor};
   font-size: 14px;

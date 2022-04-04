@@ -4,7 +4,7 @@ import { Wh00tConnect } from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Wh00tChatInput } from './components/Wh00tChatInput/Wh00tChatInput';
 import { Wh00tMessages } from './components/Wh00tMessages/Wh00tMessages';
-import { Wh00tContainer } from './styles/wh00tStyles';
+import { Wh00tBackground, Wh00tContainer } from './styles/wh00tStyles';
 import { Wh00tChatHeader } from './components/Wh00tChatHeader/Wh00tChatHeader';
 
 export function Wh00t() {
@@ -28,6 +28,7 @@ export function Wh00t() {
   return (
     <Wh00tContainer>
       <Wh00tConnect />
+      <Wh00tBackground />
     </Wh00tContainer>
   );
 }
