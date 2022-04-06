@@ -4,6 +4,7 @@ import {
   BoldText,
   CodeBlock,
   ItalicText,
+  TextMessage,
   Wh00tImage,
   Wh00tMessageTextContainer,
 } from '@/views/wh00t/components/Wh00tMessage/styles/wh00tMessageStyle';
@@ -22,7 +23,7 @@ function imageGenerator(imageLink: string): JSX.Element {
 }
 
 function noneTokenTextSpanElement(htmlText: string): JSX.Element {
-  return (<span key={randomUuid()} dangerouslySetInnerHTML={{ __html: htmlText }} />);
+  return (<TextMessage key={randomUuid()} dangerouslySetInnerHTML={{ __html: htmlText }} />);
 }
 
 export function textTransform(text: string): JSX.Element[] {

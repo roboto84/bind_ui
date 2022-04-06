@@ -70,13 +70,18 @@ export const CodeBlock = styled.div`
   font-size: 85%;
   padding: 10px;
   margin: 20px;
-  white-space: pre;
-  word-break: break-all;
+  white-space: break-spaces;
+  word-break: break-word;
+`;
+
+export const TextMessage = styled.span`
+  white-space: break-spaces;
+  word-break: break-word;
 `;
 
 export const Wh00tMessageTextContainer = styled.span`
-  white-space: pre;
-  word-break: break-all;
+  white-space: break-spaces;
+  word-break: break-word;
 `;
 
 export const Wh00tImage = styled.img`
