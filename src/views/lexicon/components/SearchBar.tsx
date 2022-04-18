@@ -26,7 +26,7 @@ export function SearchBar() {
         autoFocus
       />
       <SearchButton onClick={() => sendSearchWord()}>
-        Search Lexicon
+        Search
       </SearchButton>
     </SearchContainer>
   );
