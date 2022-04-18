@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const styleFont: string = '\'Roboto\', verdana, sans-serif';
+const styleFont: string = '\'Roboto\', Open Sans, Helvetica, Verdana, sans-serif';
 
 export const GlobalStyle = createGlobalStyle`
   h1 {
