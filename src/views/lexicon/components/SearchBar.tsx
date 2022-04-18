@@ -1,6 +1,13 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { SearchButton, SearchContainer, SearchInput } from '../styles/searchContainer';
+import { AiOutlineBackward, AiOutlineHome } from 'react-icons/ai';
+import {
+  BackButton,
+  HomeButton,
+  SearchButton,
+  SearchContainer,
+  SearchInput,
+} from '../styles/searchContainer';
 
 export function SearchBar() {
   const searchInputRef: React.MutableRefObject<any> = React.useRef();
@@ -18,6 +25,12 @@ export function SearchBar() {
 
   return (
     <SearchContainer>
+      <HomeButton onClick={() => navigate('/lexicon')}>
+        <AiOutlineHome />
+      </HomeButton>
+      <BackButton onClick={() => navigate(-1)}>
+        <AiOutlineBackward />
+      </BackButton>
       <SearchInput
         type="text"
         placeholder="Search Word"
