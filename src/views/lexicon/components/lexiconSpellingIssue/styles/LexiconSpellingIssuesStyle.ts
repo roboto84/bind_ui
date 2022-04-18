@@ -16,3 +16,5 @@ export const ErrorMessage = styled.div`
 export const SpellingSuggestions = styled.div`
   padding: 10px;
 `;
+
+export const SpellingSuggestion = styled.div``;
