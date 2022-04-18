@@ -6,7 +6,7 @@ import {
   DayWordDate, DayWordDefinitions, DayWordDefinitionsList, DayWordExample,
   DayWordPartOfSpeech, DayWordPronounce, WordOfDayContainer,
 } from '@/views/lexicon/styles/wordOfDayStyles';
-import { pronunciationView } from '@/utils/formatting';
+import { pronunciationView, wordExampleView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
 
 export function WordOfDay(props: WordOfDayProps) {
@@ -35,7 +35,7 @@ export function WordOfDay(props: WordOfDayProps) {
         </DayWordDefinitionsList>
       </DayWordDefinitions>
       <DayWordExample>
-        ( e.g. {wordDefinition.example} )
+        {wordExampleView(wordDefinition.example)}
       </DayWordExample>
     </WordOfDayContainer>
   );

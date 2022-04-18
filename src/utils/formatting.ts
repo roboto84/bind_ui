@@ -25,7 +25,3 @@ export function getSimpleDateTime(timestamp?: string): string {
   const dateTimeParts: AirStandardTimeView = getStandardTime(dateTime);
   return `${dateTimeParts.date} ${dateTimeParts.hour}`;
 }
-
-export function pronunciationView(oxPronounce: string, merPronounce: string): string {
-  return `${oxPronounce} | ${merPronounce}`;
-}

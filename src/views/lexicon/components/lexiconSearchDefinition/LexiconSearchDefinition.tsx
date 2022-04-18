@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
-import { pronunciationView } from '@/utils/formatting';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { pronunciationView, wordEtymologyView, wordExampleView } from '../../utils';
 import {
   WordDefinitionIntroduction,
   Word,
@@ -68,7 +68,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         {wordAudioComponent}
       </WordDefinitionIntroduction>
       <WordDefStems>{wordStemsView}</WordDefStems>
-      <WordDefEtymology>◦ etymology: {wordDefinition.etymology}</WordDefEtymology>
+      <WordDefEtymology>
+        {wordEtymologyView(wordDefinition.etymology)}
+      </WordDefEtymology>
       <WordDefinitions>
         <WordDefinitionList>
           {wordDefinition.definitions.map((definition:string) => (
@@ -78,7 +80,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
           ))}
         </WordDefinitionList>
       </WordDefinitions>
-      <WordExamples>( e.g. {wordDefinition.example} )</WordExamples>
+      <WordExamples>
+        {wordExampleView(wordDefinition.example)}
+      </WordExamples>
     </WordDefinition>
   );
 }
