@@ -1,5 +1,7 @@
 import React from 'react';
 import { ErrorContainer, ErrorTitle } from '@/styles/errorViewStyle';
+import RobotImg from '@/views/components/RobotImg';
+import { GenericErrorContainer } from '@/views/404/styles/404Style';
 
 type ErrorProps = {
  title: string,
@@ -9,13 +11,16 @@ type ErrorProps = {
 export function ErrorView(props: ErrorProps) {
   const { title, children } = props;
   return (
-    <ErrorContainer>
-      <ErrorTitle>
-        {title}
-      </ErrorTitle>
-      <div>
-        {children}
-      </div>
-    </ErrorContainer>
+    <GenericErrorContainer className="side-flexed">
+      <ErrorContainer>
+        <ErrorTitle>
+          {title}
+        </ErrorTitle>
+        <div>
+          {children}
+        </div>
+      </ErrorContainer>
+      <RobotImg robotType="SiProbot" />
+    </GenericErrorContainer>
   );
 }

@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '@/views/components/Header/Header';
 import { ErrorView } from '@/components/ErrorView';
-import RobotImg from '../components/RobotImg';
-import { GenericErrorContainer } from './styles/404Style';
+import { MainContainer } from '@/views/styles/appStyles';
 
 export function Error404() {
   const homeTitle: string = 'Error';
@@ -11,14 +10,13 @@ export function Error404() {
   return (
     <>
       <Header title={homeTitle} subtitle={homeSubtitle} />
-      <GenericErrorContainer className="side-flexed">
+      <MainContainer>
         <ErrorView title="404">
           <div>
             The Page You Requested Does Not Exist
           </div>
         </ErrorView>
-        <RobotImg robotType="SiProbot" />
-      </GenericErrorContainer>
+      </MainContainer>
     </>
   );
 }

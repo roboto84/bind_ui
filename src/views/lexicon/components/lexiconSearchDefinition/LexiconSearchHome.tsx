@@ -11,6 +11,7 @@ import {
 import { Loader } from '@/components/Loader';
 import { WordDefinition } from '@/views/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
+import { ErrorView } from '@/components/ErrorView';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 
 export function LexiconSearchHome() {
@@ -26,15 +27,20 @@ export function LexiconSearchHome() {
     );
   }
   if (isError) {
+    const errorMessage: string = error && error.message ? error.message : 'An error has occurred';
     return (
       <LexiconContainer>
-        Error: {error}
+        <ErrorView title="Error">
+          <div>
+            {errorMessage}
+          </div>
+        </ErrorView>
       </LexiconContainer>
     );
   }
 
   const wordSearchResponse: WordDefinition = camelcaseKeys<WordDefinition>(
-    data as WordDefinition,
+    data,
     { deep: true },
   );
 
