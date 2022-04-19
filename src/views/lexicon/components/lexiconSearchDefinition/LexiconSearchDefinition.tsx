@@ -5,7 +5,7 @@ import {
   pronunciationView,
   wordEtymologyView,
   wordExampleView,
-  wordParamBasicView
+  wordParamBasicView,
 } from '../../utils';
 import {
   WordDefinitionIntroduction,
@@ -23,6 +23,7 @@ import {
   WordDefinition,
   Stem,
 } from './styles/wordSearchDefinition';
+import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 
 export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const { wordDefinition } = props;
@@ -33,7 +34,6 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
       const stem: ReactNode = (
         <Stem
           key={'wordStem-'.concat(wordStem)}
-          className="word_list_item"
           onClick={() => navigate(`/lexicon/search?word=${wordStem}`)}
         >
           {wordStem}
@@ -78,11 +78,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
       </WordDefEtymology>
       <WordDefinitions>
         <WordDefinitionList>
-          {wordDefinition.definitions.map((definition:string) => (
-            <li key={'wordDef-'.concat(definition.substring(0, 20))}>
-              { definition }
-            </li>
-          ))}
+          <DefinitionListView definitions={wordDefinition.definitions} />
         </WordDefinitionList>
       </WordDefinitions>
       <WordExamples>

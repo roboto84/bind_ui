@@ -25,3 +25,7 @@ export type WordSearchDefinitionProps = {
 export type LatestWordListProps = {
   wordList: string[]
 }
+
+export type WordDefinitionsProps = {
+  definitions: string[]
+}

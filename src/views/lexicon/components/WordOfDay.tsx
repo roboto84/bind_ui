@@ -6,8 +6,9 @@ import {
   DayWordDate, DayWordDefinitions, DayWordDefinitionsList, DayWordExample,
   DayWordPartOfSpeech, DayWordPronounce, WordOfDayContainer,
 } from '@/views/lexicon/styles/wordOfDayStyles';
-import { pronunciationView, wordExampleView } from '../utils';
+import { pronunciationView, wordExampleView, wordParamBasicView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
+import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;
@@ -16,22 +17,17 @@ export function WordOfDay(props: WordOfDayProps) {
   return (
     <WordOfDayContainer>
       <DayWord
-        className="word_list_item"
         onClick={() => navigate(`/lexicon/search?word=${wordDefinition.word}`)}
       >
         {wordDefinition.word}
       </DayWord>
-      <DayWordDate>{wordDefinition.dateFirstUsed}</DayWordDate>
-      <DayWordPartOfSpeech>{wordDefinition.partOfSpeech}</DayWordPartOfSpeech>
-      <DayWordBreak>{wordDefinition.wordBreak}</DayWordBreak>
+      <DayWordDate>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DayWordDate>
+      <DayWordPartOfSpeech>{wordParamBasicView(wordDefinition.partOfSpeech)}</DayWordPartOfSpeech>
+      <DayWordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</DayWordBreak>
       <DayWordPronounce>{pronunciationView(...wordDefinition.pronounce)}</DayWordPronounce>
       <DayWordDefinitions>
         <DayWordDefinitionsList>
-          {wordDefinition.definitions.map((definition:string) => (
-            <li key={'definitionItem'.concat(definition.substring(0, 20))}>
-              { definition }
-            </li>
-          ))}
+          <DefinitionListView definitions={wordDefinition.definitions} />
         </DayWordDefinitionsList>
       </DayWordDefinitions>
       <DayWordExample>

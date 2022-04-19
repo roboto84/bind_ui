@@ -18,8 +18,8 @@ export const Wh00tMiniContainer = styled.div`
 
 export const MinimizedWh00tButton = styled.div`
   position: absolute;
-  right: 5px;
-  bottom: 5px;
+  right: 10px;
+  bottom: 10px;
   z-index: 1;
   height: 15px;
   width: 15px;

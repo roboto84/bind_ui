@@ -12,7 +12,6 @@ export function LatestWordList(props: LatestWordListProps) {
     <LatestWordListContainer>
       { wordList.map((word: string) => (
         <Word
-          className="word_list_item"
           onClick={() => navigate(`/lexicon/search?word=${word}`)}
           key={'wordListItem'.concat(word)}
         >

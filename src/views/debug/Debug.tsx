@@ -3,6 +3,7 @@ import {
   LatestMessage,
   MessageHistory,
   DebugHomeContainer,
+  DebugSectionContainer,
 } from '@/views/debug/styles/debugStyles';
 import { useQuery } from 'react-query';
 import { Loader } from '@/components/Loader';
@@ -34,20 +35,23 @@ export function Debug() {
 
   return (
     <DebugHomeContainer>
-      <h2>Latest Message</h2>
-      <LatestMessage>
-        <DebugMessageContainer message={data.message[0]} />
-      </LatestMessage>
-
-      <h2>Message History</h2>
-      <MessageHistory>
-        {
-          data.message.filter((message:DebugMessage, index:number) => index > 0)
-            .map((message: DebugMessage) => (
-              <DebugMessageContainer message={message} key={'message'.concat(message.time)} />
-            ))
-        }
-      </MessageHistory>
+      <DebugSectionContainer>
+        <h2>Latest Message</h2>
+        <LatestMessage>
+          <DebugMessageContainer message={data.message[0]} />
+        </LatestMessage>
+      </DebugSectionContainer>
+      <DebugSectionContainer>
+        <h2>Message History</h2>
+        <MessageHistory>
+          {
+            data.message.filter((message:DebugMessage, index:number) => index > 0)
+              .map((message: DebugMessage) => (
+                <DebugMessageContainer message={message} key={'message'.concat(message.time)} />
+              ))
+          }
+        </MessageHistory>
+      </DebugSectionContainer>
     </DebugHomeContainer>
   );
 }

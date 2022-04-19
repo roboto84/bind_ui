@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { WordOfDaySection } from '@/views/lexicon/styles/lexiconHomeStyles';
+import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
 
-const wordInfo = styled.span`
+const wordInfo = styled.div`
+  display: inline-block;
   margin-top: 30px;
   margin-left: 19px;
   color: #606060;
@@ -18,6 +20,7 @@ export const WordDefinition = styled(WordOfDaySection)`
 export const WordDefinitionIntroduction = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 20px;
 `;
 
@@ -27,7 +30,10 @@ export const Word = styled.div`
   margin-top: -3px;
 `;
 
-export const Stem = styled.span``;
+export const Stem = styled(LexiconHoverable)`
+  min-width: 0;
+  display: inline-block;
+`;
 
 export const DateFirstUsed = styled(wordInfo)`
   margin-left: 35px;

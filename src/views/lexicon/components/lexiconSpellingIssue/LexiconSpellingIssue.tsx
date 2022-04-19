@@ -22,7 +22,6 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
           { wordDefinition.spellingSuggestions.map((word: string) => (
             <SpellingSuggestion
               key={'spelling-suggestion-'.concat(word)}
-              className="word_list_item"
               onClick={() => navigate(`/lexicon/search?word=${word}`)}
             >
               {word}
