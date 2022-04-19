@@ -3,7 +3,7 @@ import {
   ErrorDisplay, ErrorMessage, SpellingSuggestion, SpellingSuggestions,
 } from '@/views/lexicon/components/lexiconSpellingIssue/styles/LexiconSpellingIssuesStyle';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
-import { WordListContainer } from '@/views/lexicon/styles/lexiconHomeStyles';
+import { LatestWordListContainer } from '@/views/lexicon/styles/lexiconHomeStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 
@@ -18,7 +18,7 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
         perhaps &quot;{wordDefinition.word}&quot; was misspelled, here are some suggestions:
       </ErrorMessage>
       <SpellingSuggestions>
-        <WordListContainer>
+        <LatestWordListContainer>
           { wordDefinition.spellingSuggestions.map((word: string) => (
             <SpellingSuggestion
               key={'spelling-suggestion-'.concat(word)}
@@ -28,7 +28,7 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
               {word}
             </SpellingSuggestion>
           )) }
-        </WordListContainer>
+        </LatestWordListContainer>
       </SpellingSuggestions>
     </LexiconContainer>
   );

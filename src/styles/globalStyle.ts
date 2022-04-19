@@ -12,13 +12,13 @@ export const GlobalStyle = createGlobalStyle`
   h2 {
     font-family: ${styleFont};
     font-size: 22px;
-    margin: 40px 40px 20px 20px;
+    margin: 10px;
   }
 
   h3 {
     font-family: ${styleFont};
     font-size: 16px;
-    margin: 20px 20px 10px 20px;
+    margin: 5px;
   }
 
   a:link {

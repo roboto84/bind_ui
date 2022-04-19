@@ -29,6 +29,7 @@ type ChartStyleType = {
 
 type LexiconThemeType = {
   textColor: string,
+  containerBackgroundColor: string,
   searchBar:{
     inputFontColor: string,
     inputFontFocusColor: string,

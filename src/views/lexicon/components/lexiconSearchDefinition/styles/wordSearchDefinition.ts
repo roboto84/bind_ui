@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { WordOfDaySection } from '@/views/lexicon/styles/lexiconHomeStyles';
 
-export const WordDefinition = styled.div`
+export const WordDefinition = styled(WordOfDaySection)`
   margin-top: 55px
 `;
 
@@ -48,7 +49,7 @@ export const Pronunciation = styled.div`
 `;
 
 export const WordAudio = styled.div`
-  margin-left: 70px;
+  margin-left: 100px;
   margin-top: 15px;
   font-style: italic;
   letter-spacing: 3px;

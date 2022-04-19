@@ -13,7 +13,8 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInput = styled(Input)`
-  min-width: 500px;
+  width: 500px;
+  min-width: 100px;
   margin: 10px 0;
 `;
 

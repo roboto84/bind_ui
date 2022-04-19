@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Word } from '@/views/lexicon/styles/wordListStyles';
-import { WordListContainer } from '../styles/lexiconHomeStyles';
+import { LatestWordListContainer } from '../styles/lexiconHomeStyles';
 import { LatestWordListProps } from '../types/lexiconTypes';
 
 export function LatestWordList(props: LatestWordListProps) {
@@ -9,7 +9,7 @@ export function LatestWordList(props: LatestWordListProps) {
   const navigate: NavigateFunction = useNavigate();
 
   return (
-    <WordListContainer>
+    <LatestWordListContainer>
       { wordList.map((word: string) => (
         <Word
           className="word_list_item"
@@ -19,6 +19,6 @@ export function LatestWordList(props: LatestWordListProps) {
           {word}
         </Word>
       )) }
-    </WordListContainer>
+    </LatestWordListContainer>
   );
 }

@@ -65,9 +65,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         <PartOfSpeech>{wordDefinition.partOfSpeech.toLowerCase()}</PartOfSpeech>
         <WordBreak>{wordDefinition.wordBreak}</WordBreak>
         <Pronunciation>{pronunciationView(...wordDefinition.pronounce)}</Pronunciation>
-        {wordAudioComponent}
       </WordDefinitionIntroduction>
       <WordDefStems>{wordStemsView}</WordDefStems>
+      {wordAudioComponent}
       <WordDefEtymology>
         {wordEtymologyView(wordDefinition.etymology)}
       </WordDefEtymology>

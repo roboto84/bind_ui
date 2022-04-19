@@ -9,7 +9,7 @@ import { ErrorView } from '@/components/ErrorView';
 import { lexiconApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { LatestWordListApiResult } from '@/dataSource/types/apiTypes';
 import { WordDefinition } from './types/lexiconTypes';
-import { WordListSection, WordOfDaySection } from './styles/lexiconHomeStyles';
+import { WordListSection, WordListContainer, WordOfDaySection } from './styles/lexiconHomeStyles';
 import { LexiconContainer } from './styles/lexiconStyles';
 
 export function Lexicon() {
@@ -49,13 +49,15 @@ export function Lexicon() {
   return (
     <LexiconContainer>
       <SearchBar />
-      <h2>Word of Day</h2>
       <WordOfDaySection>
+        <h2>Word of Day</h2>
         <WordOfDay wordDefinition={wordOfDayResponse} />
       </WordOfDaySection>
       <WordListSection>
-        <h2>Latest 30 Words Searched</h2>
-        <LatestWordList wordList={wordListResult.lexiconWords} />
+        <WordListContainer>
+          <h2>Latest 30 Words Searched</h2>
+          <LatestWordList wordList={wordListResult.lexiconWords} />
+        </WordListContainer>
       </WordListSection>
     </LexiconContainer>
   );
