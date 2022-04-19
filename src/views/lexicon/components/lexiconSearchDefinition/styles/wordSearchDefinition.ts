@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import { WordOfDaySection } from '@/views/lexicon/styles/lexiconHomeStyles';
 
+const wordInfo = styled.span`
+  margin-top: 30px;
+  margin-left: 19px;
+  color: #606060;
+  letter-spacing: 2px;
+`;
+
+export const PartOfSpeech = styled(wordInfo)``;
+export const WordBreak = styled(wordInfo)``;
+
 export const WordDefinition = styled(WordOfDaySection)`
-  margin-top: 55px
+  margin-top: 55px;
 `;
 
 export const WordDefinitionIntroduction = styled.div`
@@ -19,30 +29,11 @@ export const Word = styled.div`
 
 export const Stem = styled.span``;
 
-export const DateFirstUsed = styled.div`
+export const DateFirstUsed = styled(wordInfo)`
   margin-left: 35px;
-  margin-top: 22px;
-  color: #606060;
-  letter-spacing: 2px;
 `;
 
-export const PartOfSpeech = styled.div`
-  margin-left: 19px;
-  margin-top: 22px;
-  color: #606060;
-  letter-spacing: 2px;
-`;
-
-export const WordBreak = styled.div`
-  margin-left: 19px;
-  margin-top: 22px;
-  color: #606060;
-  letter-spacing: 2px;
-`;
-
-export const Pronunciation = styled.div`
-  margin-left: 19px;
-  margin-top: 22px;
+export const Pronunciation = styled(wordInfo)`
   font-style: italic;
   color: #9d9d9d;
   letter-spacing: 3px;

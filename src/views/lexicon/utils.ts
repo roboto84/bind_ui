@@ -1,20 +1,32 @@
+const emptyValue: string[] = ['n/a', 'unk'];
+
 export function pronunciationView(oxPronounce: string, merPronounce: string): string {
-  const firstPronunciation: string = oxPronounce && oxPronounce !== 'n/a' ? oxPronounce : '';
-  const secondPronunciation: string = merPronounce && merPronounce !== 'unk' ? merPronounce : '';
+  const firstPronunciation: string = oxPronounce && emptyValue.indexOf(oxPronounce) === -1
+    ? oxPronounce : '';
+  const secondPronunciation: string = merPronounce && emptyValue.indexOf(merPronounce) === -1
+    ? merPronounce : '';
   const separator: string = firstPronunciation && secondPronunciation ? '|' : '';
   return `${firstPronunciation} ${separator} ${secondPronunciation}`;
 }
 
 export function wordExampleView(wordExample: string): string {
-  if (wordExample !== 'unk' && wordExample !== 'n/a') {
+  if (emptyValue.indexOf(wordExample) === -1) {
     return `( e.g. ${wordExample} )`;
   }
   return '';
 }
 
 export function wordEtymologyView(wordEtymology: string): string {
-  if (wordEtymology !== "['n/a']") {
+  if ((typeof wordEtymology === 'object' && wordEtymology[0] !== 'n/a')
+    || (typeof wordEtymology === 'string' && wordEtymology !== "['n/a']")) {
     return `◦ etymology: ${wordEtymology}`;
+  }
+  return '';
+}
+
+export function wordParamBasicView(wordParam: string): string {
+  if (emptyValue.indexOf(wordParam) === -1) {
+    return wordParam;
   }
   return '';
 }

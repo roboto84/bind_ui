@@ -1,7 +1,12 @@
 import React, { ReactNode } from 'react';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { pronunciationView, wordEtymologyView, wordExampleView } from '../../utils';
+import {
+  pronunciationView,
+  wordEtymologyView,
+  wordExampleView,
+  wordParamBasicView
+} from '../../utils';
 import {
   WordDefinitionIntroduction,
   Word,
@@ -61,9 +66,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     <WordDefinition>
       <WordDefinitionIntroduction>
         <Word>{wordDefinition.word}</Word>
-        <DateFirstUsed>{wordDefinition.dateFirstUsed}</DateFirstUsed>
-        <PartOfSpeech>{wordDefinition.partOfSpeech.toLowerCase()}</PartOfSpeech>
-        <WordBreak>{wordDefinition.wordBreak}</WordBreak>
+        <DateFirstUsed>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DateFirstUsed>
+        <PartOfSpeech>{wordParamBasicView(wordDefinition.partOfSpeech.toLowerCase())}</PartOfSpeech>
+        <WordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</WordBreak>
         <Pronunciation>{pronunciationView(...wordDefinition.pronounce)}</Pronunciation>
       </WordDefinitionIntroduction>
       <WordDefStems>{wordStemsView}</WordDefStems>
