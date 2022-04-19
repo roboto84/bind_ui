@@ -6,7 +6,7 @@ export function pronunciationView(oxPronounce: string, merPronounce: string): st
 }
 
 export function wordExampleView(wordExample: string): string {
-  if (wordExample !== 'unk') {
+  if (wordExample !== 'unk' && wordExample !== 'n/a') {
     return `( e.g. ${wordExample} )`;
   }
   return '';

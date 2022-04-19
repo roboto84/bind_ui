@@ -38,5 +38,4 @@ export const HomeButton = styled(LexiconButton)`
   padding-top: 1px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  padding-top: 1px;
 `;
