@@ -54,8 +54,8 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   if (wordDefinition.audio && wordDefinition.audio !== 'n/a' && wordDefinition.audio !== 'unk') {
     wordAudioComponent = (
       <WordAudio>
-        <audio id="audio" controls>
-          <source id="audioSource" src={wordDefinition.audio} />
+        <audio preload="auto" controls>
+          <source src={wordDefinition.audio} />
           Your browser does not support the audio format.
         </audio>
       </WordAudio>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { AiOutlineBackward, AiOutlineHome } from 'react-icons/ai';
+import { AiOutlineHome } from 'react-icons/ai';
+import { FaArrowLeft } from 'react-icons/fa';
 import {
   BackButton,
   HomeButton,
@@ -29,7 +30,7 @@ export function SearchBar() {
         <AiOutlineHome />
       </HomeButton>
       <BackButton onClick={() => navigate(-1)}>
-        <AiOutlineBackward />
+        <FaArrowLeft />
       </BackButton>
       <SearchInput
         type="text"
