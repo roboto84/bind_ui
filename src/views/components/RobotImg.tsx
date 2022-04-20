@@ -1,4 +1,4 @@
-import { RobotImgContainer } from '@/views/home/styles/homeStyles';
+import { RobotImgContainer } from '@/styles/robotImageStyle';
 import { FaRobot } from 'react-icons/fa';
 import { SiProbot } from 'react-icons/si';
 import { GiRobotAntennas } from 'react-icons/gi';
@@ -6,7 +6,10 @@ import React from 'react';
 import { randomIntFromInterval } from '@/utils/utils';
 
 export type RobotImgProps = {
-  robotType?: string
+  robotType ?: string,
+  opacity ?: string,
+  fontSize ?: string,
+  margin ?: string
 }
 
 function randomRobotPicker() {
@@ -22,7 +25,7 @@ function randomRobotPicker() {
 }
 
 function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
-  const { robotType } = props;
+  const { robotType, fontSize, margin } = props;
   const robotPicker = (robot: string) => {
     switch (robot) {
       case 'FaRobot':
@@ -37,7 +40,7 @@ function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
   };
 
   return (
-    <RobotImgContainer>
+    <RobotImgContainer fontSize={fontSize} margin={margin}>
       {robotPicker(robotType)}
     </RobotImgContainer>
   );
@@ -45,6 +48,9 @@ function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
 
 RobotImg.defaultProps = {
   robotType: '',
+  opacity: '1',
+  fontSize: 'inherit',
+  margin: 0,
 };
 
 export default RobotImg;

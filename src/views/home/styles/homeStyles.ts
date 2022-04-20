@@ -36,10 +36,7 @@ export const LinkContainer = styled.div`
   }
 `;
 
-export const RobotImgContainer = styled.div`
-  opacity: 0.7;
-  font-size: 445px;
-  
+export const ImageContainer = styled.div`
   @media ${device.laptop} {
     display: none;
   }

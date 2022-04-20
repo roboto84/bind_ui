@@ -2,9 +2,11 @@ import React, { KeyboardEventHandler, MouseEventHandler, useRef, useState } from
 import { MdOutlineTagFaces } from 'react-icons/md';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { EmojiSelector } from '@/views/wh00t/components/Wh00tChatInput/components/EmojiSelector';
+import { useClickOutside } from '@/hooks/useClickOutside';
 import {
   ChatInputButton,
   ChatInputButtonContainer,
+  EmojiUnitContainer,
   Wh00tChatForm,
   Wh00tChatInputContainer,
   Wh00tInputTextArea,
@@ -13,6 +15,9 @@ import {
 export function Wh00tChatInput() {
   const [lastMessage, setLastMessage] = useState<string>('');
   const [emojiSelectorDisplay, setEmojiSelectorDisplay] = useState<boolean>(false);
+  const { ref } = useClickOutside(() => {
+    setEmojiSelectorDisplay(false);
+  });
   const { state } = useWh00tWebsocket();
   const textAreaRef = useRef(null);
   const keyLog: any = {};
@@ -76,18 +81,20 @@ export function Wh00tChatInput() {
           autoFocus
         />
         <ChatInputButtonContainer>
-          <EmojiSelector
-            display={emojiSelectorDisplay}
-            addTextCallback={appendToCurrentMessageText}
-          />
-          <ChatInputButton
-            padding={iconPadding}
-            fontSize={iconFontSize}
-            onClick={() => emojiMenuSwitch()}
-            className={emojiSelectorDisplay && 'active'}
-          >
-            <MdOutlineTagFaces />
-          </ChatInputButton>
+          <EmojiUnitContainer ref={ref}>
+            <EmojiSelector
+              display={emojiSelectorDisplay}
+              addTextCallback={appendToCurrentMessageText}
+            />
+            <ChatInputButton
+              padding={iconPadding}
+              fontSize={iconFontSize}
+              onClick={() => emojiMenuSwitch()}
+              className={emojiSelectorDisplay && 'active'}
+            >
+              <MdOutlineTagFaces />
+            </ChatInputButton>
+          </EmojiUnitContainer>
           <ChatInputButton onClick={sendMessage}>
             Send
           </ChatInputButton>

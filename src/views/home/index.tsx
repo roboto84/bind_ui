@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@/views/components/Header/Header';
-import { HomeContainer } from '@/views/home/styles/homeStyles';
+import { HomeContainer, ImageContainer } from '@/views/home/styles/homeStyles';
 import { MainContainer } from '../styles/appStyles';
 import RobotImg from '../components/RobotImg';
 import AppLinkContainer from './components/AppLinkContainer';
@@ -15,7 +15,9 @@ export function Home() {
       <MainContainer>
         <HomeContainer className="side-flexed">
           <AppLinkContainer />
-          <RobotImg />
+          <ImageContainer>
+            <RobotImg fontSize="445px" opacity="0.7" />
+          </ImageContainer>
         </HomeContainer>
       </MainContainer>
     </>

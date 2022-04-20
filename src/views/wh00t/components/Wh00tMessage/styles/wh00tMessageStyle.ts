@@ -7,6 +7,10 @@ export const Wh00tMessageWrapper = styled.div`
   margin: 5px 0;
 `;
 
+export const Wh00tChatImageWrapper = styled.div`
+  margin-top: -12px;
+`;
+
 export const Wh00tBaseUserImageContainer = styled.div`
   margin: 7px 10px 5px 0;
   color: white;
@@ -14,7 +18,7 @@ export const Wh00tBaseUserImageContainer = styled.div`
   height: 33px;
   padding: 7px 5px 5px 5px;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 35px;
   text-transform: capitalize;
   text-align: center;
 

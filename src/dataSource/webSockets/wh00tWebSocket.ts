@@ -80,14 +80,14 @@ export class Wh00tWebSocket {
     this.wh00tDispatch({ type: Wh00tActionsEnum.CLEAR_MESSAGES });
     if (clientId && clientId.replace(/\s/g, '') !== '') {
       this.clientId = clientId;
-      setLocalStorage(LocalStorageEnum.USERNAME, this.clientId);
-      setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'true');
     } else {
       const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
       if (username) {
         this.clientId = username;
       }
     }
+    setLocalStorage(LocalStorageEnum.USERNAME, this.clientId);
+    setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'true');
 
     this.wh00tWS = new WebSocket(
       `${WSS_BASE_URL}:8000/wh00t_chat/${this.clientId}`,

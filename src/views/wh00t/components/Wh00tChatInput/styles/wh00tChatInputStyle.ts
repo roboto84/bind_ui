@@ -38,6 +38,10 @@ export const Wh00tChatForm = styled.form`
   padding-left: 5px;
 `;
 
+export const EmojiUnitContainer = styled.div`
+  display: flex;
+`;
+
 export const EmojiSelectorContainer = styled.div<EmojiSelectorContainerProps>`
   width: 204px;
   height: 200px;

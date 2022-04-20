@@ -44,8 +44,8 @@ export enum CssDisplay {
 }
 
 export type EmojiSelectorProps = {
-  display: boolean
-  addTextCallback: Function
+  display: boolean,
+  addTextCallback: CallableFunction
 }
 
 export interface EmojiSelectorContainerProps extends GlobalThemeType {
