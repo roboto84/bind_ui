@@ -15,13 +15,13 @@ export const SearchContainer = styled.div`
 export const SearchInput = styled(Input)`
   width: 500px;
   min-width: 100px;
-  margin: 10px 0;
+  margin: 12px 0;
 `;
 
 export const LexiconButton = styled(Button)`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.color};
   background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.background};
-  margin: 10px 0;
+  margin: 12px 0;
 `;
 
 export const BackButton = styled(LexiconButton)`
@@ -36,7 +36,7 @@ export const SearchButton = styled(LexiconButton)`
 
 export const HomeButton = styled(LexiconButton)`
   font-size: 31px;
-  padding-top: 0px;
+  padding-top: 0;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 `;

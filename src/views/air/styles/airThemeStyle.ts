@@ -13,7 +13,7 @@ export const airDark = {
 export const airLight = {
   weatherSubcategory: {
     fontColor: '#414141',
-    borderColor: '#7d7d7d',
+    borderColor: '#7e7f7f',
     backgroundColor: '#e3e3e3',
   },
   weatherTable: {

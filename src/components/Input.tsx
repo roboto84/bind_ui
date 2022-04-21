@@ -3,7 +3,7 @@ import { GlobalThemeType } from '@/types';
 
 export const Input = styled.input`
   all: unset;
-  border: ${(props: GlobalThemeType) => props.theme.button.border} 5px solid;
+  border: ${(props: GlobalThemeType) => props.theme.button.border} 3px solid;
   background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontColor};
   padding: 10px;

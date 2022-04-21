@@ -29,6 +29,10 @@ export const Wh00tBaseUserImageContainer = styled.div`
   &.OtherUsernamesBaseImageBackgroundColor{
     background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.otherUsernameBaseImageBackgroundColor};
   }
+
+  &.BotBaseImageBackgroundColor{
+    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.botUsernameColor};
+  }
 `;
 
 export const Wh00tMessageBody = styled.div`

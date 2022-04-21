@@ -29,8 +29,8 @@ export const ChatInputButton = styled(Button)`
 
 export const Wh00tInputTextArea = styled(InputTextArea)`
   width: calc(100% - 162px);
-  height: 20px;
-  border-radius: 5px;
+  height: 22px;
+  border-radius: 3px;
 `;
 
 export const Wh00tChatForm = styled.form`
@@ -46,9 +46,8 @@ export const EmojiSelectorContainer = styled.div<EmojiSelectorContainerProps>`
   width: 204px;
   height: 200px;
   background-color: ${(props: EmojiSelectorContainerProps) => props.theme.wh00t.chatInput.button.backgroundColor};
-  border: 1px solid #474747;
-  border-radius: 5px;
-  overflow-y: scroll;
+  border: 1px solid ${(props: EmojiSelectorContainerProps) => props.theme.wh00t.chatInput.emoji.borderColor};
+  border-radius: 3px;
   display: ${(props: EmojiSelectorContainerProps) => props.display};
   flex-wrap: wrap;
   padding: 10px;

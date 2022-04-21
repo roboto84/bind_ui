@@ -6,18 +6,6 @@ export const LexiconContainer = styled.div`
   margin: 20px 0 0 50px;
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
   padding-top: 20px;
-
-  .word_list_item{
-    cursor: pointer;
-    padding: 5px 15px;
-    min-width: 170px;
-    transition: 0.4s;
-  }
-
-  .word_list_item:hover{
-    background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
-    color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
-  }
 `;
 
 export const LexiconHoverable = styled.div`

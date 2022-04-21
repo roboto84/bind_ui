@@ -7,7 +7,7 @@ export function DefinitionListView(props: WordDefinitionsProps) {
   return (
     <>
       {definitions.filter((def: string) => def !== 'n/a').map((def:string) => (
-        <li key={'wordDef-'.concat(def.substring(0, 20))}>
+        <li key={'wordDef-'.concat(def.substring(0, 30))}>
           { def }
         </li>
       ))}

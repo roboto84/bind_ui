@@ -8,7 +8,7 @@ export const tomorrowLight = {
   orange: '#e37122',
   yellow: '#eab700',
   green: '#718c00',
-  aqua: '#3e999f',
+  aqua: '',
   blue: '#4271ae',
   purple: '#8959a8',
 };

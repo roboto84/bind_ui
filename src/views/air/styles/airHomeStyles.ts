@@ -22,11 +22,12 @@ export const AirHomeContainer = styled.div`
 
 export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
-  border: 10px solid ${(props: WeatherSubcategoryProps) => (
+  border: 6px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
   margin: 20px 20px 20px 20px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
+  border-radius: 3px;
 `;
 
 export const Weather = styled.div`

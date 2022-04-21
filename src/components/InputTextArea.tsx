@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 
 export const InputTextArea = styled.textarea`
-  border: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.textInput.borderColor} 5px solid;
+  border: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.textInput.borderColor} 3px solid;
   background-color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.textInput.backgroundColor};
   font-size: 15px;
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontColor};
@@ -14,6 +14,7 @@ export const InputTextArea = styled.textarea`
   width: 100%;
   height: 100%;
   overflow-y: hidden;
+  resize: none;
 
   :focus{
     background-color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.textInput.focusBackgroundColor};

@@ -41,7 +41,7 @@ export const SubTitle = styled.div`
 `;
 
 export const NavLinksContainer = styled.div`
-  padding-top: 20px;
+  padding-top: 23px;
   padding-right: 10px;
   display: flex;
   justify-content: right;
@@ -53,7 +53,7 @@ export const NavLinksContainer = styled.div`
 
 export const NavContainer = styled.div`
   display: flex;
-  height: 50px;
-  width: 470px;
+  height: 45px;
+  width: 440px;
   justify-content: space-between;
 `;

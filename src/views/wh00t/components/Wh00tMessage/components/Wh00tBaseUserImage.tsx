@@ -7,11 +7,13 @@ export function Wh00tBaseUserImage(props: Wh00tBaseUserImageProps) {
   const { currentClientId, username } = props;
   const botImage: JSX.Element = <RobotImg margin="5px 0 0 -3px" robotType="GiRobotAntennas" />;
   const usernameFirstInitial: string = username.substring(0, 1);
-  const backgroundColor: string = currentClientId === username
+  const userIsBot: boolean = username.includes('bot');
+  let backgroundColor: string = currentClientId === username
     ? 'UsernameBaseImageBackgroundColor'
     : 'OtherUsernamesBaseImageBackgroundColor';
 
-  const image: string|JSX.Element = username.includes('bot') ? botImage : usernameFirstInitial;
+  backgroundColor = userIsBot ? 'BotBaseImageBackgroundColor' : backgroundColor;
+  const image: string|JSX.Element = userIsBot ? botImage : usernameFirstInitial;
   return (
     <Wh00tBaseUserImageContainer className={backgroundColor}>
       <Wh00tChatImageWrapper>

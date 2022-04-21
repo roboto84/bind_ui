@@ -77,7 +77,7 @@ type AirThemeType = {
   }
 }
 
-type Wh00tThemeType = {
+export type Wh00tThemeType = {
   backgroundImage: string,
   miniWh00t: {
     minimizedButton: {
@@ -94,6 +94,7 @@ type Wh00tThemeType = {
     backgroundColor: string,
     otherUsernamesColor: string,
     usernameColor: string,
+    botUsernameColor: string,
     timeColor: string,
     messageText: string,
     usernameBaseImageBackgroundColor: string,
@@ -111,6 +112,9 @@ type Wh00tThemeType = {
       focusBackgroundColor: string,
       focusFontColor: string,
     },
+    emoji: {
+      borderColor: string,
+    }
   },
   chatHeader: {
     backgroundColor: string,

@@ -43,6 +43,11 @@ export enum CssDisplay {
   none = 'none'
 }
 
+export enum CssVisibility {
+  visible = 'visible',
+  hidden = 'hidden'
+}
+
 export type EmojiSelectorProps = {
   display: boolean,
   addTextCallback: CallableFunction

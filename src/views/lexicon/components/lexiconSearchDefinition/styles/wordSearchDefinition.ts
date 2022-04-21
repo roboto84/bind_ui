@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { WordOfDaySection } from '@/views/lexicon/styles/lexiconHomeStyles';
+import { Section } from '@/views/lexicon/styles/lexiconHomeStyles';
 import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
 
 const wordInfo = styled.div`
@@ -12,8 +12,7 @@ const wordInfo = styled.div`
 
 export const PartOfSpeech = styled(wordInfo)``;
 export const WordBreak = styled(wordInfo)``;
-
-export const WordDefinition = styled(WordOfDaySection)`
+export const WordDefinition = styled(Section)`
   margin-top: 55px;
 `;
 

@@ -25,7 +25,7 @@ function randomRobotPicker() {
 }
 
 function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
-  const { robotType, fontSize, margin } = props;
+  const { robotType, opacity, fontSize, margin } = props;
   const robotPicker = (robot: string) => {
     switch (robot) {
       case 'FaRobot':
@@ -40,7 +40,7 @@ function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
   };
 
   return (
-    <RobotImgContainer fontSize={fontSize} margin={margin}>
+    <RobotImgContainer fontSize={fontSize} margin={margin} opacity={opacity}>
       {robotPicker(robotType)}
     </RobotImgContainer>
   );
