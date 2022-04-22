@@ -5,6 +5,7 @@ import { GlobalThemeType } from '@/types/themeTypes';
 interface ButtonProps extends GlobalThemeType {
   fontSize ?: string,
   padding ?: string
+  borderRadius ?: string,
 }
 
 export const Button = styled.div<ButtonProps>`
@@ -18,11 +19,22 @@ export const Button = styled.div<ButtonProps>`
   transition: 0.4s;
   font-size: ${(props:ButtonProps) => (props.fontSize || 'inherit')};
   background-color: ${(props: ButtonProps) => props.theme.button.backgroundColor};
+  border-radius: ${(props:ButtonProps) => (props.borderRadius || 'inherit')};
 
   &:hover, &.active {
     background-color: ${(props:ButtonProps) => props.theme.core.mainThemeColor};
     border-color: #a3ff0000;
     color: ${(props:ButtonProps) => props.theme.button.transitionFontColor};
     cursor: pointer;
+  }
+`;
+
+export const SubButton = styled(Button)`
+  margin: 0 1px 0 0;
+  color: ${(props: ButtonProps) => props.theme.subButton.fontColor};
+  background-color: ${(props: ButtonProps) => props.theme.subButton.backgroundColor};
+
+  &:hover, &.active {
+    color: ${(props: ButtonProps) => props.theme.subButton.transitionFontColor};
   }
 `;

@@ -20,7 +20,7 @@ export function ErrorView(props: ErrorProps) {
           {children}
         </div>
       </ErrorContainer>
-      <RobotImg robotType="SiProbot" />
+      <RobotImg fontSize="445px" opacity="0.7" robotType="SiProbot" />
     </GenericErrorContainer>
   );
 }

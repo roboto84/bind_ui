@@ -12,7 +12,9 @@ export const WordOfDaySection = styled(Section)``;
 export const WordListSection = styled.div``;
 export const WordListContainer = styled(Section)``;
 export const LatestWordListContainer = styled.div`{
-  margin: 0 50px;
+  margin: 0px 50px;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+  height: 190px;
 }`;

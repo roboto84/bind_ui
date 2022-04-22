@@ -24,6 +24,11 @@ export const LightTheme: ThemeType = {
     transitionFontColor: 'white',
     backgroundColor: '#e3e3e3',
   },
+  subButton: {
+    backgroundColor: 'grey',
+    fontColor: '#e9e9e9',
+    transitionFontColor: '#e9e9e9',
+  },
   chart: {
     border: '#d1d1d1',
     axisLabelFontColor: '#565656',

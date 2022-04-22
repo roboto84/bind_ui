@@ -34,6 +34,11 @@ export const DarkTheme: ThemeType = {
     transitionFontColor: 'black',
     backgroundColor: '#181a1b',
   },
+  subButton: {
+    backgroundColor: '#2F3436',
+    fontColor: '#c9c9c9',
+    transitionFontColor: '#c9c9c9',
+  },
   header: {
     subTitleColor: '#939393',
     secondaryTitleColor: '#a4d20c',

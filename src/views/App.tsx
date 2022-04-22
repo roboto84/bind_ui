@@ -3,14 +3,14 @@ import { Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { reactQueryConfig } from '@/dataSource/reactQueryHooks';
 import Theme from '@/theme';
-import { Home } from '@/views/home';
+import { Home } from '@/views/home/Home';
 import { Wh00t } from '@/views/wh00t/Wh00t';
 import { Wh00tMini } from '@/views/wh00t/Wh00tMini';
 import {
   LexiconSearchHome,
 } from '@/views/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
 import { Lexicon } from '@/views/lexicon/Lexicon';
-import { Error404 } from '@/views/404';
+import { Error404 } from '@/views/404/404';
 import { Layout } from '@/views/components/Layout';
 import { Air } from '@/views/air/Air';
 import { WeatherTable } from '@/views/air/components/WeatherTables/WeatherTable';
@@ -43,110 +43,110 @@ export default function App() {
                         secondaryTitle="Air"
                         subtitle="it's what you live in and breathe"
                       />
-                )}
+                    )}
                   >
                     <Route index element={<Air />} />
                     <Route
                       path="weather"
                       element={
                         <WeatherTable tableType={WeatherTableType.weather} />
-                    }
+                      }
                     />
                     <Route
                       path="pollution"
                       element={
                         <WeatherTable tableType={WeatherTableType.pollution} />
-                    }
+                      }
                     />
                     <Route
                       path="pollen"
                       element={
                         <WeatherTable tableType={WeatherTableType.pollen} />
-                    }
+                      }
                     />
                     <Route
                       path="temperature"
                       element={
                         <WeatherChart chartKey={WeatherChartType.temperature} />
-                    }
+                      }
                     />
                     <Route
                       path="humidity"
                       element={
                         <WeatherChart chartKey={WeatherChartType.humidity} />
-                    }
+                      }
                     />
                     <Route
                       path="precipitation"
                       element={
                         <WeatherChart chartKey={WeatherChartType.precipitationProbability} />
-                    }
+                        }
                     />
                     <Route
                       path="pressure"
                       element={
                         <WeatherChart chartKey={WeatherChartType.pressureSurfaceLevel} />
-                    }
+                        }
                     />
                     <Route
                       path="epa_index"
                       element={
                         <WeatherChart chartKey={WeatherChartType.epaIndex} />
-                    }
+                        }
                     />
                     <Route
                       path="particulate_matter_10"
                       element={
                         <WeatherChart chartKey={WeatherChartType.particulateMatter10} />
-                    }
+                        }
                     />
                     <Route
                       path="particulate_matter_25"
                       element={
                         <WeatherChart chartKey={WeatherChartType.particulateMatter25} />
-                    }
+                      }
                     />
                     <Route
                       path="pollutant_co"
                       element={
                         <WeatherChart chartKey={WeatherChartType.pollutantCO} />
-                    }
+                      }
                     />
                     <Route
                       path="pollutant_no2"
                       element={
                         <WeatherChart chartKey={WeatherChartType.pollutantNO2} />
-                    }
+                      }
                     />
                     <Route
                       path="pollutant_o3"
                       element={
                         <WeatherChart chartKey={WeatherChartType.pollutantO3} />
-                    }
+                      }
                     />
                     <Route
                       path="pollutant_so2"
                       element={
                         <WeatherChart chartKey={WeatherChartType.pollutantSO2} />
-                    }
+                      }
                     />
                     <Route
                       path="pollen_grass"
                       element={
                         <WeatherChart chartKey={WeatherChartType.grassIndex} />
-                    }
+                      }
                     />
                     <Route
                       path="pollen_tree"
                       element={
                         <WeatherChart chartKey={WeatherChartType.treeIndex} />
-                    }
+                      }
                     />
                     <Route
                       path="pollen_weed"
                       element={
                         <WeatherChart chartKey={WeatherChartType.weedIndex} />
-                    }
+                      }
                     />
                   </Route>
                   <Route
@@ -156,7 +156,7 @@ export default function App() {
                         secondaryTitle="Arcadia"
                         subtitle="learn as if you'll live forever"
                       />
-                  )}
+                    )}
                   >
                     <Route index element={<Arcadia />} />
                   </Route>
@@ -167,7 +167,7 @@ export default function App() {
                         secondaryTitle="Lexicon"
                         subtitle="alphabetical arrangement of words"
                       />
-                  )}
+                    )}
                   >
                     <Route index element={<Lexicon />} />
                     <Route path="search" element={<LexiconSearchHome />} />
@@ -179,7 +179,7 @@ export default function App() {
                         title="</wh00t>"
                         subtitle="A-O River Communication System"
                       />
-                  )}
+                    )}
                   >
                     <Route index element={<Wh00t />} />
                   </Route>
@@ -190,7 +190,7 @@ export default function App() {
                         secondaryTitle="Debug"
                         subtitle="they are quite squishy"
                       />
-                  )}
+                    )}
                   >
                     <Route index element={<Debug />} />
                   </Route>

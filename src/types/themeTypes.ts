@@ -20,6 +20,12 @@ export type ButtonStyleType = {
   backgroundColor: string,
 };
 
+export type SubButtonStyleType = {
+  backgroundColor: string,
+  fontColor: string,
+  transitionFontColor: string,
+}
+
 export type ChartStyleType = {
   border: string,
   axisLabelFontColor: string,
@@ -132,6 +138,7 @@ export type ThemeType = {
   core: CoreStyleType
   throbber: ThrobberStyleType,
   button: ButtonStyleType,
+  subButton: SubButtonStyleType,
   chart: ChartStyleType,
   header: HeaderStyleType,
   air: AirThemeType,

@@ -1,5 +1,5 @@
 import { SubNavigation } from '@/views/air/styles/airHomeStyles';
-import NavigationLink from '@/views/components/Header/NavigationLink';
+import NavigationLink from '@/views/components/NavigationLink';
 import React from 'react';
 
 export function WeatherTableSubNavigation() {
