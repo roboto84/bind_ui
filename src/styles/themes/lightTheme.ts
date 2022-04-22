@@ -36,7 +36,8 @@ export const LightTheme: ThemeType = {
     foreground: customTheme.green,
   },
   header: {
-    subTitleFontColor: '#6c6c6c',
+    subTitleColor: '#6c6c6c',
+    secondaryTitleColor: '#617800',
     borderBottomColor: '#a5a5a5',
   },
   air: airLight,

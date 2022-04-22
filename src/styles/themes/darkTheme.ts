@@ -29,14 +29,15 @@ export const DarkTheme: ThemeType = {
     foreground: customTheme.green,
   },
   button: {
-    border: '#373737',
+    border: '#2F3436',
     fontColor: '#939393',
     transitionFontColor: 'black',
     backgroundColor: '#181a1b',
   },
   header: {
-    subTitleFontColor: '#939393',
-    borderBottomColor: '#181a1b',
+    subTitleColor: '#939393',
+    secondaryTitleColor: '#a4d20c',
+    borderBottomColor: '#2c3032',
   },
   air: airDark,
   wh00t: wh00tDark,

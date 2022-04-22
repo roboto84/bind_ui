@@ -30,8 +30,12 @@ export const TitleContainer = styled.div`
 
 export const Title = styled.h1``;
 
+export const ColoredTitle = styled.span`
+  color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
+`;
+
 export const SubTitle = styled.div`
-  color: ${(props:GlobalThemeType) => props.theme.header.subTitleFontColor};
+  color: ${(props:GlobalThemeType) => props.theme.header.subTitleColor};
   font-size: 14px;
   margin: 0 30px 10px 40px;
   

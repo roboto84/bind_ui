@@ -40,8 +40,8 @@ export default function App() {
                     path="air"
                     element={(
                       <Layout
-                        headerTitle="Air"
-                        headerSubtitle="it's what you breathe"
+                        secondaryTitle="Air"
+                        subtitle="it's what you live in and breathe"
                       />
                 )}
                   >
@@ -153,8 +153,8 @@ export default function App() {
                     path="arcadia"
                     element={(
                       <Layout
-                        headerTitle="Arcadia"
-                        headerSubtitle="learn as if you'll live forever"
+                        secondaryTitle="Arcadia"
+                        subtitle="learn as if you'll live forever"
                       />
                   )}
                   >
@@ -164,8 +164,8 @@ export default function App() {
                     path="lexicon"
                     element={(
                       <Layout
-                        headerTitle="Lexicon"
-                        headerSubtitle="alphabetical arrangement of words"
+                        secondaryTitle="Lexicon"
+                        subtitle="alphabetical arrangement of words"
                       />
                   )}
                   >
@@ -176,8 +176,8 @@ export default function App() {
                     path="wh00t"
                     element={(
                       <Layout
-                        headerTitle="</wh00t>"
-                        headerSubtitle="A-O River Communication System"
+                        title="</wh00t>"
+                        subtitle="A-O River Communication System"
                       />
                   )}
                   >
@@ -187,8 +187,8 @@ export default function App() {
                     path="debug"
                     element={(
                       <Layout
-                        headerTitle="Debug"
-                        headerSubtitle="they are quite squishy"
+                        secondaryTitle="Debug"
+                        subtitle="they are quite squishy"
                       />
                   )}
                   >

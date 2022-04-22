@@ -14,7 +14,7 @@ export const Input = styled.input`
 
   :focus {
     border-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderColor};
-    background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundFocusColor};
     color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontFocusColor};
     outline: none;
   }

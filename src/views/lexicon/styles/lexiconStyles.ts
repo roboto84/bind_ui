@@ -9,6 +9,7 @@ export const LexiconContainer = styled.div`
 `;
 
 export const LexiconHoverable = styled.div`
+  border-radius: 5px;
   cursor: pointer;
   padding: 5px 15px;
   min-width: 170px;

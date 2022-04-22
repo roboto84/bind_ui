@@ -5,11 +5,11 @@ import HeaderTitle from './HeaderTitle';
 import { HeaderProps } from './types/headerTypes';
 
 export default function Header(props: HeaderProps) {
-  const { title, subtitle } = props;
+  const { title, secondaryTitle, subtitle } = props;
 
   return (
     <HeaderContainer>
-      <HeaderTitle title={title} subtitle={subtitle} />
+      <HeaderTitle title={title} secondaryTitle={secondaryTitle} subtitle={subtitle} />
       <NavigationLinks />
     </HeaderContainer>
   );

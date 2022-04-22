@@ -1,12 +1,8 @@
 import React from 'react';
 
 export type HeaderProps = {
-  title: string,
-  subtitle: string
-}
-
-export type HeaderTitleProps = {
-  title: string,
+  title ?: string,
+  secondaryTitle ?: string,
   subtitle: string
 }
 

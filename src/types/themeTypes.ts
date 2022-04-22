@@ -2,24 +2,25 @@ export interface GlobalThemeType {
   theme: ThemeType
 }
 
-type HeaderStyleType = {
-  subTitleFontColor: string,
+export type HeaderStyleType = {
+  subTitleColor: string,
+  secondaryTitleColor: string,
   borderBottomColor: string,
 };
 
-type ThrobberStyleType = {
+export type ThrobberStyleType = {
   background: string,
   foreground: string,
 }
 
-type ButtonStyleType = {
+export type ButtonStyleType = {
   border: string,
   fontColor: string,
   transitionFontColor: string,
   backgroundColor: string,
 };
 
-type ChartStyleType = {
+export type ChartStyleType = {
   border: string,
   axisLabelFontColor: string,
   axisXFontColor: string,
@@ -27,13 +28,14 @@ type ChartStyleType = {
   backgroundColor: string,
 }
 
-type LexiconThemeType = {
+export type LexiconThemeType = {
   textColor: string,
   containerBackgroundColor: string,
   searchBar:{
     inputFontColor: string,
     inputFontFocusColor: string,
     inputBackgroundColor: string,
+    inputBackgroundFocusColor: string,
     borderColor: string,
     searchButton:{
       color: string,
@@ -42,7 +44,7 @@ type LexiconThemeType = {
   }
 }
 
-type DebugThemeType = {
+export type DebugThemeType = {
   messageTitleColor: string,
   messageTextColor: string,
   messageId: string,
@@ -53,7 +55,7 @@ type DebugThemeType = {
   latestMessageBorder: string,
 }
 
-type CoreStyleType = {
+export type CoreStyleType = {
   mainThemeColor: string,
   bgColor: string,
   textColor: string,
@@ -65,7 +67,7 @@ type CoreStyleType = {
   }
 }
 
-type AirThemeType = {
+export type AirThemeType = {
   weatherSubcategory: {
     fontColor: string,
     borderColor: string,
