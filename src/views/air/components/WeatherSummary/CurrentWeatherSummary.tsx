@@ -14,7 +14,7 @@ import {
   WeatherSubcategory, MoonPhaseSummaryContainer,
 } from '../../styles/airHomeStyles';
 
-export function CurrentWeather(props: CurrentWeatherProps) {
+export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const { currentWeatherReport } = props;
   const moonPhase: MoonPhaseEnum = removeSpaces(currentWeatherReport.moonPhase) as MoonPhaseEnum;
   const weatherState: WeatherConditionEnum = removeSpaces(

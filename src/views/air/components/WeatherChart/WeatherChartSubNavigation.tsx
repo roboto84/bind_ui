@@ -11,87 +11,87 @@ export function WeatherChartSubNavigation() {
       <NavigationLink
         borderRadius="5px 0 0 5px"
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/temperature"
+        linkTo="/air/data/charts/temperature"
       >
         Temperature
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/humidity"
+        linkTo="/air/data/charts/humidity"
       >
         Humidity
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/precipitation"
+        linkTo="/air/data/charts/precipitation"
       >
         Precipitation
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pressure"
+        linkTo="/air/data/charts/pressure"
       >
         Pressure
 
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/epa_index"
+        linkTo="/air/data/charts/epa_index"
       >
         EPA Index
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/particulate_matter_10"
+        linkTo="/air/data/charts/particulate_matter_10"
       >
         PM10
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/particulate_matter_25"
+        linkTo="/air/data/charts/particulate_matter_25"
       >
         PM25
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollutant_co"
+        linkTo="/air/data/charts/pollutant_co"
       >
         CO
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollutant_no2"
+        linkTo="/air/data/charts/pollutant_no2"
       >
         NO2
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollutant_o3"
+        linkTo="/air/data/charts/pollutant_o3"
       >
         O3
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollutant_so2"
+        linkTo="/air/data/charts/pollutant_so2"
       >
         SO2
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollen_grass"
+        linkTo="/air/data/charts/pollen_grass"
       >
         Grass
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollen_tree"
+        linkTo="/air/data/charts/pollen_tree"
       >
         Trees
       </NavigationLink>
       <NavigationLink
         borderRadius="0 5px 5px 0"
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/pollen_weed"
+        linkTo="/air/data/charts/pollen_weed"
       >
         Weeds
       </NavigationLink>

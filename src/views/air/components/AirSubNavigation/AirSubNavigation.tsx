@@ -27,7 +27,7 @@ export function AirSubNavigation() {
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/temperature"
+        linkTo="/air/data/charts/temperature"
         fontSize={iconFontSize}
         padding={iconPadding}
       >
@@ -35,7 +35,7 @@ export function AirSubNavigation() {
       </NavigationLink>
       <NavigationLink
         navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/weather"
+        linkTo="/air/data/tables/weather"
         fontSize={iconFontSize}
         padding={iconPadding}
         borderRadius="0 5px 5px 0"

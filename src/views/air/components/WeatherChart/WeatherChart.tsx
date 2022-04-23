@@ -6,9 +6,8 @@ import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
 import { LineChart, ChartObject } from '@/components/LineChart';
-import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
 import { WeatherChartSubNavigation } from '@/views/air/components/WeatherChart/WeatherChartSubNavigation';
-import { AirHomeContainer, WeatherSubContainer } from '../../styles/airHomeStyles';
+import { WeatherSubContainer } from '../../styles/airHomeStyles';
 import { WeatherChartProps, WeatherChartType, WeatherSummary } from '../../types/airTypes';
 
 export function WeatherChart(props: WeatherChartProps) {
@@ -18,19 +17,15 @@ export function WeatherChart(props: WeatherChartProps) {
 
   if (isLoading) {
     return (
-      <AirHomeContainer>
-        <Loader />
-      </AirHomeContainer>
+      <Loader />
     );
   }
   if (isError) {
     return (
-      <AirHomeContainer>
-        <ErrorView title="Data Error">
-          <div>What is the error?</div>
-          <div>{error}</div>
-        </ErrorView>
-      </AirHomeContainer>
+      <ErrorView title="Data Error">
+        <div>What is the error?</div>
+        <div>{error}</div>
+      </ErrorView>
     );
   }
 
@@ -54,7 +49,6 @@ export function WeatherChart(props: WeatherChartProps) {
 
   return (
     <WeatherSubContainer>
-      <AirSubNavigation />
       <WeatherChartSubNavigation />
       <LineChart
         xAxisLabel={chartXAxisLabel}

@@ -7,12 +7,10 @@ import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
 import { Table } from '@/components/Table';
-import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import {
-  AirHomeContainer,
   WeatherSubContainer,
-  WeatherTableContainer
+  WeatherTableContainer,
 } from '../../styles/airHomeStyles';
 import {
   SubWeatherSummary,
@@ -31,19 +29,15 @@ export function WeatherTable(props: WeatherTablesProps) {
 
   if (isLoading) {
     return (
-      <AirHomeContainer>
-        <Loader />
-      </AirHomeContainer>
+      <Loader />
     );
   }
   if (isError) {
     return (
-      <AirHomeContainer>
-        <ErrorView title="Data Error">
-          <div>What is the error?</div>
-          <div>{error}</div>
-        </ErrorView>
-      </AirHomeContainer>
+      <ErrorView title="Data Error">
+        <div>What is the error?</div>
+        <div>{error}</div>
+      </ErrorView>
     );
   }
 
@@ -103,7 +97,6 @@ export function WeatherTable(props: WeatherTablesProps) {
 
   return (
     <WeatherSubContainer>
-      <AirSubNavigation />
       <WeatherTableContainer>
         <WeatherTableSubNavigation />
         <Table tableObject={{
