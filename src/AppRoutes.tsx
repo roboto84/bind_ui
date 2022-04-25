@@ -6,7 +6,7 @@ import { LexiconSearchHome } from '@/views/lexicon/components/lexiconSearchDefin
 import { Lexicon } from '@/views/lexicon/Lexicon';
 import { Error404 } from '@/views/404/404';
 import { Layout } from '@/views/components/Layout';
-import { Arcadia } from '@/views/arcadia/Arcadia';
+import { Alexandria } from '@/views/arcadia/Alexandria';
 import { Air } from '@/views/air/Air';
 import { Debug } from './views/debug/Debug';
 
@@ -23,12 +23,12 @@ export default function AppRoutes() {
           <Route path="data/*" element={<Air />} />
         </Route>
         <Route
-          path="arcadia"
+          path="alexandria"
           element={(
-            <Layout secondaryTitle="Arcadia" subtitle="learn as if you'll live forever" />
+            <Layout secondaryTitle="Alexandria" subtitle="learn as if you'll live forever" />
           )}
         >
-          <Route index element={<Arcadia />} />
+          <Route index element={<Alexandria />} />
         </Route>
         <Route
           path="lexicon"

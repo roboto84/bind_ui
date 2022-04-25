@@ -8,20 +8,24 @@ import {
 } from '@/views/components/Header/types/headerTypes';
 
 function NavigationLink(props: NavigationLinkProps) {
-  const { activationType, navigationLinkType, linkTo, children,
+  const { activationType, activationKey, navigationLinkType, linkTo, children,
     fontSize, padding, borderRadius, callBack } = props;
+  const activeKey: string = linkTo ? activationKey || linkTo : linkTo;
   const { pathname } = useLocation();
   const navigate: NavigateFunction = useNavigate();
   let isActive: boolean = false;
 
-  if (activationType === NavigationLinkActivationType.global) {
-    isActive = linkTo && linkTo.length === 1 ? linkTo === pathname : pathname.includes(linkTo);
+  if (activationType && activationType === NavigationLinkActivationType.global) {
+    isActive = activeKey && activeKey.length === 1
+      ? activeKey === pathname
+      : pathname.includes(activeKey);
   }
-  if (activationType === NavigationLinkActivationType.local) {
+  if (activationType && activationType === NavigationLinkActivationType.local) {
     isActive = (
-      linkTo && linkTo.length === 1
-        ? linkTo === pathname
-        : linkTo && pathname.substring(pathname.length - linkTo.length, pathname.length) === linkTo
+      activeKey && activeKey.length === 1
+        ? activeKey === pathname
+        : activeKey
+        && pathname.substring(pathname.length - activeKey.length, pathname.length) === activeKey
     );
   }
 
