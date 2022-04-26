@@ -1,5 +1,9 @@
 import React from 'react';
 
+export interface LayoutWithHeaderProps extends HeaderProps {
+  children ?: React.ReactNode
+}
+
 export type HeaderProps = {
   title ?: string,
   secondaryTitle ?: string,

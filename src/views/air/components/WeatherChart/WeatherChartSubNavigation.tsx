@@ -5,96 +5,43 @@ import {
   NavigationLinkType,
 } from '@/views/components/Header/types/headerTypes';
 
+type NavigationItemConfig = {
+  borderRadius ?: string,
+  linkTo: string,
+  title: string,
+}
+
 export function WeatherChartSubNavigation() {
+  const navConfig: NavigationItemConfig[] = [
+    { borderRadius: '5px 0 0 5px', linkTo: 'temperature', title: 'Temperature' },
+    { linkTo: 'humidity', title: 'Humidity' },
+    { linkTo: 'precipitation', title: 'Precipitation' },
+    { linkTo: 'pressure', title: 'Pressure' },
+    { linkTo: 'epa_index', title: 'EPA Index' },
+    { linkTo: 'particulate_matter_10', title: 'PM10' },
+    { linkTo: 'particulate_matter_25', title: 'PM25' },
+    { linkTo: 'pollutant_co', title: 'CO' },
+    { linkTo: 'pollutant_no2', title: 'NO2' },
+    { linkTo: 'pollutant_o3', title: 'O3' },
+    { linkTo: 'pollutant_so2', title: 'SO2' },
+    { linkTo: 'pollen_grass', title: 'Grass' },
+    { linkTo: 'pollen_tree', title: 'Trees' },
+    { borderRadius: '0 5px 5px 0', linkTo: 'pollen_weed', title: 'Weeds' },
+  ];
   return (
     <SubNavigation margin="40px 0 15px 0" justifyContent="center">
-      <NavigationLink
-        borderRadius="5px 0 0 5px"
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/temperature"
-      >
-        Temperature
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/humidity"
-      >
-        Humidity
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/precipitation"
-      >
-        Precipitation
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pressure"
-      >
-        Pressure
-
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/epa_index"
-      >
-        EPA Index
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/particulate_matter_10"
-      >
-        PM10
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/particulate_matter_25"
-      >
-        PM25
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollutant_co"
-      >
-        CO
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollutant_no2"
-      >
-        NO2
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollutant_o3"
-      >
-        O3
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollutant_so2"
-      >
-        SO2
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollen_grass"
-      >
-        Grass
-      </NavigationLink>
-      <NavigationLink
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollen_tree"
-      >
-        Trees
-      </NavigationLink>
-      <NavigationLink
-        borderRadius="0 5px 5px 0"
-        navigationLinkType={NavigationLinkType.sub}
-        linkTo="/air/data/charts/pollen_weed"
-      >
-        Weeds
-      </NavigationLink>
+      {
+        navConfig.map((navItem: NavigationItemConfig) => (
+          <NavigationLink
+            key={`weatherCharts-${navItem.linkTo}`}
+            borderRadius={navItem.borderRadius || 'inherit'}
+            navigationLinkType={NavigationLinkType.sub}
+            linkTo={`/air/data/charts/${navItem.linkTo}`}
+          >
+            {navItem.title}
+          </NavigationLink>
+        ))
+      }
     </SubNavigation>
   );
 }

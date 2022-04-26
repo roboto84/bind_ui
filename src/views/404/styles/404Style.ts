@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GenericErrorContainer = styled.div`
-  padding-top: calc(15vh);
+  padding-top: calc(10vh);
   overflow-y: auto;
 
   &.side-flexed {
