@@ -20,7 +20,7 @@ export function Wh00t() {
             disconnect: true,
           }}
         />
-        <Wh00tMessages />
+        <Wh00tMessages showBackgroundImage />
         <Wh00tChatInput />
       </Wh00tContainer>
     );

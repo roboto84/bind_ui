@@ -18,6 +18,10 @@ export type Wh00tMessageProps = {
   messagePackage: Wh00tMessagePackage
 }
 
+export type Wh00tMessagesProps = {
+  showBackgroundImage: boolean
+}
+
 export type Wh00tMessageTextProps = {
   messageText: string
 }
@@ -41,11 +45,6 @@ export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {
 export enum CssDisplay {
   flex = 'flex',
   none = 'none'
-}
-
-export enum CssVisibility {
-  visible = 'visible',
-  hidden = 'hidden'
 }
 
 export type EmojiSelectorProps = {

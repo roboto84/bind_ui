@@ -51,7 +51,7 @@ export function Wh00tMini() {
           }}
           minimizeSwitch={wh00tMinimizeSwitch}
         />
-        <Wh00tMessages />
+        <Wh00tMessages showBackgroundImage={false} />
         <Wh00tChatInput />
       </Wh00tMiniContainer>
     );

@@ -2,12 +2,18 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 
-export const Wh00tMessagesContainer = styled.div`
-  background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.backgroundColor};
-  background-image: url(${(props: GlobalThemeType) => props.theme.wh00t.backgroundImage});
+interface MessagesContainerProps extends GlobalThemeType {
+  showBackgroundImage: boolean
+}
+
+export const Wh00tMessagesContainer = styled.div<MessagesContainerProps>`
+  background-color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.backgroundColor};
+  background-image: ${(props: MessagesContainerProps) => (
+    props.showBackgroundImage ? `url(${props.theme.wh00t.backgroundImage})` : 'none'
+  )};
   background-repeat: no-repeat;
   background-position: 103% calc(100% + 210px);
-  color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.messageText};
+  color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.messageText};
   margin: 0 5px 5px 5px;
   font-family: verdana,serif;
   font-size: 17px;
@@ -18,6 +24,6 @@ export const Wh00tMessagesContainer = styled.div`
   border-radius: 5px;
 
   a:link, a:visited {
-    color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.aLinkColor};
+    color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLinkColor};
   }
 `;
