@@ -2,6 +2,7 @@ import React from 'react';
 import { MoonIcon, MoonPhaseEnum } from '@/components/MoonIcon';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/WeatherConditionIcon';
 import { removeSpaces } from '@/utils/formatting';
+import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '../../utils';
 import { CurrentWeatherProps } from '../../types/airTypes';
 import {
   Weather,
@@ -11,25 +12,35 @@ import {
   WeatherBlurb,
   WeatherElement,
   WeatherIconContainer,
-  WeatherSubcategory, MoonPhaseSummaryContainer,
+  WeatherSubcategory,
+  MoonPhaseSummaryContainer,
 } from '../../styles/airHomeStyles';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const { currentWeatherReport } = props;
+  const { temperature, temperatureApparent, precipitationType, weatherCode,
+    precipitationProbability, humidity, dewPoint, epaIndex, epaHealthConcern,
+    pressureSurfaceLevel, treeIndex, grassIndex, weedIndex } = currentWeatherReport;
+  const pollenMax: number = pollenMaxConcern(
+    Number(treeIndex.split(' ')[0]),
+    Number(grassIndex.split(' ')[0]),
+    Number(weedIndex.split(' ')[0]),
+  );
+  const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
   const moonPhase: MoonPhaseEnum = removeSpaces(currentWeatherReport.moonPhase) as MoonPhaseEnum;
   const weatherState: WeatherConditionEnum = removeSpaces(
-    currentWeatherReport.weatherCode,
+    weatherCode,
   ) as WeatherConditionEnum;
   return (
     <Weather>
       <WeatherSubcategory>
-        <CurrentTemperature>{currentWeatherReport.temperature}</CurrentTemperature>
+        <CurrentTemperature>{temperature}</CurrentTemperature>
         <WeatherIconContainer>
           <WeatherConditionIcon weatherCondition={weatherState} fontSize="135px" />
         </WeatherIconContainer>
         <WeatherBlurb>
-          {currentWeatherReport.weatherCode}...
-          feels like {currentWeatherReport.temperatureApparent}
+          {weatherCode}...
+          feels like {temperatureApparent}
         </WeatherBlurb>
       </WeatherSubcategory>
       <WeatherSubcategory>
@@ -37,25 +48,25 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         <MoonPhase>
           <div><MoonIcon moonPhase={moonPhase} fontSize="85px" /></div>
           <MoonPhaseSummaryContainer>
-            {currentWeatherReport.moonPhase} Moon
+            {moonPhase} Moon
           </MoonPhaseSummaryContainer>
         </MoonPhase>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>water</WeatherTitle>
         <WeatherElement>
-          {`${currentWeatherReport.precipitationProbability} Chance of ${currentWeatherReport.precipitationType}`}
+          {`${precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
         </WeatherElement>
-        <WeatherElement>{currentWeatherReport.humidity} Humidity</WeatherElement>
-        <WeatherElement>{currentWeatherReport.dewPoint} Dew Point</WeatherElement>
+        <WeatherElement>{humidity} Humidity</WeatherElement>
+        <WeatherElement>{dewPoint} Dew Point</WeatherElement>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>air</WeatherTitle>
         <WeatherElement>
-          {currentWeatherReport.epaHealthConcern} Air Quality ({currentWeatherReport.epaIndex})
+          {epaHealthConcern} Air Quality ({epaIndex})
         </WeatherElement>
-        <WeatherElement>{currentWeatherReport.pressureSurfaceLevel} Pressure</WeatherElement>
-        <WeatherElement>Pollen {currentWeatherReport.treeIndex}</WeatherElement>
+        <WeatherElement>{pressureSurfaceLevel} Pressure</WeatherElement>
+        <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
       </WeatherSubcategory>
     </Weather>
   );

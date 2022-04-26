@@ -1,7 +1,5 @@
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { GlobalThemeType } from '@/types';
-import { ChartObject, LineChartProps } from '@/components/LineChart';
-import { SubNavigation } from '@/views/air/styles/airHomeStyles';
 
 export type AirStandardTimeView = {
   date: string,
@@ -29,9 +27,9 @@ export type WeatherSummary = {
   pollutantNO2: string,
   pollutantO3: string,
   pollutantSO2: string,
-  grassIndex: number,
-  treeIndex: number,
-  weedIndex: number
+  grassIndex: string,
+  treeIndex: string,
+  weedIndex: string
 }
 
 export type CurrentWeatherReportProps = {

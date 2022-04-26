@@ -1,6 +1,7 @@
 import React from 'react';
 import { dayOfWeekAbbreviation, simpleDateTimeFormat, removeSpaces, padTime } from '@/utils/formatting';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/WeatherConditionIcon';
+import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '@/views/air/utils';
 import { ForecastSubTileProps } from '../../types/airTypes';
 import {
   WeatherTitle,
@@ -13,44 +14,53 @@ import {
 
 export function ForecastSubTile(props: ForecastSubTileProps) {
   const { forecast } = props;
-  const forecastDate: string = simpleDateTimeFormat(forecast.date);
+  const { date, weatherCode, temperature, precipitationProbability, treeIndex, grassIndex,
+    weedIndex, humidity, epaHealthConcern, epaIndex, moonPhase, pressureSurfaceLevel,
+    temperatureApparent, precipitationType } = forecast;
+  const pollenMax: number = pollenMaxConcern(
+    Number(treeIndex.split(' ')[0]),
+    Number(grassIndex.split(' ')[0]),
+    Number(weedIndex.split(' ')[0]),
+  );
+  const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
+  const forecastDate: string = simpleDateTimeFormat(date);
   const dayOfMonth: string = forecastDate.split('/')[1];
   const currentDayOfMonth: string = padTime(new Date().getDate());
   const isHighLighted: boolean = dayOfMonth === currentDayOfMonth;
-  const dayOfWeek: string = dayOfWeekAbbreviation(forecast.date);
+  const dayOfWeek: string = dayOfWeekAbbreviation(date);
   const weatherState: WeatherConditionEnum = removeSpaces(
-    forecast.weatherCode,
+    weatherCode,
   ) as WeatherConditionEnum;
   return (
     <WeatherSubcategory isHighLight={isHighLighted}>
       <WeatherTitle>{`${dayOfWeek} | ${forecastDate}`}</WeatherTitle>
       <WeatherForecastTemperature>
-        {forecast.temperature}
+        {temperature}
       </WeatherForecastTemperature>
       <WeatherIconSubTileContainer>
         <WeatherConditionIcon weatherCondition={weatherState} fontSize="90px" />
       </WeatherIconSubTileContainer>
       <WeatherForecastTemperatureApparent>
-        {forecast.weatherCode}... will
-        feel like {forecast.temperatureApparent}
+        {weatherCode}... will
+        feel like {temperatureApparent}
       </WeatherForecastTemperatureApparent>
       <WeatherForecastElement>
-        {forecast.precipitationProbability} chance of {forecast.precipitationType === 'N/A' ? 'Rain' : forecast.precipitationType}
+        {`${precipitationProbability} chance of ${precipitationTypeView(precipitationType)}`}
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {forecast.humidity} Humidity
+        {humidity} Humidity
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {forecast.pressureSurfaceLevel} Pressure
+        {pressureSurfaceLevel} Pressure
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {forecast.epaHealthConcern} Air Quality ({forecast.epaIndex})
+        {epaHealthConcern} Air Quality ({epaIndex})
       </WeatherForecastElement>
       <WeatherForecastElement>
-        Pollen {forecast.treeIndex}
+        Pollen will be {pollenSeveritySummary}
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {forecast.moonPhase} Moon
+        {moonPhase} Moon
       </WeatherForecastElement>
     </WeatherSubcategory>
   );
