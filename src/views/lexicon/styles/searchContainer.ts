@@ -21,6 +21,7 @@ export const SearchInput = styled(Input)`
 export const LexiconButton = styled(Button)`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.color};
   background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.background};
+  border-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.background};
   margin: 12px 0;
 `;
 

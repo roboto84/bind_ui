@@ -9,10 +9,10 @@ export const lexiconDark:LexiconThemeType = {
     inputFontFocusColor: '#2b2b2b',
     inputBackgroundColor: '#2F3436',
     inputBackgroundFocusColor: customTheme.green,
-    borderColor: '#2F343694',
+    borderColor: '#252729',
     searchButton: {
       color: '#939393',
-      background: '#2F3436',
+      background: '#252729',
     },
   },
 };
