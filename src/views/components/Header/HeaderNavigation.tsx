@@ -3,9 +3,9 @@ import { BsGithub, BsBug, BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 import { GlobalContext } from '@/context/globalContext';
 import { GlobalActionsEnum, ThemeModeEnum } from '@/context/types/enums';
 import { NavLinksContainer, NavContainer } from './styles/headerStyles';
-import NavigationLink from '../NavigationLink';
+import NavigationLink from '@/components/NavigationLink';
 
-export default function NavigationLinks() {
+export default function HeaderNavigation() {
   const { state, dispatch } = useContext(GlobalContext);
   const githubUrl: string = 'https://github.com/roboto84';
   const iconPadding: string = '5px 10px';

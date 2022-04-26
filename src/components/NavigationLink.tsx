@@ -7,6 +7,14 @@ import {
   NavigationLinkType,
 } from '@/views/components/Header/types/headerTypes';
 
+export type NavigationItemConfig = {
+  activationKey ?: string,
+  activationType ?: NavigationLinkActivationType
+  borderRadius ?: string,
+  linkTo: string,
+  title: string | JSX.Element,
+}
+
 function NavigationLink(props: NavigationLinkProps) {
   const { activationType, activationKey, navigationLinkType, linkTo, children,
     fontSize, padding, borderRadius, callBack } = props;

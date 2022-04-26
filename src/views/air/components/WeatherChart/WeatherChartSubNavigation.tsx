@@ -1,15 +1,7 @@
 import { SubNavigation } from '@/views/air/styles/airHomeStyles';
-import NavigationLink from '@/views/components/NavigationLink';
+import NavigationLink, { NavigationItemConfig } from '@/components/NavigationLink';
 import React from 'react';
-import {
-  NavigationLinkType,
-} from '@/views/components/Header/types/headerTypes';
-
-type NavigationItemConfig = {
-  borderRadius ?: string,
-  linkTo: string,
-  title: string,
-}
+import { NavigationLinkType } from '@/views/components/Header/types/headerTypes';
 
 export function WeatherChartSubNavigation() {
   const navConfig: NavigationItemConfig[] = [
