@@ -55,7 +55,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     wordAudioComponent = (
       <WordAudio>
         <audio preload="auto" controls>
-          <source src={wordDefinition.audio} />
+          <source src={wordDefinition.audio} type="audio/mpeg"/>
           Your browser does not support the audio format.
         </audio>
       </WordAudio>
