@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
+import { Hoverable } from '@/views/styles/appStyles';
 
 export const ErrorDisplay = styled.div`
   font-size: 50px;
@@ -18,4 +18,4 @@ export const SpellingSuggestions = styled.div`
   padding: 10px;
 `;
 
-export const SpellingSuggestion = styled(LexiconHoverable)``;
+export const SpellingSuggestion = styled(Hoverable)``;

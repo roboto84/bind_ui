@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
+import { Hoverable } from '@/views/styles/appStyles';
 
 const generalDefinitionStyle: string = 'margin: 0 5px;';
 
-const generalStyle = styled.span`
+const GeneralStyle = styled.span`
   margin: 0 8px; 
   color: #606060;
 `;
@@ -12,18 +12,18 @@ export const WordOfDayContainer = styled.div`
   margin: 0 75px;
 `;
 
-export const DayWord = styled(LexiconHoverable)`
+export const DayWord = styled(Hoverable)`
   display: inline-block;
   min-width: 0;
   font-weight: bold;
 `;
 
-export const DayWordDate = styled(generalStyle)`
+export const DayWordDate = styled(GeneralStyle)`
   margin: 0 8px 0 0;
 `;
 
-export const DayWordPartOfSpeech = styled(generalStyle)``;
-export const DayWordBreak = styled(generalStyle)``;
+export const DayWordPartOfSpeech = styled(GeneralStyle)``;
+export const DayWordBreak = styled(GeneralStyle)``;
 
 export const DayWordPronounce = styled.span`
   margin: 0 5px;

@@ -22,7 +22,7 @@ import {
   WordDefinitionList,
   WordDefinition,
   Stem,
-} from './styles/wordSearchDefinition';
+} from './styles/wordSearchDefinitionStyle';
 import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 
 export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {

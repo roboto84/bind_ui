@@ -24,6 +24,7 @@ export type SubButtonStyleType = {
   backgroundColor: string,
   fontColor: string,
   transitionFontColor: string,
+  borderColor: string,
 }
 
 export type ChartStyleType = {
@@ -36,7 +37,6 @@ export type ChartStyleType = {
 
 export type LexiconThemeType = {
   textColor: string,
-  containerBackgroundColor: string,
   searchBar:{
     inputFontColor: string,
     inputFontFocusColor: string,
@@ -66,6 +66,10 @@ export type CoreStyleType = {
   bgColor: string,
   textColor: string,
   linkColor: string,
+  section: {
+    backgroundColor: string,
+    borderColor: string,
+  },
   code: {
     backgroundColor: string,
     borderColor: string,

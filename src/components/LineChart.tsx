@@ -78,7 +78,7 @@ export function LineChart(props: LineChartProps) {
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
       .attr('viewBox', [0, 0, width - margin.left - margin.right - 40, height + margin.top + margin.bottom + 70])
-      .attr('style', 'max-width: 95%; height: auto; height: intrinsic;')
+      .attr('style', 'max-width: 100%; height: auto; height: intrinsic;')
       .append('g')
       .attr('transform', `translate(${margin.left}, ${margin.top})`);
 

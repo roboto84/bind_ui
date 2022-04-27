@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Section } from '@/views/lexicon/styles/lexiconHomeStyles';
-import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
+import { LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
+import { Hoverable } from '@/views/styles/appStyles';
 
 const wordInfo = styled.div`
   display: inline-block;
@@ -12,7 +12,7 @@ const wordInfo = styled.div`
 
 export const PartOfSpeech = styled(wordInfo)``;
 export const WordBreak = styled(wordInfo)``;
-export const WordDefinition = styled(Section)`
+export const WordDefinition = styled(LexiconSection)`
   margin-top: 55px;
 `;
 
@@ -29,7 +29,7 @@ export const Word = styled.div`
   margin-top: -3px;
 `;
 
-export const Stem = styled(LexiconHoverable)`
+export const Stem = styled(Hoverable)`
   min-width: 0;
   display: inline-block;
 `;

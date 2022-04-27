@@ -12,6 +12,10 @@ export const LightTheme: ThemeType = {
     bgColor: '#d4d4d4',
     textColor: 'black',
     linkColor: '#5dd2f2',
+    section: {
+      backgroundColor: '#e3e3e3',
+      borderColor: '#c7c7c7',
+    },
     code: {
       backgroundColor: '#e8f5fa',
       borderColor: 'rgba(11,76,140,.2)',
@@ -19,15 +23,16 @@ export const LightTheme: ThemeType = {
     },
   },
   button: {
-    border: 'grey',
+    border: '#949494',
     fontColor: '#4e4e4e',
     transitionFontColor: 'white',
     backgroundColor: '#e3e3e3',
   },
   subButton: {
-    backgroundColor: 'grey',
+    backgroundColor: '#8a8b8b',
     fontColor: '#e9e9e9',
     transitionFontColor: '#e9e9e9',
+    borderColor: '#8a8b8b',
   },
   chart: {
     border: '#d1d1d1',

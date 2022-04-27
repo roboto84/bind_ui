@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GlobalThemeType } from '@/types';
 
 export const AppContainer = styled.div`
   font-size: 13px;
@@ -20,4 +21,25 @@ export const MainContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
   }
+`;
+
+export const Hoverable = styled.div`
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 15px;
+  min-width: 170px;
+  transition: 0.4s;
+
+  :hover{
+    background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
+  }
+`;
+
+export const Section = styled.div`
+  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  border: 3px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
 `;

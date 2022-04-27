@@ -33,6 +33,7 @@ export const SubButton = styled(Button)`
   margin: 0 1px 0 0;
   color: ${(props: ButtonProps) => props.theme.subButton.fontColor};
   background-color: ${(props: ButtonProps) => props.theme.subButton.backgroundColor};
+  border-color: ${(props: ButtonProps) => props.theme.subButton.borderColor};
 
   &:hover, &.active {
     color: ${(props: ButtonProps) => props.theme.subButton.transitionFontColor};

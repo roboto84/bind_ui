@@ -7,16 +7,3 @@ export const LexiconContainer = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
   padding-top: 20px;
 `;
-
-export const LexiconHoverable = styled.div`
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 5px 15px;
-  min-width: 170px;
-  transition: 0.4s;
-
-  :hover{
-    background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
-    color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
-  }
-`;

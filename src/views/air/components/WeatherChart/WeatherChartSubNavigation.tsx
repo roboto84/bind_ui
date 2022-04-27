@@ -21,7 +21,7 @@ export function WeatherChartSubNavigation() {
     { borderRadius: '0 5px 5px 0', linkTo: 'pollen_weed', title: 'Weeds' },
   ];
   return (
-    <SubNavigation margin="40px 0 15px 0" justifyContent="center">
+    <SubNavigation margin="40px 0 0 0" justifyContent="center">
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink

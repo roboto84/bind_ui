@@ -6,8 +6,8 @@ import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
 import { LineChart, ChartObject } from '@/components/LineChart';
-import { WeatherChartSubNavigation } from '@/views/air/components/WeatherChart/WeatherChartSubNavigation';
-import { WeatherSubContainer } from '../../styles/airHomeStyles';
+import { WeatherChartSummary } from '@/views/air/components/WeatherChart/WeatherChartSummary';
+import { WeatherChartSection, WeatherSubContainer } from '../../styles/airHomeStyles';
 import { WeatherChartProps, WeatherChartType, WeatherSummary } from '../../types/airTypes';
 
 export function WeatherChart(props: WeatherChartProps) {
@@ -50,7 +50,9 @@ export function WeatherChart(props: WeatherChartProps) {
 
   return (
     <WeatherSubContainer>
-      <WeatherChartSubNavigation />
+      <WeatherChartSection>
+        <WeatherChartSummary descriptionType={chartKey} />
+      </WeatherChartSection>
       <LineChart
         xAxisLabel={chartXAxisLabel}
         yAxisLabel={chartYAxisLabel}

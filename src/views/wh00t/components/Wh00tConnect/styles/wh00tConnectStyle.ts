@@ -5,6 +5,7 @@ import { Input } from '@/components/Input';
 import {
   ChatInputButton,
 } from '@/views/wh00t/components/Wh00tChatInput/styles/wh00tChatInputStyle';
+import { Section } from '@/views/styles/appStyles';
 
 export const Wh00tConnectContainer = styled.div`
   max-width: 410px;
@@ -13,6 +14,9 @@ export const Wh00tConnectContainer = styled.div`
   padding: 20px;
 `;
 
+export const Wh00tConnectSection = styled(Section)`
+
+`;
 export const Wh00tConnectTitle = styled.div`
   margin-top: 20px;
   color: ${(props: GlobalThemeType) => props.theme.core.textColor};

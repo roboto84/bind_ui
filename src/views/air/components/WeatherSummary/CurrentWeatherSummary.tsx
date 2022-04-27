@@ -54,19 +54,23 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>water</WeatherTitle>
-        <WeatherElement>
-          {`${precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
-        </WeatherElement>
-        <WeatherElement>{humidity} Humidity</WeatherElement>
-        <WeatherElement>{dewPoint} Dew Point</WeatherElement>
+        <div>
+          <WeatherElement>
+            {`${precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
+          </WeatherElement>
+          <WeatherElement>{humidity} Humidity</WeatherElement>
+          <WeatherElement>{dewPoint} Dew Point</WeatherElement>
+        </div>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>air</WeatherTitle>
-        <WeatherElement>
-          {epaHealthConcern} Air Quality ({epaIndex})
-        </WeatherElement>
-        <WeatherElement>{pressureSurfaceLevel} Pressure</WeatherElement>
-        <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
+        <div>
+          <WeatherElement>
+            {epaHealthConcern} Air Quality ({epaIndex})
+          </WeatherElement>
+          <WeatherElement>{pressureSurfaceLevel} Pressure</WeatherElement>
+          <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
+        </div>
       </WeatherSubcategory>
     </Weather>
   );

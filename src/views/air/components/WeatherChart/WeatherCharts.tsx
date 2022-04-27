@@ -4,6 +4,9 @@ import { WeatherChart } from '@/views/air/components/WeatherChart/WeatherChart';
 import { Error404 } from '@/views/404/404';
 import { RouterItemConfig } from '@/types';
 import { RoutesGenerator } from '@/components/RoutesGenerator';
+import {
+  WeatherChartSubNavigation,
+} from '@/views/air/components/WeatherChart/WeatherChartSubNavigation';
 
 export function WeatherCharts() {
   const routerConfig: RouterItemConfig[] = [
@@ -23,5 +26,10 @@ export function WeatherCharts() {
     { path: 'pollen_weed', element: <WeatherChart chartKey={WeatherChartType.weedIndex} /> },
     { path: '*', element: <Error404 /> },
   ];
-  return (<RoutesGenerator routerRoutesConfig={routerConfig} />);
+  return (
+    <>
+      <WeatherChartSubNavigation />
+      <RoutesGenerator routerRoutesConfig={routerConfig} />
+    </>
+  );
 }

@@ -11,6 +11,10 @@ export const DarkTheme: ThemeType = {
     bgColor: customTheme.background,
     textColor: customTheme.textColor,
     linkColor: customTheme.lightBlue,
+    section: {
+      backgroundColor: '#1d1f21',
+      borderColor: '#252729',
+    },
     code: {
       backgroundColor: '#2e3234',
       borderColor: 'rgb(93, 93, 93)',
@@ -38,6 +42,7 @@ export const DarkTheme: ThemeType = {
     backgroundColor: '#2F3436',
     fontColor: '#c9c9c9',
     transitionFontColor: '#c9c9c9',
+    borderColor: '#2F3436',
   },
   header: {
     subTitleColor: '#939393',

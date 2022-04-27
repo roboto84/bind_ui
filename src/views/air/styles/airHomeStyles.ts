@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { Section } from '@/views/styles/appStyles';
 import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
 export const WeatherIconContainer = styled.div`
@@ -89,9 +90,22 @@ export const WeatherForecastTemperatureApparent = styled.div`
 `;
 
 export const WeatherElement = styled.div`
-  border-top: #2F3436 solid 1px;
   color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
   padding: 16px;
+  
+  :not(:first-child){
+    border-top: #2F3436 solid 1px;
+  }
+`;
+
+export const WeatherChartSection = styled(Section)`
+  max-width: 1210px;
+  margin: 10px auto;
+`;
+
+export const WeatherChartSectionSummary = styled.div`
+  margin-top: 10px;
+  font-size: 16px;
 `;
 
 export const WeatherForecastElement = styled(WeatherElement)`
@@ -100,13 +114,15 @@ export const WeatherForecastElement = styled(WeatherElement)`
 `;
 
 export const WeatherSubContainer = styled.div`
-  margin-top: 20px;
+  padding: 10px;
 `;
 
 export const SubNavigation = styled.div<SubNavigationProps>`
   display: flex;
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};
   margin: ${(props: SubNavigationProps) => props.margin};
+  flex-wrap: wrap;
+}
 `;
 
 export const WeatherTableContainer = styled.div`

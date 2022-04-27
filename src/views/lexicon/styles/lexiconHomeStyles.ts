@@ -1,18 +1,14 @@
 import styled from 'styled-components';
-import { GlobalThemeType } from '@/types';
+import { Section } from '@/views/styles/appStyles';
 
-export const Section = styled.div`
-  background-color: ${(props: GlobalThemeType) => props.theme.lexicon.containerBackgroundColor};
-  padding: 20px;
+export const LexiconSection = styled(Section)`
   margin: 30px 5vw 20px 5vw;
-  border-radius: 10px;
 `;
-
-export const WordOfDaySection = styled(Section)``;
+export const WordOfDaySection = styled(LexiconSection)``;
 export const WordListSection = styled.div``;
-export const WordListContainer = styled(Section)``;
+export const WordListContainer = styled(LexiconSection)``;
 export const LatestWordListContainer = styled.div`{
-  margin: 0px 50px;
+  margin: 0 50px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

@@ -1,4 +1,4 @@
 import styled from 'styled-components';
-import { LexiconHoverable } from '@/views/lexicon/styles/lexiconStyles';
+import { Hoverable } from '@/views/styles/appStyles';
 
-export const Word = styled(LexiconHoverable)``;
+export const Word = styled(Hoverable)``;

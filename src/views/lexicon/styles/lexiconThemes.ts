@@ -3,7 +3,6 @@ import { customTheme } from '@/styles/themes/customTheme';
 
 export const lexiconDark:LexiconThemeType = {
   textColor: '#d5d5d5',
-  containerBackgroundColor: '#1d1f21',
   searchBar: {
     inputFontColor: '#939393',
     inputFontFocusColor: '#2b2b2b',
@@ -19,7 +18,6 @@ export const lexiconDark:LexiconThemeType = {
 
 export const lexiconLight:LexiconThemeType = {
   textColor: '#393939',
-  containerBackgroundColor: '#e3e3e3',
   searchBar: {
     inputFontColor: 'black',
     inputFontFocusColor: '#2b2b2b',
