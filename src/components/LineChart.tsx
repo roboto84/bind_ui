@@ -21,7 +21,7 @@ export type LineChartProps = {
   yAxisLabel: string,
   xAxisLabel: string,
   chartObject: ChartObject,
-  yDomainRange?: [number, number]
+  yDomainRange ?: [number, number]
 }
 
 export function LineChart(props: LineChartProps) {
@@ -45,15 +45,15 @@ export function LineChart(props: LineChartProps) {
 
     const xType = d3.scaleUtc;
     const yType = d3.scaleLinear;
+    const yMax: number = d3.max(data, (d) => d[1]);
+    const yMin: number = d3.min(data, (d) => d[1]);
+    const yDomainBuffer = (yMax - yMin) * 0.15;
 
     // Computer Range and Domain
     const xRange: number[] = [0, width];
     const yRange: number[] = [height, 0];
     const xDomain: [number, number] = d3.extent(data, (d) => d[0]);
-    const yDomain: [number, number] = yDomainRange || [
-      0.95 * d3.min(data, (d) => d[1]),
-      1.05 * d3.max(data, (d) => d[1]),
-    ];
+    const yDomain: [number, number] = yDomainRange || [yMin - yDomainBuffer, yMax + yDomainBuffer];
 
     // Construct scales and axes.
     const xScale: ScaleTime<any, any> = xType(xDomain, xRange);

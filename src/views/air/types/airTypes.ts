@@ -71,9 +71,9 @@ export type WeatherPollutionSummary = {
 
 export type WeatherPollenSummary = {
   date: string,
-  grassIndex: number,
-  treeIndex: number,
-  weedIndex: number
+  grassIndex: string,
+  treeIndex: string,
+  weedIndex: string
 }
 
 export enum WeatherTableType {

@@ -8,7 +8,7 @@ import camelcaseKeys from 'camelcase-keys';
 import { LineChart, ChartObject } from '@/components/LineChart';
 import { WeatherChartSummary } from '@/views/air/components/WeatherChart/WeatherChartSummary';
 import { WeatherChartSection, WeatherSubContainer } from '../../styles/airHomeStyles';
-import { WeatherChartProps, WeatherChartType, WeatherSummary } from '../../types/airTypes';
+import { WeatherChartProps, WeatherSummary } from '../../types/airTypes';
 
 export function WeatherChart(props: WeatherChartProps) {
   const { chartKey } = props;
@@ -45,8 +45,6 @@ export function WeatherChart(props: WeatherChartProps) {
   });
   const chartXAxisLabel: string = 'time';
   const chartYAxisLabel: string = String(weatherRecords[0][chartKey]).split(' ')[1];
-  const yDomain: [number, number] = chartKey === WeatherChartType.pressureSurfaceLevel
-    ? [29.70, 30.25] : null;
 
   return (
     <WeatherSubContainer>
@@ -54,7 +52,6 @@ export function WeatherChart(props: WeatherChartProps) {
         xAxisLabel={chartXAxisLabel}
         yAxisLabel={chartYAxisLabel}
         chartObject={weatherSection}
-        yDomainRange={yDomain}
       />
       <WeatherChartSection>
         <WeatherChartSummary descriptionType={chartKey} />
