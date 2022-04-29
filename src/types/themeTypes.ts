@@ -65,7 +65,10 @@ export type CoreStyleType = {
   mainThemeColor: string,
   bgColor: string,
   textColor: string,
-  linkColor: string,
+  aLink: {
+    linkColor: string,
+    hoverColor: string,
+  },
   section: {
     backgroundColor: string,
     borderColor: string,

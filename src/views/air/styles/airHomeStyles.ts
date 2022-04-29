@@ -104,8 +104,11 @@ export const WeatherChartSection = styled(Section)`
 `;
 
 export const WeatherChartSectionSummary = styled.div`
-  margin-top: 10px;
-  font-size: 16px;
+  font-size: 14px;
+`;
+
+export const WeatherChartSectionHyperlink = styled.a`
+  margin-left: 10px;
 `;
 
 export const WeatherForecastElement = styled(WeatherElement)`

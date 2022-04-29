@@ -20,20 +20,4 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     margin: 5px;
   }
-
-  a:link {
-    color: blue;
-  }
-
-  a:visited {
-    color: purple;
-  }
-
-  a:hover {
-    color: green;
-  }
-
-  a:active {
-    color: red;
-  }
 `;

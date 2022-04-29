@@ -50,15 +50,15 @@ export function WeatherChart(props: WeatherChartProps) {
 
   return (
     <WeatherSubContainer>
-      <WeatherChartSection>
-        <WeatherChartSummary descriptionType={chartKey} />
-      </WeatherChartSection>
       <LineChart
         xAxisLabel={chartXAxisLabel}
         yAxisLabel={chartYAxisLabel}
         chartObject={weatherSection}
         yDomainRange={yDomain}
       />
+      <WeatherChartSection>
+        <WeatherChartSummary descriptionType={chartKey} />
+      </WeatherChartSection>
     </WeatherSubContainer>
   );
 }

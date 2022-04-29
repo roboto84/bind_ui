@@ -26,6 +26,7 @@ export const LineChartContainer = styled.div`
   
   .d3-component {
     border: solid ${(props: GlobalThemeType) => props.theme.chart.border} 3px;
+    border-radius: 10px;
     stroke: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
     stroke-width: 1px;
     background-color: ${(props: GlobalThemeType) => props.theme.chart.backgroundColor};

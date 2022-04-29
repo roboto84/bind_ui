@@ -4,13 +4,17 @@ import { debugDark } from '@/views/debug/styles/debugThemes';
 import { customTheme } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
+import { tomorrowLight } from '@/styles/themes/tomorrowTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
     mainThemeColor: customTheme.green,
     bgColor: customTheme.background,
     textColor: customTheme.textColor,
-    linkColor: customTheme.lightBlue,
+    aLink: {
+      linkColor: customTheme.green,
+      hoverColor: '#91b400',
+    },
     section: {
       backgroundColor: '#1d1f21',
       borderColor: '#252729',

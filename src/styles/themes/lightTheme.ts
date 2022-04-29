@@ -11,7 +11,10 @@ export const LightTheme: ThemeType = {
     mainThemeColor: tomorrowLight.green,
     bgColor: '#d4d4d4',
     textColor: 'black',
-    linkColor: '#5dd2f2',
+    aLink: {
+      linkColor: tomorrowLight.green,
+      hoverColor: '#91b400',
+    },
     section: {
       backgroundColor: '#e3e3e3',
       borderColor: '#c7c7c7',

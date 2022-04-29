@@ -20,6 +20,22 @@ export const GlobalThemeStyle = createGlobalStyle`
     }
   }
 
+  a:link {
+    color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
+  }
+
+  a:visited {
+    color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
+  }
+
+  a:hover {
+    color: ${(props: GlobalThemeType) => props.theme.core.aLink.hoverColor};
+  }
+
+  a:active {
+    color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
+  }
+
   table {
     border-collapse: collapse;
     width: 100%;
