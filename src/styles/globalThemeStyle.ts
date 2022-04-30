@@ -44,11 +44,12 @@ export const GlobalThemeStyle = createGlobalStyle`
     background-color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.backgroundColor};
   }
 
+  thead th { position: sticky; top: 0; }
+  
   th {
-    color: ${(props: GlobalThemeType) => props.theme.button.transitionFontColor};
-    background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
-    padding: 8px;
-    border: 5px solid ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: #fff;
+    background-color: ${(props: GlobalThemeType) => props.theme.core.table.headerColor};
+    padding: 12px;
     text-align: center;
     font-weight: normal;
     letter-spacing: 2px;
@@ -57,7 +58,7 @@ export const GlobalThemeStyle = createGlobalStyle`
 
   td {
     padding: 10px;
-    border: 5px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
     text-align: left;
   }
 
@@ -70,7 +71,7 @@ export const GlobalThemeStyle = createGlobalStyle`
 
     :hover {
       color: white;
-      background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
     }
   }
 

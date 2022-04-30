@@ -24,6 +24,11 @@ export const DarkTheme: ThemeType = {
       borderColor: 'rgb(93, 93, 93)',
       textColor: '#d88e01',
     },
+    table: {
+      borderColor: '#3f3f3f',
+      headerColor: '#3f3f3f',
+      highlightCellColor: '#617c07',
+    },
   },
   chart: {
     border: '#292929',
@@ -45,7 +50,7 @@ export const DarkTheme: ThemeType = {
   subButton: {
     backgroundColor: '#2F3436',
     fontColor: '#c9c9c9',
-    transitionFontColor: '#c9c9c9',
+    transitionFontColor: '#252525',
     borderColor: '#2F3436',
   },
   header: {

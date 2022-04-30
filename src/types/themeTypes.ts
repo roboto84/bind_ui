@@ -73,6 +73,11 @@ export type CoreStyleType = {
     backgroundColor: string,
     borderColor: string,
   },
+  table: {
+    borderColor: string,
+    headerColor: string,
+    highlightCellColor: string,
+  },
   code: {
     backgroundColor: string,
     borderColor: string,

@@ -20,4 +20,9 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     margin: 5px;
   }
+  
+  audio {
+    border-radius: 8px;
+    background-color: gray;
+  }
 `;

@@ -23,7 +23,7 @@ export const lexiconLight:LexiconThemeType = {
     inputFontFocusColor: '#2b2b2b',
     inputBackgroundColor: '#d4d4d4',
     inputBackgroundFocusColor: '#e3e3e3',
-    borderColor: '#626f3694',
+    borderColor: 'grey',
     searchButton: {
       color: '#fff',
       background: 'grey',

@@ -1,4 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
+import { GlobalThemeType } from '@/types';
 
 type TableObject = {
   key: string,
@@ -10,6 +12,12 @@ type TableProps = {
   tableObject: TableObject
 }
 
+const TableContainer = styled.div<GlobalThemeType>`
+  overflow-y: auto;
+  height: calc(70vh);
+  border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
+`;
+
 export function Table(props: TableProps) {
   const { tableObject } = props;
   const keyGenerator = (
@@ -19,18 +27,19 @@ export function Table(props: TableProps) {
   ): string => key.concat(cellTitle, uniqueId);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          {
+    <TableContainer>
+      <table>
+        <thead>
+          <tr>
+            {
             tableObject.headers.map((title:string) => (
               <th key={keyGenerator(tableObject.key, 'tableHeader', title)}>{title}</th>
             ))
           }
-        </tr>
-      </thead>
-      <tbody>
-        {
+          </tr>
+        </thead>
+        <tbody>
+          {
           tableObject.cells.map((cellValues:string[], cellIndex:number) => (
             <tr key={keyGenerator(tableObject.key, 'tableCell', String(cellIndex))}>
               {
@@ -43,7 +52,8 @@ export function Table(props: TableProps) {
             </tr>
           ))
         }
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </TableContainer>
   );
 }

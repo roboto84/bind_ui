@@ -8,16 +8,21 @@ import { airLight } from '@/views/air/styles/airThemeStyle';
 
 export const LightTheme: ThemeType = {
   core: {
-    mainThemeColor: tomorrowLight.green,
+    mainThemeColor: '#86a0a7',
     bgColor: '#d4d4d4',
     textColor: 'black',
     aLink: {
-      linkColor: tomorrowLight.green,
-      hoverColor: '#91b400',
+      linkColor: '#86a0a7',
+      hoverColor: '#6898a5',
     },
     section: {
       backgroundColor: '#e3e3e3',
       borderColor: '#c7c7c7',
+    },
+    table: {
+      borderColor: '#969696',
+      headerColor: '#969696',
+      highlightCellColor: '#89a4ab',
     },
     code: {
       backgroundColor: '#e8f5fa',
@@ -46,11 +51,11 @@ export const LightTheme: ThemeType = {
   },
   throbber: {
     background: '#ccc',
-    foreground: customTheme.green,
+    foreground: '#86a0a7',
   },
   header: {
     subTitleColor: '#6c6c6c',
-    secondaryTitleColor: '#617800',
+    secondaryTitleColor: '#6a9ca9',
     borderBottomColor: '#a5a5a5',
   },
   air: airLight,

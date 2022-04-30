@@ -8,7 +8,7 @@ export const debugLight = {
   messageHistoryBorder: '#939393',
   messageBackgroundColor: '#e9e9e9',
   messageTime: tomorrowLight.red,
-  latestMessageBorder: tomorrowLight.blue,
+  latestMessageBorder: '#86a0a7',
 };
 
 export const debugDark = {
