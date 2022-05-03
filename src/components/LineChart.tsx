@@ -5,6 +5,7 @@ import { getStandardTime } from '@/utils/formatting';
 import { LineChartContainer } from '@/styles/chartStyle';
 import { ScaleLinear, ScaleTime } from 'd3';
 import { AirStandardTimeView } from '@/views/air/types/airTypes';
+import { timeFormatMorph } from '@/utils/utils';
 
 export type ChartData = {
   x: string,
@@ -36,11 +37,11 @@ export function LineChart(props: LineChartProps) {
     const data: D3ChartData[] = [];
 
     // Setup Date Parser
-    const parseTime: Function = d3.timeParse('%Y-%m-%dT%H:%M:%S%Z');
+    const parseTime: Function = d3.timeParse('%Y-%m-%dT%H:%M:%S');
 
     // Compute data values
     chartObject.chartData.forEach((dataValue) => {
-      data.push([+parseTime(dataValue.x), dataValue.y]);
+      data.push([+parseTime(timeFormatMorph(dataValue.x)), dataValue.y]);
     });
 
     const xType = d3.scaleUtc;
@@ -108,8 +109,7 @@ export function LineChart(props: LineChartProps) {
           .style('opacity', 1);
         tooltip.html(
           // eslint-disable-next-line no-underscore-dangle
-          `<div class="toolTipXValue">${dataPointDate.date} ${dataPointDate.hour}</div>
-                <div class="toolTipYValue">${e.originalTarget.__data__[1]} ${yAxisLabel}</div>`,
+          `<div class="toolTipXValue">${dataPointDate.date} ${dataPointDate.hour}</div><div class="toolTipYValue">${e.originalTarget.__data__[1]} ${yAxisLabel}</div>`,
         );
       })
       .on('mousemove', (e) => tooltip

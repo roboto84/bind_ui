@@ -7,3 +7,11 @@ export function randomIntFromInterval(min: number, max: number) {
 export function randomUuid(): string {
   return uuidv4();
 }
+
+export function timeFormatMorph(timeStamp: string):string {
+  let timeMorph: string = timeStamp.substring(0, timeStamp.lastIndexOf('-'))
+  if (timeMorph.indexOf('.') > 0) {
+    timeMorph = timeMorph.substring(0, timeMorph.lastIndexOf('.'));
+  }
+  return timeMorph;
+}
