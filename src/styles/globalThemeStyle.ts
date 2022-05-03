@@ -52,7 +52,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     padding: 12px;
     text-align: center;
     font-weight: normal;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     transition: 0.4s;
   }
 

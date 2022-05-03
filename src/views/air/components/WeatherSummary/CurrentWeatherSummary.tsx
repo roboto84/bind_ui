@@ -17,15 +17,11 @@ import {
 } from '../../styles/airHomeStyles';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
-  const { currentWeatherReport } = props;
+  const { currentWeatherReport, weatherUnits } = props;
   const { temperature, temperatureApparent, precipitationType, weatherCode,
     precipitationProbability, humidity, dewPoint, epaIndex, epaHealthConcern,
     pressureSurfaceLevel, treeIndex, grassIndex, weedIndex } = currentWeatherReport;
-  const pollenMax: number = pollenMaxConcern(
-    Number(treeIndex.split(' ')[0]),
-    Number(grassIndex.split(' ')[0]),
-    Number(weedIndex.split(' ')[0]),
-  );
+  const pollenMax: number = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
   const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
   const moonPhase: MoonPhaseEnum = removeSpaces(currentWeatherReport.moonPhase) as MoonPhaseEnum;
   const weatherState: WeatherConditionEnum = removeSpaces(
@@ -34,13 +30,13 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   return (
     <Weather>
       <WeatherSubcategory>
-        <CurrentTemperature>{temperature}</CurrentTemperature>
+        <CurrentTemperature>{temperature} {weatherUnits.temperature}</CurrentTemperature>
         <WeatherIconContainer>
           <WeatherConditionIcon weatherCondition={weatherState} fontSize="135px" />
         </WeatherIconContainer>
         <WeatherBlurb>
           {weatherCode}...
-          feels like {temperatureApparent}
+          feels like {temperatureApparent} {weatherUnits.temperatureApparent}
         </WeatherBlurb>
       </WeatherSubcategory>
       <WeatherSubcategory>
@@ -56,19 +52,21 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         <WeatherTitle>water</WeatherTitle>
         <div>
           <WeatherElement>
-            {`${precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
+            {`${precipitationProbability} ${weatherUnits.precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
           </WeatherElement>
-          <WeatherElement>{humidity} Humidity</WeatherElement>
-          <WeatherElement>{dewPoint} Dew Point</WeatherElement>
+          <WeatherElement>{humidity} {weatherUnits.humidity} Humidity</WeatherElement>
+          <WeatherElement>{dewPoint} {weatherUnits.dewPoint} Dew Point</WeatherElement>
         </div>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>air</WeatherTitle>
         <div>
           <WeatherElement>
-            {epaHealthConcern} Air Quality ({epaIndex})
+            {epaHealthConcern} Air Quality ({epaIndex} {weatherUnits.epaIndex})
           </WeatherElement>
-          <WeatherElement>{pressureSurfaceLevel} Pressure</WeatherElement>
+          <WeatherElement>
+            {pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure
+          </WeatherElement>
           <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
         </div>
       </WeatherSubcategory>

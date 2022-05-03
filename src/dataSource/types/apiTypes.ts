@@ -1,4 +1,4 @@
-import { WeatherSummary } from '@/views/air/types/airTypes';
+import { WeatherSummary, WeatherUnits } from '@/views/air/types/airTypes';
 
 export type AirEndpointsType = {
   weatherReport: string,
@@ -29,11 +29,13 @@ export type DebugApiResponse = {
 }
 
 export type LiveWeatherReport = {
+  weatherUnits: WeatherUnits,
   currentWeather: WeatherSummary,
   weatherForecast: WeatherSummary[]
 }
 
 export type WeatherHistory = {
+  weatherUnits: WeatherUnits,
   weatherHistory: WeatherSummary[]
 }
 

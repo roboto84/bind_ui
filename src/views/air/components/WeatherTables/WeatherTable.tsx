@@ -8,10 +8,8 @@ import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
 import { Table } from '@/components/Table';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
-import {
-  WeatherSubContainer,
-  WeatherTableContainer,
-} from '../../styles/airHomeStyles';
+import { getWeatherTableTitle } from '@/views/air/utils';
+import { WeatherSubContainer, WeatherTableContainer } from '../../styles/airHomeStyles';
 import {
   SubWeatherSummary,
   WeatherPollenSummary,
@@ -43,6 +41,7 @@ export function WeatherTable(props: WeatherTablesProps) {
 
   const airWeatherData: WeatherHistory = camelcaseKeys<WeatherHistory>(data);
   const weatherRecords: WeatherSummary[] = airWeatherData.weatherHistory;
+  const standardUnits = airWeatherData.weatherUnits;
   const weatherSection: WeatherTableObject<
     SubWeatherSummary |
     WeatherPollenSummary |
@@ -88,9 +87,13 @@ export function WeatherTable(props: WeatherTablesProps) {
     }
   });
 
-  const tableHeaders = Object.keys(weatherSection.weatherData[0]);
+  const tableHeaders = Object.keys(weatherSection.weatherData[0]).map((key:string) => {
+    const unit = standardUnits[key];
+    const unitView = unit ? `(${unit})` : '';
+    return `${getWeatherTableTitle(key)} ${unitView}`;
+  });
   const cellData:string[][] = weatherSection.weatherData.map(
-    (weatherPortion) => (
+    (weatherPortion: SubWeatherSummary | WeatherPollenSummary | WeatherPollutionSummary) => (
       Object.values(weatherPortion) as string[]
     ),
   );

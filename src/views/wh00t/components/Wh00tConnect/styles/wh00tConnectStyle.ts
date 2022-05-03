@@ -10,7 +10,7 @@ import { Section } from '@/views/styles/appStyles';
 export const Wh00tConnectContainer = styled.div`
   max-width: 410px;
   height: 210px;
-  margin: 14% auto auto;
+  margin: 12% auto auto;
   padding: 20px;
 `;
 

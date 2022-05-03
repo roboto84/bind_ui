@@ -31,11 +31,12 @@ export function WeatherChart(props: WeatherChartProps) {
 
   const airWeatherData: WeatherHistory = camelcaseKeys<WeatherHistory>(data);
   const weatherRecords: WeatherSummary[] = airWeatherData.weatherHistory;
+  const { weatherUnits } = airWeatherData;
   const weatherSection: ChartObject = {
     chartData: [],
   };
   weatherRecords.forEach((weatherRecord:WeatherSummary, index:number) => {
-    const recordNumberValue:number = Number(String(weatherRecord[chartKey]).split(' ')[0]);
+    const recordNumberValue:number = weatherRecord[chartKey];
     if (!Number.isNaN(recordNumberValue) && index % 2 === 0) {
       weatherSection.chartData.push({
         x: weatherRecord.date,
@@ -44,7 +45,9 @@ export function WeatherChart(props: WeatherChartProps) {
     }
   });
   const chartXAxisLabel: string = 'time';
-  const chartYAxisLabel: string = String(weatherRecords[0][chartKey]).split(' ')[1];
+  const chartYAxisLabel: string = weatherUnits[`${chartKey}`]
+    ? weatherUnits[`${chartKey}`]
+    : 'Severity Scale';
 
   return (
     <WeatherSubContainer>

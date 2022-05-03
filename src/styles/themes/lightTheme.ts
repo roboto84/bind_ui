@@ -20,8 +20,8 @@ export const LightTheme: ThemeType = {
       borderColor: '#c7c7c7',
     },
     table: {
-      borderColor: '#969696',
-      headerColor: '#969696',
+      borderColor: '#8a8b8b',
+      headerColor: '#8a8b8b',
       highlightCellColor: '#89a4ab',
     },
     code: {

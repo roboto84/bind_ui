@@ -14,8 +14,9 @@ type TableProps = {
 
 const TableContainer = styled.div<GlobalThemeType>`
   overflow-y: auto;
-  height: calc(70vh);
+  height: calc(100vh - 250px);
   border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
+  border-radius: 3px;
 `;
 
 export function Table(props: TableProps) {

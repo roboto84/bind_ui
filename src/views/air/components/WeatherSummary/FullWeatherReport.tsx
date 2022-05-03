@@ -9,12 +9,19 @@ export function FullWeatherReport(props: CurrentWeatherReportProps) {
   report.currentWeather.moonPhase = report.weatherForecast[1].moonPhase;
   return (
     <>
-      <CurrentWeatherSummary currentWeatherReport={report.currentWeather} />
+      <CurrentWeatherSummary
+        currentWeatherReport={report.currentWeather}
+        weatherUnits={report.weatherUnits}
+      />
       <Weather>
         {
         report.weatherForecast.map(
           (forecast:WeatherSummary) => (
-            <ForecastSubTile key={'forecastTile'.concat(String(forecast.date))} forecast={forecast} />
+            <ForecastSubTile
+              key={'forecastTile'.concat(String(forecast.date))}
+              forecast={forecast}
+              forecastUnits={report.weatherUnits}
+            />
           ),
         )
       }

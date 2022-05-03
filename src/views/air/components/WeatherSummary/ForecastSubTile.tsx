@@ -13,15 +13,11 @@ import {
 } from '../../styles/airHomeStyles';
 
 export function ForecastSubTile(props: ForecastSubTileProps) {
-  const { forecast } = props;
+  const { forecast, forecastUnits } = props;
   const { date, weatherCode, temperature, precipitationProbability, treeIndex, grassIndex,
     weedIndex, humidity, epaHealthConcern, epaIndex, moonPhase, pressureSurfaceLevel,
     temperatureApparent, precipitationType } = forecast;
-  const pollenMax: number = pollenMaxConcern(
-    Number(treeIndex.split(' ')[0]),
-    Number(grassIndex.split(' ')[0]),
-    Number(weedIndex.split(' ')[0]),
-  );
+  const pollenMax: number = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
   const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
   const forecastDate: string = simpleDateTimeFormat(date);
   const dayOfMonth: string = forecastDate.split('/')[1];
@@ -35,26 +31,26 @@ export function ForecastSubTile(props: ForecastSubTileProps) {
     <WeatherSubcategory isHighLight={isHighLighted}>
       <WeatherTitle>{`${dayOfWeek} | ${forecastDate}`}</WeatherTitle>
       <WeatherForecastTemperature>
-        {temperature}
+        {temperature} {forecastUnits.temperature}
       </WeatherForecastTemperature>
       <WeatherIconSubTileContainer>
         <WeatherConditionIcon weatherCondition={weatherState} fontSize="90px" />
       </WeatherIconSubTileContainer>
       <WeatherForecastTemperatureApparent>
         {weatherCode}... will
-        feel like {temperatureApparent}
+        feel like {temperatureApparent} {forecastUnits.temperatureApparent}
       </WeatherForecastTemperatureApparent>
       <WeatherForecastElement>
-        {`${precipitationProbability} chance of ${precipitationTypeView(precipitationType)}`}
+        {`${precipitationProbability} ${forecastUnits.precipitationProbability} chance of ${precipitationTypeView(precipitationType)}`}
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {humidity} Humidity
+        {humidity} {forecastUnits.humidity} Humidity
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {pressureSurfaceLevel} Pressure
+        {pressureSurfaceLevel} {forecastUnits.pressureSurfaceLevel} Pressure
       </WeatherForecastElement>
       <WeatherForecastElement>
-        {epaHealthConcern} Air Quality ({epaIndex})
+        {epaHealthConcern} Air Quality ({epaIndex} {forecastUnits.epaIndex})
       </WeatherForecastElement>
       <WeatherForecastElement>
         Pollen will be {pollenSeveritySummary}
