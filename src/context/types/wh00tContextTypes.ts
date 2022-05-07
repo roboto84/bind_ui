@@ -15,6 +15,7 @@ export type Wh00tContextStateType = {
   wh00tWebSocket: Wh00tWebSocket,
   wh00tMinimizedSwitch: boolean,
   wh00tNotifier: AppNotification,
+  wh00tInternalAlert: boolean
 }
 
 export type Wh00tContextActionType = {

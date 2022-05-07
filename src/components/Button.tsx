@@ -39,3 +39,12 @@ export const SubButton = styled(Button)`
     color: ${(props: ButtonProps) => props.theme.subButton.transitionFontColor};
   }
 `;
+
+export const ButtonAlert = styled.div`
+  background-color: #af2324;
+  width: 11px;
+  height: 11px;
+  border-radius: 0 0 0 10px;
+  position: absolute;
+  margin: -27px 0 0 50px;
+`;

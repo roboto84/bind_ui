@@ -22,7 +22,7 @@ export function AirSubNavigation() {
     },
     {
       activationKey: 'charts',
-      linkTo: '/air/data/charts/temperature',
+      linkTo: '/air/data/charts/pressure',
       title: <AiOutlineLineChart />,
     },
     {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, SubButton } from '@/components/Button';
+import { Button, ButtonAlert, SubButton } from '@/components/Button';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import {
   NavigationLinkActivationType,
@@ -16,7 +16,7 @@ export type NavigationItemConfig = {
 }
 
 function NavigationLink(props: NavigationLinkProps) {
-  const { activationType, activationKey, navigationLinkType, linkTo, children,
+  const { activationType, activationKey, alert, navigationLinkType, linkTo, children,
     fontSize, padding, borderRadius, callBack } = props;
   const activeKey: string = linkTo ? activationKey || linkTo : linkTo;
   const { pathname } = useLocation();
@@ -60,6 +60,7 @@ function NavigationLink(props: NavigationLinkProps) {
       onClick={callBack ? (() => callBack()) : (() => navigate(linkTo))}
     >
       {children}
+      { alert ? <ButtonAlert /> : ''}
     </Button>
   );
 }

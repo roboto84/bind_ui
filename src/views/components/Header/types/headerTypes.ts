@@ -23,6 +23,7 @@ export enum NavigationLinkActivationType {
 export type NavigationLinkProps = {
   activationType ?: NavigationLinkActivationType,
   activationKey ?: string,
+  alert ?: boolean
   navigationLinkType ?: NavigationLinkType
   linkTo ?: string,
   callBack ?: CallableFunction,

@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { BsGithub, BsBug, BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 import { GlobalContext } from '@/context/globalContext';
 import { GlobalActionsEnum, ThemeModeEnum } from '@/context/types/enums';
-import { NavLinksContainer, NavContainer } from './styles/headerStyles';
 import NavigationLink from '@/components/NavigationLink';
+import { useWh00tWebsocket } from '@/context/wh00tContext';
+import { NavLinksContainer, NavContainer } from './styles/headerStyles';
 
 export default function HeaderNavigation() {
   const { state, dispatch } = useContext(GlobalContext);
+  const wh00tState = useWh00tWebsocket().state;
   const githubUrl: string = 'https://github.com/roboto84';
   const iconPadding: string = '5px 10px';
   const iconFontSize: string = '25px';
@@ -18,7 +20,13 @@ export default function HeaderNavigation() {
         <NavigationLink borderRadius={borderRadius} linkTo="/">/</NavigationLink>
         <NavigationLink borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
         <NavigationLink borderRadius={borderRadius} linkTo="/lexicon">Lexicon</NavigationLink>
-        <NavigationLink borderRadius={borderRadius} linkTo="/wh00t">wh00t</NavigationLink>
+        <NavigationLink
+          borderRadius={borderRadius}
+          alert={wh00tState.wh00tInternalAlert}
+          linkTo="/wh00t"
+        >
+          wh00t
+        </NavigationLink>
         <NavigationLink
           borderRadius={borderRadius}
           padding={iconPadding}

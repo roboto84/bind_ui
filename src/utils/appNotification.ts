@@ -1,18 +1,25 @@
 import faviconDefault from '@/assets/favicon/favicon-16x16.png';
 import faviconNotify from '@/assets/favicon/favicon-16x16-notify.png';
+import { Wh00tActionsEnum } from '@/context/types/enums';
 
 export class AppNotification {
   titleBeforeNotification: string;
 
   titleNotificationInterval: NodeJS.Timeout;
 
-  notificationIsActive: boolean = false;
+  appNotificationDispatch: Function = null;
+
+  externalNotificationIsActive: boolean = false;
 
   favicon: HTMLLinkElement;
 
   constructor() {
     this.titleBeforeNotification = document.title;
     this.getFavicon();
+  }
+
+  setDispatch(dispatch: Function) {
+    this.appNotificationDispatch = dispatch;
   }
 
   getFavicon() {
@@ -31,7 +38,7 @@ export class AppNotification {
   notificationTimer() {
     const newMessageText: string = 'New Wh00t';
     setTimeout(() => {
-      if (this.notificationIsActive) {
+      if (this.externalNotificationIsActive) {
         this.notificationTimer();
         if (document.title === newMessageText) {
           document.title = this.titleBeforeNotification;
@@ -45,10 +52,11 @@ export class AppNotification {
   }
 
   startDocumentTitleNotification(): void {
-    if (!this.notificationIsActive) {
+    if (!this.externalNotificationIsActive) {
       this.favicon.setAttribute('href', faviconNotify);
       this.titleBeforeNotification = document.title;
-      this.notificationIsActive = true;
+      this.externalNotificationIsActive = true;
+      this.appNotificationDispatch({ type: Wh00tActionsEnum.INTERNAL_ALERT_ON });
       this.notificationTimer();
     }
   }
@@ -56,7 +64,7 @@ export class AppNotification {
   stopDocumentTitleNotification(): void {
     setTimeout(() => {
       this.favicon.setAttribute('href', faviconDefault);
-      this.notificationIsActive = false;
+      this.externalNotificationIsActive = false;
     }, 750);
   }
 }

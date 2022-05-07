@@ -17,6 +17,7 @@ const initialState: Wh00tContextStateType = {
   wh00tWebSocket: new Wh00tWebSocket(),
   wh00tMinimizedSwitch: true,
   wh00tNotifier: new AppNotification(),
+  wh00tInternalAlert: false,
 };
 
 export const Wh00tSocketContext = React.createContext({
@@ -28,6 +29,16 @@ export const useWh00tWebsocket = () => React.useContext(Wh00tSocketContext);
 
 const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionType) => {
   switch (action.type) {
+    case Wh00tActionsEnum.INTERNAL_ALERT_ON:
+      return {
+        ...state,
+        wh00tInternalAlert: true,
+      };
+    case Wh00tActionsEnum.INTERNAL_ALERT_OFF:
+      return {
+        ...state,
+        wh00tInternalAlert: false,
+      };
     case Wh00tActionsEnum.MINIMIZED_SWITCH:
       return {
         ...state,
@@ -84,6 +95,7 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
 
   useEffect(() => {
     state.wh00tWebSocket.setDispatch(dispatch);
+    state.wh00tNotifier.setDispatch(dispatch);
     const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
     const shouldConnect: string = getLocalStorage(LocalStorageEnum.STAY_CONNECTED);
     const stopNotifier = () => {
