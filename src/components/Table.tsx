@@ -1,31 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { BaseObject } from '@/views/air/types/airTypes';
 
-type TableObject = {
-  key: string,
-  headers: string[],
-  cells: string[][]
+export interface HeaderTitle extends BaseObject {
+  titleKey: string,
+  title: string
 }
 
 type TableProps = {
-  tableObject: TableObject
+  tableKey: string,
+  headers: HeaderTitle[],
+  cells: BaseObject[]
+}
+
+enum TableSortType {
+  none = 'none',
+  ascending = 'ascending',
+  descending = 'descending',
+}
+
+type HeaderSortState = {
+  headerTitle: string,
+  sortType: TableSortType,
 }
 
 const TableContainer = styled.div<GlobalThemeType>`
   overflow-y: auto;
-  height: calc(100vh - 250px);
+  height: calc(100vh - 260px);
   border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
   border-radius: 3px;
 `;
 
 export function Table(props: TableProps) {
-  const { tableObject } = props;
+  const { tableKey, headers, cells } = props;
+  const [tableCells, setTableCells] = useState<BaseObject[]>(cells);
+  const [sortedHeader, setSortedHeader] = useState<HeaderSortState>({
+    headerTitle: '',
+    sortType: TableSortType.none,
+  });
   const keyGenerator = (
-    key: string,
+    elementKey: string,
     cellTitle: string,
     uniqueId: string,
-  ): string => key.concat(cellTitle, uniqueId);
+  ): string => elementKey.concat(cellTitle, uniqueId);
+
+  const tableSort: CallableFunction = (columnHeader: string, elementCells: BaseObject[]) => {
+    let sortedCells: BaseObject[];
+
+    switch (sortedHeader.sortType) {
+      case TableSortType.none:
+        sortedCells = [...elementCells].sort((a, b) => (
+          a[columnHeader] > b[columnHeader] ? 1 : 0
+        ));
+        setSortedHeader({
+          headerTitle: columnHeader,
+          sortType: TableSortType.ascending,
+        });
+        break;
+      case TableSortType.ascending:
+        sortedCells = [...elementCells].sort((a, b) => (
+          a[columnHeader] < b[columnHeader] ? 1 : 0
+        ));
+        setSortedHeader({
+          headerTitle: columnHeader,
+          sortType: TableSortType.descending,
+        });
+        break;
+      default:
+        sortedCells = cells;
+        setSortedHeader({
+          headerTitle: '',
+          sortType: TableSortType.none,
+        });
+    }
+
+    setTableCells(sortedCells);
+  };
+
+  const headerTitle = (columnHeader: string) => {
+    let columnTitle: string = columnHeader;
+
+    if (columnHeader === sortedHeader.headerTitle) {
+      if (sortedHeader.sortType === TableSortType.ascending) {
+        columnTitle = `${columnHeader} ▲`;
+      } else if (sortedHeader.sortType === TableSortType.descending) {
+        columnTitle = `${columnHeader} ▼`;
+      }
+    }
+    return columnTitle;
+  };
 
   return (
     <TableContainer>
@@ -33,27 +97,43 @@ export function Table(props: TableProps) {
         <thead>
           <tr>
             {
-            tableObject.headers.map((title:string) => (
-              <th key={keyGenerator(tableObject.key, 'tableHeader', title)}>{title}</th>
-            ))
+            headers.map((headerObject:HeaderTitle) => {
+              const isSortActive: boolean = sortedHeader.headerTitle === headerObject.titleKey;
+              return (
+                <th
+                  className={isSortActive ? 'active' : ''}
+                  key={keyGenerator(tableKey, 'tableHeader', headerObject.title)}
+                  onClick={() => tableSort(headerObject.titleKey, tableCells)}
+                >
+                  {headerTitle(headerObject.titleKey)}
+                </th>
+              );
+            })
           }
           </tr>
         </thead>
         <tbody>
           {
-          tableObject.cells.map((cellValues:string[], cellIndex:number) => (
-            <tr key={keyGenerator(tableObject.key, 'tableCell', String(cellIndex))}>
-              {
-                cellValues.map((tableValue:string, valueIndex:number) => (
-                  <td key={keyGenerator(tableObject.key, 'valueCell', String(valueIndex))}>
-                    {tableValue}
-                  </td>
-                ))
+            tableCells.map((cellObject:BaseObject, cellIndex:number) => (
+              <tr key={keyGenerator(tableKey, 'tableCell', String(cellIndex))}>
+                {
+                  Object.keys(cellObject).map((ObjectKey:string, valueIndex:number) => (
+                    <td key={keyGenerator(tableKey, ObjectKey, String(valueIndex))}>
+                      {cellObject[ObjectKey]}
+                    </td>
+                  ))
               }
-            </tr>
-          ))
-        }
+              </tr>
+            ))
+          }
         </tbody>
+        <tfoot>
+          <tr>
+            <td colSpan={headers.length}>
+              {tableCells.length} records
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </TableContainer>
   );

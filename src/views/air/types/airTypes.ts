@@ -32,7 +32,7 @@ export type WeatherSummary = {
   weedIndex: number
 }
 
-export type BaseObject = { [key: string]: string }
+export type BaseObject = { [key: string]: string|number }
 
 export interface WeatherUnits extends BaseObject {
   temperature: string,
@@ -75,7 +75,7 @@ export type ForecastSubTileProps = {
   forecastUnits: WeatherUnits
 }
 
-export type SubWeatherSummary = {
+export interface SubWeatherSummary extends BaseObject {
   date: string,
   temperature: number,
   temperatureApparent: number,
@@ -87,7 +87,7 @@ export type SubWeatherSummary = {
   pressureSurfaceLevel: number,
 }
 
-export type WeatherPollutionSummary = {
+export interface WeatherPollutionSummary extends BaseObject {
   date: string,
   epaIndex: number,
   epaHealthConcern: string,
@@ -100,7 +100,7 @@ export type WeatherPollutionSummary = {
   pollutantSO2: number,
 }
 
-export type WeatherPollenSummary = {
+export interface WeatherPollenSummary extends BaseObject {
   date: string,
   grassIndex: number,
   treeIndex: number,

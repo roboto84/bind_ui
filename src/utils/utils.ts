@@ -9,7 +9,7 @@ export function randomUuid(): string {
 }
 
 export function timeFormatMorph(timeStamp: string):string {
-  let timeMorph: string = timeStamp.substring(0, timeStamp.lastIndexOf('-'))
+  let timeMorph: string = timeStamp.substring(0, timeStamp.lastIndexOf('-'));
   if (timeMorph.indexOf('.') > 0) {
     timeMorph = timeMorph.substring(0, timeMorph.lastIndexOf('.'));
   }

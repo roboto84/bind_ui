@@ -1,11 +1,11 @@
-import { WeatherTitles } from '@/views/air/types/airTypes';
+import { BaseObject, WeatherTitles } from '@/views/air/types/airTypes';
 
 export function precipitationTypeView(precipitationType: string): string {
   return precipitationType !== 'N/A' ? precipitationType : 'Rain';
 }
 
 export function pollenSeverityView(pollenSeverityNumber:number):string {
-  const pollenSeverityLegend: { [key: number]: string } = {
+  const pollenSeverityLegend: BaseObject = {
     0: 'None',
     0.5: 'Extremely Low',
     1: 'Very Low',
@@ -18,7 +18,7 @@ export function pollenSeverityView(pollenSeverityNumber:number):string {
     4.5: 'Very High',
     5: 'Extremely High',
   };
-  return pollenSeverityLegend[pollenSeverityNumber];
+  return pollenSeverityLegend[pollenSeverityNumber] as string;
 }
 
 export function pollenMaxConcern(treePollen:number, grassPollen:number, weedPollen:number) {
@@ -49,5 +49,5 @@ export function getWeatherTableTitle(weatherTableTitle:string):string {
     treeIndex: 'Tree Index',
     weedIndex: 'Weed Index',
   };
-  return tableTitleLegend[weatherTableTitle];
+  return tableTitleLegend[weatherTableTitle] as string;
 }

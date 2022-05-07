@@ -44,25 +44,31 @@ export const GlobalThemeStyle = createGlobalStyle`
     background-color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.backgroundColor};
   }
 
-  thead th { position: sticky; top: 0; }
-  
-  th {
+  thead tr th { 
+    position: sticky; 
+    top: 0;
     color: #fff;
     background-color: ${(props: GlobalThemeType) => props.theme.core.table.headerColor};
-    padding: 12px;
+    padding: 10px;
     text-align: center;
     font-weight: normal;
     letter-spacing: 1px;
     transition: 0.4s;
+
+    &:hover, &.active {
+      cursor: pointer;
+      color: white;
+      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
+    }
   }
 
-  td {
+  tbody td {
     padding: 10px;
     border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
     text-align: left;
   }
 
-  tr {
+  tbody tr {
     color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
     
     :nth-child(even) {
@@ -73,6 +79,19 @@ export const GlobalThemeStyle = createGlobalStyle`
       color: white;
       background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
     }
+  }
+
+  tfoot tr { 
+    position: sticky; 
+    bottom: 0; 
+    background-color: ${(props: GlobalThemeType) => props.theme.core.table.headerColor};
+  }
+  
+  tfoot td {
+    padding: 4px;
+    color: #fff;
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
+    text-align: center;
   }
 
   code {

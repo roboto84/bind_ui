@@ -6,7 +6,7 @@ import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { Loader } from '@/components/Loader';
 import { ErrorView } from '@/components/ErrorView';
 import camelcaseKeys from 'camelcase-keys';
-import { Table } from '@/components/Table';
+import { HeaderTitle, Table } from '@/components/Table';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import { getWeatherTableTitle } from '@/views/air/utils';
 import { WeatherSubContainer, WeatherTableContainer } from '../../styles/airHomeStyles';
@@ -87,26 +87,26 @@ export function WeatherTable(props: WeatherTablesProps) {
     }
   });
 
-  const tableHeaders = Object.keys(weatherSection.weatherData[0]).map((key:string) => {
+  const tableHeaders: HeaderTitle[] = Object.keys(
+    weatherSection.weatherData[0],
+  ).map((key:string) => {
     const unit = standardUnits[key];
     const unitView = unit ? `(${unit})` : '';
-    return `${getWeatherTableTitle(key)} ${unitView}`;
+    return {
+      titleKey: key,
+      title: `${getWeatherTableTitle(key)} ${unitView}`,
+    };
   });
-  const cellData:string[][] = weatherSection.weatherData.map(
-    (weatherPortion: SubWeatherSummary | WeatherPollenSummary | WeatherPollutionSummary) => (
-      Object.values(weatherPortion) as string[]
-    ),
-  );
 
   return (
     <WeatherSubContainer>
       <WeatherTableContainer>
         <WeatherTableSubNavigation />
-        <Table tableObject={{
-          key: weatherSection.title,
-          headers: tableHeaders,
-          cells: cellData,
-        }}
+        <Table
+          key={weatherSection.title}
+          tableKey={weatherSection.title}
+          headers={tableHeaders}
+          cells={weatherSection.weatherData}
         />
       </WeatherTableContainer>
     </WeatherSubContainer>
