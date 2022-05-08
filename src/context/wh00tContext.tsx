@@ -112,7 +112,9 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
   }, []);
 
   useEffect(() => {
-    if (state.currentChatMessage !== null) {
+    if (state.currentChatMessage !== null
+      && state.currentChatMessage.username !== state.wh00tWebSocket.clientId) {
+      state.wh00tNotifier.playNotificationSound();
       state.wh00tNotifier.startDocumentTitleNotification();
     }
   }, [state.currentChatMessage]);

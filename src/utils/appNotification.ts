@@ -1,5 +1,7 @@
 import faviconDefault from '@/assets/favicon/favicon-16x16.png';
 import faviconNotify from '@/assets/favicon/favicon-16x16-notify.png';
+import notificationSound from '@/assets/sound/messageAlert.mp3';
+
 import { Wh00tActionsEnum } from '@/context/types/enums';
 
 export class AppNotification {
@@ -13,9 +15,15 @@ export class AppNotification {
 
   favicon: HTMLLinkElement;
 
+  notificationAlertSound: HTMLAudioElement = new Audio(notificationSound);
+
   constructor() {
     this.titleBeforeNotification = document.title;
     this.getFavicon();
+  }
+
+  playNotificationSound() {
+    this.notificationAlertSound.play().then();
   }
 
   setDispatch(dispatch: Function) {
