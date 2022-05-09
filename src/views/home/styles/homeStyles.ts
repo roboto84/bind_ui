@@ -8,6 +8,10 @@ export const HomeContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
   }
+
+  @media ${device.tabletS} {
+    padding-top: calc(8vh);
+  }
 `;
 
 export const LinkContainer = styled.div`

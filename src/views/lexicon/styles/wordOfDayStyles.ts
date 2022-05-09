@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Hoverable } from '@/views/styles/appStyles';
+import { device } from '@/styles/responsive';
 
 const generalDefinitionStyle: string = 'margin: 0 5px;';
 
@@ -10,6 +11,10 @@ const GeneralStyle = styled.span`
 
 export const WordOfDayContainer = styled.div`
   margin: 0 75px;
+
+  @media ${device.tabletS} {
+    margin: 0 25px;
+  }
 `;
 
 export const DayWord = styled(Hoverable)`

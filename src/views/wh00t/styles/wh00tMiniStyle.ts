@@ -1,6 +1,7 @@
 /* Minimized Chat Representation */
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { device } from '@/styles/responsive';
 
 export const Wh00tMiniContainer = styled.div`
   position: absolute;
@@ -14,6 +15,11 @@ export const Wh00tMiniContainer = styled.div`
   border: solid 5px ${(props: GlobalThemeType) => props.theme.button.border};
   border-radius: 5px;
   transition: 0.4s;
+
+  @media ${device.tabletS} {
+    width: 355px;
+    height: 425px;
+  }
 `;
 
 export const MinimizedWh00tButton = styled.div`

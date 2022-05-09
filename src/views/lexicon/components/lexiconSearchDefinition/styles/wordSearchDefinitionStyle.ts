@@ -13,7 +13,7 @@ const wordInfo = styled.div`
 export const PartOfSpeech = styled(wordInfo)``;
 export const WordBreak = styled(wordInfo)``;
 export const WordDefinition = styled(LexiconSection)`
-  margin-top: 55px;
+  margin-top: 30px;
 `;
 
 export const WordDefinitionIntroduction = styled.div`

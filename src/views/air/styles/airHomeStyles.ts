@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { Section } from '@/views/styles/appStyles';
+import { device } from '@/styles/responsive';
 import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
 export const WeatherIconContainer = styled.div`
@@ -17,13 +18,18 @@ export const AirHomeContainer = styled.div`
 
 export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
-  border: 6px solid ${(props: WeatherSubcategoryProps) => (
+  border: 4px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
-  margin: 20px 20px 20px 20px;
+  margin: 20px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
   border-radius: 3px;
   padding: 10px;
+
+  @media ${device.tabletS} {
+    margin: 10px;
+    padding: 5px;
+  }
 `;
 
 export const Weather = styled.div`
@@ -34,11 +40,18 @@ export const Weather = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
   
   &.weather_data{
     border-top: #2F3436 solid 1px;
     color: #ccc;
     padding: 16px;
+  }
+
+  @media ${device.tabletS} {
+    margin: 0;
+    flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -118,6 +131,10 @@ export const WeatherForecastElement = styled(WeatherElement)`
 
 export const WeatherSubContainer = styled.div`
   padding: 10px;
+
+  @media ${device.tabletS} {
+    padding: 10px 0;
+  }
 `;
 
 export const SubNavigation = styled.div<SubNavigationProps>`
@@ -125,9 +142,17 @@ export const SubNavigation = styled.div<SubNavigationProps>`
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};
   margin: ${(props: SubNavigationProps) => props.margin};
   flex-wrap: wrap;
+
+  @media ${device.tabletS} {
+    margin: 10px 5px 10px 0;
+  }
 }
 `;
 
 export const WeatherTableContainer = styled.div`
   margin: 0 20px;
+
+  @media ${device.tabletS} {
+    margin: 0 5px;
+  }
 `;

@@ -1,6 +1,7 @@
 /* Wh00t Main Chat Representation */
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { device } from '@/styles/responsive';
 
 interface MessagesContainerProps extends GlobalThemeType {
   showBackgroundImage: boolean
@@ -25,5 +26,9 @@ export const Wh00tMessagesContainer = styled.div<MessagesContainerProps>`
 
   a:link, a:visited {
     color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLinkColor};
+  }
+
+  @media ${device.tabletS} {
+    background-image: none;
   }
 `;

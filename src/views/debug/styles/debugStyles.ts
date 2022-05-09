@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { style } from 'd3';
+import { device } from '@/styles/responsive';
 
 export const DebugHomeContainer = styled.div`
-  margin: 60px auto auto;
+  margin: auto;
   width: calc(100vw - 100px);
   min-width: 400px;
   font-size: 14px;
@@ -19,6 +20,10 @@ export const LatestMessage = styled.div`{
   margin: 20px 50px;
   min-height: 25px;
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
+
+  @media ${device.tabletS} {
+    margin: 0;
+  }
 }`;
 
 export const MessageHistory = styled.div`{
@@ -27,8 +32,12 @@ export const MessageHistory = styled.div`{
   margin: 20px 50px 0 50px;
   overflow: auto;
   min-height: 100px;
-  height: calc(70vh - 200px);
+  height: calc(70vh - 170px);
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
+
+  @media ${device.tabletS} {
+    margin: 0;
+  }
 }`;
 
 export const MessageContainer = styled.div`

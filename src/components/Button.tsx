@@ -10,7 +10,7 @@ interface ButtonProps extends GlobalThemeType {
 
 export const Button = styled.div<ButtonProps>`
   color: ${(props:ButtonProps) => props.theme.button.fontColor};
-  border: 3px solid ${(props:ButtonProps) => props.theme.button.border};
+  border: 2px solid ${(props:ButtonProps) => props.theme.button.border};
   padding: ${(props:ButtonProps) => (props.padding || '10px')};
   text-decoration: none;
   text-align: center;

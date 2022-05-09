@@ -92,6 +92,10 @@ export const GlobalThemeStyle = createGlobalStyle`
     color: #fff;
     border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
     text-align: center;
+
+    @media ${device.tabletS} {
+      text-align: left;
+    }
   }
 
   code {

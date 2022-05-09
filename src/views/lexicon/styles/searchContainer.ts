@@ -5,8 +5,8 @@ import { Button } from '@/components/Button';
 
 export const SearchContainer = styled.div`
   font-size: 14px;
-  width: 95%;
-  margin: 5px 30px;
+  width: 98%;
+  margin: 5px;
   display: flex;
   justify-content: center;
   height: 70px;
