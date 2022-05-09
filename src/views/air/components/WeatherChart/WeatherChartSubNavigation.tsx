@@ -5,10 +5,10 @@ import { NavigationLinkType } from '@/views/components/Header/types/headerTypes'
 
 export function WeatherChartSubNavigation() {
   const navConfig: NavigationItemConfig[] = [
-    { borderRadius: '5px 0 0 5px', linkTo: 'temperature', title: 'Temperature' },
+    { borderRadius: '5px 0 0 5px', linkTo: 'pressure', title: 'Pressure' },
+    { linkTo: 'temperature', title: 'Temperature' },
     { linkTo: 'humidity', title: 'Humidity' },
     { linkTo: 'precipitation', title: 'Precipitation' },
-    { linkTo: 'pressure', title: 'Pressure' },
     { linkTo: 'epa_index', title: 'EPA Index' },
     { linkTo: 'particulate_matter_10', title: 'PM10' },
     { linkTo: 'particulate_matter_25', title: 'PM25' },
