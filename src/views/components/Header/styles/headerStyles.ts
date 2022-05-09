@@ -35,8 +35,27 @@ export const Title = styled.h1`
   }
 `;
 
+export const SmallHeaderIconContainer = styled.span`
+  display: none;
+  
+  @media ${device.tabletS} {
+    display: inherit;
+    margin: -10px 2px;
+  }
+`;
+
+export const PrimaryTitle = styled.span`
+  @media ${device.tabletS} {
+    display: none;
+  }
+`;
+
 export const ColoredTitle = styled.span`
   color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
+  
+  @media ${device.tabletS} {
+    display: none;
+  }
 `;
 
 export const SubTitle = styled.div`

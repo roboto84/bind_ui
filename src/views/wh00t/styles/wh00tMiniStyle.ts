@@ -17,7 +17,7 @@ export const Wh00tMiniContainer = styled.div`
   transition: 0.4s;
 
   @media ${device.tabletS} {
-    width: 355px;
+    width: 340px;
     height: 425px;
   }
 `;
