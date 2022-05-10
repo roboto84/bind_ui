@@ -40,7 +40,8 @@ export const SmallHeaderIconContainer = styled.span`
   
   @media ${device.tabletS} {
     display: inherit;
-    margin: -10px 2px;
+    margin: -14px 16px 0 0;
+    border-right: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
   }
 `;
 

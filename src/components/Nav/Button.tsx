@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types/themeTypes';
+import { device } from '@/styles/responsive';
 
 interface ButtonProps extends GlobalThemeType {
   fontSize ?: string,
@@ -37,6 +38,10 @@ export const SubButton = styled(Button)`
 
   &:hover, &.active {
     color: ${(props: ButtonProps) => props.theme.subButton.transitionFontColor};
+  }
+
+  @media ${device.tabletS} {
+    letter-spacing: 1px;
   }
 `;
 

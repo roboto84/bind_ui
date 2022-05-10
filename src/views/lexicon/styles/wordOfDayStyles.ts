@@ -10,10 +10,11 @@ const GeneralStyle = styled.span`
 `;
 
 export const WordOfDayContainer = styled.div`
-  margin: 0 75px;
+  margin: 0 50px;
 
   @media ${device.tabletS} {
-    margin: 0 25px;
+    margin: 0 10px;
+    font-size: 16px;
   }
 `;
 
@@ -21,6 +22,11 @@ export const DayWord = styled(Hoverable)`
   display: inline-block;
   min-width: 0;
   font-weight: bold;
+
+  @media ${device.tabletS} {
+    font-size: 20px;
+    display: block;
+  }
 `;
 
 export const DayWordDate = styled(GeneralStyle)`

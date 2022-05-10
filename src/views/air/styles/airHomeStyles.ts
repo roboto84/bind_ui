@@ -137,14 +137,15 @@ export const WeatherSubContainer = styled.div`
   }
 `;
 
-export const SubNavigation = styled.div<SubNavigationProps>`
+export const SubNavigationContainer = styled.div<SubNavigationProps>`
+  font-size: 12px;
   display: flex;
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};
   margin: ${(props: SubNavigationProps) => props.margin};
   flex-wrap: wrap;
 
   @media ${device.tabletS} {
-    margin: 10px 5px 10px 0;
+    margin: 5px 5px;
   }
 }
 `;

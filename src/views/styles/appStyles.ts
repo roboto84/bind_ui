@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { device } from '@/styles/responsive';
 
 export const AppContainer = styled.div`
   font-size: 13px;
@@ -42,4 +43,8 @@ export const Section = styled.div`
   margin: 20px;
   border-radius: 10px;
   border: 3px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
+
+  @media ${device.tabletS} {
+    padding: 12px;
+  }
 `;

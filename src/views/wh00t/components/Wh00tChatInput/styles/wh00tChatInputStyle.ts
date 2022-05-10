@@ -1,7 +1,7 @@
 /* Chat Input */
 import styled from 'styled-components';
-import { Button } from '@/components/Button';
-import { InputTextArea } from '@/components/InputTextArea';
+import { Button } from '@/components/Nav/Button';
+import { InputTextArea } from '@/components/Input/InputTextArea';
 import { GlobalThemeType } from '@/types';
 import { EmojiSelectorContainerProps } from '@/views/wh00t/types/wh00tTypes';
 

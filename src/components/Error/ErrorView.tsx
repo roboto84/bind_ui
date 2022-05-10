@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorContainer, ErrorTitle } from '@/styles/errorViewStyle';
-import RobotImg from '@/views/components/RobotImg';
+import RobotImg from '@/components/Images/RobotImg';
 import { GenericErrorContainer } from '@/views/404/styles/404Style';
 
 type ErrorProps = {

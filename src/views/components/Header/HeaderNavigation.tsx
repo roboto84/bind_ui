@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BsGithub, BsBug, BsFillSunFill, BsMoonFill } from 'react-icons/bs';
 import { GlobalContext } from '@/context/globalContext';
 import { GlobalActionsEnum, ThemeModeEnum } from '@/context/types/enums';
-import NavigationLink from '@/components/NavigationLink';
+import NavigationLink from '@/components/Nav/NavigationLink';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { NavLinksContainer, NavContainer, NavigationOptional } from './styles/headerStyles';
 

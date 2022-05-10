@@ -1,32 +1,38 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { Input } from '@/components/Input';
-import { Button } from '@/components/Button';
+import { Input } from '@/components/Input/Input';
+import { Button } from '@/components/Nav/Button';
+import { device } from '@/styles/responsive';
 
 export const SearchContainer = styled.div`
-  font-size: 14px;
+  font-size: 13px;
   width: 98%;
-  margin: 5px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   height: 70px;
+  
+  @media ${device.tabletS} {
+    margin: 5px;
+  }
+  
 `;
 
 export const SearchInput = styled(Input)`
   width: 500px;
   min-width: 100px;
-  margin: 12px 0;
+  margin: 13px 0;
 `;
 
 export const LexiconButton = styled(Button)`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.color};
   background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.background};
   border-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.searchButton.background};
-  margin: 12px 0;
+  margin: 13px 0;
 `;
 
 export const BackButton = styled(LexiconButton)`
-  font-size: 25px;
+  font-size: 24px;
   padding-top: 5px;
 `;
 
@@ -36,8 +42,8 @@ export const SearchButton = styled(LexiconButton)`
 `;
 
 export const HomeButton = styled(LexiconButton)`
-  font-size: 31px;
-  padding-top: 0;
+  font-size: 28px;
+  padding-top: 3px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 `;

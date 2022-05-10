@@ -1,5 +1,5 @@
-import { SubNavigation } from '@/views/air/styles/airHomeStyles';
-import NavigationLink, { NavigationItemConfig } from '@/components/NavigationLink';
+import { SubNavigationContainer } from '@/views/air/styles/airHomeStyles';
+import NavigationLink, { NavigationItemConfig } from '@/components/Nav/NavigationLink';
 import React from 'react';
 import { NavigationLinkType } from '@/views/components/Header/types/headerTypes';
 
@@ -21,7 +21,7 @@ export function WeatherChartSubNavigation() {
     { borderRadius: '0 5px 5px 0', linkTo: 'pollen_weed', title: 'Weeds' },
   ];
   return (
-    <SubNavigation margin="40px 0 0 0" justifyContent="center">
+    <SubNavigationContainer margin="40px 0 0 0" justifyContent="center">
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink
@@ -34,6 +34,6 @@ export function WeatherChartSubNavigation() {
           </NavigationLink>
         ))
       }
-    </SubNavigation>
+    </SubNavigationContainer>
   );
 }

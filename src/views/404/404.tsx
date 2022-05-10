@@ -1,5 +1,5 @@
 import React from 'react';
-import { ErrorView } from '@/components/ErrorView';
+import { ErrorView } from '@/components/Error/ErrorView';
 
 export function Error404() {
   return (

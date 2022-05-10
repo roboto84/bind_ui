@@ -1,5 +1,5 @@
-import { SubNavigation } from '@/views/air/styles/airHomeStyles';
-import NavigationLink, { NavigationItemConfig } from '@/components/NavigationLink';
+import { SubNavigationContainer } from '@/views/air/styles/airHomeStyles';
+import NavigationLink, { NavigationItemConfig } from '@/components/Nav/NavigationLink';
 import React from 'react';
 import { AiOutlineLineChart } from 'react-icons/ai';
 import { TiWeatherStormy } from 'react-icons/ti';
@@ -33,7 +33,7 @@ export function AirSubNavigation() {
     },
   ];
   return (
-    <SubNavigation margin="0 40px 0 0" justifyContent="right">
+    <SubNavigationContainer margin="0 40px 0 0" justifyContent="right">
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink
@@ -50,6 +50,6 @@ export function AirSubNavigation() {
           </NavigationLink>
         ))
       }
-    </SubNavigation>
+    </SubNavigationContainer>
   );
 }

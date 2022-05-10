@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonAlert, SubButton } from '@/components/Button';
+import { Button, ButtonAlert, SubButton } from '@/components/Nav/Button';
 import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
 import {
   NavigationLinkActivationType,

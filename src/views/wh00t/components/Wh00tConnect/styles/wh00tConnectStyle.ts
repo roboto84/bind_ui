@@ -1,7 +1,7 @@
 /* Chat Connection */
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { Input } from '@/components/Input';
+import { Input } from '@/components/Input/Input';
 import {
   ChatInputButton,
 } from '@/views/wh00t/components/Wh00tChatInput/styles/wh00tChatInputStyle';

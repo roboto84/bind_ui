@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
 import { Hoverable } from '@/views/styles/appStyles';
+import { device } from '@/styles/responsive';
 
 const wordInfo = styled.div`
   display: inline-block;
@@ -8,12 +9,22 @@ const wordInfo = styled.div`
   margin-left: 19px;
   color: #606060;
   letter-spacing: 2px;
+
+  @media ${device.tabletS} {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
 `;
 
 export const PartOfSpeech = styled(wordInfo)``;
 export const WordBreak = styled(wordInfo)``;
 export const WordDefinition = styled(LexiconSection)`
   margin-top: 30px;
+
+  @media ${device.tabletS} {
+    font-size: 16px;
+    margin-top: 0px;
+  }
 `;
 
 export const WordDefinitionIntroduction = styled.div`
@@ -21,12 +32,20 @@ export const WordDefinitionIntroduction = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 20px;
+
+  @media ${device.tabletS} {
+    display: block;
+  }
 `;
 
 export const Word = styled.div`
   font-size: 50px;
   letter-spacing: 3px;
   margin-top: -3px;
+
+  @media ${device.tabletS} {
+    font-size: 25px;
+  }
 `;
 
 export const Stem = styled(Hoverable)`
@@ -36,6 +55,10 @@ export const Stem = styled(Hoverable)`
 
 export const DateFirstUsed = styled(wordInfo)`
   margin-left: 35px;
+
+  @media ${device.tabletS} {
+    margin-left: 5px;
+  }
 `;
 
 export const Pronunciation = styled(wordInfo)`
@@ -50,12 +73,20 @@ export const WordAudio = styled.div`
   font-style: italic;
   letter-spacing: 3px;
   border-radius: 5px;
+
+  @media ${device.tabletS} {
+    margin: 5px;
+  }
 `;
 
 export const WordDefStems = styled.div`
   margin: 5px 90px;
   letter-spacing: 3px;
   line-height: 40px;
+
+  @media ${device.tabletS} {
+    margin: 5px;
+  }
 `;
 
 export const WordDefEtymology = styled.div`
@@ -63,10 +94,18 @@ export const WordDefEtymology = styled.div`
   letter-spacing: 3px;
   font-style: italic;
   color: #606060;
+
+  @media ${device.tabletS} {
+    margin: 10px 20px;
+  }
 `;
 
 export const WordDefinitions = styled.div`
   margin: 40px 50px;
+
+  @media ${device.tabletS} {
+    margin: 10px 20px;
+  }
 `;
 
 export const WordDefinitionList = styled.ol`
@@ -83,4 +122,8 @@ export const WordExamples = styled.div`
   margin: 40px 50px 10px 50px;
   letter-spacing: 3px;
   font-style: italic;
+
+  @media ${device.tabletS} {
+    margin: 10px 20px;
+  }
 `;

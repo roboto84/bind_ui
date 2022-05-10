@@ -1,6 +1,6 @@
 import React from 'react';
 import { dayOfWeekAbbreviation, simpleDateTimeFormat, removeSpaces, padTime } from '@/utils/formatting';
-import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/WeatherConditionIcon';
+import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '@/views/air/utils';
 import { ForecastSubTileProps } from '../../types/airTypes';
 import {

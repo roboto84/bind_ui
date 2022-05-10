@@ -1,5 +1,5 @@
 import React from 'react';
-import { Throbber } from '@/components/Throbber';
+import { Throbber } from '@/components/Misc/Throbber';
 import { LoaderContainer } from '@/styles/loaderStyle';
 
 export function Loader() {

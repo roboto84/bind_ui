@@ -3,7 +3,7 @@ import { WeatherChartType } from '@/views/air/types/airTypes';
 import { WeatherChart } from '@/views/air/components/WeatherChart/WeatherChart';
 import { Error404 } from '@/views/404/404';
 import { RouterItemConfig } from '@/types';
-import { RoutesGenerator } from '@/components/RoutesGenerator';
+import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import {
   WeatherChartSubNavigation,
 } from '@/views/air/components/WeatherChart/WeatherChartSubNavigation';

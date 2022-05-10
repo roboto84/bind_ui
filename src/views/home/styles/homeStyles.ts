@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { device } from '@/styles/responsive';
+import { Section } from '@/views/styles/appStyles';
 
 export const HomeContainer = styled.div`
-  padding-top: calc(15vh);
+  padding-top: calc(10vh);
 
   &.side-flexed {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
 
   @media ${device.tabletS} {
@@ -14,33 +15,39 @@ export const HomeContainer = styled.div`
   }
 `;
 
-export const LinkContainer = styled.div`
+export const AppDescriptionContainer = styled(Section)`
+  min-height: calc(40vh + 100px);
+  height: calc(100% + 20px);
+  margin: 20px 8vw 0 0;
   font-family: verdana,serif;
-  font-size: 20px;
+  font-size: 16px;
   display: flex;
   flex-direction: column;
-  margin-top: 125px;
-  justify-content: space-between;
-  height: 285px;
   
   @media ${device.desktop} {
-    width: 25%
+    width: 30%
   }
   
   @media ${device.laptopL} {
-    width: 40%
+    width: 45%;
+    margin: 20px 5vw 0 0;
   }
   
   @media ${device.laptop} {
-    width: 55%
+    width: 60%
   }
   
   @media ${device.tablet} {
-    width: 90%
+    width: 90%;
+    margin: 20px 5px;
   }
 `;
 
+export const AppDescription = styled.div`
+`;
+
 export const ImageContainer = styled.div`
+  
   @media ${device.laptop} {
     display: none;
   }

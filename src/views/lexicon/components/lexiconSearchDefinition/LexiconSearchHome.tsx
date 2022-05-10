@@ -8,10 +8,10 @@ import {
 import {
   LexiconSearchDefinition,
 } from '@/views/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
-import { Loader } from '@/components/Loader';
+import { Loader } from '@/components/Misc/Loader';
 import { WordDefinition } from '@/views/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
-import { ErrorView } from '@/components/ErrorView';
+import { ErrorView } from '@/components/Error/ErrorView';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 
 export function LexiconSearchHome() {

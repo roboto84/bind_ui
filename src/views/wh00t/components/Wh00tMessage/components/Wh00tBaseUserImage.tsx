@@ -1,6 +1,6 @@
 import { Wh00tBaseUserImageProps } from '@/views/wh00t/types/wh00tTypes';
 import React from 'react';
-import RobotImg from '@/views/components/RobotImg';
+import RobotImg from '@/components/Images/RobotImg';
 import { Wh00tBaseUserImageContainer, Wh00tChatImageWrapper } from '../styles/wh00tMessageStyle';
 
 export function Wh00tBaseUserImage(props: Wh00tBaseUserImageProps) {

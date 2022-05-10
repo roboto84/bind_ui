@@ -5,7 +5,8 @@ export type ChildrenProps = {
 }
 
 export type RouterItemConfig = {
-  path: string,
+  index ?: boolean,
+  path ?: string,
   element: JSX.Element
 }
 

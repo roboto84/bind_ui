@@ -23,6 +23,14 @@ export default function AppRoutes() {
           )}
         />
         <Route
+          path="description/*"
+          element={(
+            <Layout subtitle="software worth debugging">
+              <Home />
+            </Layout>
+          )}
+        />
+        <Route
           path="air"
           element={<Layout secondaryTitle="Air" subtitle="it's what you live in and breathe" />}
         >

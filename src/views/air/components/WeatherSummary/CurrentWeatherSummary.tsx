@@ -1,6 +1,6 @@
 import React from 'react';
-import { MoonIcon, MoonPhaseEnum } from '@/components/MoonIcon';
-import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/WeatherConditionIcon';
+import { MoonIcon, MoonPhaseEnum } from '@/components/Images/MoonIcon';
+import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { removeSpaces } from '@/utils/formatting';
 import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '../../utils';
 import { CurrentWeatherProps } from '../../types/airTypes';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeaderProps } from '@/views/components/Header/types/headerTypes';
-import RobotImg from '@/views/components/RobotImg';
+import RobotImg from '@/components/Images/RobotImg';
 import { TitleContainer,
   SubTitle,
   Title,
@@ -16,7 +16,7 @@ export default function HeaderTitle(props: HeaderProps) {
     <TitleContainer>
       <Title>
         <SmallHeaderIconContainer>
-          <RobotImg robotType="GiRobotAntennas" fontSize="45px" opacity="0.7" />
+          <RobotImg robotType="GiRobotAntennas" fontSize="50px" opacity="0.7" />
         </SmallHeaderIconContainer>
         <PrimaryTitle>{title}{secondaryTitle ? ' | ' : ''}</PrimaryTitle>
         <ColoredTitle>{secondaryTitle || ''}</ColoredTitle>
