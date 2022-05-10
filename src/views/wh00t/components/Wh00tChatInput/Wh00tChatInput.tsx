@@ -25,7 +25,9 @@ export function Wh00tChatInput() {
   const iconFontSize: string = '25px';
 
   const appendToCurrentMessageText: CallableFunction = (text: string) => {
-    textAreaRef.current.value = textAreaRef.current.value.concat(text);
+    const element = textAreaRef.current;
+    element.value = element.value.substring(0, element.selectionStart)
+      .concat(text, element.value.substring(element.selectionStart));
   };
 
   const emojiMenuSwitch: CallableFunction = () => {
