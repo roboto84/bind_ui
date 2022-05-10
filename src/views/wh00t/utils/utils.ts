@@ -1,7 +1,10 @@
 import { BASE_UI_URL } from '@/dataSource/urls';
 
+const emojiRegex = require('emoji-regex');
+
 const globalUrlRegex = /((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/ig;
 const singleUrlRegex = /((http|ftp|https):\/\/)?([\w_-]+(?:\.[\w_-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/i;
+const emojiReg = emojiRegex();
 
 export function linkify(message: string): string {
   if (!message) return '';
@@ -12,6 +15,12 @@ export function linkify(message: string): string {
     }
     return `<a href="${hyperlink}" target="_blank" rel="noopener noreferrer">${url}</a>`;
   });
+}
+
+export function emojify(message: string): string {
+  if (!message) return '';
+  return message.replace(emojiReg, (emoji) => (
+    `<span style="font-size: 27px;">${emoji}</span>`));
 }
 
 export function isHyperlinkLink(text: string) {
@@ -31,5 +40,7 @@ export function openPopup() {
 }
 
 export function noneTokenTextTransform(text: string): string {
-  return linkify(text);
+  let transformedText: string = linkify(text);
+  transformedText = emojify(transformedText);
+  return transformedText;
 }
