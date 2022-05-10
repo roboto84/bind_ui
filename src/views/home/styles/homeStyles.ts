@@ -25,7 +25,7 @@ export const AppDescriptionContainer = styled(Section)`
   flex-direction: column;
   
   @media ${device.desktop} {
-    width: 30%
+    width: 45%
   }
   
   @media ${device.laptopL} {
@@ -34,12 +34,12 @@ export const AppDescriptionContainer = styled(Section)`
   }
   
   @media ${device.laptop} {
-    width: 60%
+    width: 75%
   }
   
   @media ${device.tablet} {
     width: 90%;
-    margin: 20px 5px;
+    margin: 0 5px;
   }
 `;
 
