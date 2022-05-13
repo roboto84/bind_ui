@@ -5,11 +5,11 @@ import { device } from '@/styles/responsive';
 import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
 export const WeatherIconContainer = styled.div`
-  margin: -20px 0 -58px 0;
+  margin: -22px 0px -50px;
 `;
 
 export const WeatherIconSubTileContainer = styled.div`
-  margin: -24px 0 -52px 0;
+  margin: -15px 0px -50px;
 `;
 
 export const AirHomeContainer = styled.div`
@@ -145,7 +145,7 @@ export const SubNavigationContainer = styled.div<SubNavigationProps>`
   flex-wrap: wrap;
 
   @media ${device.tabletS} {
-    margin: 5px 5px;
+    margin: 5px;
   }
 }
 `;
