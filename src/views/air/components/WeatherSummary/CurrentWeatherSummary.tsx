@@ -44,7 +44,7 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         <MoonPhase>
           <div><MoonIcon moonPhase={moonPhase} fontSize="85px" /></div>
           <MoonPhaseSummaryContainer>
-            {moonPhase} Moon
+            {currentWeatherReport.moonPhase} Moon
           </MoonPhaseSummaryContainer>
         </MoonPhase>
       </WeatherSubcategory>
