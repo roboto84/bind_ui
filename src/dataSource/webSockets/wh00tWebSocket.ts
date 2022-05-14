@@ -4,7 +4,7 @@ import { randomIntFromInterval } from '@/utils/utils';
 import { getSimpleDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
-import { secretFlag } from '@/views/wh00t/utils/chatFlags';
+import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
 
 export class Wh00tWebSocket {
   clientId: string;
@@ -50,7 +50,7 @@ export class Wh00tWebSocket {
       value: wh00tMessage,
     };
     this.wh00tDispatch(newMessage);
-    if (wh00tMessage.message.indexOf(secretFlag) > -1) {
+    if (isSecretMessage(wh00tMessage.message)) {
       this.clearSecretMessage(wh00tMessage);
     }
   }

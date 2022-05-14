@@ -42,6 +42,10 @@ export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {
   borderRadius?: string
 }
 
+export interface TextMessageContainerProps extends GlobalThemeType {
+  filterBlur: boolean
+}
+
 export enum CssDisplay {
   flex = 'flex',
   none = 'none'

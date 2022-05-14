@@ -4,12 +4,13 @@ import {
   BoldText,
   CodeBlock,
   ItalicText,
-  TextMessage,
+  TextMessage, TextMessageContainer,
   Wh00tImage,
   Wh00tMessageTextContainer,
 } from '@/views/wh00t/components/Wh00tMessage/styles/wh00tMessageStyle';
 import React from 'react';
 import { randomUuid } from '@/utils/utils';
+import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
 
 const tokenTransforms: { [key: string]: Function } = {
   '`': (text: string): JSX.Element => (<code key={randomUuid()}>{text}</code>),
@@ -91,16 +92,18 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
   const { messageText } = props;
   let messageImage: JSX.Element = null;
   let messageTextView: JSX.Element[];
+  let messageIsSecret: boolean = false;
   if (isImageLink(messageText)) {
     messageTextView = [noneTokenTextSpanElement(noneTokenTextTransform(messageText).concat('&#10'))];
     messageImage = imageGenerator(messageText);
   } else {
+    messageIsSecret = isSecretMessage(messageText);
     messageTextView = textTransform(messageText);
   }
 
   return (
     <Wh00tMessageTextContainer>
-      <div>{messageTextView}</div>
+      <TextMessageContainer filterBlur={messageIsSecret}>{messageTextView}</TextMessageContainer>
       <div>{messageImage}</div>
     </Wh00tMessageTextContainer>
   );

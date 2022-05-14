@@ -1,6 +1,7 @@
 /* Chat Messages */
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
+import { TextMessageContainerProps } from '@/views/wh00t/types/wh00tTypes';
 
 export const Wh00tMessageWrapper = styled.div`
   display: flex;
@@ -80,6 +81,15 @@ export const CodeBlock = styled.div`
   margin: 20px;
   white-space: break-spaces;
   word-break: break-word;
+`;
+
+export const TextMessageContainer = styled.div<TextMessageContainerProps>`
+  filter: ${(props: TextMessageContainerProps) => (props.filterBlur ? 'blur(4px)' : 'blur(0)')};
+  transition: 0.4s;
+  
+  &:hover, &:active {
+    filter: blur(0);
+  }
 `;
 
 export const TextMessage = styled.span`
