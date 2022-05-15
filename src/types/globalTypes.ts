@@ -1,5 +1,10 @@
 import React from 'react';
 
+export enum HTTP_PROTOCOL {
+  HTTP = 'HTTP',
+  HTTPS = 'HTTPS'
+}
+
 export type ChildrenProps = {
   children: React.ReactNode
 }
