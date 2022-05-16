@@ -4,9 +4,10 @@ const COMMON_CONFIG = require('./webpack.common.config.js');
 const PROD_CONFIG = require('./webpack.prod.config.js');
 
 const PROFILE_CONFIG = {
+  mode: 'production',
   plugins: [
     new BundleAnalyzerPlugin(),
   ],
 };
 
-module.exports = merge([COMMON_CONFIG, PROD_CONFIG, PROFILE_CONFIG]);
+module.exports = (env) => merge([COMMON_CONFIG(env), PROD_CONFIG, PROFILE_CONFIG]);

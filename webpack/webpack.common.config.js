@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const webpack = require('webpack');
 
-module.exports = {
+module.exports = (env) => ({
   entry: './src',
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -44,5 +45,8 @@ module.exports = {
       favicon: './src/assets/favicon/favicon-16x16.png',
     }),
     new CompressionPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(`${env.API_URL ? `${env.API_URL}` : ''}`),
+    }),
   ],
-};
+});

@@ -1,7 +1,7 @@
 import { HTTP_PROTOCOL } from '@/types';
 
 // eslint-disable-next-line no-restricted-globals
-export const BASE_URL: string = `${location.hostname}`;
+export const BASE_URL: string = process.env.API_URL !== '' ? process.env.API_URL : `${location.hostname}`;
 export const CURRENT_API_HTTP_PROTOCOL: HTTP_PROTOCOL = HTTP_PROTOCOL.HTTPS;
 function getHttpBaseUrl() {
   if (CURRENT_API_HTTP_PROTOCOL === HTTP_PROTOCOL.HTTPS) {

@@ -20,4 +20,4 @@ const PROD_CONFIG = {
   },
 };
 
-module.exports = merge([COMMON_CONFIG, PROD_CONFIG]);
+module.exports = (env) => merge([COMMON_CONFIG(env), PROD_CONFIG]);
