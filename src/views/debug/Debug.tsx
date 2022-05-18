@@ -46,8 +46,11 @@ export function Debug() {
         <MessageHistory>
           {
             data.message.filter((message:DebugMessage, index:number) => index > 0)
-              .map((message: DebugMessage) => (
-                <DebugMessageContainer message={message} key={'message'.concat(message.time)} />
+              .map((message: DebugMessage, index:number) => (
+                <DebugMessageContainer
+                  message={message}
+                  key={'message'.concat(message.time, String(index))}
+                />
               ))
           }
         </MessageHistory>

@@ -12,10 +12,10 @@ export function LatestWordList(props: LatestWordListProps) {
     <LatestWordListContainer>
       { wordList.map((word: string) => (
         <Word
-          onClick={() => navigate(`/lexicon/search?word=${word}`)}
+          onClick={() => navigate(`/lexicon/search?word=${word.toLowerCase()}`)}
           key={'wordListItem'.concat(word)}
         >
-          {word}
+          {word.toLowerCase()}
         </Word>
       )) }
     </LatestWordListContainer>

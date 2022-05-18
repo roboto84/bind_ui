@@ -3,9 +3,8 @@ import { Wh00tMessage } from '@/views/wh00t/components/Wh00tMessage/Wh00tMessage
 import { Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { Wh00tMessagesProps } from '@/views/wh00t/types/wh00tTypes';
-import { Wh00tMessagesContainer } from './styles/wh00tMessagesStyle';
 import { Wh00tActionsEnum } from '@/context/types/enums';
-import faviconDefault from '@/assets/favicon/favicon-16x16.png';
+import { Wh00tMessagesContainer } from './styles/wh00tMessagesStyle';
 
 export function Wh00tMessages(props: Wh00tMessagesProps) {
   const { showBackgroundImage } = props;
