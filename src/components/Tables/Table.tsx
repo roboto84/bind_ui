@@ -78,17 +78,17 @@ export function Table(props: TableProps) {
     setTableCells(sortedCells);
   };
 
-  const headerTitle = (columnHeader: string) => {
-    let columnTitle: string = columnHeader;
+  const headerTitle = (columnKey: string, columnTitle: string) => {
+    let newColumnTitle: string = columnTitle;
 
-    if (columnHeader === sortedHeader.headerTitle) {
+    if (columnKey === sortedHeader.headerTitle) {
       if (sortedHeader.sortType === TableSortType.ascending) {
-        columnTitle = `${columnHeader} ▲`;
+        newColumnTitle = `${columnTitle} ▲`;
       } else if (sortedHeader.sortType === TableSortType.descending) {
-        columnTitle = `${columnHeader} ▼`;
+        newColumnTitle = `${columnTitle} ▼`;
       }
     }
-    return columnTitle;
+    return newColumnTitle;
   };
 
   return (
@@ -105,7 +105,7 @@ export function Table(props: TableProps) {
                   key={keyGenerator(tableKey, 'tableHeader', headerObject.title)}
                   onClick={() => tableSort(headerObject.titleKey, tableCells)}
                 >
-                  {headerTitle(headerObject.titleKey)}
+                  {headerTitle(headerObject.titleKey, headerObject.title)}
                 </th>
               );
             })

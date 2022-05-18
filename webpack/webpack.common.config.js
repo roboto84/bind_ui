@@ -46,7 +46,7 @@ module.exports = (env) => ({
     }),
     new CompressionPlugin(),
     new webpack.DefinePlugin({
-      'process.env.API_URL': JSON.stringify(`${env.API_URL ? `${env.API_URL}` : ''}`),
+      'process.env.API_URL': JSON.stringify(`${env && env.API_URL ? `${env.API_URL}` : ''}`),
     }),
   ],
 });
