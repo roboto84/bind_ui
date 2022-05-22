@@ -18,18 +18,21 @@ export function AirSubNavigation() {
       activationKey: 'air',
       borderRadius: '5px 0 0 5px',
       linkTo: '/air',
-      title: <TiWeatherStormy />,
+      navTitle: <TiWeatherStormy />,
+      htmlTitle: 'Weather Summary',
     },
     {
       activationKey: 'charts',
       linkTo: '/air/data/charts/pressure',
-      title: <AiOutlineLineChart />,
+      navTitle: <AiOutlineLineChart />,
+      htmlTitle: 'Weather Charts',
     },
     {
       activationKey: 'tables',
       borderRadius: '0 5px 5px 0',
       linkTo: '/air/data/tables/weather',
-      title: <BsTable />,
+      navTitle: <BsTable />,
+      htmlTitle: 'Weather Tables',
     },
   ];
   return (
@@ -37,6 +40,7 @@ export function AirSubNavigation() {
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink
+            title={navItem.htmlTitle}
             key={`airSubNav-${navItem.linkTo}`}
             activationKey={navItem.activationKey || navItem.linkTo}
             activationType={navItem.activationType || NavigationLinkActivationType.global}
@@ -46,7 +50,7 @@ export function AirSubNavigation() {
             fontSize={iconFontSize}
             padding={iconPadding}
           >
-            {navItem.title}
+            {navItem.navTitle}
           </NavigationLink>
         ))
       }

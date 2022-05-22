@@ -112,7 +112,7 @@ export const WeatherElement = styled.div`
 `;
 
 export const WeatherChartSection = styled(Section)`
-  max-width: 1210px;
+  max-width: 1385px;
   margin: 10px auto;
 `;
 
@@ -145,7 +145,7 @@ export const SubNavigationContainer = styled.div<SubNavigationProps>`
   flex-wrap: wrap;
 
   @media ${device.tabletS} {
-    margin: 5px;
+    margin: 10px 3px;
   }
 }
 `;

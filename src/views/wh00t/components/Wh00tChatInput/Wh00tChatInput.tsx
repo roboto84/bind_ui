@@ -89,6 +89,7 @@ export function Wh00tChatInput() {
               addTextCallback={appendToCurrentMessageText}
             />
             <ChatInputButton
+              title="Emoji Selector"
               padding={iconPadding}
               fontSize={iconFontSize}
               onClick={() => emojiMenuSwitch()}
@@ -97,7 +98,7 @@ export function Wh00tChatInput() {
               <MdOutlineTagFaces />
             </ChatInputButton>
           </EmojiUnitContainer>
-          <ChatInputButton onClick={sendMessage}>
+          <ChatInputButton title="Send Message" onClick={sendMessage}>
             Send
           </ChatInputButton>
         </ChatInputButtonContainer>

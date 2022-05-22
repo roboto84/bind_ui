@@ -32,7 +32,7 @@ export function LineChart(props: LineChartProps) {
 
   useEffect(() => {
     const margin = { top: 30, right: 5, bottom: 40, left: 10 };
-    const width = 1250 - margin.left - margin.right;
+    const width = 1425 - margin.left - margin.right;
     const height = 550 - margin.top - margin.bottom;
     const data: D3ChartData[] = [];
 

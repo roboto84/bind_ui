@@ -5,7 +5,7 @@ import { Wh00tBaseUserImageContainer, Wh00tChatImageWrapper } from '../styles/wh
 
 export function Wh00tBaseUserImage(props: Wh00tBaseUserImageProps) {
   const { currentClientId, username } = props;
-  const botImage: JSX.Element = <RobotImg margin="5px 0 0 -3px" robotType="GiRobotAntennas" />;
+  const botImage: JSX.Element = <RobotImg margin="5px 0 0 -1px" />;
   const usernameFirstInitial: string = username.substring(0, 1);
   const userIsBot: boolean = username.includes('bot');
   let backgroundColor: string = currentClientId === username

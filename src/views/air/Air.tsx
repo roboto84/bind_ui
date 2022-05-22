@@ -1,7 +1,6 @@
 import React from 'react';
 import { AirHomeContainer } from '@/views/air/styles/airHomeStyles';
 import { AirSubNavigation } from '@/views/air/components/AirSubNavigation/AirSubNavigation';
-import { Routes, Route } from 'react-router-dom';
 import { WeatherReportIndex } from '@/views/air/components/WeatherSummary/WeatherReportIndex';
 import { WeatherTables } from '@/views/air/components/WeatherTables/WeatherTables';
 import { WeatherCharts } from '@/views/air/components/WeatherChart/WeatherCharts';

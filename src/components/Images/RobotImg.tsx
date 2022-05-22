@@ -12,18 +12,6 @@ export type RobotImgProps = {
   margin ?: string
 }
 
-function randomRobotPicker() {
-  const randomNumber: number = randomIntFromInterval(1, 4);
-  switch (randomNumber) {
-    case 1:
-      return <FaRobot />;
-    case 2:
-      return <SiProbot />;
-    default:
-      return <GiRobotAntennas />;
-  }
-}
-
 function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
   const { robotType, opacity, fontSize, margin } = props;
   const robotPicker = (robot: string) => {
@@ -35,7 +23,7 @@ function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
       case 'GiRobotAntennas':
         return <GiRobotAntennas />;
       default:
-        return randomRobotPicker();
+        return <FaRobot />;
     }
   };
 

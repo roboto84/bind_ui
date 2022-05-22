@@ -76,6 +76,7 @@ export const WordAudio = styled.div`
 
   @media ${device.tabletS} {
     margin: 5px;
+    text-align: center;
   }
 `;
 
@@ -86,6 +87,7 @@ export const WordDefStems = styled.div`
 
   @media ${device.tabletS} {
     margin: 5px;
+    line-height: 20px;
   }
 `;
 

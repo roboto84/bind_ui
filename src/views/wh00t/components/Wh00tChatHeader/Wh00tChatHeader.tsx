@@ -29,7 +29,7 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
   const connectedTitle: JSX.Element = (
     <>
       <Wh00tChannelTitle>
-        <Wh00tChatHeaderTitleIcon>
+        <Wh00tChatHeaderTitleIcon title="Chat Room">
           <BsFillChatTextFill />
         </Wh00tChatHeaderTitleIcon>
         /general
@@ -52,19 +52,19 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
   }
 
   const minimizeButton: JSX.Element = headerButtons.minimize ? (
-    <Wh00tChatHeaderButton onClick={wh00tMinimizeSwitch}>
+    <Wh00tChatHeaderButton title="Minimize Chat" onClick={wh00tMinimizeSwitch}>
       <FiMinimize />
     </Wh00tChatHeaderButton>
   ) : <span />;
 
   const maximizeButton: JSX.Element = headerButtons.maximize ? (
-    <Wh00tChatHeaderButton onClick={() => navigate('/wh00t')}>
+    <Wh00tChatHeaderButton title="Maximize Chat" onClick={() => navigate('/wh00t')}>
       <FiMaximize />
     </Wh00tChatHeaderButton>
   ) : <span />;
 
   const disconnectButton: JSX.Element = headerButtons.disconnect ? (
-    <Wh00tChatHeaderButton onClick={wh00tDisconnect}>
+    <Wh00tChatHeaderButton title="Logout of Chat" onClick={wh00tDisconnect}>
       <FiLogOut />
     </Wh00tChatHeaderButton>
   ) : <span />;

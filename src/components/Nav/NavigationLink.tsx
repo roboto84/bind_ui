@@ -12,12 +12,13 @@ export type NavigationItemConfig = {
   activationType ?: NavigationLinkActivationType
   borderRadius ?: string,
   linkTo: string,
-  title: string | JSX.Element,
+  navTitle: string | JSX.Element,
+  htmlTitle ?: string,
 }
 
 function NavigationLink(props: NavigationLinkProps) {
   const { activationType, activationKey, alert, navigationLinkType, linkTo, children,
-    fontSize, padding, borderRadius, callBack } = props;
+    fontSize, padding, borderRadius, callBack, title } = props;
   const activeKey: string = linkTo ? activationKey || linkTo : linkTo;
   const { pathname } = useLocation();
   const navigate: NavigateFunction = useNavigate();
@@ -45,6 +46,7 @@ function NavigationLink(props: NavigationLinkProps) {
         padding={padding}
         borderRadius={borderRadius}
         onClick={callBack ? (() => callBack()) : (() => navigate(linkTo))}
+        title={title}
       >
         {children}
       </SubButton>
@@ -58,6 +60,7 @@ function NavigationLink(props: NavigationLinkProps) {
       padding={padding}
       borderRadius={borderRadius}
       onClick={callBack ? (() => callBack()) : (() => navigate(linkTo))}
+      title={title}
     >
       {children}
       { alert ? <ButtonAlert /> : ''}

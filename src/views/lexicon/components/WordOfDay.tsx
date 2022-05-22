@@ -6,9 +6,9 @@ import {
   DayWordDate, DayWordDefinitions, DayWordDefinitionsList, DayWordExample,
   DayWordPartOfSpeech, DayWordPronounce, WordOfDayContainer,
 } from '@/views/lexicon/styles/wordOfDayStyles';
+import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 import { pronunciationView, wordExampleView, wordParamBasicView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
-import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;

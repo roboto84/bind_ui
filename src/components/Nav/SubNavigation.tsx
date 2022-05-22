@@ -18,12 +18,13 @@ export function SubNavigation(props: SubNavigationProps) {
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink
+            title={ navItem.htmlTitle ? navItem.htmlTitle : `${navItem.navTitle}`}
             key={`${navKey}-${navItem.linkTo}`}
             borderRadius={navItem.borderRadius || 'inherit'}
             navigationLinkType={navLinkType}
             linkTo={`${navItem.linkTo}`}
           >
-            {navItem.title}
+            {navItem.navTitle}
           </NavigationLink>
         ))
       }

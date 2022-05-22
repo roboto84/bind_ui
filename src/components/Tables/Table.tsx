@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { BaseObject } from '@/views/air/types/airTypes';
+import { device } from '@/styles/responsive';
 
 export interface HeaderTitle extends BaseObject {
   titleKey: string,
@@ -30,6 +31,10 @@ const TableContainer = styled.div<GlobalThemeType>`
   height: calc(100vh - 260px);
   border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
   border-radius: 3px;
+
+  @media ${device.tabletS} {
+    height: calc(100vh - 240px);
+  }
 `;
 
 export function Table(props: TableProps) {
@@ -99,13 +104,15 @@ export function Table(props: TableProps) {
             {
             headers.map((headerObject:HeaderTitle) => {
               const isSortActive: boolean = sortedHeader.headerTitle === headerObject.titleKey;
+              const title: string = headerTitle(headerObject.titleKey, headerObject.title);
               return (
                 <th
+                  title={`${title} (sortable)`}
                   className={isSortActive ? 'active' : ''}
                   key={keyGenerator(tableKey, 'tableHeader', headerObject.title)}
                   onClick={() => tableSort(headerObject.titleKey, tableCells)}
                 >
-                  {headerTitle(headerObject.titleKey, headerObject.title)}
+                  {title}
                 </th>
               );
             })

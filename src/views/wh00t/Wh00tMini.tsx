@@ -31,7 +31,7 @@ export function Wh00tMini() {
 
   if (state.wh00tMinimizedSwitch) {
     return (
-      <MinimizedWh00tButton onClick={wh00tMinimizeSwitch}>
+      <MinimizedWh00tButton title="Wh00t Mini Chat" onClick={wh00tMinimizeSwitch}>
         <MinimizedWh00tIconContainer>
           <BsFillChatTextFill />
         </MinimizedWh00tIconContainer>

@@ -11,12 +11,12 @@ import { TitleContainer,
 
 export default function HeaderTitle(props: HeaderProps) {
   const { title, secondaryTitle, subtitle } = props;
-
+  const htmlTitle: string = `${title}${secondaryTitle ? ' | ' : ''}${secondaryTitle || ''}`;
   return (
     <TitleContainer>
-      <Title>
+      <Title title={htmlTitle}>
         <SmallHeaderIconContainer>
-          <RobotImg robotType="GiRobotAntennas" fontSize="50px" opacity="0.7" />
+          <RobotImg fontSize="50px" opacity="0.7" />
         </SmallHeaderIconContainer>
         <PrimaryTitle>{title}{secondaryTitle ? ' | ' : ''}</PrimaryTitle>
         <ColoredTitle>{secondaryTitle || ''}</ColoredTitle>

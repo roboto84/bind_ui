@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 import {
   pronunciationView,
   wordEtymologyView,
@@ -23,7 +24,6 @@ import {
   WordDefinition,
   Stem,
 } from './styles/wordSearchDefinitionStyle';
-import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
 
 export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const { wordDefinition } = props;
@@ -55,7 +55,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     wordAudioComponent = (
       <WordAudio>
         <audio preload="auto" controls>
-          <source src={wordDefinition.audio} type="audio/mpeg"/>
+          <source src={wordDefinition.audio} type="audio/mpeg" />
           Your browser does not support the audio format.
         </audio>
       </WordAudio>

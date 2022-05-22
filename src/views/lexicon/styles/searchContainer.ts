@@ -13,7 +13,7 @@ export const SearchContainer = styled.div`
   height: 70px;
   
   @media ${device.tabletS} {
-    margin: 5px;
+    margin: 0 5px;
   }
   
 `;

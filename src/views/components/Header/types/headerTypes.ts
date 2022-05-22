@@ -31,4 +31,5 @@ export type NavigationLinkProps = {
   padding ?: string,
   borderRadius ?: string,
   children ?: React.ReactNode
+  title ?: string
 }

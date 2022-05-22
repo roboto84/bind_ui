@@ -17,10 +17,11 @@ export default function HeaderNavigation() {
   return (
     <NavLinksContainer>
       <NavContainer>
-        <NavigationLink borderRadius={borderRadius} linkTo="/">/</NavigationLink>
-        <NavigationLink borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
-        <NavigationLink borderRadius={borderRadius} linkTo="/lexicon">Lexicon</NavigationLink>
+        <NavigationLink title="home" borderRadius={borderRadius} linkTo="/">/</NavigationLink>
+        <NavigationLink title="Air Weather App" borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
+        <NavigationLink title="Lexicon Dictionary App" borderRadius={borderRadius} linkTo="/lexicon">Lexicon</NavigationLink>
         <NavigationLink
+          title="Wh00t Chat App"
           borderRadius={borderRadius}
           alert={wh00tState.wh00tInternalAlert}
           linkTo="/wh00t"
@@ -29,6 +30,7 @@ export default function HeaderNavigation() {
         </NavigationLink>
         <NavigationOptional>
           <NavigationLink
+            title="Roboto Debug View"
             borderRadius={borderRadius}
             padding={iconPadding}
             fontSize={iconFontSize}
@@ -37,6 +39,7 @@ export default function HeaderNavigation() {
             <BsBug />
           </NavigationLink>
           <NavigationLink
+            title={state.theme === ThemeModeEnum.LIGHT ? 'Dark Theme' : 'Light Theme'}
             borderRadius={borderRadius}
             padding={iconPadding}
             fontSize={iconFontSize}
@@ -45,6 +48,7 @@ export default function HeaderNavigation() {
             {state.theme === ThemeModeEnum.LIGHT ? <BsMoonFill /> : <BsFillSunFill />}
           </NavigationLink>
           <NavigationLink
+            title="Project Github"
             borderRadius={borderRadius}
             padding={iconPadding}
             fontSize={iconFontSize}

@@ -35,6 +35,10 @@ export const Hoverable = styled.div`
     background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
     color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
   }
+
+  @media ${device.tabletS} {
+    padding: 5px;
+  }
 `;
 
 export const Section = styled.div`

@@ -26,20 +26,21 @@ export function SearchBar() {
 
   return (
     <SearchContainer>
-      <HomeButton onClick={() => navigate('/lexicon')}>
+      <HomeButton title="Lexicon Home" onClick={() => navigate('/lexicon')}>
         <AiOutlineHome />
       </HomeButton>
-      <BackButton onClick={() => navigate(-1)}>
+      <BackButton title="Previous Page" onClick={() => navigate(-1)}>
         <FaArrowLeft />
       </BackButton>
       <SearchInput
+        title="Search Term Input"
         type="text"
         placeholder="Search Word"
         ref={searchInputRef}
         onKeyUp={searchKeyInput}
         autoFocus
       />
-      <SearchButton onClick={() => sendSearchWord()}>
+      <SearchButton title="Submit Search Term" onClick={() => sendSearchWord()}>
         Search
       </SearchButton>
     </SearchContainer>

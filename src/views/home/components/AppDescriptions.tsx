@@ -13,11 +13,11 @@ import { Error404 } from '@/views/404/404';
 
 export default function AppDescriptions() {
   const navConfig: NavigationItemConfig[] = [
-    { borderRadius: '5px 0 0 5px', linkTo: '/', title: 'Roboto' },
-    { linkTo: '/description/air_app', title: 'Air' },
-    { linkTo: '/description/lexicon_app', title: 'Lexicon' },
-    { linkTo: '/description/wh00t_app', title: 'wh00t' },
-    { borderRadius: '0 5px 5px 0', linkTo: '/description/debug_app', title: 'Debug' },
+    { borderRadius: '5px 0 0 5px', linkTo: '/', navTitle: 'Roboto' },
+    { linkTo: '/description/air_app', navTitle: 'Air' },
+    { linkTo: '/description/lexicon_app', navTitle: 'Lexicon' },
+    { linkTo: '/description/wh00t_app', navTitle: 'wh00t' },
+    { borderRadius: '0 5px 5px 0', linkTo: '/description/debug_app', navTitle: 'Debug' },
   ];
   const routerConfig: RouterItemConfig[] = [
     { index: true, element: <AppSummary summaryType={AppSummaryType.roboto} /> },
