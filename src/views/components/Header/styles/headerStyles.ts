@@ -112,7 +112,13 @@ export const NavigationOptional = styled.div`
 `;
 
 export const MobileNavigationMenuContainer = styled.div`
+  display: none;
   margin-top: 20px;
+  height: 42px;
+  
+  @media ${device.mobileXL} {
+    display: inherit;
+  }
 `;
 
 export const MobileNavContainer = styled.div`

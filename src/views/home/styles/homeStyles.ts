@@ -13,6 +13,10 @@ export const HomeContainer = styled.div`
   @media ${device.tabletS} {
     padding-top: calc(8vh);
   }
+
+  @media ${device.tabletS} {
+    padding-top: 10px;
+  }
 `;
 
 export const AppDescriptionContainer = styled(Section)`
