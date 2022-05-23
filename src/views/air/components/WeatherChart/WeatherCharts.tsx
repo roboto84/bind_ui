@@ -1,7 +1,6 @@
 import React from 'react';
 import { WeatherChartType } from '@/views/air/types/airTypes';
 import { WeatherChart } from '@/views/air/components/WeatherChart/WeatherChart';
-import { Error404 } from '@/views/404/404';
 import { RouterItemConfig } from '@/types';
 import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import {
@@ -24,7 +23,6 @@ export function WeatherCharts() {
     { path: 'pollen_grass', element: <WeatherChart chartKey={WeatherChartType.grassIndex} /> },
     { path: 'pollen_tree', element: <WeatherChart chartKey={WeatherChartType.treeIndex} /> },
     { path: 'pollen_weed', element: <WeatherChart chartKey={WeatherChartType.weedIndex} /> },
-    { path: '*', element: <Error404 /> },
   ];
   return (
     <>

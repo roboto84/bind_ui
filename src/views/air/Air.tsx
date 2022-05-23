@@ -6,14 +6,12 @@ import { WeatherTables } from '@/views/air/components/WeatherTables/WeatherTable
 import { WeatherCharts } from '@/views/air/components/WeatherChart/WeatherCharts';
 import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import { RouterItemConfig } from '@/types';
-import { Error404 } from '@/views/404/404';
 
 export function Air() {
   const routerConfig: RouterItemConfig[] = [
     { index: true, element: <WeatherReportIndex /> },
     { path: 'tables/*', element: <WeatherTables /> },
     { path: 'charts/*', element: <WeatherCharts /> },
-    { path: '*', element: <Error404 /> },
   ];
 
   return (

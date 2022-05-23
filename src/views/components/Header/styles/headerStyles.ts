@@ -15,7 +15,8 @@ export const HeaderContainer = styled.div`
   }
 
   @media ${device.tabletS} {
-    margin: 0 5px;
+    margin: -10px 5px 0 5px;
+    height: 70px;
   }
 `;
 
@@ -41,7 +42,6 @@ export const SmallHeaderIconContainer = styled.span`
   @media ${device.tabletS} {
     display: inherit;
     margin: -14px 16px 0 0;
-    border-right: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
   }
 `;
 
@@ -86,7 +86,7 @@ export const NavContainer = styled.div`
   width: 395px;
   justify-content: space-between;
 
-  @media ${device.tabletS} {
+  @media ${device.mobileXL} {
     width: 250px;
   }
 `;
@@ -96,7 +96,7 @@ export const NavigationOptional = styled.div`
   width: 137px;
   justify-content: space-between;
   
-  @media ${device.tabletS} {
+  @media ${device.mobileXL} {
     display: none;
   }
 `;

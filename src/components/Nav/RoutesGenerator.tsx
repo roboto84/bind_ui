@@ -1,6 +1,7 @@
 import { RouterItemConfig, RoutesGeneratorProps } from '@/types';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
+import { Error404 } from '@/views/404/404';
 
 export function RoutesGenerator(props: RoutesGeneratorProps) {
   const { routerRoutesConfig } = props;
@@ -27,6 +28,7 @@ export function RoutesGenerator(props: RoutesGeneratorProps) {
           );
         })
       }
+      <Route path="*" element={<Error404 />} />
     </Routes>
   );
 }
