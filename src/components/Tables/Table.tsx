@@ -52,8 +52,13 @@ export function Table(props: TableProps) {
 
   const tableSort: CallableFunction = (columnHeader: string, elementCells: BaseObject[]) => {
     let sortedCells: BaseObject[];
+    let sortType: TableSortType = TableSortType.none;
 
-    switch (sortedHeader.sortType) {
+    if (columnHeader === sortedHeader.headerTitle) {
+      sortType = sortedHeader.sortType;
+    }
+
+    switch (sortType) {
       case TableSortType.none:
         sortedCells = [...elementCells].sort((a, b) => (
           a[columnHeader] > b[columnHeader] ? 1 : 0
@@ -79,7 +84,8 @@ export function Table(props: TableProps) {
           sortType: TableSortType.none,
         });
     }
-
+    console.log(sortedHeader.headerTitle);
+    console.log(sortedHeader.sortType);
     setTableCells(sortedCells);
   };
 
@@ -107,7 +113,7 @@ export function Table(props: TableProps) {
               const title: string = headerTitle(headerObject.titleKey, headerObject.title);
               return (
                 <th
-                  title={`${title} (sortable)`}
+                  title={`${title}`}
                   className={isSortActive ? 'active' : ''}
                   key={keyGenerator(tableKey, 'tableHeader', headerObject.title)}
                   onClick={() => tableSort(headerObject.titleKey, tableCells)}
