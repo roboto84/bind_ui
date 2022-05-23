@@ -8,10 +8,18 @@ export const DebugHomeContainer = styled.div`
   width: calc(100vw - 100px);
   min-width: 400px;
   font-size: 14px;
+
+  @media ${device.tabletS} {
+    min-width: 335px;
+  }
 `;
 
 export const DebugSectionContainer = styled.div`
   margin-top: 40px;
+
+  @media ${device.mobileXL} {
+    margin-top: 20px;
+  }
 `;
 
 export const LatestMessage = styled.div`{

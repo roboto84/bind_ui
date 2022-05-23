@@ -46,7 +46,7 @@ export default function AppRoutes() {
         </Route>
         <Route
           path="wh00t"
-          element={<Layout title="</wh00t>" subtitle="A-O River Communication System" />}
+          element={<Layout secondaryTitle="wh00t" subtitle="A-O River Communication System" />}
         >
           <Route index element={<Wh00t />} />
         </Route>

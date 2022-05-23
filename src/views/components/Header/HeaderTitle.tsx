@@ -16,7 +16,7 @@ export default function HeaderTitle(props: HeaderProps) {
     <TitleContainer>
       <Title title={htmlTitle}>
         <SmallHeaderIconContainer>
-          <RobotImg fontSize="50px" opacity="0.7" />
+          <RobotImg fontSize="45px" opacity="0.7" />
         </SmallHeaderIconContainer>
         <PrimaryTitle>{title}{secondaryTitle ? ' | ' : ''}</PrimaryTitle>
         <ColoredTitle>{secondaryTitle || ''}</ColoredTitle>

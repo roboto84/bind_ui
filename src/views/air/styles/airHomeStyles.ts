@@ -14,6 +14,10 @@ export const WeatherIconSubTileContainer = styled.div`
 
 export const AirHomeContainer = styled.div`
   margin-top: 20px;
+
+  @media ${device.tabletS} {
+    margin-top: 5px;
+  }
 `;
 
 export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
