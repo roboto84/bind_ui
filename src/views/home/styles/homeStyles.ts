@@ -53,6 +53,6 @@ export const AppDescription = styled.div`
 export const ImageContainer = styled.div`
   
   @media ${device.laptop} {
-    display: none;
+    
   }
 `;

@@ -6,7 +6,6 @@ import AppDescriptions from './components/AppDescriptions';
 export function Home() {
   return (
     <HomeContainer className="side-flexed">
-      <AppDescriptions />
       <ImageContainer>
         <RobotImg fontSize="445px" opacity="0.7" />
       </ImageContainer>

@@ -148,6 +148,6 @@ export interface WeatherChartProps {
 }
 
 export interface SubNavigationProps extends GlobalThemeType{
-  margin: string,
+  margin ?: string,
   justifyContent: string
 }

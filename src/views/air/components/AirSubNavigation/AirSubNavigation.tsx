@@ -11,7 +11,7 @@ import {
 
 export function AirSubNavigation() {
   const iconPadding: string = '5px 15px 0px 15px';
-  const iconFontSize: string = '25px';
+  const iconFontSize: string = '20px';
   const navConfig: NavigationItemConfig[] = [
     {
       activationType: NavigationLinkActivationType.local,

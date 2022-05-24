@@ -20,6 +20,15 @@ export const AirHomeContainer = styled.div`
   }
 `;
 
+export const AirSubTitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  @media ${device.tabletS} {
+    margin: 15px 0 10px 0;
+  }
+`;
+
 export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
   border: 4px solid ${(props: WeatherSubcategoryProps) => (
@@ -146,11 +155,11 @@ export const SubNavigationContainer = styled.div<SubNavigationProps>`
   font-size: 12px;
   display: flex;
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};
-  margin: ${(props: SubNavigationProps) => props.margin};
+  margin: ${(props: SubNavigationProps) => props.margin || 'inherit'};
   flex-wrap: wrap;
 
   @media ${device.tabletS} {
-    margin: 10px 5px 10px 0;
+    margin-right: 5px;
   }
 }
 `;
