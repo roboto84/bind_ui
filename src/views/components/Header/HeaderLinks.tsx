@@ -16,7 +16,9 @@ export default function HeaderLinks() {
 
   return (
     <>
-      <NavigationLink title="home" borderRadius={borderRadius} linkTo="/">/</NavigationLink>
+      <NavigationOptional>
+        <NavigationLink title="home" borderRadius={borderRadius} linkTo="/">/</NavigationLink>
+      </NavigationOptional>
       <NavigationLink title="Air Weather App" borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
       <NavigationLink title="Lexicon Dictionary App" borderRadius={borderRadius} linkTo="/lexicon">Lexicon</NavigationLink>
       <NavigationLink

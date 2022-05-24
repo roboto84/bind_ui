@@ -29,10 +29,11 @@ export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
   border-radius: 3px;
   padding: 10px;
+  width: 250px;
 
   @media ${device.tabletS} {
-    margin: 10px;
-    padding: 5px;
+    width: initial;
+    min-width: 200px;
   }
 `;
 
@@ -76,7 +77,7 @@ export const CurrentTemperature = styled.div`
 
 export const WeatherBlurb = styled.div`
   margin: 0 20px;
-  font-size: 18px;
+  font-size: 14px;
   color: #737373;
   text-align: center;
 `;
@@ -149,7 +150,7 @@ export const SubNavigationContainer = styled.div<SubNavigationProps>`
   flex-wrap: wrap;
 
   @media ${device.tabletS} {
-    margin: 10px 3px;
+    margin: 10px 5px 10px 0;
   }
 }
 `;

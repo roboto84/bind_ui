@@ -14,50 +14,68 @@ export const HeaderContainer = styled.div`
     margin: 0;
   }
 
-  @media ${device.tabletS} {
+  @media ${device.tablet} {
     margin: -15px 5px 0 5px;
     height: 68px;
   }
 `;
 
 export const TitleContainer = styled.div`
-  justify-content: left;
+`;
+
+export const HeaderTitleContainer = styled.div`
   width: calc(100% - 400px);
- 
-  @media ${device.tabletS} {
+  display: flex;
+
+  @media ${device.tablet} {
     width: 100%;
   }
 `;
 
 export const Title = styled.h1`
-  @media ${device.tabletS} {
-    display: flex;
+  display: flex;
+  
+  @media ${device.tablet} {
     font-size: 27px;
     margin: 29px 0 0 8px;
   }
 `;
 
 export const SmallHeaderIconContainer = styled.span`
-  display: none;
+  display: inherit;
+  transition: 0.4s;
+
+  &:hover {
+    cursor: pointer;
+    color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
+  }
   
-  @media ${device.tabletS} {
-    display: inherit;
-    margin: -6px 9px 0 0;
+  @media ${device.tablet} {
+    margin: 3px -7px 0px -2px;
   }
 `;
 
 export const PrimaryTitle = styled.span`
-  @media ${device.tabletS} {
+  @media ${device.tablet} {
     display: none;
   }
 `;
 
 export const ColoredTitle = styled.span`
   color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
+  margin-left: 8px;
   
-  @media ${device.tabletS} {
-    margin: -2px 0 0 -4px;
+  @media ${device.tablet} {
+    margin: -2px 0 0 8px;
   }
+`;
+
+export const TagContainer = styled.div`
+  color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
+  display: inline-block;
+  height: 14px;
+  margin: -8px 0 0 6px;
+  transform: rotateY(0deg) rotate(-14deg);
 `;
 
 export const SubTitle = styled.div`
@@ -65,7 +83,7 @@ export const SubTitle = styled.div`
   font-size: 13px;
   margin: 0 30px 10px 17px;
 
-  @media ${device.tabletS} {
+  @media ${device.tablet} {
     display: none;
   }
 `;
@@ -77,7 +95,7 @@ export const NavLinksContainer = styled.div`
   justify-content: right;
   margin-bottom: -22px;
 
-  @media ${device.tabletS} {
+  @media ${device.tablet} {
     margin-bottom: -30px;
   }
   
@@ -91,8 +109,8 @@ export const NavLinksContainer = styled.div`
 
 export const NavContainer = styled.div`
   display: flex;
-  height: 40px;
-  width: 395px;
+  height: 39px;
+  width: 380px;
   justify-content: space-between;
 
   @media ${device.mobileXL} {
@@ -103,7 +121,7 @@ export const NavContainer = styled.div`
 
 export const NavigationOptional = styled.div`
   display: flex;
-  width: 43px;
+  width: 30px;
   justify-content: space-between;
   
   @media ${device.mobileXL} {
@@ -113,8 +131,8 @@ export const NavigationOptional = styled.div`
 
 export const MobileNavigationMenuContainer = styled.div`
   display: none;
-  margin-top: 20px;
-  height: 42px;
+  margin: 23px 5px 0 0;
+  height: 39px;
   
   @media ${device.mobileXL} {
     display: inherit;
@@ -126,7 +144,8 @@ export const MobileNavContainer = styled.div`
   
   @media ${device.mobileXL} {
     display: flex;
-    width: 350px;
+    width: 335px;
+    height: 40px;
     justify-content: space-between;
   }
 `;

@@ -21,7 +21,7 @@ export default function Header(props: HeaderProps) {
         <HeaderNavigation />
         <MobileNavigationMenuContainer>
           <NavigationLink
-            title="Show Menu"
+            title={menu ? 'Close Menu' : 'Show Menu'}
             callBack={() => setMenu(!menu)}
             borderRadius={borderRadius}
             padding={iconPadding}

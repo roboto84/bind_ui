@@ -33,7 +33,7 @@ const TableContainer = styled.div<GlobalThemeType>`
   border-radius: 3px;
 
   @media ${device.tabletS} {
-    height: calc(100vh - 240px);
+    height: calc(100vh - 205px);
   }
 `;
 
