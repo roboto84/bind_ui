@@ -1,11 +1,12 @@
 import React from 'react';
 import { HomeContainer, ImageContainer } from '@/views/home/styles/homeStyles';
 import RobotImg from '../../components/Images/RobotImg';
-import AppDescriptions from './components/AppDescriptions';
+import { AppDescriptions } from './components/AppDescriptions/AppDescriptions';
 
 export function Home() {
   return (
     <HomeContainer className="side-flexed">
+      <AppDescriptions />
       <ImageContainer>
         <RobotImg fontSize="445px" opacity="0.7" />
       </ImageContainer>

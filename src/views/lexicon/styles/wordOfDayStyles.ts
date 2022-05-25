@@ -10,7 +10,7 @@ const GeneralStyle = styled.span`
 `;
 
 export const WordOfDayContainer = styled.div`
-  margin: 0 50px;
+  margin: 0 20px;
 
   @media ${device.tabletS} {
     margin: 0 10px;
