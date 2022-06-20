@@ -1,23 +1,31 @@
 import React from 'react';
-import styled from 'styled-components';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { AppDescriptionCoreContainer } from './appDescriptionsStyles';
+import {
+  AppDescriptionCoreContainer,
+  AppDescriptionHeader,
+} from './appDescriptionsStyles';
 
 type AppDescriptionProps = {
   appName: string,
   summary: string,
   linkTo: string,
+  icon: JSX.Element
 }
 
 export default function AppDescription(props: AppDescriptionProps) {
-  const { appName, summary, linkTo } = props;
+  const { appName, summary, linkTo, icon } = props;
   const navigate: NavigateFunction = useNavigate();
 
   return (
     <AppDescriptionCoreContainer onClick={() => navigate(linkTo)}>
-      <h2>
-        {appName}
-      </h2>
+      <AppDescriptionHeader>
+        <span className="appDescriptionHeaderTitle">
+          {appName}
+        </span>
+        <span className="appDescriptionHeaderIcon">
+          {icon}
+        </span>
+      </AppDescriptionHeader>
       <p>
         {summary}
       </p>

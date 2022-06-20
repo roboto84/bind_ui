@@ -3,7 +3,7 @@ import { device } from '@/styles/responsive';
 import { Section } from '@/views/styles/appStyles';
 
 export const HomeContainer = styled.div`
-  padding-top: calc(8vh);
+  padding-top: calc(6vh);
 
   &.side-flexed {
     display: flex;
@@ -67,8 +67,17 @@ export const AppDescription = styled.div`
   }
 `;
 
-export const ImageContainer = styled.div`
+export const HomeRightContainer = styled.div`
   @media ${device.laptop} {
     display: none
   }
+`;
+
+export const HomeBottomRight = styled.div`
+  text-align: center;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  opacity: 0.8;
+  margin-top: -5px;
+  font-size: 24px;
 `;

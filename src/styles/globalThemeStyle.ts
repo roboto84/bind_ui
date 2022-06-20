@@ -8,7 +8,7 @@ export const GlobalThemeStyle = createGlobalStyle`
   }
   
   body {
-    font-family: Verdana, sans-serif;
+    font-family: Open Sans, Helvetica, Verdana, sans-serif;
     font-size: 12px;
     text-align: left;
     color: ${(props: GlobalThemeType) => props.theme.core.textColor};
