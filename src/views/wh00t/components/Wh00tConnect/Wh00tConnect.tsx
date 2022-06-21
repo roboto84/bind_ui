@@ -2,13 +2,19 @@ import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { getLocalStorage } from '@/utils/localStorage';
 import { LocalStorageEnum } from '@/context/types/enums';
+import { Size } from '@/types';
 import {
   ChatConnectButton, Wh00tConnectContainer,
   Wh00tConnectInput, Wh00tConnectSection,
   Wh00tConnectTitle, Wh00tConnectTitleDescription,
 } from './styles/wh00tConnectStyle';
 
-export function Wh00tConnect() {
+interface Wh00tConnectProps {
+  size ?: Size
+}
+
+function Wh00tConnect(props: Wh00tConnectProps) {
+  const { size } = props;
   const { state } = useWh00tWebsocket();
   const clientIdInputRef: React.MutableRefObject<any> = React.useRef();
   const getSavedUsername = () => {
@@ -31,7 +37,7 @@ export function Wh00tConnect() {
 
   return (
     <Wh00tConnectContainer>
-      <Wh00tConnectSection>
+      <Wh00tConnectSection size={size}>
         <Wh00tConnectTitle>
           <span>
             Username
@@ -55,3 +61,9 @@ export function Wh00tConnect() {
     </Wh00tConnectContainer>
   );
 }
+
+Wh00tConnect.defaultProps = {
+  size: Size.large,
+};
+
+export default Wh00tConnect;

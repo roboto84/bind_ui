@@ -1,16 +1,17 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { Wh00tConnect } from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
+import Wh00tConnect from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
 import { useLocation } from 'react-router-dom';
 import { Wh00tActionsEnum } from '@/context/types/enums';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
+import { Size } from '@/types';
 import { Wh00tChatInput } from './components/Wh00tChatInput/Wh00tChatInput';
 import { Wh00tMessages } from './components/Wh00tMessages/Wh00tMessages';
 import {
   MinimizedWh00tButton,
-  Wh00tMiniContainer,
   MinimizedWh00tIconContainer,
+  Wh00tMiniContainer,
 } from './styles/wh00tMiniStyle';
 import { Wh00tChatHeader } from './components/Wh00tChatHeader/Wh00tChatHeader';
 
@@ -67,7 +68,7 @@ export function Wh00tMini() {
         }}
         minimizeSwitch={wh00tMinimizeSwitch}
       />
-      <Wh00tConnect />
+      <Wh00tConnect size={Size.small} />
     </Wh00tMiniContainer>
   );
 }

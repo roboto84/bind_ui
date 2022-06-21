@@ -3,6 +3,8 @@ export interface GlobalThemeType {
 }
 
 export type HeaderStyleType = {
+  iconColor: string,
+  iconHoverColor: string,
   subTitleColor: string,
   secondaryTitleColor: string,
   borderBottomColor: string,
@@ -104,6 +106,7 @@ export type Wh00tThemeType = {
       color: string,
       borderColor: string,
       backgroundColor: string,
+      backgroundHoverColor: string,
     },
     backgroundColor: string,
     inputColor: string,

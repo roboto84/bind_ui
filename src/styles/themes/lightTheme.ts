@@ -1,14 +1,12 @@
 import { ThemeType } from '@/types/themeTypes';
-import { tomorrowLight } from '@/styles/themes/tomorrowTheme';
 import { lexiconLight } from '@/views/lexicon/styles/lexiconThemes';
 import { debugLight } from '@/views/debug/styles/debugThemes';
-import { customTheme } from '@/styles/themes/customTheme';
 import { wh00tLight } from '@/views/wh00t/styles/wh00tThemes';
 import { airLight } from '@/views/air/styles/airThemeStyle';
 
 export const LightTheme: ThemeType = {
   core: {
-    mainThemeColor: '#86a0a7',
+    mainThemeColor: '#6a9ca9',
     bgColor: '#d4d4d4',
     textColor: 'black',
     aLink: {
@@ -22,11 +20,11 @@ export const LightTheme: ThemeType = {
     table: {
       borderColor: '#8a8b8b',
       headerColor: '#8a8b8b',
-      highlightCellColor: '#89a4ab',
+      highlightCellColor: '#6a9ca9',
     },
     code: {
       backgroundColor: '#e8f5fa',
-      borderColor: 'rgba(11,76,140,.2)',
+      borderColor: '#0B4C8C33',
       textColor: '#0b4c8c',
     },
   },
@@ -54,6 +52,8 @@ export const LightTheme: ThemeType = {
     foreground: '#86a0a7',
   },
   header: {
+    iconColor: '#4e4e4e',
+    iconHoverColor: '#6a9ca9',
     subTitleColor: '#6c6c6c',
     secondaryTitleColor: '#6a9ca9',
     borderBottomColor: '#a5a5a5',

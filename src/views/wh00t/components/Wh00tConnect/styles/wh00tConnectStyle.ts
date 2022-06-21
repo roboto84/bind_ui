@@ -1,6 +1,6 @@
 /* Chat Connection */
 import styled from 'styled-components';
-import { GlobalThemeType } from '@/types';
+import { GlobalThemeType, Size } from '@/types';
 import { Input } from '@/components/Input/Input';
 import {
   ChatInputButton,
@@ -14,9 +14,22 @@ export const Wh00tConnectContainer = styled.div`
   padding: 20px;
 `;
 
-export const Wh00tConnectSection = styled(Section)`
+interface Wh00tConnectSectionProps extends GlobalThemeType {
+  size ?: Size
+}
 
+export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
+  background-color: ${(props: Wh00tConnectSectionProps) => (props.theme.core.section.backgroundColor)};
+  margin: ${(props: Wh00tConnectSectionProps) => (
+    props.size && props.size === Size.small
+      ? '0 20px'
+      : '20px')};
+  border: 3px solid ${(props: Wh00tConnectSectionProps) => (
+    props.size && props.size === Size.small
+      ? props.theme.wh00t.miniWh00t.backgroundColor
+      : props.theme.core.section.borderColor)};
 `;
+
 export const Wh00tConnectTitle = styled.div`
   margin-top: 20px;
   color: ${(props: GlobalThemeType) => props.theme.core.textColor};

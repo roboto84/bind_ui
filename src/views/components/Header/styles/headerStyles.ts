@@ -42,12 +42,13 @@ export const Title = styled.h1`
 `;
 
 export const SmallHeaderIconContainer = styled.span`
+  color: ${(props:GlobalThemeType) => props.theme.header.iconColor};
   display: inherit;
   transition: 0.4s;
 
   &:hover {
     cursor: pointer;
-    color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props:GlobalThemeType) => props.theme.header.iconHoverColor};
   }
   
   @media ${device.tablet} {

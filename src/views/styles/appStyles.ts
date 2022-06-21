@@ -42,10 +42,10 @@ export const Hoverable = styled.div`
 `;
 
 export const Section = styled.div`
-  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
   padding: 20px;
   margin: 20px;
   border-radius: 10px;
+  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
   border: 3px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
 
   @media ${device.tabletS} {

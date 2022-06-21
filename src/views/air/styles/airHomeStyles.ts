@@ -165,7 +165,7 @@ export const SubNavigationContainer = styled.div<SubNavigationProps>`
 `;
 
 export const WeatherTableContainer = styled.div`
-  margin: 0 20px;
+  margin: 0 10px;
 
   @media ${device.tabletS} {
     margin: 0 5px;

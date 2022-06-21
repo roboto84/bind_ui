@@ -10,10 +10,9 @@ export const Wh00tMiniContainer = styled.div`
   right: 5px;
   bottom: 5px;
   background-color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.backgroundColor};
-  z-index: 1;
-  opacity: .95;
   border: solid 5px ${(props: GlobalThemeType) => props.theme.button.border};
   border-radius: 5px;
+  z-index: 1;
   transition: 0.4s;
 
   @media ${device.tabletS} {
@@ -39,9 +38,9 @@ export const MinimizedWh00tButton = styled.div`
   transition: 0.4s;
 
   :hover {
-    background-color: #de935f;
-    border-color: #a3ff0000;
-    color: black;
+    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.minimizedButton.backgroundHoverColor};
+    border-color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.minimizedButton.backgroundHoverColor};
+    color: ${(props: GlobalThemeType) => props.theme.button.transitionFontColor};
     cursor: pointer;
   }
 `;

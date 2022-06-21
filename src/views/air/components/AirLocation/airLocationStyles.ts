@@ -19,6 +19,7 @@ export const AirLocationContainer = styled.div<AirLocationContainerProps>`
   word-spacing: 5px;
   transition: 0.4s;
   font-size: ${(props:AirLocationContainerProps) => (props.fontSize || 'inherit')};
+  font-weight: 600;
   background-color: ${(props: AirLocationContainerProps) => props.theme.button.backgroundColor};
   border-radius: ${(props:AirLocationContainerProps) => (props.borderRadius || 'inherit')};
   color: ${(props: AirLocationContainerProps) => props.theme.subButton.fontColor};

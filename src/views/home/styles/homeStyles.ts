@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { device } from '@/styles/responsive';
-import { Section } from '@/views/styles/appStyles';
 
 export const HomeContainer = styled.div`
   padding-top: calc(6vh);

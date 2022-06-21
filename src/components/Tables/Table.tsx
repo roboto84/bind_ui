@@ -28,7 +28,7 @@ type HeaderSortState = {
 
 const TableContainer = styled.div<GlobalThemeType>`
   overflow-y: auto;
-  height: calc(100vh - 260px);
+  height: calc(100vh - 245px);
   border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
   border-radius: 3px;
 

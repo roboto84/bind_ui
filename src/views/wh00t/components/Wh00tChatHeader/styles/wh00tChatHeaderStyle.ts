@@ -34,7 +34,7 @@ export const Wh00tChannelTitle = styled.span`
 `;
 
 export const Wh00tChatHeaderTitleIcon = styled.span`
-  padding: 0 5px 0 0;
+  padding: 0 6px 0 0;
   color: #eee;
   font-size: 16px;
 `;

@@ -9,9 +9,10 @@ export const wh00tDark: Wh00tThemeType = {
       color: '#939393',
       borderColor: '#373737',
       backgroundColor: '#2F3436',
+      backgroundHoverColor: '#ef8236',
     },
     backgroundColor: '#1d1d1d',
-    inputColor: 'rgb(255, 152, 0)',
+    inputColor: '#FF9800',
   },
   largeWh00t: {
   },
@@ -22,20 +23,20 @@ export const wh00tDark: Wh00tThemeType = {
     botUsernameColor: '#3da497',
     usernameBaseImageBackgroundColor: '#8a904e',
     otherUsernameBaseImageBackgroundColor: '#94673f',
-    timeColor: 'rgb(163,163,163)',
+    timeColor: '#A3A3A3',
     messageText: '#f0c674',
     aLinkColor: '#81a2be',
   },
   chatInput: {
     button: {
       backgroundColor: '#2F3436',
-      color: 'rgb(255, 163, 26)',
+      color: '#FFA31A',
     },
     textInput: {
       borderColor: '#373737',
       backgroundColor: '#2F3436',
       focusBackgroundColor: '#2F3436',
-      focusFontColor: 'rgb(255,152,0)',
+      focusFontColor: '#FF9800',
     },
     emoji: {
       borderColor: '#474747',
@@ -58,9 +59,10 @@ export const wh00tLight: Wh00tThemeType = {
       color: '#747474',
       borderColor: 'grey',
       backgroundColor: '#d4d4d4',
+      backgroundHoverColor: '#6a9ca9',
     },
     backgroundColor: '#d4d4d4',
-    inputColor: 'rgb(161, 96, 0)',
+    inputColor: '#A16000',
   },
   largeWh00t: {
   },
@@ -71,14 +73,14 @@ export const wh00tLight: Wh00tThemeType = {
     botUsernameColor: '#3e999f',
     usernameBaseImageBackgroundColor: '#99a14a',
     otherUsernameBaseImageBackgroundColor: '#c37835',
-    timeColor: 'rgb(142, 141, 141)',
+    timeColor: '#8E8D8D',
     messageText: '#004578',
     aLinkColor: '#5c9bd0',
   },
   chatInput: {
     button: {
-      backgroundColor: '#909090',
-      color: 'rgb(249, 181, 81)',
+      backgroundColor: '#696969',
+      color: '#F9B551',
     },
     textInput: {
       borderColor: 'grey',
@@ -92,8 +94,8 @@ export const wh00tLight: Wh00tThemeType = {
   },
   chatHeader: {
     backgroundColor: '#707070',
-    titleColor: '#de935f',
-    titleHighlightColor: 'white',
+    titleColor: 'white',
+    titleHighlightColor: '#ffa464',
   },
   connect: {
     labelDescription: '#757575',

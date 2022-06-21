@@ -5,7 +5,7 @@ import { GlobalThemeType } from '@/types';
 export const RobotoDescriptionContainer = styled.div`
   font-size: 18px;
   background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
-  border: 3px dashed ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
+  border: 3px dashed ${(props: GlobalThemeType) => props.theme.core.mainThemeColor}75;
   border-radius: 5px;
   padding: 20px 0;
 
@@ -26,13 +26,13 @@ export const AppDescriptionCoreContainer = styled.div`
   transition: 0.4s;
 
   .appDescriptionHeaderTitle{
-    color: ${(props: GlobalThemeType) => props.theme.header.secondaryTitleColor};
+    color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
     font-size: 30px;
     margin-left: 5px;
   }
 
   .appDescriptionHeaderIcon{
-    color: ${(props: GlobalThemeType) => props.theme.header.secondaryTitleColor};
+    color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
     font-size: 42px;
     margin-right: 10px;
   }

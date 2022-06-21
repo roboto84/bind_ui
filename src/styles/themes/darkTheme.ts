@@ -4,7 +4,6 @@ import { debugDark } from '@/views/debug/styles/debugThemes';
 import { customTheme } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
-import { tomorrowLight } from '@/styles/themes/tomorrowTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
@@ -21,7 +20,7 @@ export const DarkTheme: ThemeType = {
     },
     code: {
       backgroundColor: '#2e3234',
-      borderColor: 'rgb(93, 93, 93)',
+      borderColor: '#5D5D5D',
       textColor: '#d88e01',
     },
     table: {
@@ -54,6 +53,8 @@ export const DarkTheme: ThemeType = {
     borderColor: '#2F3436',
   },
   header: {
+    iconColor: '#dadada',
+    iconHoverColor: customTheme.green,
     subTitleColor: '#939393',
     secondaryTitleColor: '#a4d20c',
     borderBottomColor: '#2c3032',

@@ -5,6 +5,12 @@ export enum HTTP_PROTOCOL {
   HTTPS = 'HTTPS'
 }
 
+export enum Size {
+  small = 'small',
+  medium = 'medium',
+  large = 'large',
+}
+
 export type ChildrenProps = {
   children: React.ReactNode
 }

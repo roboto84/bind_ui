@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { Wh00tConnect } from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
+import Wh00tConnect from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Wh00tChatInput } from './components/Wh00tChatInput/Wh00tChatInput';
 import { Wh00tMessages } from './components/Wh00tMessages/Wh00tMessages';
