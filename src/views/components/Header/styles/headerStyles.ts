@@ -34,6 +34,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const Title = styled.h1`
   display: flex;
+  margin-top: 12px;
   
   @media ${device.tablet} {
     font-size: 27px;

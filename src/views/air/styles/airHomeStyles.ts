@@ -38,7 +38,7 @@ export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
   border-radius: 3px;
   padding: 10px;
-  width: 250px;
+  width: 255px;
 
   @media ${device.tabletS} {
     width: initial;

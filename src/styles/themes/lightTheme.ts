@@ -52,7 +52,7 @@ export const LightTheme: ThemeType = {
     foreground: '#86a0a7',
   },
   header: {
-    iconColor: '#4e4e4e',
+    iconColor: '#636363',
     iconHoverColor: '#6a9ca9',
     subTitleColor: '#6c6c6c',
     secondaryTitleColor: '#6a9ca9',

@@ -2,6 +2,7 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { TextMessageContainerProps } from '@/views/wh00t/types/wh00tTypes';
+import { device } from '@/styles/responsive';
 
 export const Wh00tMessageWrapper = styled.div`
   display: flex;
@@ -103,5 +104,28 @@ export const Wh00tMessageTextContainer = styled.span`
 `;
 
 export const Wh00tImage = styled.img`
+  margin-top: 10px;
   border-radius: 10px;
+  border: 4px solid ${(props: GlobalThemeType) => props.theme.wh00t.messages.imageBorderColor};
+  box-shadow: 0 10px 16px 0 #00000033,0 6px 20px 0 #00000033;
+  max-width: 40%;
+  height: auto;
+  transition: 0.4s;
+  
+
+  @media ${device.desktop} {
+    max-width: 40%
+  }
+
+  @media ${device.laptopL} {
+    max-width: 50%
+  }
+
+  @media ${device.laptop} {
+    max-width: 70%
+  }
+
+  @media ${device.tablet} {
+    max-width: 90%
+  }
 `;

@@ -45,6 +45,7 @@ export type LexiconThemeType = {
     inputBackgroundColor: string,
     inputBackgroundFocusColor: string,
     borderColor: string,
+    borderFocusColor: string,
     searchButton:{
       color: string,
       background: string
@@ -123,6 +124,7 @@ export type Wh00tThemeType = {
     usernameBaseImageBackgroundColor: string,
     otherUsernameBaseImageBackgroundColor: string,
     aLinkColor: string,
+    imageBorderColor: string,
   },
   chatInput: {
     button: {
