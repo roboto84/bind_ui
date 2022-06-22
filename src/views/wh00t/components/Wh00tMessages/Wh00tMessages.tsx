@@ -16,9 +16,20 @@ export function Wh00tMessages(props: Wh00tMessagesProps) {
     dispatch({ type: Wh00tActionsEnum.INTERNAL_ALERT_OFF });
   };
   const scrollToBottom = () => {
+    Promise.all(Array.from(document.images).filter((img) => !img.complete).map(
+      (img) => new Promise(
+        // eslint-disable-next-line no-multi-assign,no-param-reassign
+        (resolve) => { img.onload = img.onerror = resolve; },
+      ),
+    )).then(() => {
+      setTimeout(() => {
+        endOfMessages.current?.scrollIntoView();
+      }, 200);
+    });
+
     setTimeout(() => {
       endOfMessages.current?.scrollIntoView();
-    }, 100);
+    }, 50);
   };
 
   useEffect(() => {
