@@ -44,7 +44,7 @@ export const EmojiUnitContainer = styled.div`
 
 export const EmojiSelectorContainer = styled.div<EmojiSelectorContainerProps>`
   width: 204px;
-  height: 200px;
+  height: 273px;
   background-color: ${(props: EmojiSelectorContainerProps) => props.theme.wh00t.chatInput.button.backgroundColor};
   border: 1px solid ${(props: EmojiSelectorContainerProps) => props.theme.wh00t.chatInput.emoji.borderColor};
   border-radius: 3px;
@@ -52,7 +52,7 @@ export const EmojiSelectorContainer = styled.div<EmojiSelectorContainerProps>`
   flex-wrap: wrap;
   padding: 10px;
   position: absolute;
-  margin-top: -225px;
+  margin-top: -300px;
   margin-left: -182px;
 `;
 
