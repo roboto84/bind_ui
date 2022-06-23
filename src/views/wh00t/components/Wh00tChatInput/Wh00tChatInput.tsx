@@ -13,7 +13,7 @@ import {
 } from './styles/wh00tChatInputStyle';
 
 export function Wh00tChatInput() {
-  const [lastMessage, setLastMessage] = useState<string>('');
+  const [localMessageHistory, setLocalMessageHistory] = useState<string[]>([]);
   const [emojiSelectorDisplay, setEmojiSelectorDisplay] = useState<boolean>(false);
   const { ref } = useClickOutside(() => {
     setEmojiSelectorDisplay(false);
@@ -21,6 +21,7 @@ export function Wh00tChatInput() {
   const { state } = useWh00tWebsocket();
   const textAreaRef = useRef(null);
   const keyLog: any = {};
+  let localMessageHistoryIterator: number = 0;
   const iconPadding: string = '11px 7px 0px 7px';
   const iconFontSize: string = '25px';
 
@@ -41,7 +42,9 @@ export function Wh00tChatInput() {
   const sendWebSocketMessage: Function = (message: string) => {
     if (message !== '') {
       state.wh00tWebSocket.sendMessage(message);
-      setLastMessage(textAreaRef.current.value);
+      const newLocalHistory = [...localMessageHistory];
+      newLocalHistory.push(textAreaRef.current.value);
+      setLocalMessageHistory(newLocalHistory);
       textAreaRef.current.value = '';
       textAreaRef.current.focus();
     }
@@ -59,11 +62,27 @@ export function Wh00tChatInput() {
         sendWebSocketMessage(textAreaRef.current.value);
         event.preventDefault();
       }
+
       if (keyLog.ArrowUp === true) {
-        if (textAreaRef.current.value === '') {
-          textAreaRef.current.value = lastMessage;
+        if (keyLog.Control === true) {
+          if (localMessageHistory[localMessageHistoryIterator] === textAreaRef.current.value) {
+            localMessageHistoryIterator = localMessageHistoryIterator === (
+              localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
+          }
+          textAreaRef.current.value = localMessageHistory[localMessageHistoryIterator];
+          localMessageHistoryIterator = localMessageHistoryIterator === (
+            localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
           event.preventDefault();
         }
+
+        if (textAreaRef.current.value === '') {
+          [textAreaRef.current.value] = localMessageHistory;
+          event.preventDefault();
+        }
+      }
+
+      if ('Control' in keyLog && keyLog.Control === false) {
+        localMessageHistoryIterator = 0;
       }
     }
   };
