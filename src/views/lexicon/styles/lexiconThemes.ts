@@ -4,11 +4,11 @@ export const lexiconDark:LexiconThemeType = {
   textColor: '#d5d5d5',
   searchBar: {
     inputFontColor: '#d5d5d5',
-    inputFontFocusColor: 'black',
+    inputFontFocusColor: 'white',
     inputBackgroundColor: '#2F3436',
-    inputBackgroundFocusColor: '#9c9c9c',
-    borderColor: '#252729',
-    borderFocusColor: '#9c9c9c',
+    inputBackgroundFocusColor: '#54585c',
+    borderColor: '#2F3436',
+    borderFocusColor: '#54585c',
     searchButton: {
       color: '#939393',
       background: '#252729',

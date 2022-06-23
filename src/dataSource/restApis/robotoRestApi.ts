@@ -6,8 +6,9 @@ const numOfDays: number = 14;
 const weatherHistoryTimeInterval: number = 24 * numOfDays;
 
 export const airApiEndpoints: AirEndpointsType = {
-  weatherReport: '/air/weather_report',
-  weatherHistory: `/air/weather_history/?record_count=${weatherHistoryTimeInterval}`,
+  weather: '/air/weather',
+  weatherReport: '/air/weather/report',
+  weatherHistory: `/air/weather/history/?record_count=${weatherHistoryTimeInterval}`,
 };
 
 export const lexiconApiEndpoints: LexiconEndpointsType = {

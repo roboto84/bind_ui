@@ -1,14 +1,36 @@
 import { WeatherSummary, WeatherUnits } from '@/views/air/types/airTypes';
 
 export type AirEndpointsType = {
+  weather: string,
   weatherReport: string,
   weatherHistory: string,
+}
+
+export type WeatherBasics = {
+  weatherLocation: string
+}
+
+export type LiveWeatherReport = {
+  weatherLocation: string,
+  weatherUnits: WeatherUnits,
+  currentWeather: WeatherSummary,
+  weatherForecast: WeatherSummary[]
+}
+
+export type WeatherHistory = {
+  weatherLocation: string,
+  weatherUnits: WeatherUnits,
+  weatherHistory: WeatherSummary[]
 }
 
 export type LexiconEndpointsType = {
   wordOfDay: string,
   latestWords: string,
   wordSearch: string
+}
+
+export type LatestWordListApiResult = {
+  lexiconWords: string[]
 }
 
 export type DebugEndpointsType = {
@@ -26,19 +48,4 @@ export type DebugMessage = {
 
 export type DebugApiResponse = {
   message: DebugMessage[]
-}
-
-export type LiveWeatherReport = {
-  weatherUnits: WeatherUnits,
-  currentWeather: WeatherSummary,
-  weatherForecast: WeatherSummary[]
-}
-
-export type WeatherHistory = {
-  weatherUnits: WeatherUnits,
-  weatherHistory: WeatherSummary[]
-}
-
-export type LatestWordListApiResult = {
-  lexiconWords: string[]
 }
