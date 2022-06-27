@@ -43,7 +43,7 @@ export function Wh00tChatInput() {
     if (message !== '') {
       state.wh00tWebSocket.sendMessage(message);
       const newLocalHistory = [...localMessageHistory];
-      newLocalHistory.push(textAreaRef.current.value);
+      newLocalHistory.unshift(textAreaRef.current.value);
       setLocalMessageHistory(newLocalHistory);
       textAreaRef.current.value = '';
       textAreaRef.current.focus();
@@ -63,7 +63,7 @@ export function Wh00tChatInput() {
         event.preventDefault();
       }
 
-      if (keyLog.ArrowUp === true) {
+      if (keyLog.ArrowUp === true && localMessageHistory.length > 0) {
         if (keyLog.Control === true) {
           if (localMessageHistory[localMessageHistoryIterator] === textAreaRef.current.value) {
             localMessageHistoryIterator = localMessageHistoryIterator === (
@@ -73,9 +73,7 @@ export function Wh00tChatInput() {
           localMessageHistoryIterator = localMessageHistoryIterator === (
             localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
           event.preventDefault();
-        }
-
-        if (textAreaRef.current.value === '') {
+        } else if (textAreaRef.current.value === '') {
           [textAreaRef.current.value] = localMessageHistory;
           event.preventDefault();
         }
