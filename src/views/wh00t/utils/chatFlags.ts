@@ -1,5 +1,5 @@
-const secretFlag = '/boom';
+const secretMessageFlag = '/secret';
 
 export function isSecretMessage(messageText: string): boolean {
-  return messageText.indexOf(secretFlag) > -1;
+  return messageText.indexOf(secretMessageFlag) > -1;
 }
