@@ -44,3 +44,7 @@ export function noneTokenTextTransform(text: string): string {
   transformedText = emojify(transformedText);
   return transformedText;
 }
+
+export function userIsBot(username: string): boolean {
+  return username.includes('bot');
+}

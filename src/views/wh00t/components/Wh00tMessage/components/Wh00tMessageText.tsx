@@ -1,5 +1,5 @@
 import { Wh00tMessageTextProps } from '@/views/wh00t/types/wh00tTypes';
-import { isImageLink } from '@/views/wh00t/utils/utils';
+import { isImageLink, userIsBot } from '@/views/wh00t/utils/utils';
 import {
   TextMessageContainer,
   Wh00tImage,
@@ -7,7 +7,11 @@ import {
 } from '@/views/wh00t/components/Wh00tMessage/styles/wh00tMessageStyle';
 import React from 'react';
 import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
-import { noneTokenTextSpanElement, textTransform } from '@/views/wh00t/components/Wh00tMessage/components/textTransform';
+import {
+  noneTokenTextSpanElement,
+  textTransform,
+} from '@/views/wh00t/components/Wh00tMessage/components/textTransform';
+import { Wh00tMessageTypeEnum } from '@/context/types/enums';
 
 function imageGenerator(imageLink: string): JSX.Element {
   return (
@@ -18,7 +22,10 @@ function imageGenerator(imageLink: string): JSX.Element {
 }
 
 export function Wh00tMessageText(props: Wh00tMessageTextProps) {
-  const { messageText } = props;
+  const { username, messageText, messageSource } = props;
+  const messageIsHighlighted: boolean = (messageSource === Wh00tMessageTypeEnum.LOCAL)
+    || userIsBot(username);
+  console.log(messageIsHighlighted);
   let messageImage: JSX.Element = null;
   let messageTextView: JSX.Element[];
   let messageIsSecret: boolean = false;
@@ -32,7 +39,12 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
 
   return (
     <Wh00tMessageTextContainer>
-      <TextMessageContainer filterBlur={messageIsSecret}>{messageTextView}</TextMessageContainer>
+      <TextMessageContainer
+        filterBlur={messageIsSecret}
+        highlightMessage={messageIsHighlighted}
+      >
+        {messageTextView}
+      </TextMessageContainer>
       <div>{messageImage}</div>
     </Wh00tMessageTextContainer>
   );

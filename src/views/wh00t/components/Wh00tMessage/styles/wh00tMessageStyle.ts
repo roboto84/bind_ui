@@ -1,7 +1,9 @@
 /* Chat Messages */
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { TextMessageContainerProps } from '@/views/wh00t/types/wh00tTypes';
+import {
+  TextMessageContainerProps,
+} from '@/views/wh00t/types/wh00tTypes';
 import { device } from '@/styles/responsive';
 
 export const Wh00tMessageWrapper = styled.div`
@@ -85,6 +87,12 @@ export const CodeBlock = styled.div`
 `;
 
 export const TextMessageContainer = styled.div<TextMessageContainerProps>`
+  background-color: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? props.theme.wh00t.messages.highlightedMessage : 'inherit')};
+  padding: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? '10px' : 'inherit')};
+  border-radius: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? '8px' : 'inherit')};
   filter: ${(props: TextMessageContainerProps) => (props.filterBlur ? 'blur(4px)' : 'blur(0)')};
   transition: 0.4s;
   

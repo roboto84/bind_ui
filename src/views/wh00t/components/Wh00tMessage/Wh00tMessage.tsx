@@ -39,7 +39,11 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
               {`${messageTime}`}
             </Wh00tMessageTime>
           </Wh00tMessageTitle>
-          <Wh00tMessageText messageText={messagePackage.message} />
+          <Wh00tMessageText
+            username={messagePackage.username}
+            messageSource={messagePackage.source}
+            messageText={messagePackage.message}
+          />
         </Wh00tMessageBody>
       </Wh00tMessageWrapper>
     );

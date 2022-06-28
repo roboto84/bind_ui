@@ -1,5 +1,6 @@
-import { Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
+import { Wh00tExtendedMessagePackage } from '@/context/types/wh00tContextTypes';
 import { GlobalThemeType } from '@/types';
+import { Wh00tMessageTypeEnum } from '@/context/types/enums';
 
 type HeaderButtons = {
   maximize: boolean,
@@ -15,7 +16,7 @@ export type Wh00tBaseUserImageProps = {
 
 export type Wh00tMessageProps = {
   currentClientId: string,
-  messagePackage: Wh00tMessagePackage
+  messagePackage: Wh00tExtendedMessagePackage
 }
 
 export type Wh00tMessagesProps = {
@@ -23,6 +24,8 @@ export type Wh00tMessagesProps = {
 }
 
 export type Wh00tMessageTextProps = {
+  username: string,
+  messageSource: Wh00tMessageTypeEnum,
   messageText: string
 }
 
@@ -44,6 +47,7 @@ export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {
 
 export interface TextMessageContainerProps extends GlobalThemeType {
   filterBlur: boolean
+  highlightMessage: boolean
 }
 
 export enum CssDisplay {
