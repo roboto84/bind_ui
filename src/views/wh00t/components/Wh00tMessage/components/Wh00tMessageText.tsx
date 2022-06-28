@@ -12,7 +12,7 @@ import { noneTokenTextSpanElement, textTransform } from '@/views/wh00t/component
 function imageGenerator(imageLink: string): JSX.Element {
   return (
     <a href={imageLink} target="_blank" rel="noreferrer">
-      <Wh00tImage alt="chat" src={imageLink} />
+      <Wh00tImage alt="Chat_Image" src={imageLink} />
     </a>
   );
 }

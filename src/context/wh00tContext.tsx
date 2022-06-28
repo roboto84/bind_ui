@@ -2,10 +2,10 @@ import React, { useMemo, useReducer, useEffect } from 'react';
 import { ChildrenProps } from '@/types';
 import {
   Wh00tContextActionType,
-  Wh00tContextStateType,
+  Wh00tContextStateType, Wh00tExtendedMessagePackage,
   Wh00tMessagePackage,
 } from '@/context/types/wh00tContextTypes';
-import { LocalStorageEnum, Wh00tActionsEnum } from '@/context/types/enums';
+import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 import { Wh00tWebSocket } from '@/dataSource/webSockets/wh00tWebSocket';
 import { getLocalStorage } from '@/utils/localStorage';
 import { AppNotification } from '@/utils/appNotification';
@@ -28,7 +28,8 @@ export const Wh00tSocketContext = React.createContext({
 export const useWh00tWebsocket = () => React.useContext(Wh00tSocketContext);
 
 const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionType) => {
-  switch (action.type) {
+  const message: Wh00tExtendedMessagePackage = { ...action.value, source: action.source };
+  switch (action.actionType) {
     case Wh00tActionsEnum.INTERNAL_ALERT_ON:
       return {
         ...state,
@@ -48,7 +49,7 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
       return {
         ...state,
         wh00tIsConnected: true,
-        historicalChatMessages: state.historicalChatMessages.concat(action.value),
+        historicalChatMessages: state.historicalChatMessages.concat(message),
       };
     case Wh00tActionsEnum.NEW_MESSAGE:
       return {
@@ -57,7 +58,7 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
         historicalChatMessages: state.currentChatMessage
           ? state.historicalChatMessages.concat(state.currentChatMessage)
           : state.historicalChatMessages,
-        currentChatMessage: action.value,
+        currentChatMessage: message,
       };
     case Wh00tActionsEnum.SECRET_MESSAGE:
       return {
@@ -113,7 +114,8 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
 
   useEffect(() => {
     if (state.currentChatMessage !== null
-      && state.currentChatMessage.username !== state.wh00tWebSocket.clientId) {
+      && state.currentChatMessage.username !== state.wh00tWebSocket.clientId
+      && state.currentChatMessage.source === Wh00tMessageTypeEnum.SOCKET) {
       state.wh00tNotifier.playNotificationSound();
       state.wh00tNotifier.startDocumentTitleNotification();
     }

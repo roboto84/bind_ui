@@ -3,7 +3,6 @@ import { FaRobot } from 'react-icons/fa';
 import { SiProbot } from 'react-icons/si';
 import { GiRobotAntennas } from 'react-icons/gi';
 import React from 'react';
-import { randomIntFromInterval } from '@/utils/utils';
 
 export type RobotImgProps = {
   robotType ?: string,

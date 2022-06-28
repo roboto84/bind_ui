@@ -3,7 +3,7 @@ import { WSS_BASE_URL } from '@/dataSource/urls';
 import { randomIntFromInterval } from '@/utils/utils';
 import { getSimpleDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
-import { Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
+import { Wh00tContextActionType, Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
 import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
 
 export class Wh00tWebSocket {
@@ -11,17 +11,17 @@ export class Wh00tWebSocket {
 
   wh00tWS: WebSocket = null;
 
-  wh00tDispatch: Function = null;
+  wh00tDispatch: (action: Wh00tContextActionType) => void = null;
 
   wh00tIsConnected: boolean = false;
 
   connectionAttemptCount: number = 0;
 
   constructor() {
-    this.generateRandomClientId();
+    this.clientId = Wh00tWebSocket.generateRandomClientId();
   }
 
-  generateRandomClientId() {
+  static generateRandomClientId(): string {
     const clientIdPrefix: string[] = [
       'rabbit',
       'raven',
@@ -34,19 +34,19 @@ export class Wh00tWebSocket {
       'racoon',
       'owl',
     ];
-    this.clientId = clientIdPrefix[
+    return clientIdPrefix[
       randomIntFromInterval(0, clientIdPrefix.length - 1)
     ] + randomIntFromInterval(1, 99);
   }
 
-  setDispatch(dispatch: Function) {
+  setDispatch(dispatch: (action: Wh00tContextActionType) => void): void {
     this.wh00tDispatch = dispatch;
   }
 
-  handleMessage(messageContext: Wh00tMessageTypeEnum, wh00tMessage: Wh00tMessagePackage): void {
-    const newMessage = {
-      type: messageContext === Wh00tMessageTypeEnum.SOCKET
-        ? Wh00tActionsEnum.NEW_MESSAGE : Wh00tActionsEnum.HISTORICAL_MESSAGE,
+  handleMessage(messageSource: Wh00tMessageTypeEnum, wh00tMessage: Wh00tMessagePackage): void {
+    const newMessage: Wh00tContextActionType = {
+      source: messageSource,
+      actionType: Wh00tActionsEnum.NEW_MESSAGE,
       value: wh00tMessage,
     };
     this.wh00tDispatch(newMessage);
@@ -55,29 +55,52 @@ export class Wh00tWebSocket {
     }
   }
 
-  sendMessage(message: string) {
-    if (message !== '') {
+  static isMessageTooLarge(username: string, message: string): boolean {
+    const heuristicNormalizationFactor: number = 1.19;
+    const messageContainerSize: number = 110;
+    const usernameByteSize: number = (new TextEncoder().encode(username)).length;
+    const messageByteSize: number = (new TextEncoder().encode(message)).length;
+    const fullMessageSize: number = (messageByteSize + usernameByteSize + messageContainerSize)
+      * heuristicNormalizationFactor;
+    return fullMessageSize > 8192;
+  }
+
+  sendMessage(message: string): void {
+    if (Wh00tWebSocket.isMessageTooLarge(this.clientId, message)) {
+      this.handleMessage(
+        Wh00tMessageTypeEnum.LOCAL,
+        {
+          username: 'wh00t',
+          time: getSimpleDateTime(),
+          message: 'Sorry, that message is too long',
+        },
+      );
+    } else if (message !== '') {
       this.wh00tWS.send(message);
     }
   }
 
-  clearSecretMessage(message: Wh00tMessagePackage) {
+  clearSecretMessage(message: Wh00tMessagePackage): void {
     setTimeout(() => {
       this.wh00tDispatch({
-        type: Wh00tActionsEnum.SECRET_MESSAGE,
+        source: Wh00tMessageTypeEnum.LOCAL,
+        actionType: Wh00tActionsEnum.SECRET_MESSAGE,
         value: message,
       });
     }, 60000);
   }
 
-  reattemptWh00tSocketConnection() {
+  reattemptWh00tSocketConnection(): void {
     setTimeout(() => {
       this.connectWebSocket();
     }, 5000);
   }
 
-  connectWebSocket(clientId?: string) {
-    this.wh00tDispatch({ type: Wh00tActionsEnum.CLEAR_MESSAGES });
+  connectWebSocket(clientId?: string): void {
+    this.wh00tDispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
+      actionType: Wh00tActionsEnum.CLEAR_MESSAGES,
+    });
     if (clientId && clientId.replace(/\s/g, '') !== '') {
       this.clientId = clientId;
     } else {
@@ -101,12 +124,12 @@ export class Wh00tWebSocket {
         {
           username: 'wh00t',
           time: getSimpleDateTime(),
-          message: `connected to wh00t as ${this.clientId}`,
+          message: `You are connected as ${this.clientId}`,
         },
       );
     };
 
-    this.wh00tWS.onerror = () => {
+    this.wh00tWS.onerror = (): void => {
       this.connectionAttemptCount += 1;
       this.reattemptWh00tSocketConnection();
       this.handleMessage(
@@ -119,7 +142,7 @@ export class Wh00tWebSocket {
       );
     };
 
-    this.wh00tWS.onmessage = (event) => {
+    this.wh00tWS.onmessage = (event): void => {
       const parsedMessageData = JSON.parse(event.data);
       if (Array.isArray(parsedMessageData)) {
         parsedMessageData.forEach((messagePackage) => (
@@ -131,15 +154,18 @@ export class Wh00tWebSocket {
     };
   }
 
-  disconnectWebSocket() {
+  disconnectWebSocket(): void {
     if (this.wh00tWS !== null) {
       this.wh00tWS.close();
-      this.wh00tDispatch({ type: Wh00tActionsEnum.DISCONNECT });
+      this.wh00tDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        actionType: Wh00tActionsEnum.DISCONNECT,
+      });
       this.wh00tWS = null;
       this.wh00tIsConnected = false;
       this.connectionAttemptCount = 0;
       setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'false');
-      this.generateRandomClientId();
+      Wh00tWebSocket.generateRandomClientId();
     }
   }
 }

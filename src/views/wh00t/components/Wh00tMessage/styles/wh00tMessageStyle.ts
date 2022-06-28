@@ -104,6 +104,7 @@ export const Wh00tMessageTextContainer = styled.span`
 `;
 
 export const Wh00tImage = styled.img`
+  padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
   border: 4px solid ${(props: GlobalThemeType) => props.theme.wh00t.messages.imageBorderColor};
