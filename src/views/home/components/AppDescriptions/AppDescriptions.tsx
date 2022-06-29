@@ -13,6 +13,7 @@ export function AppDescriptions() {
           Object.keys(appDescriptionsConfig).map(
             (app:string) => (
               <AppDescription
+                key={appDescriptionsConfig[app].link}
                 appName={app}
                 summary={appDescriptionsConfig[app].description}
                 linkTo={appDescriptionsConfig[app].link}

@@ -5,7 +5,7 @@ import {
 } from '@/context/types/wh00tContextTypes';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { Wh00tMessagesProps } from '@/views/wh00t/types/wh00tTypes';
-import { Wh00tActionsEnum } from '@/context/types/enums';
+import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 import { Wh00tMessagesContainer } from './styles/wh00tMessagesStyle';
 
 export function Wh00tMessages(props: Wh00tMessagesProps) {
@@ -15,7 +15,10 @@ export function Wh00tMessages(props: Wh00tMessagesProps) {
   const { clientId } = state.wh00tWebSocket;
   const endOfMessages: React.MutableRefObject<any> = useRef(null);
   const internalWh00tAlertOff = () => {
-    dispatch({ type: Wh00tActionsEnum.INTERNAL_ALERT_OFF });
+    dispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
+      type: Wh00tActionsEnum.INTERNAL_ALERT_OFF,
+    });
   };
   const scrollToBottom = () => {
     Promise.all(Array.from(document.images).filter((img) => !img.complete).map(

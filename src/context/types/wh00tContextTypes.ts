@@ -24,6 +24,6 @@ export type Wh00tContextStateType = {
 
 export type Wh00tContextActionType = {
   source: Wh00tMessageTypeEnum,
-  actionType: Wh00tActionsEnum,
+  type: Wh00tActionsEnum,
   value ?: Wh00tMessagePackage
 }

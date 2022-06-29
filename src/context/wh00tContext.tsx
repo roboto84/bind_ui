@@ -29,7 +29,7 @@ export const useWh00tWebsocket = () => React.useContext(Wh00tSocketContext);
 
 const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionType) => {
   const message: Wh00tExtendedMessagePackage = { ...action.value, source: action.source };
-  switch (action.actionType) {
+  switch (action.type) {
     case Wh00tActionsEnum.INTERNAL_ALERT_ON:
       return {
         ...state,

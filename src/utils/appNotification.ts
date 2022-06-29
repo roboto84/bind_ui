@@ -2,7 +2,7 @@ import faviconDefault from '@/assets/favicon/favicon-16x16.png';
 import faviconNotify from '@/assets/favicon/favicon-16x16-notify.png';
 import notificationSound from '@/assets/sound/messageAlert.mp3';
 
-import { Wh00tActionsEnum } from '@/context/types/enums';
+import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 
 export class AppNotification {
   titleBeforeNotification: string;
@@ -64,7 +64,10 @@ export class AppNotification {
       this.favicon.setAttribute('href', faviconNotify);
       this.titleBeforeNotification = document.title;
       this.externalNotificationIsActive = true;
-      this.appNotificationDispatch({ type: Wh00tActionsEnum.INTERNAL_ALERT_ON });
+      this.appNotificationDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        type: Wh00tActionsEnum.INTERNAL_ALERT_ON,
+      });
       this.notificationTimer();
     }
   }

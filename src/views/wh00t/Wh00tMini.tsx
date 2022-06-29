@@ -2,7 +2,7 @@ import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import Wh00tConnect from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
 import { useLocation } from 'react-router-dom';
-import { Wh00tActionsEnum } from '@/context/types/enums';
+import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Size } from '@/types';
@@ -22,6 +22,7 @@ export function Wh00tMini() {
 
   const wh00tMinimizeSwitch = () => {
     dispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
       type: Wh00tActionsEnum.MINIMIZED_SWITCH,
     });
   };

@@ -92,7 +92,7 @@ export function Wh00tChatInput() {
           rows={1}
           ref={textAreaRef}
           className="messageInput"
-          placeholder="Message"
+          placeholder="type a message, or '/help'"
           id="messageText"
           onKeyDown={keyHandler}
           onKeyUp={keyHandler}

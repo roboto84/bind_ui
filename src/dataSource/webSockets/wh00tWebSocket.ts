@@ -5,6 +5,7 @@ import { getSimpleDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { Wh00tContextActionType, Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
 import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
+import { helpMenu } from '@/views/wh00t/utils/helpMenu';
 
 export class Wh00tWebSocket {
   clientId: string;
@@ -46,7 +47,7 @@ export class Wh00tWebSocket {
   handleMessage(messageSource: Wh00tMessageTypeEnum, wh00tMessage: Wh00tMessagePackage): void {
     const newMessage: Wh00tContextActionType = {
       source: messageSource,
-      actionType: Wh00tActionsEnum.NEW_MESSAGE,
+      type: Wh00tActionsEnum.NEW_MESSAGE,
       value: wh00tMessage,
     };
     this.wh00tDispatch(newMessage);
@@ -75,6 +76,32 @@ export class Wh00tWebSocket {
           message: 'Sorry, that message is too long',
         },
       );
+    } else if (message === '/exit') {
+      this.handleMessage(
+        Wh00tMessageTypeEnum.LOCAL,
+        {
+          username: 'wh00t',
+          time: getSimpleDateTime(),
+          message: 'Exiting Chat...',
+        },
+      );
+      setTimeout(() => {
+        this.disconnectWebSocket();
+      }, 1000);
+    } else if (message === '/help' || message === '/h') {
+      this.handleMessage(
+        Wh00tMessageTypeEnum.LOCAL,
+        {
+          username: 'wh00t',
+          time: getSimpleDateTime(),
+          message: helpMenu(),
+        },
+      );
+    } else if (message === '/clear' || message === '/c') {
+      this.wh00tDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        type: Wh00tActionsEnum.CLEAR_MESSAGES,
+      });
     } else if (message !== '') {
       this.wh00tWS.send(message);
     }
@@ -84,7 +111,7 @@ export class Wh00tWebSocket {
     setTimeout(() => {
       this.wh00tDispatch({
         source: Wh00tMessageTypeEnum.LOCAL,
-        actionType: Wh00tActionsEnum.SECRET_MESSAGE,
+        type: Wh00tActionsEnum.SECRET_MESSAGE,
         value: message,
       });
     }, 60000);
@@ -99,7 +126,7 @@ export class Wh00tWebSocket {
   connectWebSocket(clientId?: string): void {
     this.wh00tDispatch({
       source: Wh00tMessageTypeEnum.LOCAL,
-      actionType: Wh00tActionsEnum.CLEAR_MESSAGES,
+      type: Wh00tActionsEnum.CLEAR_MESSAGES,
     });
     if (clientId && clientId.replace(/\s/g, '') !== '') {
       this.clientId = clientId;
@@ -159,7 +186,7 @@ export class Wh00tWebSocket {
       this.wh00tWS.close();
       this.wh00tDispatch({
         source: Wh00tMessageTypeEnum.LOCAL,
-        actionType: Wh00tActionsEnum.DISCONNECT,
+        type: Wh00tActionsEnum.DISCONNECT,
       });
       this.wh00tWS = null;
       this.wh00tIsConnected = false;

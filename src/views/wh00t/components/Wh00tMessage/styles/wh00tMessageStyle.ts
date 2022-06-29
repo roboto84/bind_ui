@@ -90,8 +90,6 @@ export const TextMessageContainer = styled.div<TextMessageContainerProps>`
   font-size: 16px;
   background-color: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? props.theme.core.code.backgroundColor : 'inherit')};
-  border: ${(props: TextMessageContainerProps) => (props.highlightMessage
-    ? `1px solid ${props.theme.core.code.borderColor}` : 'inherit')};
   border-radius: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? '8px' : 'inherit')};
   margin: ${(props: TextMessageContainerProps) => (props.highlightMessage

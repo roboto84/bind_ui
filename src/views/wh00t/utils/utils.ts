@@ -46,5 +46,5 @@ export function noneTokenTextTransform(text: string): string {
 }
 
 export function userIsBot(username: string): boolean {
-  return username.includes('bot');
+  return username.substring(username.length - 4) === '_bot';
 }

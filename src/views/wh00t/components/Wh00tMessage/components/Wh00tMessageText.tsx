@@ -25,7 +25,6 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
   const { username, messageText, messageSource } = props;
   const messageIsHighlighted: boolean = (messageSource === Wh00tMessageTypeEnum.LOCAL)
     || userIsBot(username);
-  console.log(messageIsHighlighted);
   let messageImage: JSX.Element = null;
   let messageTextView: JSX.Element[];
   let messageIsSecret: boolean = false;
