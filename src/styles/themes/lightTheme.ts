@@ -23,7 +23,7 @@ export const LightTheme: ThemeType = {
       highlightCellColor: '#6a9ca9',
     },
     code: {
-      backgroundColor: '#e8f5fa',
+      backgroundColor: '#dae6eb',
       borderColor: '#0B4C8C33',
       textColor: '#0b4c8c',
     },

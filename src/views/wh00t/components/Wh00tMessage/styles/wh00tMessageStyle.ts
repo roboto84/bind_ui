@@ -87,16 +87,21 @@ export const CodeBlock = styled.div`
 `;
 
 export const TextMessageContainer = styled.div<TextMessageContainerProps>`
+  font-size: 16px;
   background-color: ${(props: TextMessageContainerProps) => (props.highlightMessage
-    ? props.theme.wh00t.messages.highlightedMessage : 'inherit')};
-  padding: ${(props: TextMessageContainerProps) => (props.highlightMessage
-    ? '10px' : 'inherit')};
+    ? props.theme.core.code.backgroundColor : 'inherit')};
+  border: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? `1px solid ${props.theme.core.code.borderColor}` : 'inherit')};
   border-radius: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? '8px' : 'inherit')};
+  margin: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? '10px 20px;' : 'inherit')};
+  padding: ${(props: TextMessageContainerProps) => (props.highlightMessage
+    ? '10px' : 'inherit')};
   filter: ${(props: TextMessageContainerProps) => (props.filterBlur ? 'blur(4px)' : 'blur(0)')};
-  transition: 0.4s;
   
   &:hover, &:active {
+    transition: 0.4s;
     filter: blur(0);
   }
 `;

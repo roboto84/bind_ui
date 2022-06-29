@@ -105,7 +105,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
     display: inline-block;
     font-family: monospace;
-    font-size: 85%;
+    font-size: 90%;
     padding: 0 4px;
     white-space: normal;
   }
