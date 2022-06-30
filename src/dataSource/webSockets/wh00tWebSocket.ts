@@ -98,10 +98,14 @@ export class Wh00tWebSocket {
         },
       );
     } else if (message === '/clear' || message === '/c') {
-      this.wh00tDispatch({
-        source: Wh00tMessageTypeEnum.LOCAL,
-        type: Wh00tActionsEnum.CLEAR_MESSAGES,
-      });
+      this.wh00tWS.send(message);
+
+      setTimeout(() => {
+        this.wh00tDispatch({
+          source: Wh00tMessageTypeEnum.LOCAL,
+          type: Wh00tActionsEnum.CLEAR_MESSAGES,
+        });
+      }, 1000);
     } else if (message !== '') {
       this.wh00tWS.send(message);
     }

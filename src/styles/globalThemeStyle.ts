@@ -38,6 +38,7 @@ export const GlobalThemeStyle = createGlobalStyle`
 
   table {
     border-collapse: collapse;
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};
     width: 100%;
     margin: auto;
     flex-grow: 0;
@@ -108,5 +109,43 @@ export const GlobalThemeStyle = createGlobalStyle`
     font-size: 90%;
     padding: 0 4px;
     white-space: normal;
+  }
+
+  .wh00tHelp {
+    white-space: normal;
+    padding: 10px;
+
+    h2 {
+      margin: 0 0 10px 0;
+      
+      &.commandHeader {
+        margin-top: 30px;
+      }
+    }
+    
+    p {
+      color: ${(props: GlobalThemeType) => props.theme.header.iconColor};
+    }
+
+    table {
+      margin-top: 10px;
+    }
+
+    thead tr th {
+      text-align: center;
+      padding:3px;
+
+      &:hover, &.active {
+        cursor: inherit;
+      }
+    }
+
+    tbody td {
+      padding:10px
+    }
+
+    tbody td:first-child {
+      text-align: center; padding:10px
+    }
   }
 `;

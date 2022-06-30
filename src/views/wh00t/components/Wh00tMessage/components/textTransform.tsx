@@ -10,7 +10,7 @@ import React from 'react';
 const tokenTransforms: { [key: string]: Function } = {
   '`': (text: string): JSX.Element => (<code key={randomUuid()}>{text}</code>),
   '*': (text: string): JSX.Element => (<BoldText key={randomUuid()}>{text}</BoldText>),
-  _: (text: string): JSX.Element => (<ItalicText key={randomUuid()}>{text}</ItalicText>),
+  '_': (text: string): JSX.Element => (<ItalicText key={randomUuid()}>{text}</ItalicText>),
   '```': (text: string): JSX.Element => (<CodeBlock key={randomUuid()}>{text}</CodeBlock>),
 };
 

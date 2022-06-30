@@ -9,6 +9,7 @@ import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/cont
 import { Wh00tWebSocket } from '@/dataSource/webSockets/wh00tWebSocket';
 import { getLocalStorage } from '@/utils/localStorage';
 import { AppNotification } from '@/utils/appNotification';
+import { userIsBot } from '@/views/wh00t/utils/utils';
 
 const initialState: Wh00tContextStateType = {
   historicalChatMessages: [],
@@ -115,6 +116,7 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
   useEffect(() => {
     if (state.currentChatMessage !== null
       && state.currentChatMessage.username !== state.wh00tWebSocket.clientId
+      && !userIsBot(state.currentChatMessage.username)
       && state.currentChatMessage.source === Wh00tMessageTypeEnum.SOCKET) {
       state.wh00tNotifier.playNotificationSound();
       state.wh00tNotifier.startDocumentTitleNotification();
