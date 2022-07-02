@@ -15,7 +15,7 @@ export function helpMenu(): string {
   const commands: {[key: string]: string} = {
     '/help or /h': 'Print out help menu',
     '/exit': 'Logout of chat',
-    '/clear': 'Clear chat history',
+    '/clear or /c': 'Clear chat history',
     '[ArrowUp]': 'Last Message',
     '[Ctrl + ArrowUp]': 'Cycle through all your chat history in this current chat session',
     '/lexi': '🤖 Word dictionary chatbot',

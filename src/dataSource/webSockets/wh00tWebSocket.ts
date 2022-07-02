@@ -53,6 +53,13 @@ export class Wh00tWebSocket {
     this.wh00tDispatch(newMessage);
     if (isSecretMessage(wh00tMessage.message)) {
       this.clearSecretMessage(wh00tMessage);
+    } else if (newMessage.value.message === '/clear' || newMessage.value.message === '/c') {
+      setTimeout(() => {
+        this.wh00tDispatch({
+          source: Wh00tMessageTypeEnum.LOCAL,
+          type: Wh00tActionsEnum.CLEAR_MESSAGES,
+        });
+      }, 500);
     }
   }
 
@@ -97,15 +104,6 @@ export class Wh00tWebSocket {
           message: helpMenu(),
         },
       );
-    } else if (message === '/clear' || message === '/c') {
-      this.wh00tWS.send(message);
-
-      setTimeout(() => {
-        this.wh00tDispatch({
-          source: Wh00tMessageTypeEnum.LOCAL,
-          type: Wh00tActionsEnum.CLEAR_MESSAGES,
-        });
-      }, 1000);
     } else if (message !== '') {
       this.wh00tWS.send(message);
     }
