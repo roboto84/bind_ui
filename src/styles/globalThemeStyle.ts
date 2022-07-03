@@ -118,7 +118,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     h2 {
       margin: 0 0 10px 0;
       
-      &.commandHeader {
+      &.tableHeader {
         margin-top: 30px;
       }
     }
@@ -134,6 +134,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     thead tr th {
       text-align: center;
       padding:3px;
+      position: inherit;
 
       &:hover, &.active {
         cursor: inherit;
@@ -141,7 +142,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     }
 
     tbody td {
-      padding:10px
+      padding: 0px 10px;
     }
 
     tbody td:first-child {

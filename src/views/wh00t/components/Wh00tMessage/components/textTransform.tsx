@@ -27,20 +27,12 @@ export function textTransform(text: string): JSX.Element[] {
 
   for (let i = 0; i < text.length; i += 1) {
     const singleCharToken: string = text.charAt(i);
-    const triCharToken:string = i < (text.length - 2)
-      ? ''.concat(text[i], text[i + 1], text[i + 2])
-      : '';
+    const triCharToken:string = i < (text.length - 2) ? text.substring(i, i + 3) : '';
 
     if (currentToken !== null) {
-      let textSubstring: string;
       if (currentToken === singleCharToken || currentToken === triCharToken) {
-        if (currentToken === triCharToken) {
-          textSubstring = text.substring(currentIndex + 1, i);
-          i += 2;
-        } else if (currentToken === singleCharToken) {
-          textSubstring = text.substring(currentIndex + 1, i);
-        }
-        transformedTextArr.push(tokenTransforms[currentToken](textSubstring));
+        transformedTextArr.push(tokenTransforms[currentToken](text.substring(currentIndex + 1, i)));
+        i = currentToken === triCharToken ? i + 2 : i;
         currentToken = null;
         currentIndex = -1;
       } else if (i === (text.length - 1)) {
@@ -50,31 +42,19 @@ export function textTransform(text: string): JSX.Element[] {
       }
     } else if ((transformTokens.indexOf(singleCharToken) > -1)
       || transformTokens.indexOf(triCharToken) > -1) {
-      if (transformTokens.indexOf(triCharToken) > -1) {
-        transformedTextArr.push(noneTokenTextSpanElement(
-          noneTokenTextTransform(noneTokenText),
-        ));
-        noneTokenText = '';
-        currentToken = triCharToken;
-        i += 2;
+      if ((i > 0 && (text.charAt(i - 1) === ' ' || text.charAt(i - 1) === '\n')) || (i === 0)) {
+        transformedTextArr.push(noneTokenTextSpanElement(noneTokenTextTransform(noneTokenText)));
+        currentToken = transformTokens.indexOf(triCharToken) > -1 ? triCharToken : singleCharToken;
+        i = transformTokens.indexOf(triCharToken) > -1 ? i + 2 : i;
         currentIndex = i;
-      } else if ((i > 0 && text.charAt(i - 1) === ' ') || (i === 0)) {
-        transformedTextArr.push(noneTokenTextSpanElement(
-          noneTokenTextTransform(noneTokenText),
-        ));
         noneTokenText = '';
-        currentToken = singleCharToken;
-        currentIndex = i;
       } else {
         noneTokenText = noneTokenText.concat(text.charAt(i));
       }
-    } else if (i === (text.length - 1)) {
-      transformedTextArr.push(noneTokenTextSpanElement(
-        noneTokenTextTransform(noneTokenText.concat(text.charAt(i))),
-      ));
     } else {
       noneTokenText = noneTokenText.concat(text.charAt(i));
     }
   }
+  transformedTextArr.push(noneTokenTextSpanElement(noneTokenTextTransform(noneTokenText)));
   return transformedTextArr;
 }
