@@ -40,6 +40,13 @@ export class Wh00tWebSocket {
     ] + randomIntFromInterval(1, 99);
   }
 
+  clearWh00tScreen() {
+    this.wh00tDispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
+      type: Wh00tActionsEnum.CLEAR_MESSAGES,
+    });
+  }
+
   setDispatch(dispatch: (action: Wh00tContextActionType) => void): void {
     this.wh00tDispatch = dispatch;
   }
@@ -122,14 +129,10 @@ export class Wh00tWebSocket {
   reattemptWh00tSocketConnection(): void {
     setTimeout(() => {
       this.connectWebSocket();
-    }, 5000);
+    }, 10000);
   }
 
   connectWebSocket(clientId?: string): void {
-    this.wh00tDispatch({
-      source: Wh00tMessageTypeEnum.LOCAL,
-      type: Wh00tActionsEnum.CLEAR_MESSAGES,
-    });
     if (clientId && clientId.replace(/\s/g, '') !== '') {
       this.clientId = clientId;
     } else {
@@ -148,12 +151,13 @@ export class Wh00tWebSocket {
     this.wh00tWS.onopen = () => {
       this.wh00tIsConnected = true;
       this.connectionAttemptCount = 0;
+      this.clearWh00tScreen();
       this.handleMessage(
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
           time: getSimpleDateTime(),
-          message: `You are connected as ${this.clientId}`,
+          message: `You are connected as *${this.clientId}*`,
         },
       );
     };
@@ -161,12 +165,13 @@ export class Wh00tWebSocket {
     this.wh00tWS.onerror = (): void => {
       this.connectionAttemptCount += 1;
       this.reattemptWh00tSocketConnection();
+      this.clearWh00tScreen();
       this.handleMessage(
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
           time: getSimpleDateTime(),
-          message: `An error has occurred connecting to wh00t. An attempt will be made to connect every 10 seconds. This is attempt ${this.connectionAttemptCount}`,
+          message: `An *error* has occurred connecting to wh00t. \nAn attempt will be made to connect about every *10* seconds. \nThis is attempt *${this.connectionAttemptCount}*`,
         },
       );
     };
