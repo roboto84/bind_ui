@@ -54,6 +54,7 @@ export const EmojiSelectorContainer = styled.div<EmojiSelectorContainerProps>`
   position: absolute;
   margin-top: -300px;
   margin-left: -182px;
+  overflow-y: scroll;
 `;
 
 export const EmojiContainer = styled.div`
