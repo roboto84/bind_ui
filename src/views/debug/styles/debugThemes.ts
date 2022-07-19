@@ -16,8 +16,8 @@ export const debugDark = {
   messageTextColor: '#b4b4b4',
   messageId: tomorrowDark.yellow,
   messageCategory: tomorrowDark.green,
-  messageHistoryBorder: '#373737',
-  messageBackgroundColor: '#262827',
+  messageHistoryBorder: '#484c58',
+  messageBackgroundColor: '#23252c',
   messageTime: '#ad5f5f',
   latestMessageBorder: tomorrowDark.green,
 };

@@ -74,7 +74,7 @@ NavigationLink.defaultProps = {
   isActive: false,
   linkTo: null,
   fontSize: 'inherit',
-  padding: '9px 10px',
+  padding: '10px',
   borderRadius: 'inherit',
   children: null,
   callBack: null,

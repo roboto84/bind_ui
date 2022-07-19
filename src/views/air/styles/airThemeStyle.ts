@@ -1,8 +1,8 @@
 export const airDark = {
   weatherSubcategory: {
     fontColor: '#ccc',
-    borderColor: '#2F3436',
-    backgroundColor: '#181a1b',
+    borderColor: '#484c58',
+    backgroundColor: '#1e1f25',
   },
   weatherTable: {
     evenCellsBackgroundColor: '#2F3436',

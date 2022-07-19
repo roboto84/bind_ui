@@ -7,11 +7,12 @@ export const wh00tDark: Wh00tThemeType = {
   miniWh00t: {
     minimizedButton: {
       color: '#939393',
-      borderColor: '#373737',
-      backgroundColor: '#2F3436',
+      borderColor: '#484c58',
+      backgroundColor: '#1e1f25',
       backgroundHoverColor: '#ef8236',
     },
-    backgroundColor: '#1d1d1d',
+    backgroundColor: '#23252c',
+    borderColor: '#484c58',
     inputColor: '#FF9800',
   },
   largeWh00t: {
@@ -44,7 +45,7 @@ export const wh00tDark: Wh00tThemeType = {
     },
   },
   chatHeader: {
-    backgroundColor: '#373737',
+    backgroundColor: '#2e313a',
     titleColor: '#de935f',
     titleHighlightColor: '#bababa',
   },
@@ -57,12 +58,13 @@ export const wh00tLight: Wh00tThemeType = {
   backgroundImage: wh00tBackgroundLight,
   miniWh00t: {
     minimizedButton: {
-      color: '#747474',
-      borderColor: 'grey',
+      color: '#4e4e4e',
+      borderColor: '#4e4e4e',
       backgroundColor: '#d4d4d4',
       backgroundHoverColor: '#6a9ca9',
     },
     backgroundColor: '#d4d4d4',
+    borderColor: '#949494',
     inputColor: '#A16000',
   },
   largeWh00t: {

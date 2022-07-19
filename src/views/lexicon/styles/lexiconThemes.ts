@@ -2,22 +2,26 @@ import { LexiconThemeType } from '@/types';
 
 export const lexiconDark:LexiconThemeType = {
   textColor: '#d5d5d5',
+  secondaryTextColor: '#787878',
+  ternaryTextColor: '#9d9d9d',
   searchBar: {
     inputFontColor: '#d5d5d5',
     inputFontFocusColor: 'white',
-    inputBackgroundColor: '#2F3436',
-    inputBackgroundFocusColor: '#54585c',
-    borderColor: '#2F3436',
-    borderFocusColor: '#54585c',
+    inputBackgroundColor: '#3A4043',
+    inputBackgroundFocusColor: '#434c54',
+    borderColor: '#3A4043',
+    borderFocusColor: '#434c54',
     searchButton: {
       color: '#939393',
-      background: '#252729',
+      background: '#1e1f21',
     },
   },
 };
 
 export const lexiconLight:LexiconThemeType = {
   textColor: '#393939',
+  secondaryTextColor: '#606060',
+  ternaryTextColor: '#323232',
   searchBar: {
     inputFontColor: '#454545',
     inputFontFocusColor: 'black',

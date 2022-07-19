@@ -46,7 +46,7 @@ export const Section = styled.div`
   margin: 20px;
   border-radius: 10px;
   background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
-  border: 3px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
+  border: 2px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
 
   @media ${device.tabletS} {
     padding: 12px;

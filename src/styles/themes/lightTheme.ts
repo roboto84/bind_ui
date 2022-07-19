@@ -3,6 +3,7 @@ import { lexiconLight } from '@/views/lexicon/styles/lexiconThemes';
 import { debugLight } from '@/views/debug/styles/debugThemes';
 import { wh00tLight } from '@/views/wh00t/styles/wh00tThemes';
 import { airLight } from '@/views/air/styles/airThemeStyle';
+import { homeLight } from '@/views/home/styles/homeThemes';
 
 export const LightTheme: ThemeType = {
   core: {
@@ -56,8 +57,9 @@ export const LightTheme: ThemeType = {
     iconHoverColor: '#6a9ca9',
     subTitleColor: '#6c6c6c',
     secondaryTitleColor: '#6a9ca9',
-    borderBottomColor: '#a5a5a5',
+    borderBottomColor: '#d4d4d4',
   },
+  home: homeLight,
   air: airLight,
   wh00t: wh00tLight,
   lexicon: lexiconLight,

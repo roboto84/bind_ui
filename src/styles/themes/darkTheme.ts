@@ -4,6 +4,7 @@ import { debugDark } from '@/views/debug/styles/debugThemes';
 import { customTheme } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
+import { homeDark } from '@/views/home/styles/homeThemes';
 
 export const DarkTheme: ThemeType = {
   core: {
@@ -15,8 +16,8 @@ export const DarkTheme: ThemeType = {
       hoverColor: '#91b400',
     },
     section: {
-      backgroundColor: '#1d1f21',
-      borderColor: '#252729',
+      backgroundColor: '#23252c',
+      borderColor: '#484c58',
     },
     code: {
       backgroundColor: '#2e3234',
@@ -41,24 +42,25 @@ export const DarkTheme: ThemeType = {
     foreground: customTheme.green,
   },
   button: {
-    border: '#2F3436',
-    fontColor: '#939393',
+    border: '#484c58',
+    fontColor: '#d1d2d2',
     transitionFontColor: 'black',
-    backgroundColor: '#181a1b',
+    backgroundColor: '#484c58',
   },
   subButton: {
-    backgroundColor: '#2F3436',
-    fontColor: '#c9c9c9',
+    backgroundColor: '#484c58',
+    fontColor: '#d1d2d2',
     transitionFontColor: '#252525',
-    borderColor: '#2F3436',
+    borderColor: '#484c58',
   },
   header: {
     iconColor: '#dadada',
     iconHoverColor: customTheme.green,
     subTitleColor: '#939393',
     secondaryTitleColor: '#a4d20c',
-    borderBottomColor: '#2c3032',
+    borderBottomColor: customTheme.background,
   },
+  home: homeDark,
   air: airDark,
   wh00t: wh00tDark,
   lexicon: lexiconDark,

@@ -5,7 +5,8 @@ import { Wh00tChatHeaderContainerProps } from '@/views/wh00t/types/wh00tTypes';
 export const Wh00tChatHeaderContainer = styled.div<Wh00tChatHeaderContainerProps>`
   background-color: ${(props: Wh00tChatHeaderContainerProps) => props.theme.wh00t.chatHeader.backgroundColor};
   margin: ${(props: Wh00tChatHeaderContainerProps) => (props.margin || '0')};
-  border-radius: ${(props: Wh00tChatHeaderContainerProps) => (props.borderRadius || '0')};
+  border-top-right-radius: ${(props: Wh00tChatHeaderContainerProps) => (props.borderRadius || '0')};
+  border-top-left-radius: ${(props: Wh00tChatHeaderContainerProps) => (props.borderRadius || '0')};
   padding: 5px;
   color: ${(props: Wh00tChatHeaderContainerProps) => props.theme.wh00t.chatHeader.titleColor};
   display: flex;

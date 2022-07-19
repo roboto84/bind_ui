@@ -4,8 +4,8 @@ import { GlobalThemeType } from '@/types';
 
 export const RobotoDescriptionContainer = styled.div`
   font-size: 18px;
-  background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
-  border: 3px dashed ${(props: GlobalThemeType) => props.theme.core.mainThemeColor}75;
+  background-color: ${(props: GlobalThemeType) => props.theme.home.robotoDescription.backgroundColor};
+  border: 3px dashed ${(props: GlobalThemeType) => props.theme.home.robotoDescription.borderColor};
   border-radius: 5px;
   padding: 20px 0;
 
@@ -20,19 +20,19 @@ export const AppDescriptionCoreContainer = styled.div`
   margin: 15px;
   width: 200px;
   border-radius: 5px;
-  color: ${(props:GlobalThemeType) => props.theme.button.fontColor};
-  border: 2px solid ${(props:GlobalThemeType) => props.theme.button.border};
-  background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
+  color: ${(props:GlobalThemeType) => props.theme.home.appDescription.fontColor};
+  border: 2px solid ${(props:GlobalThemeType) => props.theme.home.appDescription.borderColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.home.appDescription.backgroundColor};
   transition: 0.4s;
 
   .appDescriptionHeaderTitle{
-    color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props: GlobalThemeType) => props.theme.home.appDescription.titleColor};
     font-size: 30px;
     margin-left: 5px;
   }
 
   .appDescriptionHeaderIcon{
-    color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props: GlobalThemeType) => props.theme.home.appDescription.titleColor};
     font-size: 42px;
     margin-right: 10px;
   }

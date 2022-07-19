@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { Hoverable } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
+import { GlobalThemeType } from '@/types';
 
 const generalDefinitionStyle: string = 'margin: 0 5px;';
 
 const GeneralStyle = styled.span`
   margin: 0 8px; 
-  color: #606060;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 `;
 
 export const WordOfDayContainer = styled.div`
@@ -39,7 +40,7 @@ export const DayWordBreak = styled(GeneralStyle)``;
 export const DayWordPronounce = styled.span`
   margin: 0 5px;
   font-style: italic;
-  color: #9d9d9d;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.ternaryTextColor};
 `;
 
 export const DayWordDefinitions = styled.div`

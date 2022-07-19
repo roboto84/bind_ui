@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
 import { Hoverable } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
+import { GlobalThemeType } from '@/types';
 
 const wordInfo = styled.div`
   display: inline-block;
   margin-top: 30px;
   margin-left: 19px;
-  color: #606060;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
   letter-spacing: 2px;
 
   @media ${device.tabletS} {
@@ -63,7 +64,7 @@ export const DateFirstUsed = styled(wordInfo)`
 
 export const Pronunciation = styled(wordInfo)`
   font-style: italic;
-  color: #9d9d9d;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.ternaryTextColor};
   letter-spacing: 3px;
 `;
 
@@ -95,7 +96,7 @@ export const WordDefEtymology = styled.div`
   margin: 40px 50px;
   letter-spacing: 3px;
   font-style: italic;
-  color: #606060;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 
   @media ${device.tabletS} {
     margin: 10px 20px;

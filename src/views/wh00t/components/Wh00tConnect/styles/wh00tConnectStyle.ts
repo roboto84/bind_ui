@@ -24,7 +24,7 @@ export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
     props.size && props.size === Size.small
       ? '0 20px'
       : '20px')};
-  border: 3px solid ${(props: Wh00tConnectSectionProps) => (
+  border: 2px solid ${(props: Wh00tConnectSectionProps) => (
     props.size && props.size === Size.small
       ? props.theme.wh00t.miniWh00t.backgroundColor
       : props.theme.core.section.borderColor)};

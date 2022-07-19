@@ -22,7 +22,8 @@ export const Wh00tMessagesContainer = styled.div<MessagesContainerProps>`
   padding: 5px;
   overflow-y: auto;
   height: calc(100% - 105px);
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 
   a:link, a:visited {
     color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLinkColor};

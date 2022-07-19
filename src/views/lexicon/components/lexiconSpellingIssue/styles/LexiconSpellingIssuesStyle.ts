@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Hoverable } from '@/views/styles/appStyles';
+import { GlobalThemeType } from '@/types';
 
 export const ErrorDisplay = styled.div`
   font-size: 50px;
@@ -10,7 +11,7 @@ export const ErrorDisplay = styled.div`
 export const ErrorMessage = styled.div`
   margin-left: 19px;
   margin-top: 22px;
-  color: #606060;
+  color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
   letter-spacing: 2px;
 `;
 

@@ -28,7 +28,7 @@ export const ChatInputButton = styled(Button)`
 `;
 
 export const Wh00tInputTextArea = styled(InputTextArea)`
-  width: calc(100% - 162px);
+  width: calc(100% - 157px);
   height: 22px;
   border-radius: 3px;
 `;

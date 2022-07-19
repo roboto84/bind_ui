@@ -31,7 +31,7 @@ export const AirSubTitleContainer = styled.div`
 
 export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
-  border: 4px solid ${(props: WeatherSubcategoryProps) => (
+  border: 2px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
   margin: 20px;
   flex-direction: column;

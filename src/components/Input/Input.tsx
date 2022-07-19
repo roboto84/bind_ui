@@ -5,7 +5,7 @@ export const Input = styled.input`
   all: unset;
   font-family: Open Sans,Helvetica,Verdana,sans-serif;
   font-size: 15px;
-  border: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderColor} 3px solid;
+  border: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderColor} 2px solid;
   background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontColor};
   padding: 10px;

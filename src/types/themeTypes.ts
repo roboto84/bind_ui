@@ -2,6 +2,19 @@ export interface GlobalThemeType {
   theme: ThemeType
 }
 
+export type HomeThemeType = {
+  robotoDescription: {
+    borderColor: string,
+    backgroundColor: string,
+  },
+  appDescription: {
+    titleColor: string,
+    fontColor: string,
+    borderColor: string,
+    backgroundColor: string,
+  }
+};
+
 export type HeaderStyleType = {
   iconColor: string,
   iconHoverColor: string,
@@ -39,6 +52,8 @@ export type ChartStyleType = {
 
 export type LexiconThemeType = {
   textColor: string,
+  secondaryTextColor: string,
+  ternaryTextColor: string,
   searchBar:{
     inputFontColor: string,
     inputFontFocusColor: string,
@@ -110,6 +125,7 @@ export type Wh00tThemeType = {
       backgroundHoverColor: string,
     },
     backgroundColor: string,
+    borderColor: string,
     inputColor: string,
   },
   largeWh00t: {
@@ -158,6 +174,7 @@ export type ThemeType = {
   subButton: SubButtonStyleType,
   chart: ChartStyleType,
   header: HeaderStyleType,
+  home: HomeThemeType,
   air: AirThemeType,
   lexicon: LexiconThemeType,
   wh00t: Wh00tThemeType,

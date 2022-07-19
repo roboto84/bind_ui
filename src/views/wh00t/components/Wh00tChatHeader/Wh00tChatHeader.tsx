@@ -48,7 +48,7 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
 
   if (headerSize === ElementSize.LARGE) {
     headerMargin = '0 5px';
-    headerBorderRadius = '5px';
+    headerBorderRadius = '3px';
   }
 
   const minimizeButton: JSX.Element = headerButtons.minimize ? (
