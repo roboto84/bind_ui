@@ -12,7 +12,7 @@ export function ErrorView(props: ErrorProps) {
   const { title, children } = props;
   return (
     <GenericErrorContainer className="flexed">
-      <RobotImg fontSize="275px" opacity="0.7" robotType="SiProbot" />
+      <RobotImg fontSize="250px" opacity="0.7" robotType="SiProbot" />
       <ErrorContainer>
         <ErrorTitle>
           {title}
