@@ -3,31 +3,14 @@ import { device } from '@/styles/responsive';
 
 export const ErrorContainer = styled.div`
   font-family: verdana,serif;
-  font-size: 30px;
+  font-size: 23px;
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
-  justify-content: space-between;
-  height: 290px;
-  
-  @media ${device.desktop} {
-    width: 25%
-  }
-  
-  @media ${device.laptopL} {
-    width: 40%
-  }
-  
-  @media ${device.laptop} {
-    width: 55%
-  }
-  
-  @media ${device.tablet} {
-    width: 90%
-  }
+  justify-content: flex-end;
+  margin: auto;
 `;
 
 export const ErrorTitle = styled.div`
-  font-size: 115px;
-  margin: 20px 0;
+  font-size: 55px;
+  margin: -45px auto 0;
 `;

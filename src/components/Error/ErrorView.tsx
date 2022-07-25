@@ -11,7 +11,8 @@ type ErrorProps = {
 export function ErrorView(props: ErrorProps) {
   const { title, children } = props;
   return (
-    <GenericErrorContainer className="side-flexed">
+    <GenericErrorContainer className="flexed">
+      <RobotImg fontSize="275px" opacity="0.7" robotType="SiProbot" />
       <ErrorContainer>
         <ErrorTitle>
           {title}
@@ -20,7 +21,6 @@ export function ErrorView(props: ErrorProps) {
           {children}
         </div>
       </ErrorContainer>
-      <RobotImg fontSize="445px" opacity="0.7" robotType="SiProbot" />
     </GenericErrorContainer>
   );
 }

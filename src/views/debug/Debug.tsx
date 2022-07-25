@@ -33,6 +33,15 @@ export function Debug() {
     );
   }
 
+  if (data.message.length === 0) {
+    return (
+      <DebugHomeContainer>
+        <ErrorView title="Lack of Data">
+          <div>There are currently no messages to track.</div>
+        </ErrorView>
+      </DebugHomeContainer>
+    );
+  }
   return (
     <DebugHomeContainer>
       <DebugSectionContainer>
