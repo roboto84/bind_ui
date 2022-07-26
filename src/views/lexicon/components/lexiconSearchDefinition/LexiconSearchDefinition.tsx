@@ -19,7 +19,6 @@ import {
   WordDefStems,
   WordDefEtymology,
   WordExamples,
-  WordDefinitions,
   WordDefinitionList,
   WordDefinition,
   Stem,
@@ -43,10 +42,10 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         return stem;
       }
       return (
-        <span key={'wordStemContainer-'.concat(wordStem)}>
+        <>
           {stem}
-          <span key={'wordStemComma-'.concat(wordStem)}>,</span>
-        </span>
+          <li key={'wordStemComma-'.concat(wordStem)}>,</li>
+        </>
       );
     },
   );
@@ -76,11 +75,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
       <WordDefEtymology>
         {wordEtymologyView(wordDefinition.etymology)}
       </WordDefEtymology>
-      <WordDefinitions>
-        <WordDefinitionList>
-          <DefinitionListView definitions={wordDefinition.definitions} />
-        </WordDefinitionList>
-      </WordDefinitions>
+      <WordDefinitionList>
+        <DefinitionListView definitions={wordDefinition.definitions} />
+      </WordDefinitionList>
       <WordExamples>
         {wordExampleView(wordDefinition.example)}
       </WordExamples>

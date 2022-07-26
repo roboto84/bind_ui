@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types/themeTypes';
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
   font-size: 12px;
   margin: 0 10px;
   display: flex;
@@ -90,7 +90,7 @@ export const SubTitle = styled.div`
   }
 `;
 
-export const NavLinksContainer = styled.div`
+export const NavLinksContainer = styled.nav`
   padding-top: 22px;
   padding-right: 10px;
   display: flex;
@@ -110,6 +110,7 @@ export const NavLinksContainer = styled.div`
 `;
 
 export const NavContainer = styled.div`
+  all: unset;
   display: flex;
   height: 39px;
   width: 380px;
@@ -118,6 +119,10 @@ export const NavContainer = styled.div`
   @media ${device.mobileXL} {
     width: 250px;
     display: none;
+  }
+  
+  li {
+    list-style: none;
   }
 `;
 

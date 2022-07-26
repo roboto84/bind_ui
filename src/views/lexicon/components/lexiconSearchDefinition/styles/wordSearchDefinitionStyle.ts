@@ -4,7 +4,7 @@ import { Hoverable } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types';
 
-const wordInfo = styled.div`
+const wordInfo = styled.li`
   display: inline-block;
   margin-top: 30px;
   margin-left: 19px;
@@ -28,7 +28,8 @@ export const WordDefinition = styled(LexiconSection)`
   }
 `;
 
-export const WordDefinitionIntroduction = styled.div`
+export const WordDefinitionIntroduction = styled.ul`
+  all: unset;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -37,9 +38,13 @@ export const WordDefinitionIntroduction = styled.div`
   @media ${device.tabletS} {
     display: block;
   }
+  
+  li {
+    list-style: none
+  }
 `;
 
-export const Word = styled.div`
+export const Word = styled.li`
   font-size: 50px;
   letter-spacing: 3px;
   margin-top: -3px;
@@ -81,7 +86,10 @@ export const WordAudio = styled.div`
   }
 `;
 
-export const WordDefStems = styled.div`
+export const WordDefStems = styled.ul`
+  all: unset;
+  display: flex;
+  align-items: baseline;
   margin: 5px 90px;
   letter-spacing: 3px;
   line-height: 40px;
@@ -89,6 +97,10 @@ export const WordDefStems = styled.div`
   @media ${device.tabletS} {
     margin: 5px;
     line-height: 20px;
+  }
+  
+  li {
+    list-style: none;
   }
 `;
 
@@ -103,15 +115,13 @@ export const WordDefEtymology = styled.div`
   }
 `;
 
-export const WordDefinitions = styled.div`
+export const WordDefinitionList = styled.ol`
   margin: 40px 50px;
 
   @media ${device.tabletS} {
-    margin: 10px 20px;
+    margin: 16px 20px;
   }
-`;
-
-export const WordDefinitionList = styled.ol`
+  
   li {
     margin: 10px 0;
   }

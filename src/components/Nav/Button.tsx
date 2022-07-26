@@ -9,7 +9,8 @@ interface ButtonProps extends GlobalThemeType {
   borderRadius ?: string,
 }
 
-export const Button = styled.div<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
+  all: unset;
   color: ${(props:ButtonProps) => props.theme.button.fontColor};
   border: 1px solid ${(props:ButtonProps) => props.theme.button.border};
   padding: ${(props:ButtonProps) => (props.padding || '10px')};

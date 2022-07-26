@@ -6,13 +6,13 @@ import {
 } from '@/views/wh00t/types/wh00tTypes';
 import { device } from '@/styles/responsive';
 
-export const Wh00tMessageWrapper = styled.div`
+export const Wh00tMessageWrapper = styled.li`
   display: flex;
   margin: 5px 0;
 `;
 
 export const Wh00tChatImageWrapper = styled.div`
-  margin-top: -12px;
+  margin-top: -10px;
 `;
 
 export const Wh00tBaseUserImageContainer = styled.div`
@@ -23,6 +23,7 @@ export const Wh00tBaseUserImageContainer = styled.div`
   padding: 7px 5px 5px 5px;
   border-radius: 5px;
   font-size: 35px;
+  font-family: ${(props: GlobalThemeType) => props.theme.shared.fonts.primary};
   text-transform: capitalize;
   text-align: center;
 
@@ -57,7 +58,7 @@ export const Wh00tMessageUsername = styled.span`
   }
 `;
 
-export const Wh00tMessageTime = styled.span`
+export const Wh00tMessageTime = styled.time`
   font-size: 12px;
   color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.timeColor};
 `;

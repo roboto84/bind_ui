@@ -50,25 +50,21 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>water</WeatherTitle>
-        <div>
-          <WeatherElement>
-            {`${precipitationProbability} ${weatherUnits.precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
-          </WeatherElement>
-          <WeatherElement>{humidity} {weatherUnits.humidity} Humidity</WeatherElement>
-          <WeatherElement>{dewPoint} {weatherUnits.dewPoint} Dew Point</WeatherElement>
-        </div>
+        <WeatherElement>
+          {`${precipitationProbability} ${weatherUnits.precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
+        </WeatherElement>
+        <WeatherElement>{humidity} {weatherUnits.humidity} Humidity</WeatherElement>
+        <WeatherElement>{dewPoint} {weatherUnits.dewPoint} Dew Point</WeatherElement>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>air</WeatherTitle>
-        <div>
-          <WeatherElement>
-            {epaHealthConcern} Air Quality ({epaIndex} {weatherUnits.epaIndex})
-          </WeatherElement>
-          <WeatherElement>
-            {pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure
-          </WeatherElement>
-          <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
-        </div>
+        <WeatherElement>
+          {epaHealthConcern} Air Quality ({epaIndex} {weatherUnits.epaIndex})
+        </WeatherElement>
+        <WeatherElement>
+          {pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure
+        </WeatherElement>
+        <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
       </WeatherSubcategory>
     </Weather>
   );

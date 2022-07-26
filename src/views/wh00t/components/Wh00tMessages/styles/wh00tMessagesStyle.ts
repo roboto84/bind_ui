@@ -7,7 +7,7 @@ interface MessagesContainerProps extends GlobalThemeType {
   showBackgroundImage: boolean
 }
 
-export const Wh00tMessagesContainer = styled.div<MessagesContainerProps>`
+export const Wh00tMessagesContainer = styled.ul<MessagesContainerProps>`
   background-color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.backgroundColor};
   background-image: ${(props: MessagesContainerProps) => (
     props.showBackgroundImage ? `url(${props.theme.wh00t.backgroundImage})` : 'none'

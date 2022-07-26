@@ -44,7 +44,7 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
       >
         {messageTextView}
       </TextMessageContainer>
-      <div>{messageImage}</div>
+      {messageImage}
     </Wh00tMessageTextContainer>
   );
 }

@@ -14,12 +14,28 @@ export const Wh00tChatHeaderContainer = styled.div<Wh00tChatHeaderContainerProps
   font-size: 16px;
 `;
 
-export const Wh00tChatHeaderTitleContainer = styled.div`
+export const Wh00tChatHeaderTitleContainer = styled.ul`
+  all: unset;
+  display: flex;
   margin-left: 5px;
   margin-top: -2px;
+  
+  li {
+    list-style: none;
+    margin-right: 5px;
+  }
 `;
 
-export const Wh00tChatHeaderButton = styled.span`
+export const Wh00tChatHeaderButtonsContainer = styled.ul`
+  all: unset;
+  display: flex;
+
+  li {
+    list-style: none;
+  }
+`;
+
+export const Wh00tChatHeaderButton = styled.li`
   padding: 0 8px;
   color: #eee;
   font-size: 16px;
@@ -30,7 +46,7 @@ export const Wh00tChatHeaderButton = styled.span`
   }
 `;
 
-export const Wh00tChannelTitle = styled.span`
+export const Wh00tChannelTitle = styled.li`
   color: ${(props: Wh00tChatHeaderContainerProps) => props.theme.wh00t.chatHeader.titleHighlightColor};
 `;
 

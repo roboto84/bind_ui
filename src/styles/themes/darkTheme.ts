@@ -5,6 +5,7 @@ import { customTheme } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
 import { homeDark } from '@/views/home/styles/homeThemes';
+import { shared } from '@/styles/themes/sharedTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
@@ -65,4 +66,5 @@ export const DarkTheme: ThemeType = {
   wh00t: wh00tDark,
   lexicon: lexiconDark,
   debug: debugDark,
+  shared,
 };

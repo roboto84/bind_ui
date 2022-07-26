@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 
-export const LineChartContainer = styled.div`
+export const LineChartContainer = styled.figure`
   display: flex;
   justify-content: center;
   

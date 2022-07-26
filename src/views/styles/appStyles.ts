@@ -14,7 +14,7 @@ export const AppContainer = styled.div`
   width: 100vw;
 `;
 
-export const MainContainer = styled.div`
+export const MainContainer = styled.main`
   overflow-y: auto;
   height: calc(100vh - 50px);
 
@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
   }
 `;
 
-export const Hoverable = styled.div`
+export const Hoverable = styled.li`
   border-radius: 5px;
   cursor: pointer;
   padding: 5px 15px;
@@ -41,7 +41,7 @@ export const Hoverable = styled.div`
   }
 `;
 
-export const Section = styled.div`
+export const Section = styled.section`
   padding: 20px;
   margin: 20px;
   border-radius: 10px;

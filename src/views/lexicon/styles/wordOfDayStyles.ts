@@ -3,9 +3,9 @@ import { Hoverable } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types';
 
-const generalDefinitionStyle: string = 'margin: 0 5px;';
+const generalDefinitionStyle: string = 'margin: 0 10px;';
 
-const GeneralStyle = styled.span`
+const GeneralStyle = styled.li`
   margin: 0 8px; 
   color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 `;
@@ -16,6 +16,16 @@ export const WordOfDayContainer = styled.div`
   @media ${device.tabletS} {
     margin: 0 10px;
     font-size: 16px;
+  }
+`;
+
+export const DayWordInfo = styled.ul`
+  all: unset;
+  display: flex;
+  align-items: center;
+  
+  li {
+    list-style: none;
   }
 `;
 
@@ -37,14 +47,10 @@ export const DayWordDate = styled(GeneralStyle)`
 export const DayWordPartOfSpeech = styled(GeneralStyle)``;
 export const DayWordBreak = styled(GeneralStyle)``;
 
-export const DayWordPronounce = styled.span`
+export const DayWordPronounce = styled.li`
   margin: 0 5px;
   font-style: italic;
   color: ${(props: GlobalThemeType) => props.theme.lexicon.ternaryTextColor};
-`;
-
-export const DayWordDefinitions = styled.div`
-  ${generalDefinitionStyle}
 `;
 
 export const DayWordDefinitionsList = styled.ol`

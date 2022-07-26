@@ -1,3 +1,5 @@
+import { shared } from '@/styles/themes/sharedTheme';
+
 export interface GlobalThemeType {
   theme: ThemeType
 }
@@ -167,6 +169,12 @@ export type Wh00tThemeType = {
   }
 }
 
+export type SharedThemeType = {
+  fonts: {
+    primary: string
+  }
+}
+
 export type ThemeType = {
   core: CoreStyleType
   throbber: ThrobberStyleType,
@@ -178,5 +186,6 @@ export type ThemeType = {
   air: AirThemeType,
   lexicon: LexiconThemeType,
   wh00t: Wh00tThemeType,
-  debug: DebugThemeType
+  debug: DebugThemeType,
+  shared: SharedThemeType,
 }
