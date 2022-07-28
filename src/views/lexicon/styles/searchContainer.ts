@@ -4,7 +4,8 @@ import { Input } from '@/components/Input/Input';
 import { Button } from '@/components/Nav/Button';
 import { device } from '@/styles/responsive';
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.menu`
+  all: unset;
   font-size: 13px;
   width: 98%;
   margin: 20px 0;

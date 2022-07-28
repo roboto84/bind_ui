@@ -14,7 +14,8 @@ export const RobotoDescriptionContainer = styled.div`
   }
 `;
 
-export const AppDescriptionCoreContainer = styled.div`
+export const AppDescriptionCoreContainer = styled.button`
+  all: unset;
   font-size: 18px;
   padding: 20px;
   margin: 15px;

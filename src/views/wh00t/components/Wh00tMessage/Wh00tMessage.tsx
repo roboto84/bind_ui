@@ -35,7 +35,7 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
             <Wh00tMessageUsername className={usernameColor}>
               {`${messagePackage.username} `}
             </Wh00tMessageUsername>
-            <Wh00tMessageTime>
+            <Wh00tMessageTime dateTime={messageTime}>
               {`${messageTime}`}
             </Wh00tMessageTime>
           </Wh00tMessageTitle>

@@ -4,9 +4,8 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiMaximize, FiMinimize } from 'react-icons/fi';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import {
-  Wh00tChannelTitle,
-  Wh00tChatHeaderButton,
-  Wh00tChatHeaderContainer,
+  Wh00tChannelTitle, Wh00tChatHeaderButtonsContainer,
+  Wh00tChatHeaderButton, Wh00tChatHeaderContainer,
   Wh00tChatHeaderTitleContainer, Wh00tChatHeaderTitleIcon,
 } from './styles/wh00tChatHeaderStyle';
 import { ElementSize, Wh00tChatHeaderProps } from '../../types/wh00tTypes';
@@ -34,9 +33,7 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
         </Wh00tChatHeaderTitleIcon>
         /general
       </Wh00tChannelTitle>
-      <span>
-        {' as '}
-      </span>
+      <li>as</li>
       <Wh00tChannelTitle>
         {state.wh00tWebSocket.clientId}
       </Wh00tChannelTitle>
@@ -55,30 +52,31 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
     <Wh00tChatHeaderButton title="Minimize Chat" onClick={wh00tMinimizeSwitch}>
       <FiMinimize />
     </Wh00tChatHeaderButton>
-  ) : <span />;
+  ) : undefined;
 
   const maximizeButton: JSX.Element = headerButtons.maximize ? (
     <Wh00tChatHeaderButton title="Maximize Chat" onClick={() => navigate('/wh00t')}>
       <FiMaximize />
     </Wh00tChatHeaderButton>
-  ) : <span />;
+  ) : undefined;
 
   const disconnectButton: JSX.Element = headerButtons.disconnect ? (
     <Wh00tChatHeaderButton title="Logout of Chat" onClick={wh00tDisconnect}>
       <FiLogOut />
     </Wh00tChatHeaderButton>
-  ) : <span />;
+  ) : undefined;
 
   return (
     <Wh00tChatHeaderContainer margin={headerMargin} borderRadius={headerBorderRadius}>
       <Wh00tChatHeaderTitleContainer>
         {headerTitle}
       </Wh00tChatHeaderTitleContainer>
-      <div>
+
+      <Wh00tChatHeaderButtonsContainer>
         {minimizeButton}
         {maximizeButton}
         {disconnectButton}
-      </div>
+      </Wh00tChatHeaderButtonsContainer>
     </Wh00tChatHeaderContainer>
   );
 }

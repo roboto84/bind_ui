@@ -18,7 +18,7 @@ export const HomeContainer = styled.div`
   }
 `;
 
-export const AppDescriptionContainer = styled.div`
+export const AppDescriptionContainer = styled.section`
   width: 600px;
 
   @media ${device.tabletS} {
@@ -26,7 +26,7 @@ export const AppDescriptionContainer = styled.div`
   }
 `;
 
-export const ChildAppDescriptionContainer = styled.div`
+export const ChildAppDescriptionContainer = styled.nav`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

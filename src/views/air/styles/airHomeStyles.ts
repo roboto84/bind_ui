@@ -4,11 +4,11 @@ import { Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
-export const WeatherIconContainer = styled.div`
+export const WeatherIconContainer = styled.li`
   margin: -22px 0px -50px;
 `;
 
-export const WeatherIconSubTileContainer = styled.div`
+export const WeatherIconSubTileContainer = styled.li`
   margin: -15px 0px -50px;
 `;
 
@@ -20,7 +20,7 @@ export const AirHomeContainer = styled.div`
   }
 `;
 
-export const AirSubTitleContainer = styled.div`
+export const AirSubTitleContainer = styled.section`
   display: flex;
   justify-content: space-between;
 
@@ -29,7 +29,7 @@ export const AirSubTitleContainer = styled.div`
   }
 `;
 
-export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
+export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
   border: 2px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
@@ -44,9 +44,13 @@ export const WeatherSubcategory = styled.div<WeatherSubcategoryProps>`
     width: initial;
     min-width: 200px;
   }
+  
+  li {
+    list-style: none;
+  }
 `;
 
-export const Weather = styled.div`
+export const Weather = styled.section`
   font-size: 13px;
   height: 85%;
   width: 95%;
@@ -69,7 +73,7 @@ export const Weather = styled.div`
   }
 `;
 
-export const WeatherTitle = styled.div`
+export const WeatherTitle = styled.li`
   font-size: 18px;
   color: #535353;
   padding: 5px;
@@ -78,20 +82,20 @@ export const WeatherTitle = styled.div`
   letter-spacing: 3px;
 `;
 
-export const CurrentTemperature = styled.div`
+export const CurrentTemperature = styled.li`
   font-size: 35px;
   margin: 0 30px 7px 30px;
   text-align: center;
 `;
 
-export const WeatherBlurb = styled.div`
+export const WeatherBlurb = styled.li`
   margin: 0 20px;
   font-size: 14px;
   color: #737373;
   text-align: center;
 `;
 
-export const MoonPhase = styled.div`
+export const MoonPhase = styled.li`
   margin: 20px 20px 0 20px;
 `;
 
@@ -100,7 +104,7 @@ export const MoonPhaseSummaryContainer = styled.div`
   text-align: center;
 `;
 
-export const WeatherForecastTemperature = styled.div`
+export const WeatherForecastTemperature = styled.li`
   color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
   font-size: 25px;
   margin: 5px;
@@ -108,7 +112,7 @@ export const WeatherForecastTemperature = styled.div`
   text-align: center;
 `;
 
-export const WeatherForecastTemperatureApparent = styled.div`
+export const WeatherForecastTemperatureApparent = styled.li`
   font-size: 14px;
   color: #737373;
   margin: 20px 5px 5px 5px;
@@ -116,11 +120,11 @@ export const WeatherForecastTemperatureApparent = styled.div`
   text-align: center;
 `;
 
-export const WeatherElement = styled.div`
+export const WeatherElement = styled.li`
   color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
   padding: 16px;
   
-  :not(:first-child){
+  :not(:nth-child(2)){
     border-top: #2F3436 solid 1px;
   }
 `;
@@ -130,7 +134,7 @@ export const WeatherChartSection = styled(Section)`
   margin: 10px auto;
 `;
 
-export const WeatherChartSectionSummary = styled.div`
+export const WeatherChartSectionSummary = styled.figcaption`
   font-size: 14px;
 `;
 
@@ -143,7 +147,7 @@ export const WeatherForecastElement = styled(WeatherElement)`
   padding: 4px;
 `;
 
-export const WeatherSubContainer = styled.div`
+export const WeatherSubContainer = styled.section`
   padding: 10px;
 
   @media ${device.tabletS} {
@@ -151,7 +155,7 @@ export const WeatherSubContainer = styled.div`
   }
 `;
 
-export const SubNavigationContainer = styled.div<SubNavigationProps>`
+export const SubNavigationContainer = styled.nav<SubNavigationProps>`
   font-size: 12px;
   display: flex;
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};

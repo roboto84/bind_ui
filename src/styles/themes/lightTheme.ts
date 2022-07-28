@@ -4,6 +4,7 @@ import { debugLight } from '@/views/debug/styles/debugThemes';
 import { wh00tLight } from '@/views/wh00t/styles/wh00tThemes';
 import { airLight } from '@/views/air/styles/airThemeStyle';
 import { homeLight } from '@/views/home/styles/homeThemes';
+import { shared } from '@/styles/themes/sharedTheme';
 
 export const LightTheme: ThemeType = {
   core: {
@@ -64,4 +65,5 @@ export const LightTheme: ThemeType = {
   wh00t: wh00tLight,
   lexicon: lexiconLight,
   debug: debugLight,
+  shared,
 };

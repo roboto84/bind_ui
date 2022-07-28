@@ -10,7 +10,7 @@ export function DebugMessageContainer(props: DebugMessageProps) {
         <span className="messageId">{message.id}</span>
         <span> / </span>
         <span className="messageCategory">{message.category}</span>
-        <span className="messageTime">{` (${message.time}): `}</span>
+        <time dateTime={message.time} className="messageTime">{` (${message.time}): `}</time>
       </span>
       <span className="appMessage">{message.message}</span>
     </MessageContainer>

@@ -14,7 +14,7 @@ export const DebugHomeContainer = styled.div`
   }
 `;
 
-export const DebugSectionContainer = styled.div`
+export const DebugSectionContainer = styled.section`
   margin-top: 40px;
 
   @media ${device.mobileXL} {
@@ -22,19 +22,23 @@ export const DebugSectionContainer = styled.div`
   }
 `;
 
-export const LatestMessage = styled.div`{
+export const LatestMessage = styled.ul`{
   border: ${(props: GlobalThemeType) => props.theme.debug.latestMessageBorder} 5px solid;
   padding: 20px;
   margin: 20px 50px;
   min-height: 25px;
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
 
+  li {
+    list-style: none;
+  }
+  
   @media ${device.tabletS} {
     margin: 0;
   }
 }`;
 
-export const MessageHistory = styled.div`{
+export const MessageHistory = styled.ul`{
   border: ${(props: GlobalThemeType) => props.theme.debug.messageHistoryBorder} 5px solid;
   padding: 20px;
   margin: 20px 50px 0 50px;
@@ -43,12 +47,16 @@ export const MessageHistory = styled.div`{
   height: calc(90vh - 325px);
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
 
+  li {
+    list-style: none;
+  }
+  
   @media ${device.tabletS} {
     margin: 0;
   }
 }`;
 
-export const MessageContainer = styled.div`
+export const MessageContainer = styled.li`
     margin-bottom: 5px;
     white-space: break-spaces;
     word-break: break-word;
