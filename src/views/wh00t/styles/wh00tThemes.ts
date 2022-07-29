@@ -18,7 +18,7 @@ export const wh00tDark: Wh00tThemeType = {
   largeWh00t: {
   },
   messages: {
-    backgroundColor: '#1d1f21',
+    backgroundColor: '#2e3036',
     otherUsernamesColor: '#de935f',
     usernameColor: '#b5bd68',
     botUsernameColor: '#3da497',
@@ -31,13 +31,13 @@ export const wh00tDark: Wh00tThemeType = {
   },
   chatInput: {
     button: {
-      backgroundColor: '#2F3436',
+      backgroundColor: '#373a43',
       color: '#FFA31A',
     },
     textInput: {
       borderColor: '#373737',
-      backgroundColor: '#2F3436',
-      focusBackgroundColor: '#2F3436',
+      backgroundColor: '#31333a',
+      focusBackgroundColor: '#35373f',
       focusFontColor: '#FF9800',
     },
     emoji: {
@@ -45,7 +45,7 @@ export const wh00tDark: Wh00tThemeType = {
     },
   },
   chatHeader: {
-    backgroundColor: '#2e313a',
+    backgroundColor: '#40444e',
     titleColor: '#de935f',
     titleHighlightColor: '#bababa',
   },

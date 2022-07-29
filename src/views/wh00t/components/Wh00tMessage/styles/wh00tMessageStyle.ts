@@ -80,7 +80,7 @@ export const CodeBlock = styled.div`
   color: ${(props: GlobalThemeType) => props.theme.core.code.textColor};
   display: block;
   font-family: monospace;
-  font-size: 85%;
+  font-size: 90%;
   padding: 10px;
   margin: 20px;
   white-space: break-spaces;
@@ -96,7 +96,7 @@ export const TextMessageContainer = styled.div<TextMessageContainerProps>`
   margin: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? '10px 20px;' : 'inherit')};
   padding: ${(props: TextMessageContainerProps) => (props.highlightMessage
-    ? '10px' : 'inherit')};
+    ? '10px 15px 15px 10px' : 'inherit')};
   filter: ${(props: TextMessageContainerProps) => (props.filterBlur ? 'blur(4px)' : 'blur(0)')};
   
   &:hover, &:active {

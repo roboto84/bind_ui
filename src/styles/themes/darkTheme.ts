@@ -21,9 +21,9 @@ export const DarkTheme: ThemeType = {
       borderColor: '#484c58',
     },
     code: {
-      backgroundColor: '#2e3234',
+      backgroundColor: '#363a41',
       borderColor: '#5D5D5D',
-      textColor: '#d88e01',
+      textColor: '#e29401',
     },
     table: {
       borderColor: '#373C3F',

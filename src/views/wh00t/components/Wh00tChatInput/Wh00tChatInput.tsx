@@ -22,7 +22,7 @@ export function Wh00tChatInput() {
   const textAreaRef = useRef(null);
   const keyLog: any = {};
   let localMessageHistoryIterator: number = 0;
-  const iconPadding: string = '11px 7px 0px 7px';
+  const iconPadding: string = '6px 7px 0px 7px';
   const iconFontSize: string = '25px';
 
   const appendToCurrentMessageText: CallableFunction = (text: string) => {
