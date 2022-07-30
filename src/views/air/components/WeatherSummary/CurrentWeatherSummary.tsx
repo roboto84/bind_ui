@@ -32,7 +32,7 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
       <WeatherSubcategory>
         <CurrentTemperature>{temperature} {weatherUnits.temperature}</CurrentTemperature>
         <WeatherIconContainer>
-          <WeatherConditionIcon weatherCondition={weatherState} fontSize="135px" />
+          <WeatherConditionIcon weatherCondition={weatherState} fontSize="104px" />
         </WeatherIconContainer>
         <WeatherBlurb>
           {weatherCode}...

@@ -45,9 +45,8 @@ export const WordDefinitionIntroduction = styled.ul`
 `;
 
 export const Word = styled.li`
-  font-size: 50px;
+  font-size: 45px;
   letter-spacing: 3px;
-  margin-top: -3px;
 
   @media ${device.tabletS} {
     font-size: 25px;

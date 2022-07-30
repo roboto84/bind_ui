@@ -3,12 +3,12 @@ import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types/themeTypes';
 
 export const HeaderContainer = styled.header`
-  font-size: 12px;
-  margin: 0 10px;
+  font-size: 11px;
+  margin: 0 0 0 10px;
   display: flex;
   flex-direction: row;
   border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
-  height: 80px;
+  height: 65px;
   
   & a:link, a:visited {
     margin: 0;
@@ -24,7 +24,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const HeaderTitleContainer = styled.div`
-  width: calc(100% - 400px);
+  width: calc(100% - 375px);
   display: flex;
 
   @media ${device.tablet} {
@@ -34,7 +34,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const Title = styled.h1`
   display: flex;
-  margin-top: 12px;
+  margin-top: 10px;
   
   @media ${device.tablet} {
     font-size: 27px;
@@ -45,7 +45,6 @@ export const Title = styled.h1`
 export const SmallHeaderIconContainer = styled.span`
   color: ${(props:GlobalThemeType) => props.theme.header.iconColor};
   display: inherit;
-  transition: 0.4s;
 
   &:hover {
     cursor: pointer;
@@ -53,7 +52,7 @@ export const SmallHeaderIconContainer = styled.span`
   }
   
   @media ${device.tablet} {
-    margin: 3px -7px 0px -2px;
+    margin: 10px -7px 0px -2px;
   }
 `;
 
@@ -91,7 +90,7 @@ export const SubTitle = styled.div`
 `;
 
 export const NavLinksContainer = styled.nav`
-  padding-top: 22px;
+  padding-top: 20px;
   padding-right: 10px;
   display: flex;
   justify-content: right;
@@ -112,8 +111,8 @@ export const NavLinksContainer = styled.nav`
 export const NavContainer = styled.div`
   all: unset;
   display: flex;
-  height: 39px;
-  width: 380px;
+  height: 34px;
+  width: 360px;
   justify-content: space-between;
 
   @media ${device.mobileXL} {
@@ -152,7 +151,7 @@ export const MobileNavContainer = styled.div`
   @media ${device.mobileXL} {
     display: flex;
     width: 335px;
-    height: 40px;
+    height: 34px;
     justify-content: space-between;
   }
 `;

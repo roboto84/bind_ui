@@ -139,6 +139,7 @@ export type Wh00tThemeType = {
     botUsernameColor: string,
     timeColor: string,
     messageText: string,
+    messageHoverColor: string,
     usernameBaseImageBackgroundColor: string,
     otherUsernameBaseImageBackgroundColor: string,
     aLinkColor: string,

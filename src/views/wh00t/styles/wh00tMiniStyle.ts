@@ -7,10 +7,11 @@ export const Wh00tMiniContainer = styled.div`
   position: absolute;
   width: 500px;
   height: 500px;
-  right: 5px;
+  right: 12px;
   bottom: 5px;
   background-color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.backgroundColor};
   border: solid 1px ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.borderColor};
+  box-shadow: 0 10px 16px 0 #00000033,0 6px 20px 0 #00000033;
   border-radius: 5px;
   z-index: 1;
   transition: 0.4s;

@@ -12,7 +12,7 @@ interface AirLocationContainerProps extends GlobalThemeType {
 export const AirLocationContainer = styled.div<AirLocationContainerProps>`
   margin: ${(props:AirLocationContainerProps) => (props.margin || '0')};;
   border: 2px solid ${(props:AirLocationContainerProps) => props.theme.button.border};
-  padding: ${(props:AirLocationContainerProps) => (props.padding || '10px')};
+  padding: ${(props:AirLocationContainerProps) => (props.padding || '7px')};
   text-decoration: none;
   text-align: center;
   letter-spacing: 3px;

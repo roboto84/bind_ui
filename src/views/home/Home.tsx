@@ -8,7 +8,7 @@ export function Home() {
     <HomeContainer className="side-flexed">
       <AppDescriptions />
       <HomeRightContainer>
-        <RobotImg fontSize="445px" opacity="0.7" />
+        <RobotImg fontSize="395px" opacity="0.7" />
         <HomeBottomRight>
           ... more in development 😅
         </HomeBottomRight>

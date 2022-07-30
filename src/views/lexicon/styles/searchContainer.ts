@@ -33,8 +33,8 @@ export const LexiconButton = styled(Button)`
 `;
 
 export const BackButton = styled(LexiconButton)`
-  font-size: 24px;
-  padding-top: 5px;
+  font-size: 22px;
+  padding-top: 7px;
 `;
 
 export const SearchButton = styled(LexiconButton)`
@@ -43,8 +43,8 @@ export const SearchButton = styled(LexiconButton)`
 `;
 
 export const HomeButton = styled(LexiconButton)`
-  font-size: 28px;
-  padding-top: 3px;
+  font-size: 26px;
+  padding-top: 4px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 `;

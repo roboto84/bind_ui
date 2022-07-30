@@ -28,6 +28,7 @@ export function WeatherChartSubNavigation() {
           <NavigationLink
             title={`${navItem.navTitle as string} Chart`}
             key={`weatherCharts-${navItem.linkTo}`}
+            padding="7px 10px"
             borderRadius={navItem.borderRadius || 'inherit'}
             navigationLinkType={NavigationLinkType.sub}
             linkTo={`/air/data/charts/${navItem.linkTo}`}

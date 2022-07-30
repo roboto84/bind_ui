@@ -3,7 +3,7 @@ import { GlobalThemeType } from '@/types';
 import { device } from '@/styles/responsive';
 
 export const AppContainer = styled.div`
-  font-size: 13px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   flex-direction: column;

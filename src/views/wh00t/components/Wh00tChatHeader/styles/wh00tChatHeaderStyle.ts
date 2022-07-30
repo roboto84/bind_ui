@@ -11,14 +11,14 @@ export const Wh00tChatHeaderContainer = styled.div<Wh00tChatHeaderContainerProps
   color: ${(props: Wh00tChatHeaderContainerProps) => props.theme.wh00t.chatHeader.titleColor};
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 export const Wh00tChatHeaderTitleContainer = styled.ul`
   all: unset;
   display: flex;
   margin-left: 5px;
-  margin-top: -2px;
+  margin-top: -1px;
   
   li {
     list-style: none;

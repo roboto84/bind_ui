@@ -17,11 +17,11 @@ export const Wh00tMessagesContainer = styled.ul<MessagesContainerProps>`
   color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.messageText};
   margin: 0 5px 5px 5px;
   font-family: verdana,serif;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.5;
-  padding: 5px;
+  padding: 0;
   overflow-y: auto;
-  height: calc(100% - 105px);
+  height: calc(100% - 90px);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 

@@ -8,7 +8,11 @@ import { device } from '@/styles/responsive';
 
 export const Wh00tMessageWrapper = styled.li`
   display: flex;
-  margin: 5px 0;
+  
+  &:hover{
+    transition: 0.4s;
+    background-color: ${(props: GlobalThemeType) => props.theme.wh00t.messages.messageHoverColor};
+  }
 `;
 
 export const Wh00tChatImageWrapper = styled.div`
@@ -16,7 +20,7 @@ export const Wh00tChatImageWrapper = styled.div`
 `;
 
 export const Wh00tBaseUserImageContainer = styled.div`
-  margin: 7px 10px 5px 0;
+  margin: 7px 10px 5px 5px;
   color: white;
   width: 33px;
   height: 33px;
@@ -88,7 +92,7 @@ export const CodeBlock = styled.div`
 `;
 
 export const TextMessageContainer = styled.div<TextMessageContainerProps>`
-  font-size: 16px;
+  font-size: 15px;
   background-color: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? props.theme.core.code.backgroundColor : 'inherit')};
   border-radius: ${(props: TextMessageContainerProps) => (props.highlightMessage
@@ -96,7 +100,7 @@ export const TextMessageContainer = styled.div<TextMessageContainerProps>`
   margin: ${(props: TextMessageContainerProps) => (props.highlightMessage
     ? '10px 20px;' : 'inherit')};
   padding: ${(props: TextMessageContainerProps) => (props.highlightMessage
-    ? '10px 15px 15px 10px' : 'inherit')};
+    ? '5px 15px 10px 10px' : 'inherit')};
   filter: ${(props: TextMessageContainerProps) => (props.filterBlur ? 'blur(4px)' : 'blur(0)')};
   
   &:hover, &:active {

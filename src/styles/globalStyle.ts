@@ -4,13 +4,13 @@ import { GlobalThemeType } from '@/types';
 export const GlobalStyle = createGlobalStyle`
   h1 {
     font-family: ${(props: GlobalThemeType) => props.theme.shared.fonts.primary};
-    font-size: 28px;
+    font-size: 25px;
     margin: 15px 20px 0 15px;
   }
 
   h2 {
     font-family: ${(props: GlobalThemeType) => props.theme.shared.fonts.primary};
-    font-size: 20px;
+    font-size: 18px;
     margin: 10px;
   }
 

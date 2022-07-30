@@ -13,6 +13,7 @@ export function WeatherTableSubNavigation() {
     <SubNavigation
       navKey="weatherTablesNav"
       navLinkType={NavigationLinkType.sub}
+      padding="7px 10px"
       margin="10px 0 25px 0"
       justifyContent="left"
       navConfig={navConfig}

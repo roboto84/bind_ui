@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 
 export const HomeContainer = styled.div`
-  padding-top: calc(6vh);
+  padding-top: calc(11vh);
 
   &.side-flexed {
     display: flex;
@@ -19,7 +19,7 @@ export const HomeContainer = styled.div`
 `;
 
 export const AppDescriptionContainer = styled.section`
-  width: 600px;
+  width: 565px;
 
   @media ${device.tabletS} {
     width: 800px;
@@ -78,5 +78,5 @@ export const HomeBottomRight = styled.div`
   word-spacing: 4px;
   opacity: 0.8;
   margin-top: -5px;
-  font-size: 24px;
+  font-size: 21px;
 `;

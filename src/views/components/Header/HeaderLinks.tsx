@@ -10,8 +10,8 @@ export default function HeaderLinks() {
   const { state, dispatch } = useContext(GlobalContext);
   const wh00tState = useWh00tWebsocket().state;
   const githubUrl: string = 'https://github.com/roboto84';
-  const iconPadding: string = '4px 8px';
-  const iconFontSize: string = '23px';
+  const iconPadding: string = '3px 8px';
+  const iconFontSize: string = '21px';
   const borderRadius: string = '3px';
 
   return (
@@ -47,17 +47,15 @@ export default function HeaderLinks() {
       >
         {state.theme === ThemeModeEnum.LIGHT ? <BsMoonFill /> : <BsFillSunFill />}
       </NavigationLink>
-      <NavigationOptional>
-        <NavigationLink
-          title="Project Github"
-          borderRadius={borderRadius}
-          padding={iconPadding}
-          fontSize={iconFontSize}
-          callBack={() => window.open(githubUrl, '_blank')}
-        >
-          <BsGithub />
-        </NavigationLink>
-      </NavigationOptional>
+      <NavigationLink
+        title="Project Github"
+        borderRadius={borderRadius}
+        padding={iconPadding}
+        fontSize={iconFontSize}
+        callBack={() => window.open(githubUrl, '_blank')}
+      >
+        <BsGithub />
+      </NavigationLink>
     </>
   );
 }

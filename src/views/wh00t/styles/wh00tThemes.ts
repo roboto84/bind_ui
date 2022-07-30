@@ -18,7 +18,7 @@ export const wh00tDark: Wh00tThemeType = {
   largeWh00t: {
   },
   messages: {
-    backgroundColor: '#2e3036',
+    backgroundColor: '#2a2b30',
     otherUsernamesColor: '#de935f',
     usernameColor: '#b5bd68',
     botUsernameColor: '#3da497',
@@ -26,6 +26,7 @@ export const wh00tDark: Wh00tThemeType = {
     otherUsernameBaseImageBackgroundColor: '#94673f',
     timeColor: '#A3A3A3',
     messageText: '#f0c674',
+    messageHoverColor: '#646b7833',
     aLinkColor: '#81a2be',
     imageBorderColor: '#444',
   },
@@ -78,6 +79,7 @@ export const wh00tLight: Wh00tThemeType = {
     otherUsernameBaseImageBackgroundColor: '#c37835',
     timeColor: '#8E8D8D',
     messageText: '#004578',
+    messageHoverColor: '#bfbfbf33',
     aLinkColor: '#5c9bd0',
     imageBorderColor: '#e5e5e5',
   },

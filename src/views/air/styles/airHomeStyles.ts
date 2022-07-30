@@ -5,7 +5,7 @@ import { device } from '@/styles/responsive';
 import { SubNavigationProps, WeatherSubcategoryProps } from '../types/airTypes';
 
 export const WeatherIconContainer = styled.li`
-  margin: -22px 0px -50px;
+  margin: -15px 0px -40px;
 `;
 
 export const WeatherIconSubTileContainer = styled.li`
@@ -33,12 +33,12 @@ export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
   border: 2px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
-  margin: 20px;
+  margin: 20px 10px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
   border-radius: 3px;
   padding: 10px;
-  width: 255px;
+  width: 230px;
 
   @media ${device.tabletS} {
     width: initial;
@@ -51,7 +51,7 @@ export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
 `;
 
 export const Weather = styled.section`
-  font-size: 13px;
+  font-size: 12px;
   height: 85%;
   width: 95%;
   margin: 0 30px;
@@ -74,16 +74,16 @@ export const Weather = styled.section`
 `;
 
 export const WeatherTitle = styled.li`
-  font-size: 18px;
+  font-size: 17px;
   color: #535353;
-  padding: 5px;
+  padding: 0 5px 5px;
   border-bottom: #2F3436 solid 2px;
   text-align: center;
   letter-spacing: 3px;
 `;
 
 export const CurrentTemperature = styled.li`
-  font-size: 35px;
+  font-size: 32px;
   margin: 0 30px 7px 30px;
   text-align: center;
 `;

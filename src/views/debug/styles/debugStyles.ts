@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { style } from 'd3';
 import { device } from '@/styles/responsive';
 
 export const DebugHomeContainer = styled.div`
@@ -10,6 +9,7 @@ export const DebugHomeContainer = styled.div`
   font-size: 14px;
 
   @media ${device.tabletS} {
+    width: 95%;
     min-width: 335px;
   }
 `;
@@ -24,6 +24,7 @@ export const DebugSectionContainer = styled.section`
 
 export const LatestMessage = styled.ul`{
   border: ${(props: GlobalThemeType) => props.theme.debug.latestMessageBorder} 5px solid;
+  border-radius: 5px;
   padding: 20px;
   margin: 20px 50px;
   min-height: 25px;
@@ -40,6 +41,7 @@ export const LatestMessage = styled.ul`{
 
 export const MessageHistory = styled.ul`{
   border: ${(props: GlobalThemeType) => props.theme.debug.messageHistoryBorder} 5px solid;
+  border-radius: 5px;
   padding: 20px;
   margin: 20px 50px 0 50px;
   overflow: auto;

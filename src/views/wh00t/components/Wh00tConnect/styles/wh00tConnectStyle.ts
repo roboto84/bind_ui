@@ -6,9 +6,10 @@ import {
   ChatInputButton,
 } from '@/views/wh00t/components/Wh00tChatInput/styles/wh00tChatInputStyle';
 import { Section } from '@/views/styles/appStyles';
+import { device } from '@/styles/responsive';
 
 export const Wh00tConnectContainer = styled.div`
-  max-width: 410px;
+  max-width: 375px;
   height: 210px;
   margin: 12% auto auto;
   padding: 20px;
@@ -33,7 +34,7 @@ export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
 export const Wh00tConnectTitle = styled.div`
   margin-top: 20px;
   color: ${(props: GlobalThemeType) => props.theme.core.textColor};
-  font-size: 20px;
+  font-size: 18px;
 `;
 
 export const Wh00tConnectTitleDescription = styled.span`
@@ -43,8 +44,9 @@ export const Wh00tConnectTitleDescription = styled.span`
 `;
 
 export const Wh00tConnectInput = styled(Input)`
-  margin-top: 30px;
-  width: 93%;
+  margin-top: 20px;
+  font-size: 12px;
+  width: 92%;
   border-color: #6b6b6b94;
   
   :focus{
@@ -52,11 +54,19 @@ export const Wh00tConnectInput = styled(Input)`
     background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
     color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.inputColor};
   }
+
+  @media ${device.tabletS} {
+    width: 90%;
+  }
 `;
 
 export const ChatConnectButton = styled(ChatInputButton)`
   margin: 20px 0 0 0;
   background-color: #2F3436;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 14px;
+  width: 92%;
+
+  @media ${device.tabletS} {
+    width: 90%;
+  }
 `;

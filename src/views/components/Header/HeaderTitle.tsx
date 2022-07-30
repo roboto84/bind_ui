@@ -22,7 +22,7 @@ export default function HeaderTitle(props: HeaderProps) {
   return (
     <HeaderTitleContainer>
       <SmallHeaderIconContainer onClick={() => navigate('/')}>
-        <RobotImg margin="7px 0px 0px 10px" fontSize="50px" />
+        <RobotImg margin="5px 0px 0px 10px" fontSize="45px" />
       </SmallHeaderIconContainer>
       <TitleContainer>
         <Title title={htmlTitle}>

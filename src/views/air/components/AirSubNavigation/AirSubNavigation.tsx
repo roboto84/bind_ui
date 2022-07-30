@@ -10,7 +10,7 @@ import {
 } from '@/views/components/Header/types/headerTypes';
 
 export function AirSubNavigation() {
-  const iconPadding: string = '6px 15px 0px 15px';
+  const iconPadding: string = '3px 15px 0px 15px';
   const iconFontSize: string = '20px';
   const navConfig: NavigationItemConfig[] = [
     {

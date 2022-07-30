@@ -3,7 +3,7 @@ import { Hoverable } from '@/views/styles/appStyles';
 import { GlobalThemeType } from '@/types';
 
 export const ErrorDisplay = styled.div`
-  font-size: 50px;
+  font-size: 45px;
   letter-spacing: 3px;
   margin-top: -3px;
 `;

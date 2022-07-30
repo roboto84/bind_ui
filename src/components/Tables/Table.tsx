@@ -28,7 +28,7 @@ type HeaderSortState = {
 
 const TableContainer = styled.div<GlobalThemeType>`
   overflow-y: auto;
-  height: calc(100vh - 245px);
+  height: calc(100vh - 215px);
   border-radius: 3px;
 
   @media ${device.tabletS} {
