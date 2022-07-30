@@ -7,6 +7,7 @@ export const RobotoDescriptionContainer = styled.div`
   background-color: ${(props: GlobalThemeType) => props.theme.home.robotoDescription.backgroundColor};
   border: 2px dashed ${(props: GlobalThemeType) => props.theme.home.robotoDescription.borderColor};
   border-radius: 5px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
   padding: 15px 0;
 
   @media ${device.tablet} {
@@ -24,6 +25,7 @@ export const AppDescriptionCoreContainer = styled.button`
   color: ${(props:GlobalThemeType) => props.theme.home.appDescription.fontColor};
   border: 1px solid ${(props:GlobalThemeType) => props.theme.home.appDescription.borderColor};
   background-color: ${(props: GlobalThemeType) => props.theme.home.appDescription.backgroundColor};
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
   transition: 0.4s;
 
   .appDescriptionHeaderTitle{

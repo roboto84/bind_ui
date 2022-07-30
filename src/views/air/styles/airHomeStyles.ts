@@ -31,11 +31,12 @@ export const AirSubTitleContainer = styled.section`
 
 export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
-  border: 2px solid ${(props: WeatherSubcategoryProps) => (
+  border: 1px solid ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
   margin: 20px 10px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
   border-radius: 3px;
   padding: 10px;
   width: 230px;
@@ -54,7 +55,7 @@ export const Weather = styled.section`
   font-size: 12px;
   height: 85%;
   width: 95%;
-  margin: 0 30px;
+  margin: 15px 30px 0 30px;
   display: flex;
   justify-content: center;
   flex-direction: row;

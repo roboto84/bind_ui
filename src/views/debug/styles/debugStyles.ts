@@ -28,6 +28,7 @@ export const LatestMessage = styled.ul`{
   padding: 20px;
   margin: 20px 50px;
   min-height: 25px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
 
   li {
@@ -47,6 +48,7 @@ export const MessageHistory = styled.ul`{
   overflow: auto;
   min-height: 100px;
   height: calc(90vh - 325px);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
   background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
 
   li {
