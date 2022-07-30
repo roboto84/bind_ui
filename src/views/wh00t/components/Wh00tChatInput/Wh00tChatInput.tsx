@@ -4,8 +4,9 @@ import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { EmojiSelector } from '@/views/wh00t/components/Wh00tChatInput/components/EmojiSelector';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import {
-  ChatInputButton,
+  ChatSendButton,
   ChatInputButtonContainer,
+  EmojiButton,
   EmojiUnitContainer,
   Wh00tChatForm,
   Wh00tChatInputContainer,
@@ -22,7 +23,7 @@ export function Wh00tChatInput() {
   const textAreaRef = useRef(null);
   const keyLog: any = {};
   let localMessageHistoryIterator: number = 0;
-  const iconPadding: string = '6px 7px 0px 7px';
+  const iconPadding: string = '11px 7px 0px 7px';
   const iconFontSize: string = '25px';
 
   const appendToCurrentMessageText: CallableFunction = (text: string) => {
@@ -105,7 +106,7 @@ export function Wh00tChatInput() {
               display={emojiSelectorDisplay}
               addTextCallback={appendToCurrentMessageText}
             />
-            <ChatInputButton
+            <EmojiButton
               title="Emoji Selector"
               padding={iconPadding}
               fontSize={iconFontSize}
@@ -113,11 +114,11 @@ export function Wh00tChatInput() {
               className={emojiSelectorDisplay && 'active'}
             >
               <MdOutlineTagFaces />
-            </ChatInputButton>
+            </EmojiButton>
           </EmojiUnitContainer>
-          <ChatInputButton title="Send Message" onClick={sendMessage}>
+          <ChatSendButton title="Send Message" onClick={sendMessage}>
             Send
-          </ChatInputButton>
+          </ChatSendButton>
         </ChatInputButtonContainer>
       </Wh00tChatForm>
     </Wh00tChatInputContainer>

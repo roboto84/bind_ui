@@ -1,6 +1,6 @@
 /* Chat Input */
 import styled from 'styled-components';
-import { Button } from '@/components/Nav/Button';
+import { Button, ButtonProps } from '@/components/Nav/Button';
 import { InputTextArea } from '@/components/Input/InputTextArea';
 import { GlobalThemeType } from '@/types';
 import { EmojiSelectorContainerProps } from '@/views/wh00t/types/wh00tTypes';
@@ -12,7 +12,27 @@ export const ChatInputButtonContainer = styled.div`
   display: flex;
 `;
 
-export const ChatInputButton = styled(Button)`
+export const ChatSendButton = styled(Button)`
+  background-color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.button.backgroundColor};
+  border: 0;
+  font-size: ${(props) => (props.fontSize || '16px')};
+  font-weight: bold;
+  margin: 0 0 0 5px;
+  padding: ${(props) => (props.padding || '12px 13px 13px 13px')};
+  color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.button.color};
+  border-radius: 5px;
+  
+  :hover, &.active {
+    background-color: rgb(179, 107, 0);
+  }
+`;
+
+export const EmojiButton = styled.div<ButtonProps>`
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 3px;
+  word-spacing: 10px;
+  transition: 0.4s;
   background-color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.button.backgroundColor};
   border: 0;
   font-size: ${(props) => (props.fontSize || '16px')};
@@ -21,9 +41,12 @@ export const ChatInputButton = styled(Button)`
   padding: ${(props) => (props.padding || '13px')};
   color: ${(props: GlobalThemeType) => props.theme.wh00t.chatInput.button.color};
   border-radius: 5px;
-  
-  :hover, &.active {
+
+  &:hover, &.active {
     background-color: rgb(179, 107, 0);
+    border-color: #a3ff0000;
+    color: ${(props:ButtonProps) => props.theme.button.transitionFontColor};
+    cursor: pointer;
   }
 `;
 

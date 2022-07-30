@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GlobalThemeType } from '@/types/themeTypes';
 import { device } from '@/styles/responsive';
 
-interface ButtonProps extends GlobalThemeType {
+export interface ButtonProps extends GlobalThemeType {
   fontSize ?: string,
   padding ?: string
   borderRadius ?: string,

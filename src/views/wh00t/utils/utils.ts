@@ -20,7 +20,7 @@ export function linkify(message: string): string {
 export function emojify(message: string): string {
   if (!message) return '';
   return message.replace(emojiReg, (emoji) => (
-    `<span style="font-size: 27px;">${emoji}</span>`));
+    `<span style="font-size: 28px;">${emoji}</span>`));
 }
 
 export function isHyperlinkLink(text: string) {

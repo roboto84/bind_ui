@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { GlobalThemeType, Size } from '@/types';
 import { Input } from '@/components/Input/Input';
 import {
-  ChatInputButton,
+  ChatSendButton,
 } from '@/views/wh00t/components/Wh00tChatInput/styles/wh00tChatInputStyle';
 import { Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
@@ -60,7 +60,7 @@ export const Wh00tConnectInput = styled(Input)`
   }
 `;
 
-export const ChatConnectButton = styled(ChatInputButton)`
+export const ChatConnectButton = styled(ChatSendButton)`
   margin: 20px 0 0 0;
   background-color: #2F3436;
   font-size: 14px;
