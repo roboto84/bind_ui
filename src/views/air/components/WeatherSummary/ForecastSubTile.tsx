@@ -2,7 +2,7 @@ import React from 'react';
 import { dayOfWeekAbbreviation, simpleDateTimeFormat, removeSpaces, padTime } from '@/utils/formatting';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '@/views/air/utils';
-import { ForecastSubTileProps } from '../../types/airTypes';
+import { ForecastSubTileProps, PollenSeverity } from '../../types/airTypes';
 import {
   WeatherTitle,
   WeatherForecastTemperature,
@@ -17,8 +17,8 @@ export function ForecastSubTile(props: ForecastSubTileProps) {
   const { date, weatherCode, temperature, precipitationProbability, treeIndex, grassIndex,
     weedIndex, humidity, epaHealthConcern, epaIndex, moonPhase, pressureSurfaceLevel,
     temperatureApparent, precipitationType } = forecast;
-  const pollenMax: number = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
-  const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
+  const pollenMax: PollenSeverity = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
+  const pollenSeveritySummary: string = pollenSeverityView(pollenMax.severity);
   const forecastDate: string = simpleDateTimeFormat(date);
   const dayOfMonth: string = forecastDate.split('/')[1];
   const currentDayOfMonth: string = padTime(new Date().getDate());
@@ -53,7 +53,7 @@ export function ForecastSubTile(props: ForecastSubTileProps) {
         {epaHealthConcern} Air Quality ({epaIndex} {forecastUnits.epaIndex})
       </WeatherForecastElement>
       <WeatherForecastElement>
-        Pollen will be {pollenSeveritySummary}
+        {pollenMax.pollenType.toUpperCase()} pollen will be {pollenSeveritySummary}
       </WeatherForecastElement>
       <WeatherForecastElement>
         {moonPhase} Moon

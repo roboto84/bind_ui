@@ -88,6 +88,7 @@ export const WordAudio = styled.div`
 export const WordDefStems = styled.ul`
   all: unset;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   margin: 5px 90px;
   letter-spacing: 3px;

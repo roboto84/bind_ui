@@ -4,7 +4,12 @@ import { GlobalThemeType } from '@/types';
 export type AirStandardTimeView = {
   date: string,
   hour: string,
-  seconds: string,
+  seconds: string
+}
+
+export type PollenSeverity = {
+  pollenType: PollenType,
+  severity: number
 }
 
 export type WeatherSummary = {
@@ -84,7 +89,7 @@ export interface SubWeatherSummary extends BaseObject {
   weatherCode: string,
   precipitationProbability: number,
   precipitationType: string,
-  pressureSurfaceLevel: number,
+  pressureSurfaceLevel: number
 }
 
 export interface WeatherPollutionSummary extends BaseObject {
@@ -97,7 +102,7 @@ export interface WeatherPollutionSummary extends BaseObject {
   pollutantCO: number,
   pollutantNO2: number,
   pollutantO3: number,
-  pollutantSO2: number,
+  pollutantSO2: number
 }
 
 export interface WeatherPollenSummary extends BaseObject {
@@ -111,6 +116,12 @@ export enum WeatherTableType {
   weather = 'weather',
   pollution = 'pollution',
   pollen = 'pollen'
+}
+
+export enum PollenType {
+  weed = 'weed',
+  grass = 'grass',
+  tree = 'tree'
 }
 
 export enum WeatherChartType {

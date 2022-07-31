@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
@@ -28,34 +28,27 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const { wordDefinition } = props;
   const navigate: NavigateFunction = useNavigate();
   let wordAudioComponent: JSX.Element = <span />;
+
   const wordStemsView: {}[] = wordDefinition.stems.map(
-    (wordStem:string, index:number, array:string[]) => {
-      const stem: ReactNode = (
-        <Stem
-          key={'wordStem-'.concat(wordStem)}
-          onClick={() => navigate(`/lexicon/search?word=${wordStem}`)}
-        >
-          {wordStem}
-        </Stem>
-      );
-      if (index === array.length - 1) {
-        return stem;
-      }
-      return (
-        <>
-          {stem}
-          <li key={'wordStemComma-'.concat(wordStem)}>,</li>
-        </>
-      );
-    },
+    (wordStem:string) => (
+      <Stem
+        key={'wordStem-'.concat(wordStem)}
+        onClick={() => navigate(`/lexicon/search?word=${wordStem}`)}
+      >
+        {wordStem}
+      </Stem>
+    ),
   );
 
   if (wordDefinition.audio && wordDefinition.audio !== 'n/a' && wordDefinition.audio !== 'unk') {
     wordAudioComponent = (
       <WordAudio>
-        <audio preload="auto" controls>
+        <audio preload="auto" controls key={wordDefinition.audio}>
           <source src={wordDefinition.audio} type="audio/mpeg" />
-          Your browser does not support the audio format.
+          <p>
+            Your browser does not support HTML5 audio.
+            Here is a <a href={wordDefinition.audio}>link to download the audio</a> instead.
+          </p>
         </audio>
       </WordAudio>
     );

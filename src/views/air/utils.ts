@@ -1,4 +1,4 @@
-import { BaseObject, WeatherTitles } from '@/views/air/types/airTypes';
+import { BaseObject, PollenSeverity, PollenType, WeatherTitles } from '@/views/air/types/airTypes';
 
 export function precipitationTypeView(precipitationType: string): string {
   return precipitationType !== 'N/A' ? precipitationType : 'Rain';
@@ -21,8 +21,16 @@ export function pollenSeverityView(pollenSeverityNumber:number):string {
   return pollenSeverityLegend[pollenSeverityNumber] as string;
 }
 
-export function pollenMaxConcern(treePollen:number, grassPollen:number, weedPollen:number) {
-  return Math.max(treePollen, grassPollen, weedPollen);
+export function pollenMaxConcern(
+  treePollen:number,
+  grassPollen:number,
+  weedPollen:number,
+): PollenSeverity {
+  return [
+    { pollenType: PollenType.tree, severity: treePollen },
+    { pollenType: PollenType.weed, severity: weedPollen },
+    { pollenType: PollenType.grass, severity: grassPollen },
+  ].sort((a, b) => b.severity - a.severity)[0];
 }
 
 export function getWeatherTableTitle(weatherTableTitle:string):string {

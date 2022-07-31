@@ -3,7 +3,7 @@ import { MoonIcon, MoonPhaseEnum } from '@/components/Images/MoonIcon';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { removeSpaces } from '@/utils/formatting';
 import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '../../utils';
-import { CurrentWeatherProps } from '../../types/airTypes';
+import { CurrentWeatherProps, PollenSeverity } from '../../types/airTypes';
 import {
   Weather,
   WeatherTitle,
@@ -21,8 +21,8 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const { temperature, temperatureApparent, precipitationType, weatherCode,
     precipitationProbability, humidity, dewPoint, epaIndex, epaHealthConcern,
     pressureSurfaceLevel, treeIndex, grassIndex, weedIndex } = currentWeatherReport;
-  const pollenMax: number = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
-  const pollenSeveritySummary: string = pollenSeverityView(pollenMax);
+  const pollenMax: PollenSeverity = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
+  const pollenSeveritySummary: string = pollenSeverityView(pollenMax.severity);
   const moonPhase: MoonPhaseEnum = removeSpaces(currentWeatherReport.moonPhase) as MoonPhaseEnum;
   const weatherState: WeatherConditionEnum = removeSpaces(
     weatherCode,
@@ -51,7 +51,8 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
       <WeatherSubcategory>
         <WeatherTitle>water</WeatherTitle>
         <WeatherElement>
-          {`${precipitationProbability} ${weatherUnits.precipitationProbability} Chance of ${precipitationTypeView(precipitationType)}`}
+          {`${precipitationProbability} ${weatherUnits.precipitationProbability} 
+          Chance of ${precipitationTypeView(precipitationType)}`}
         </WeatherElement>
         <WeatherElement>{humidity} {weatherUnits.humidity} Humidity</WeatherElement>
         <WeatherElement>{dewPoint} {weatherUnits.dewPoint} Dew Point</WeatherElement>
@@ -64,7 +65,10 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         <WeatherElement>
           {pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure
         </WeatherElement>
-        <WeatherElement>Pollen is {pollenSeveritySummary} (Severity {pollenMax})</WeatherElement>
+        <WeatherElement>
+          {`${pollenMax.pollenType.toUpperCase()} pollen is ${pollenSeveritySummary} 
+          (Severity ${pollenMax.severity})`}
+        </WeatherElement>
       </WeatherSubcategory>
     </Weather>
   );
