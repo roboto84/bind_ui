@@ -5,6 +5,7 @@ const COMMON_CONFIG = require('./webpack.common.config.js');
 
 const PROD_CONFIG = {
   mode: 'production',
+  devtool: 'source-map',
   optimization: {
     minimize: true,
     minimizer: [
