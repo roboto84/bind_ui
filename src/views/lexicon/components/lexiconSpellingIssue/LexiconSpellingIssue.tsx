@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ErrorDisplay, ErrorMessage, SpellingSuggestion, SpellingSuggestions,
+  SpellingErrorDisplay, SpellingErrorMessage, SpellingSuggestion, SpellingSuggestions,
 } from '@/views/lexicon/components/lexiconSpellingIssue/styles/LexiconSpellingIssuesStyle';
 import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
 import { LatestWordListContainer, LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
@@ -14,10 +14,10 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
   return (
     <LexiconContainer>
       <LexiconSection>
-        <ErrorDisplay>Not Found</ErrorDisplay>
-        <ErrorMessage>
+        <SpellingErrorDisplay>Not Found</SpellingErrorDisplay>
+        <SpellingErrorMessage>
           perhaps &quot;{wordDefinition.word}&quot; was misspelled, here are some suggestions:
-        </ErrorMessage>
+        </SpellingErrorMessage>
         <SpellingSuggestions>
           <LatestWordListContainer>
             { wordDefinition.spellingSuggestions.map((word: string) => (

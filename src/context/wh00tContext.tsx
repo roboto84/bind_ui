@@ -15,6 +15,8 @@ const initialState: Wh00tContextStateType = {
   historicalChatMessages: [],
   currentChatMessage: null,
   wh00tIsConnected: false,
+  wh00tIsConnecting: false,
+  wh00tConnectionError: false,
   wh00tWebSocket: new Wh00tWebSocket(),
   wh00tMinimizedSwitch: true,
   wh00tNotifier: new AppNotification(),
@@ -49,13 +51,11 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
     case Wh00tActionsEnum.HISTORICAL_MESSAGE:
       return {
         ...state,
-        wh00tIsConnected: true,
         historicalChatMessages: state.historicalChatMessages.concat(message),
       };
     case Wh00tActionsEnum.NEW_MESSAGE:
       return {
         ...state,
-        wh00tIsConnected: true,
         historicalChatMessages: state.currentChatMessage
           ? state.historicalChatMessages.concat(state.currentChatMessage)
           : state.historicalChatMessages,
@@ -79,12 +79,35 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
         historicalChatMessages: [],
         currentChatMessage: null,
       };
-    case Wh00tActionsEnum.DISCONNECT:
+    case Wh00tActionsEnum.CONNECTED:
+      return {
+        ...state,
+        wh00tIsConnected: true,
+        wh00tIsConnecting: false,
+        wh00tConnectionError: false,
+      };
+    case Wh00tActionsEnum.DISCONNECTED:
       return {
         ...state,
         wh00tIsConnected: false,
+        wh00tIsConnecting: false,
+        wh00tConnectionError: false,
         historicalChatMessages: [],
         currentChatMessage: null,
+      };
+    case Wh00tActionsEnum.CONNECTING:
+      return {
+        ...state,
+        wh00tIsConnecting: true,
+        wh00tIsConnected: false,
+        wh00tConnectionError: false,
+      };
+    case Wh00tActionsEnum.CONNECTION_ERROR:
+      return {
+        ...state,
+        wh00tIsConnecting: false,
+        wh00tIsConnected: false,
+        wh00tConnectionError: true,
       };
     default:
       return state;
@@ -96,18 +119,21 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
   const memoizedValue = useMemo(() => ({ state, dispatch }), [state]);
 
   useEffect(() => {
-    state.wh00tWebSocket.setDispatch(dispatch);
-    state.wh00tNotifier.setDispatch(dispatch);
     const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
     const shouldConnect: string = getLocalStorage(LocalStorageEnum.STAY_CONNECTED);
     const stopNotifier = () => {
       state.wh00tNotifier.stopDocumentTitleNotification();
     };
-    if (JSON.parse(shouldConnect) === true && username) {
-      state.wh00tWebSocket.connectWebSocket(username);
+
+    if (!state.wh00tIsConnected && !state.wh00tIsConnecting && !state.wh00tConnectionError) {
+      document.addEventListener('focus', stopNotifier);
+      state.wh00tWebSocket.setDispatch(dispatch);
+      state.wh00tNotifier.setDispatch(dispatch);
+      if (JSON.parse(shouldConnect) === true && username) {
+        state.wh00tWebSocket.connectWebSocket(username);
+      }
     }
 
-    document.addEventListener('focus', stopNotifier);
     return () => {
       document.removeEventListener('focus', stopNotifier);
     };

@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --config webpack/webpack.dev.config.js --progress --color",
     "build": "webpack --config webpack/webpack.prod.config.js",
     "profile": "webpack --config webpack/webpack.profile.config.js",
-    "server": "http-server ./dist --proxy http://localhost:8080? --port 8080 --gzip --log-ip",
+    "server": "http-server ./dist --proxy http://localhost:8080? --port 8080 --gzip -c 31536000 --log-ip",
     "build-run": "npm run build && npm run server"
   },
   "author": "roboto84 <7658704+roboto84@users.noreply.github.com>",

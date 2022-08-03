@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { Hoverable } from '@/views/styles/appStyles';
 import { GlobalThemeType } from '@/types';
 
-export const ErrorDisplay = styled.div`
+export const SpellingErrorDisplay = styled.div`
   font-size: 45px;
   letter-spacing: 3px;
   margin-top: -3px;
 `;
 
-export const ErrorMessage = styled.div`
+export const SpellingErrorMessage = styled.div`
   margin-left: 19px;
   margin-top: 22px;
   color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};

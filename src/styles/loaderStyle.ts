@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import { GlobalThemeType } from '@/types';
 
-export const LoaderContainer = styled.div`
+interface LoaderContainerProps extends GlobalThemeType {
+  padding ?: string,
+  margin ?: string,
+}
+
+export const LoaderContainer = styled.div<LoaderContainerProps>`
   display: table;
-  margin: auto;
-  padding-top: 15vh;
+  margin: ${(props: LoaderContainerProps) => (props.margin ? props.margin : 'inherit')};
+  padding: ${(props: LoaderContainerProps) => (props.padding ? props.padding : 'inherit')};
 `;

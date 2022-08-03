@@ -6,6 +6,7 @@ import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Size } from '@/types';
+import Wh00tConnectionStatus from '@/views/wh00t/components/Wh00tConnect/Wh00tConnectStatus';
 import { Wh00tChatInput } from './components/Wh00tChatInput/Wh00tChatInput';
 import { Wh00tMessages } from './components/Wh00tMessages/Wh00tMessages';
 import {
@@ -19,13 +20,23 @@ export function Wh00tMini() {
   const { pathname } = useLocation();
   const { state, dispatch } = useWh00tWebsocket();
   const isLargeWh00t: boolean = (pathname.includes('wh00t'));
-
   const wh00tMinimizeSwitch = () => {
     dispatch({
       source: Wh00tMessageTypeEnum.LOCAL,
       type: Wh00tActionsEnum.MINIMIZED_SWITCH,
     });
   };
+  const miniChatHeader: JSX.Element = (
+    <Wh00tChatHeader
+      headerSize={ElementSize.SMALL}
+      headerButtons={{
+        maximize: true,
+        minimize: true,
+        disconnect: true,
+      }}
+      minimizeSwitch={wh00tMinimizeSwitch}
+    />
+  );
 
   if (isLargeWh00t) {
     return (<div />);
@@ -41,34 +52,26 @@ export function Wh00tMini() {
     );
   }
 
-  if (state.wh00tWebSocket.wh00tIsConnected) {
+  if (state.wh00tIsConnected) {
     return (
       <Wh00tMiniContainer>
-        <Wh00tChatHeader
-          headerSize={ElementSize.SMALL}
-          headerButtons={{
-            maximize: true,
-            minimize: true,
-            disconnect: true,
-          }}
-          minimizeSwitch={wh00tMinimizeSwitch}
-        />
+        {miniChatHeader}
         <Wh00tMessages showBackgroundImage={false} />
         <Wh00tChatInput />
       </Wh00tMiniContainer>
     );
+  } if (state.wh00tIsConnecting || state.wh00tConnectionError) {
+    return (
+      <Wh00tMiniContainer>
+        {miniChatHeader}
+        <Wh00tConnectionStatus size={Size.small} connectionStatus="Connecting" />
+      </Wh00tMiniContainer>
+    );
   }
+
   return (
     <Wh00tMiniContainer>
-      <Wh00tChatHeader
-        headerSize={ElementSize.SMALL}
-        headerButtons={{
-          maximize: true,
-          minimize: true,
-          disconnect: false,
-        }}
-        minimizeSwitch={wh00tMinimizeSwitch}
-      />
+      {miniChatHeader}
       <Wh00tConnect size={Size.small} />
     </Wh00tMiniContainer>
   );

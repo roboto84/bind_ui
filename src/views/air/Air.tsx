@@ -8,11 +8,11 @@ import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import { RouterItemConfig } from '@/types';
 import { AirLocation } from '@/views/air/components/AirLocation/AirLocation';
 import { useQuery } from 'react-query';
-import { LiveWeatherReport, WeatherBasics } from '@/dataSource/types/apiTypes';
+import { WeatherBasics } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
-import { Loader } from '@/components/Misc/Loader';
-import { ErrorView } from '@/components/Error/ErrorView';
+import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
+import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 
 export function Air() {
   const { isLoading, isError, data, error } = useQuery<WeatherBasics,
@@ -24,18 +24,10 @@ export function Air() {
   ];
 
   if (isLoading) {
-    return (
-      <Loader />
-    );
+    return (<Loader />);
   }
   if (isError) {
-    return (
-      <ErrorView title="Data Error">
-        <div>Is it for latest words? {isError}</div>
-        <div>What is the error?</div>
-        <div>{error}</div>
-      </ErrorView>
-    );
+    return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
   return (

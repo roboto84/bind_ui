@@ -16,6 +16,8 @@ export type Wh00tContextStateType = {
   historicalChatMessages: Wh00tExtendedMessagePackage[],
   currentChatMessage: Wh00tExtendedMessagePackage,
   wh00tIsConnected: boolean,
+  wh00tIsConnecting: boolean,
+  wh00tConnectionError: boolean,
   wh00tWebSocket: Wh00tWebSocket,
   wh00tMinimizedSwitch: boolean,
   wh00tNotifier: AppNotification,

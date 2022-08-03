@@ -2,7 +2,7 @@ import React from 'react';
 import { FullWeatherReport } from '@/views/air/components/WeatherSummary/FullWeatherReport';
 import camelcaseKeys from 'camelcase-keys';
 import { useQuery } from 'react-query';
-import { Loader } from '@/components/Misc/Loader';
+import Loader from '@/components/Misc/Loader';
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { ErrorView } from '@/components/Error/ErrorView';

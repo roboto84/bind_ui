@@ -51,6 +51,15 @@ export class Wh00tWebSocket {
     this.wh00tDispatch = dispatch;
   }
 
+  setWh00tConnectionStatus(status: boolean) {
+    this.wh00tIsConnected = status;
+
+    this.wh00tDispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
+      type: status ? Wh00tActionsEnum.CONNECTED : Wh00tActionsEnum.DISCONNECTED,
+    });
+  }
+
   handleMessage(messageSource: Wh00tMessageTypeEnum, wh00tMessage: Wh00tMessagePackage): void {
     const newMessage: Wh00tContextActionType = {
       source: messageSource,
@@ -129,7 +138,7 @@ export class Wh00tWebSocket {
   reattemptWh00tSocketConnection(): void {
     setTimeout(() => {
       this.connectWebSocket();
-    }, 10000);
+    }, 5000);
   }
 
   connectWebSocket(clientId?: string): void {
@@ -143,13 +152,16 @@ export class Wh00tWebSocket {
     }
     setLocalStorage(LocalStorageEnum.USERNAME, this.clientId);
     setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'true');
-
+    this.wh00tDispatch({
+      source: Wh00tMessageTypeEnum.LOCAL,
+      type: Wh00tActionsEnum.CONNECTING,
+    });
     this.wh00tWS = new WebSocket(
       `${WSS_BASE_URL}:8000/wh00t_chat/${this.clientId}`,
     );
 
     this.wh00tWS.onopen = () => {
-      this.wh00tIsConnected = true;
+      this.setWh00tConnectionStatus(true);
       this.connectionAttemptCount = 0;
       this.clearWh00tScreen();
       this.handleMessage(
@@ -158,20 +170,6 @@ export class Wh00tWebSocket {
           username: 'wh00t',
           time: getSimpleDateTime(),
           message: `You are connected as *${this.clientId}*`,
-        },
-      );
-    };
-
-    this.wh00tWS.onerror = (): void => {
-      this.connectionAttemptCount += 1;
-      this.reattemptWh00tSocketConnection();
-      this.clearWh00tScreen();
-      this.handleMessage(
-        Wh00tMessageTypeEnum.LOCAL,
-        {
-          username: 'wh00t',
-          time: getSimpleDateTime(),
-          message: `An *error* has occurred connecting to wh00t. \nAn attempt will be made to connect about every *10* seconds. \nThis is attempt *${this.connectionAttemptCount}*`,
         },
       );
     };
@@ -186,17 +184,37 @@ export class Wh00tWebSocket {
         this.handleMessage(Wh00tMessageTypeEnum.SOCKET, parsedMessageData);
       }
     };
+
+    this.wh00tWS.onerror = (): void => {
+      console.log('onError');
+      this.connectionAttemptCount += 1;
+      this.reattemptWh00tSocketConnection();
+      this.clearWh00tScreen();
+      this.wh00tDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        type: Wh00tActionsEnum.CONNECTION_ERROR,
+      });
+    };
+
+    this.wh00tWS.onclose = (): void => {
+      console.log('onClose');
+      if (this.wh00tIsConnected) {
+        console.log('onClose take action');
+        this.setWh00tConnectionStatus(false);
+        this.wh00tDispatch({
+          source: Wh00tMessageTypeEnum.LOCAL,
+          type: Wh00tActionsEnum.CONNECTION_ERROR,
+        });
+        this.connectWebSocket();
+      }
+    };
   }
 
   disconnectWebSocket(): void {
     if (this.wh00tWS !== null) {
+      this.setWh00tConnectionStatus(false);
       this.wh00tWS.close();
-      this.wh00tDispatch({
-        source: Wh00tMessageTypeEnum.LOCAL,
-        type: Wh00tActionsEnum.DISCONNECT,
-      });
       this.wh00tWS = null;
-      this.wh00tIsConnected = false;
       this.connectionAttemptCount = 0;
       setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'false');
       Wh00tWebSocket.generateRandomClientId();

@@ -14,11 +14,11 @@ const TagStyle = styled.span`
   height: 100%;
   display: inline-block;
   font-family: sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 1px 3px 3px 3px;
+  padding: 1px 4px 4px 4px;
 `;
 
 // TODO - allow different sizes

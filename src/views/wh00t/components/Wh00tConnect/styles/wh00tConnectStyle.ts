@@ -31,14 +31,37 @@ export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
       : props.theme.core.section.borderColor)};
 `;
 
-export const Wh00tConnectTitle = styled.div`
-  margin-top: 20px;
-  color: ${(props: GlobalThemeType) => props.theme.core.textColor};
-  font-size: 18px;
+export const Wh00tConnectStatusSection = styled(Wh00tConnectSection)<Wh00tConnectSectionProps>`
+  text-align: center;
+`;
+
+export const Wh00tStatusContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const Wh00tStatusTimer = styled.div`
+  font-size: 50px;
+  border: 2px solid ${(props: Wh00tConnectTitleProps) => props.theme.core.mainThemeColor};
+  border-radius: 10%;
+  width: 100px;
+  height: 70px;
+  padding: 5px 10px 10px 5px;
+`;
+
+interface Wh00tConnectTitleProps extends GlobalThemeType {
+  margin ?: string
+  fontSize ?: string
+}
+
+export const Wh00tConnectTitle = styled.div<Wh00tConnectTitleProps>`
+  margin: ${(props: Wh00tConnectTitleProps) => (props.margin ? props.margin : '20px 0 0 0')};
+  color: ${(props: Wh00tConnectTitleProps) => props.theme.core.textColor};
+  font-size: ${(props: Wh00tConnectTitleProps) => (props.fontSize ? props.fontSize : '18px')};
 `;
 
 export const Wh00tConnectTitleDescription = styled.span`
-  font-size: 11px;
+  font-size: 12px;
   color: ${(props: GlobalThemeType) => props.theme.wh00t.connect.labelDescription};
   margin-left: 5px;
 `;

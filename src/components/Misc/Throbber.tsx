@@ -2,13 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 
-const ThrobberStyle = styled.div`
-  border: 16px solid ${(props: GlobalThemeType) => props.theme.throbber.background};
-  border-top: 16px solid ${(props: GlobalThemeType) => props.theme.throbber.foreground};
+interface ThrobberStyleProps extends GlobalThemeType {
+  borderThickness: string,
+  diameter: string,
+  speed: string
+}
+
+const ThrobberStyle = styled.div<ThrobberStyleProps>`
+  border: ${(props: ThrobberStyleProps) => props.borderThickness} solid ${(props: ThrobberStyleProps) => props.theme.throbber.background};
+  border-top: ${(props: ThrobberStyleProps) => props.borderThickness} solid ${(props: ThrobberStyleProps) => props.theme.throbber.foreground};
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
+  width: ${(props: ThrobberStyleProps) => props.diameter};
+  height: ${(props: ThrobberStyleProps) => props.diameter};
+  animation: spin ${(props: ThrobberStyleProps) => props.speed} linear infinite;
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -16,9 +22,15 @@ const ThrobberStyle = styled.div`
   }
 `;
 
-// TODO - allow different sizes
-export function Throbber() {
+type ThrobberProps = {
+  borderThickness: string,
+  diameter: string,
+  speed: string
+}
+
+export function Throbber(props: ThrobberProps) {
+  const { diameter, speed, borderThickness } = props;
   return (
-    <ThrobberStyle />
+    <ThrobberStyle diameter={diameter} speed={speed} borderThickness={borderThickness} />
   );
 }

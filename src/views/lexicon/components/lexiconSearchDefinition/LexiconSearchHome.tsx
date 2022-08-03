@@ -8,10 +8,10 @@ import {
 import {
   LexiconSearchDefinition,
 } from '@/views/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
-import { Loader } from '@/components/Misc/Loader';
+import Loader from '@/components/Misc/Loader';
 import { WordDefinition } from '@/views/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
-import { ErrorView } from '@/components/Error/ErrorView';
+import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 
 export function LexiconSearchHome() {
@@ -20,23 +20,10 @@ export function LexiconSearchHome() {
   const { data, error, isLoading, isError } = useLexiconWordSearch(searchWord);
 
   if (isLoading) {
-    return (
-      <LexiconContainer>
-        <Loader />
-      </LexiconContainer>
-    );
+    return (<Loader />);
   }
   if (isError) {
-    const errorMessage: string = error && error.message ? error.message : 'An error has occurred';
-    return (
-      <LexiconContainer>
-        <ErrorView title="Error">
-          <div>
-            {errorMessage}
-          </div>
-        </ErrorView>
-      </LexiconContainer>
-    );
+    return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
   const wordSearchResponse: WordDefinition = camelcaseKeys<WordDefinition>(

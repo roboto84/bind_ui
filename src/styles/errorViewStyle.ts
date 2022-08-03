@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '@/styles/responsive';
+import { GlobalThemeType } from '@/types';
 
 export const ErrorContainer = styled.div`
   font-family: verdana,serif;
@@ -13,4 +13,9 @@ export const ErrorContainer = styled.div`
 export const ErrorTitle = styled.div`
   font-size: 50px;
   margin: -45px auto 0;
+`;
+
+export const ErrorReason = styled.span`
+  margin-left: 20px;
+  color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
 `;

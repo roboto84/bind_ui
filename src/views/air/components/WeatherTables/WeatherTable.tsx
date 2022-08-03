@@ -3,12 +3,12 @@ import { getSimpleDateTime } from '@/utils/formatting';
 import { useQuery } from 'react-query';
 import { WeatherHistory } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
-import { Loader } from '@/components/Misc/Loader';
-import { ErrorView } from '@/components/Error/ErrorView';
+import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
 import { HeaderTitle, Table } from '@/components/Tables/Table';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import { getWeatherTableTitle } from '@/views/air/utils';
+import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import { WeatherSubContainer, WeatherTableContainer } from '../../styles/airHomeStyles';
 import {
   SubWeatherSummary,
@@ -26,17 +26,10 @@ export function WeatherTable(props: WeatherTablesProps) {
     Error>(airApiEndpoints.weatherHistory);
 
   if (isLoading) {
-    return (
-      <Loader />
-    );
+    return (<Loader />);
   }
   if (isError) {
-    return (
-      <ErrorView title="Data Error">
-        <div>What is the error?</div>
-        <div>{error}</div>
-      </ErrorView>
-    );
+    return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
   const airWeatherData: WeatherHistory = camelcaseKeys<WeatherHistory>(data);

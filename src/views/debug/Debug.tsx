@@ -6,31 +6,21 @@ import {
   DebugSectionContainer,
 } from '@/views/debug/styles/debugStyles';
 import { useQuery } from 'react-query';
-import { Loader } from '@/components/Misc/Loader';
+import Loader from '@/components/Misc/Loader';
 import { ErrorView } from '@/components/Error/ErrorView';
 import { DebugMessage, DebugApiResponse } from '@/dataSource/types/apiTypes';
 import { debugApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
+import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import { DebugMessageContainer } from './components/DebugMessage';
 
 export function Debug() {
   const { isLoading, isError, data, error } = useQuery<DebugApiResponse,
     Error>(debugApiEndpoints.wh00tMessages);
   if (isLoading) {
-    return (
-      <DebugHomeContainer>
-        <Loader />
-      </DebugHomeContainer>
-    );
+    return (<Loader />);
   }
   if (isError) {
-    return (
-      <DebugHomeContainer>
-        <ErrorView title="Data Error">
-          <div>What is the error?</div>
-          <div>{error}</div>
-        </ErrorView>
-      </DebugHomeContainer>
-    );
+    return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
   if (data.message.length === 0) {
