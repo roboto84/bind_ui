@@ -18,8 +18,11 @@ export class Wh00tWebSocket {
 
   connectionAttemptCount: number = 0;
 
+  wh00tSpeechSynthesisUtterance: SpeechSynthesisUtterance = null;
+
   constructor() {
     this.clientId = Wh00tWebSocket.generateRandomClientId();
+    this.setupSpeechSynthesis();
   }
 
   static generateRandomClientId(): string {
@@ -38,6 +41,20 @@ export class Wh00tWebSocket {
     return clientIdPrefix[
       randomIntFromInterval(0, clientIdPrefix.length - 1)
     ] + randomIntFromInterval(1, 99);
+  }
+
+  setupSpeechSynthesis() {
+    if (window.SpeechSynthesisUtterance && window.speechSynthesis) {
+      this.wh00tSpeechSynthesisUtterance = new window.SpeechSynthesisUtterance();
+      this.wh00tSpeechSynthesisUtterance.text = '';
+      this.wh00tSpeechSynthesisUtterance.lang = 'en-us';
+      // eslint-disable-next-line prefer-destructuring
+      this.wh00tSpeechSynthesisUtterance.voice = window.speechSynthesis.getVoices().filter(
+        (voice: SpeechSynthesisVoice) => voice.name === 'English (America)+anika',
+      )[0];
+      this.wh00tSpeechSynthesisUtterance.pitch = 0.1;
+      this.wh00tSpeechSynthesisUtterance.rate = 0.55;
+    }
   }
 
   clearWh00tScreen() {
@@ -182,11 +199,18 @@ export class Wh00tWebSocket {
         ));
       } else {
         this.handleMessage(Wh00tMessageTypeEnum.SOCKET, parsedMessageData);
+        if (this.wh00tSpeechSynthesisUtterance) {
+          if (parsedMessageData.data) {
+            if (parsedMessageData.data.voice) {
+              this.wh00tSpeechSynthesisUtterance.text = parsedMessageData.data.voice;
+              window.speechSynthesis.speak(this.wh00tSpeechSynthesisUtterance);
+            }
+          }
+        }
       }
     };
 
     this.wh00tWS.onerror = (): void => {
-      console.log('onError');
       this.connectionAttemptCount += 1;
       this.reattemptWh00tSocketConnection();
       this.clearWh00tScreen();
@@ -197,9 +221,7 @@ export class Wh00tWebSocket {
     };
 
     this.wh00tWS.onclose = (): void => {
-      console.log('onClose');
       if (this.wh00tIsConnected) {
-        console.log('onClose take action');
         this.setWh00tConnectionStatus(false);
         this.wh00tDispatch({
           source: Wh00tMessageTypeEnum.LOCAL,
