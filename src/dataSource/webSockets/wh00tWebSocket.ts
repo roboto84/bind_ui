@@ -112,7 +112,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(),
+          time: getSimpleDateTime(true),
           message: 'Sorry, that message is too long',
         },
       );
@@ -121,7 +121,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(),
+          time: getSimpleDateTime(true),
           message: 'Exiting Chat...',
         },
       );
@@ -133,7 +133,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(),
+          time: getSimpleDateTime(true),
           message: helpMenu(),
         },
       );
@@ -185,7 +185,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(),
+          time: getSimpleDateTime(true),
           message: `You are connected as *${this.clientId}*`,
         },
       );

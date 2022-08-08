@@ -46,7 +46,7 @@ export function WeatherTable(props: WeatherTablesProps) {
     if (index % 2 === 0) {
       if (tableType === WeatherTableType.weather) {
         weatherSection.weatherData.push({
-          date: getSimpleDateTime(weatherRecord.date),
+          date: getSimpleDateTime(false, weatherRecord.date),
           temperature: weatherRecord.temperature,
           temperatureApparent: weatherRecord.temperatureApparent,
           humidity: weatherRecord.humidity,
@@ -58,7 +58,7 @@ export function WeatherTable(props: WeatherTablesProps) {
         });
       } else if (tableType === WeatherTableType.pollution) {
         weatherSection.weatherData.push({
-          date: getSimpleDateTime(weatherRecord.date),
+          date: getSimpleDateTime(false, weatherRecord.date),
           epaIndex: weatherRecord.epaIndex,
           epaHealthConcern: weatherRecord.epaHealthConcern,
           epaPrimaryPollutant: weatherRecord.epaPrimaryPollutant,
@@ -71,7 +71,7 @@ export function WeatherTable(props: WeatherTablesProps) {
         });
       } else {
         weatherSection.weatherData.push({
-          date: getSimpleDateTime(weatherRecord.date),
+          date: getSimpleDateTime(false, weatherRecord.date),
           grassIndex: weatherRecord.grassIndex,
           treeIndex: weatherRecord.treeIndex,
           weedIndex: weatherRecord.weedIndex,

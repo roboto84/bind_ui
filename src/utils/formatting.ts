@@ -20,8 +20,8 @@ export function simpleDateTimeFormat(timestamp?: string): string {
   return getStandardTime(dateTime).date;
 }
 
-export function getSimpleDateTime(timestamp?: string): string {
+export function getSimpleDateTime(includeSeconds?: boolean, timestamp?: string): string {
   const dateTime: Date = timestamp ? new Date(timestamp) : new Date();
   const dateTimeParts: AirStandardTimeView = getStandardTime(dateTime);
-  return `${dateTimeParts.date} ${dateTimeParts.hour}`;
+  return `${dateTimeParts.date} ${dateTimeParts.hour}${includeSeconds ? `:${dateTimeParts.seconds}` : ''}`;
 }
