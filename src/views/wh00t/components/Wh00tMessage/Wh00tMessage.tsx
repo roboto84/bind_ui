@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wh00tMessageProps } from '@/views/wh00t/types/wh00tTypes';
 import { Wh00tBaseUserImage } from '@/views/wh00t/components/Wh00tMessage/components/Wh00tBaseUserImage';
-import { simpleDateTimeFormat } from '@/utils/formatting';
+import { getLocalStandardDateTime, simpleMonthDateFormat } from '@/utils/formatting';
 import {
   Wh00tMessageText,
 } from '@/views/wh00t/components/Wh00tMessage/components/Wh00tMessageText';
@@ -19,8 +19,12 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
   if (messagePackage) {
     const usernameColor: string = currentClientId === messagePackage.username
       ? 'wh00tUsernameColor' : 'wh00tOtherUsernamesColor';
-    const messageTimeParts: string[] = messagePackage.time.split(' ');
-    const messageTime: string = messageTimeParts[0] === simpleDateTimeFormat()
+    const localTime: string = messagePackage.time.indexOf('Z') > -1
+      ? getLocalStandardDateTime(true, messagePackage.time)
+      : messagePackage.time;
+
+    const messageTimeParts: string[] = localTime.split(' ');
+    const messageTime: string = messageTimeParts[0] === simpleMonthDateFormat()
       ? messageTimeParts[1]
       : messagePackage.time;
 

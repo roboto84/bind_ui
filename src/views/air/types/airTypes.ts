@@ -1,9 +1,12 @@
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { GlobalThemeType } from '@/types';
 
-export type AirStandardTimeView = {
+export type StandardTime = {
+  year: string,
+  month: string,
   date: string,
   hour: string,
+  minute: string,
   seconds: string
 }
 

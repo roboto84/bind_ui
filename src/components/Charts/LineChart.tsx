@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import 'd3-time-format';
-import { getStandardTime } from '@/utils/formatting';
+import { getStandardTimeObject } from '@/utils/formatting';
 import { LineChartContainer } from '@/styles/chartStyle';
 import { ScaleLinear, ScaleTime } from 'd3';
-import { AirStandardTimeView } from '@/views/air/types/airTypes';
+import { StandardTime } from '@/views/air/types/airTypes';
 import { timeFormatMorph } from '@/utils/utils';
 
 export type ChartData = {
@@ -100,7 +100,7 @@ export function LineChart(props: LineChartProps) {
       .attr('cx', (d) => xScale(d[0]))
       .attr('cy', (d) => yScale(d[1]))
       .on('mouseover', (e) => {
-        const dataPointDate: AirStandardTimeView = getStandardTime(
+        const dataPointDate: StandardTime = getStandardTimeObject(
           // eslint-disable-next-line no-underscore-dangle
           new Date(e.originalTarget.__data__[0]),
         );
@@ -109,7 +109,7 @@ export function LineChart(props: LineChartProps) {
           .style('opacity', 1);
         tooltip.html(
           // eslint-disable-next-line no-underscore-dangle
-          `<div class="toolTipXValue">${dataPointDate.date} ${dataPointDate.hour}</div><div class="toolTipYValue">${e.originalTarget.__data__[1]} ${yAxisLabel}</div>`,
+          `<div class="toolTipXValue">${dataPointDate.month}/${dataPointDate.date} ${dataPointDate.hour}:${dataPointDate.minute}</div><div class="toolTipYValue">${e.originalTarget.__data__[1]} ${yAxisLabel}</div>`,
         );
       })
       .on('mousemove', (e) => tooltip

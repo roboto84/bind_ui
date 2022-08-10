@@ -1,7 +1,7 @@
 import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
 import { WSS_BASE_URL } from '@/dataSource/urls';
 import { randomIntFromInterval } from '@/utils/utils';
-import { getSimpleDateTime } from '@/utils/formatting';
+import { getLocalStandardDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { Wh00tContextActionType, Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
 import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
@@ -112,7 +112,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(true),
+          time: getLocalStandardDateTime(true),
           message: 'Sorry, that message is too long',
         },
       );
@@ -121,7 +121,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(true),
+          time: getLocalStandardDateTime(true),
           message: 'Exiting Chat...',
         },
       );
@@ -133,7 +133,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(true),
+          time: getLocalStandardDateTime(true),
           message: helpMenu(),
         },
       );
@@ -185,7 +185,7 @@ export class Wh00tWebSocket {
         Wh00tMessageTypeEnum.LOCAL,
         {
           username: 'wh00t',
-          time: getSimpleDateTime(true),
+          time: getLocalStandardDateTime(true),
           message: `You are connected as *${this.clientId}*`,
         },
       );

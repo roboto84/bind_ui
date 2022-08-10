@@ -1,5 +1,5 @@
 import React from 'react';
-import { dayOfWeekAbbreviation, simpleDateTimeFormat, removeSpaces, padTime } from '@/utils/formatting';
+import { dayOfWeekAbbreviation, simpleMonthDateFormat, removeSpaces, padTime } from '@/utils/formatting';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '@/views/air/utils';
 import { ForecastSubTileProps, PollenSeverity } from '../../types/airTypes';
@@ -19,7 +19,7 @@ export function ForecastSubTile(props: ForecastSubTileProps) {
     temperatureApparent, precipitationType } = forecast;
   const pollenMax: PollenSeverity = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
   const pollenSeveritySummary: string = pollenSeverityView(pollenMax.severity);
-  const forecastDate: string = simpleDateTimeFormat(date);
+  const forecastDate: string = simpleMonthDateFormat(date);
   const dayOfMonth: string = forecastDate.split('/')[1];
   const currentDayOfMonth: string = padTime(new Date().getDate());
   const isHighLighted: boolean = dayOfMonth === currentDayOfMonth;
