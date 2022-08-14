@@ -54,6 +54,11 @@ interface Wh00tConnectTitleProps extends GlobalThemeType {
   fontSize ?: string
 }
 
+export const Wh00tLoginInformation = styled.p`
+  font-size: 15px;
+  margin: 25px 0 10px 0;
+`;
+
 export const Wh00tConnectTitle = styled.div<Wh00tConnectTitleProps>`
   margin: ${(props: Wh00tConnectTitleProps) => (props.margin ? props.margin : '20px 0 0 0')};
   color: ${(props: Wh00tConnectTitleProps) => props.theme.core.textColor};

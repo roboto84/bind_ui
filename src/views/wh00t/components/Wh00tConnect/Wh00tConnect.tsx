@@ -6,7 +6,7 @@ import { Size } from '@/types';
 import {
   ChatConnectButton, Wh00tConnectContainer,
   Wh00tConnectInput, Wh00tConnectSection,
-  Wh00tConnectTitle, Wh00tConnectTitleDescription,
+  Wh00tConnectTitle, Wh00tConnectTitleDescription, Wh00tLoginInformation,
 } from './styles/wh00tConnectStyle';
 
 interface Wh00tConnectProps {
@@ -57,6 +57,9 @@ function Wh00tConnect(props: Wh00tConnectProps) {
         <ChatConnectButton onClick={connectToWh00t}>
           Connect
         </ChatConnectButton>
+        <Wh00tLoginInformation>
+          Choose a username, or click connect for a randomly generated username.
+        </Wh00tLoginInformation>
       </Wh00tConnectSection>
     </Wh00tConnectContainer>
   );
