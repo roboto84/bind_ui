@@ -223,6 +223,9 @@ export class Wh00tWebSocket {
     this.wh00tWS.onclose = (): void => {
       if (this.wh00tIsConnected) {
         this.setWh00tConnectionStatus(false);
+        this.wh00tWS.close();
+        this.wh00tWS = null;
+        this.connectionAttemptCount = 0;
         this.wh00tDispatch({
           source: Wh00tMessageTypeEnum.LOCAL,
           type: Wh00tActionsEnum.CONNECTION_ERROR,

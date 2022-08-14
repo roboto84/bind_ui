@@ -108,6 +108,8 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
         wh00tIsConnecting: false,
         wh00tIsConnected: false,
         wh00tConnectionError: true,
+        historicalChatMessages: [],
+        currentChatMessage: null,
       };
     default:
       return state;
@@ -119,13 +121,14 @@ export function Wh00tSocketManager({ children }: ChildrenProps) {
   const memoizedValue = useMemo(() => ({ state, dispatch }), [state]);
 
   useEffect(() => {
-    const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
-    const shouldConnect: string = getLocalStorage(LocalStorageEnum.STAY_CONNECTED);
     const stopNotifier = () => {
       state.wh00tNotifier.stopDocumentTitleNotification();
     };
 
     if (!state.wh00tIsConnected && !state.wh00tIsConnecting && !state.wh00tConnectionError) {
+      const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
+      const shouldConnect: string = getLocalStorage(LocalStorageEnum.STAY_CONNECTED);
+
       document.addEventListener('focus', stopNotifier);
       state.wh00tWebSocket.setDispatch(dispatch);
       state.wh00tNotifier.setDispatch(dispatch);
