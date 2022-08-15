@@ -11,12 +11,8 @@ import { device } from '@/styles/responsive';
 export const Wh00tConnectContainer = styled.div`
   max-width: 375px;
   height: 210px;
-  margin: 10vh auto auto;
+  margin: 10% auto auto;
   padding: 20px;
-
-  @media ${device.tabletS} {
-    margin: 5vh auto auto;
-  }
 `;
 
 interface Wh00tConnectSectionProps extends GlobalThemeType {
@@ -28,12 +24,17 @@ export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
   margin: ${(props: Wh00tConnectSectionProps) => (
     props.size && props.size === Size.small
       ? '0 20px'
-      : '20px')};
+      : '20px'
+  )};
   border: 1px solid ${(props: Wh00tConnectSectionProps) => (
     props.size && props.size === Size.small
       ? props.theme.wh00t.miniWh00t.backgroundColor
       : props.theme.core.section.borderColor)};
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06),0 2px 2px rgba(0,0,0,0.04),0 4px 4px rgba(0,0,0,0.05),0 6px 6px rgba(0,0,0,0.06);
+  box-shadow: ${(props: Wh00tConnectSectionProps) => (
+    props.size && props.size === Size.small
+      ? 'none'
+      : '0 0 0 1px rgba(0,0,0,0.06),0 2px 2px rgba(0,0,0,0.04),0 4px 4px rgba(0,0,0,0.05),0 6px 6px rgba(0,0,0,0.06)'
+  )};
 `;
 
 export const Wh00tConnectStatusSection = styled(Wh00tConnectSection)<Wh00tConnectSectionProps>`
