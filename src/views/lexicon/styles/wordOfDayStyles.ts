@@ -22,6 +22,7 @@ export const WordOfDayContainer = styled.div`
 export const DayWordInfo = styled.ul`
   all: unset;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   
   li {

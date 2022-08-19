@@ -9,16 +9,15 @@ type TagProps = {
 const TagStyle = styled.span`
   border: 0;
   background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
-  border-radius: 5px;
+  border-radius: 4px;
   width: 100%;
-  height: 100%;
   display: inline-block;
   font-family: sans-serif;
   font-size: 12px;
   text-align: center;
   font-weight: 700;
   letter-spacing: 1px;
-  padding: 1px 4px 4px 4px;
+  padding: 2px 4px;
 `;
 
 // TODO - allow different sizes
