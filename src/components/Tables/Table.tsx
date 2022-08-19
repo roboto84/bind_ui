@@ -60,7 +60,7 @@ export function Table(props: TableProps) {
     switch (sortType) {
       case TableSortType.none:
         sortedCells = [...elementCells].sort((a, b) => (
-          a[columnHeader] > b[columnHeader] ? 1 : 0
+          a[columnHeader] > b[columnHeader] ? 1 : -1
         ));
         setSortedHeader({
           headerTitle: columnHeader,
@@ -69,7 +69,7 @@ export function Table(props: TableProps) {
         break;
       case TableSortType.ascending:
         sortedCells = [...elementCells].sort((a, b) => (
-          a[columnHeader] < b[columnHeader] ? 1 : 0
+          a[columnHeader] < b[columnHeader] ? 1 : -1
         ));
         setSortedHeader({
           headerTitle: columnHeader,
@@ -83,8 +83,6 @@ export function Table(props: TableProps) {
           sortType: TableSortType.none,
         });
     }
-    console.log(sortedHeader.headerTitle);
-    console.log(sortedHeader.sortType);
     setTableCells(sortedCells);
   };
 
