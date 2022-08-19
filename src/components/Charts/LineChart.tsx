@@ -102,14 +102,14 @@ export function LineChart(props: LineChartProps) {
       .on('mouseover', (e) => {
         const dataPointDate: StandardTime = getStandardTimeObject(
           // eslint-disable-next-line no-underscore-dangle
-          new Date(e.originalTarget.__data__[0]),
+          new Date(e.currentTarget.__data__[0]),
         );
         tooltip.transition()
           .duration(200)
           .style('opacity', 1);
         tooltip.html(
           // eslint-disable-next-line no-underscore-dangle
-          `<div class="toolTipXValue">${dataPointDate.month}/${dataPointDate.date} ${dataPointDate.hour}:${dataPointDate.minute}</div><div class="toolTipYValue">${e.originalTarget.__data__[1]} ${yAxisLabel}</div>`,
+          `<div class="toolTipXValue">${dataPointDate.month}/${dataPointDate.date} ${dataPointDate.hour}:${dataPointDate.minute}</div><div class="toolTipYValue">${e.currentTarget.__data__[1]} ${yAxisLabel}</div>`,
         );
       })
       .on('mousemove', (e) => tooltip
