@@ -82,7 +82,7 @@ export const wh00tLight: Wh00tThemeType = {
     botUsernameColor: '#3e999f',
     usernameBaseImageBackgroundColor: '#99a14a',
     otherUsernameBaseImageBackgroundColor: '#c37835',
-    timeColor: '#8E8D8D',
+    timeColor: '#7C7B7B',
     messageText: '#004578',
     messageHoverColor: '#bfbfbf33',
     aLink: {

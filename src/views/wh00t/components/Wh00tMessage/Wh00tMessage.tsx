@@ -26,7 +26,7 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
     const messageTimeParts: string[] = localTime.split(' ');
     const messageTime: string = messageTimeParts[0] === simpleMonthDateFormat()
       ? messageTimeParts[1]
-      : messagePackage.time;
+      : `${messageTimeParts[0]} ${messageTimeParts[1]}`;
 
     return (
       <Wh00tMessageWrapper>
