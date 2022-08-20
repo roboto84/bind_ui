@@ -50,11 +50,11 @@ export function Lexicon() {
   return (
     <LexiconContainer>
       <SearchBar />
-      <WordOfDaySection>
+      <WordOfDaySection withShadow>
         <h2>Word of the Day</h2>
         <WordOfDay wordDefinition={wordOfDayResponse} />
       </WordOfDaySection>
-      <WordListSection>
+      <WordListSection withShadow>
         <h2>Latest 30 Words Searched</h2>
         <LatestWordList wordList={wordListResult.lexiconWords} />
       </WordListSection>

@@ -55,7 +55,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   }
 
   return (
-    <WordDefinition>
+    <WordDefinition withShadow>
       <WordDefinitionIntroduction>
         <Word>{wordDefinition.word}</Word>
         <DateFirstUsed>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DateFirstUsed>

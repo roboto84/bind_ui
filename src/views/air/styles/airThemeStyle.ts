@@ -1,23 +1,27 @@
-export const airDark = {
-  weatherSubcategory: {
-    fontColor: '#ccc',
-    borderColor: '#484c58',
-    backgroundColor: '#1e1f25',
+import { AirThemeType } from '@/types';
+
+export const airDark: AirThemeType = {
+  weatherTemperatureApparentColor: '#939494',
+  weatherTitle: {
+    color: '#989da5',
+    borderColor: '#3d4650',
   },
-  weatherTable: {
-    evenCellsBackgroundColor: '#2F3436',
-    cellBorderColor: '#404448',
+  weatherSubcategory: {
+    fontColor: '#e9e9e9',
+    borderColor: '#525963',
+    backgroundColor: '#353843',
   },
 };
 
-export const airLight = {
+export const airLight: AirThemeType = {
+  weatherTemperatureApparentColor: '#737373',
+  weatherTitle: {
+    color: '#535353',
+    borderColor: '#2F3436',
+  },
   weatherSubcategory: {
     fontColor: '#414141',
     borderColor: '#a9a9a9',
     backgroundColor: '#e3e3e3',
-  },
-  weatherTable: {
-    evenCellsBackgroundColor: '#CFD2D3',
-    cellBorderColor: '#828a90',
   },
 };

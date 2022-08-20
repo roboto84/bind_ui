@@ -11,7 +11,7 @@ export const wh00tDark: Wh00tThemeType = {
       backgroundColor: '#1e1f25',
       backgroundHoverColor: '#ef8236',
     },
-    backgroundColor: '#23252c',
+    backgroundColor: '#353843',
     borderColor: '#484c58',
     inputColor: '#FF9800',
   },
@@ -32,13 +32,13 @@ export const wh00tDark: Wh00tThemeType = {
   },
   chatInput: {
     button: {
-      backgroundColor: '#373a43',
+      backgroundColor: '#42454e',
       color: '#FFA31A',
     },
     textInput: {
-      borderColor: '#373737',
-      backgroundColor: '#31333a',
-      focusBackgroundColor: '#35373f',
+      borderColor: '#464a58',
+      backgroundColor: '#353843',
+      focusBackgroundColor: '#373a43',
       focusFontColor: '#FF9800',
     },
     emoji: {
@@ -46,12 +46,13 @@ export const wh00tDark: Wh00tThemeType = {
     },
   },
   chatHeader: {
-    backgroundColor: '#40444e',
+    backgroundColor: '#353843',
     titleColor: '#de935f',
     titleHighlightColor: '#bababa',
   },
   connect: {
-    labelDescription: '#757575',
+    labelDescription: '#969696',
+    buttonColor: '#242829',
   },
 };
 
@@ -105,5 +106,6 @@ export const wh00tLight: Wh00tThemeType = {
   },
   connect: {
     labelDescription: '#757575',
+    buttonColor: '#2F3436',
   },
 };

@@ -78,5 +78,5 @@ export const HomeBottomRight = styled.div`
   word-spacing: 4px;
   opacity: 0.8;
   margin-top: -5px;
-  font-size: 21px;
+  font-size: 25px;
 `;

@@ -13,7 +13,7 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
 
   return (
     <LexiconContainer>
-      <LexiconSection>
+      <LexiconSection withShadow>
         <SpellingErrorDisplay>Not Found</SpellingErrorDisplay>
         <SpellingErrorMessage>
           perhaps &quot;{wordDefinition.word}&quot; was misspelled, here are some suggestions:

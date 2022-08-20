@@ -4,13 +4,13 @@ import { customTheme } from '@/styles/themes/customTheme';
 export const homeDark:HomeThemeType = {
   robotoDescription: {
     borderColor: '#9e9f9f',
-    backgroundColor: '#212329',
+    backgroundColor: '#353843',
   },
   appDescription: {
     titleColor: customTheme.green,
     fontColor: '#e9e9e9',
-    borderColor: '#484c58',
-    backgroundColor: '#23252c',
+    borderColor: '#525963',
+    backgroundColor: '#3e424e',
   },
 };
 

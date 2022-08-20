@@ -33,7 +33,7 @@ export const Wh00tConnectSection = styled(Section)<Wh00tConnectSectionProps>`
   box-shadow: ${(props: Wh00tConnectSectionProps) => (
     props.size && props.size === Size.small
       ? 'none'
-      : '0 0 0 1px rgba(0,0,0,0.06),0 2px 2px rgba(0,0,0,0.04),0 4px 4px rgba(0,0,0,0.05),0 6px 6px rgba(0,0,0,0.06)'
+      : props.theme.core.basicShadow
   )};
 `;
 
@@ -74,17 +74,16 @@ export const Wh00tConnectTitle = styled.div<Wh00tConnectTitleProps>`
 export const Wh00tConnectTitleDescription = styled.span`
   font-size: 12px;
   color: ${(props: GlobalThemeType) => props.theme.wh00t.connect.labelDescription};
-  margin-left: 5px;
+  margin-left: 8px;
 `;
 
 export const Wh00tConnectInput = styled(Input)`
   margin-top: 20px;
   font-size: 12px;
   width: 92%;
-  border-color: #6b6b6b94;
   
   :focus{
-    border-color: #6b6b6b94;
+    border-color: #696969;
     background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
     color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.inputColor};
   }
@@ -96,7 +95,7 @@ export const Wh00tConnectInput = styled(Input)`
 
 export const ChatConnectButton = styled(ChatSendButton)`
   margin: 20px 0 0 0;
-  background-color: #2F3436;
+  background-color: ${(props: GlobalThemeType) => props.theme.wh00t.connect.buttonColor};
   font-size: 14px;
   width: 92%;
 

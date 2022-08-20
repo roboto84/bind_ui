@@ -36,7 +36,7 @@ export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
   margin: 20px 10px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);
+  box-shadow: ${(props: WeatherSubcategoryProps) => props.theme.core.basicShadow};
   border-radius: 3px;
   padding: 10px;
   width: 230px;
@@ -74,11 +74,11 @@ export const Weather = styled.section`
   }
 `;
 
-export const WeatherTitle = styled.li`
+export const WeatherTitle = styled.li<GlobalThemeType>`
   font-size: 17px;
-  color: #535353;
+  color: ${(props: GlobalThemeType) => props.theme.air.weatherTitle.color};
   padding: 0 5px 5px;
-  border-bottom: #2F3436 solid 2px;
+  border-bottom: ${(props: GlobalThemeType) => props.theme.air.weatherTitle.borderColor} solid 2px;
   text-align: center;
   letter-spacing: 3px;
 `;
@@ -92,7 +92,7 @@ export const CurrentTemperature = styled.li`
 export const WeatherBlurb = styled.li`
   margin: 0 20px;
   font-size: 14px;
-  color: #737373;
+  color: ${(props: GlobalThemeType) => props.theme.air.weatherTemperatureApparentColor};
   text-align: center;
 `;
 
@@ -115,7 +115,7 @@ export const WeatherForecastTemperature = styled.li`
 
 export const WeatherForecastTemperatureApparent = styled.li`
   font-size: 14px;
-  color: #737373;
+  color: ${(props: GlobalThemeType) => props.theme.air.weatherTemperatureApparentColor};
   margin: 20px 5px 5px 5px;
   padding: 5px;
   text-align: center;
@@ -126,7 +126,7 @@ export const WeatherElement = styled.li`
   padding: 16px;
   
   :not(:nth-child(2)){
-    border-top: #2F3436 solid 1px;
+    border-top: #3d4650 solid 1px;
   }
 `;
 

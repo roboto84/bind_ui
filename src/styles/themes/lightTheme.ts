@@ -11,6 +11,7 @@ export const LightTheme: ThemeType = {
     mainThemeColor: '#6a9ca9',
     bgColor: '#d4d4d4',
     textColor: 'black',
+    basicShadow: '0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);',
     aLink: {
       linkColor: '#86a0a7',
       hoverColor: '#6898a5',
@@ -20,9 +21,17 @@ export const LightTheme: ThemeType = {
       borderColor: '#c7c7c7',
     },
     table: {
+      backgroundColor: '#e3e3e3',
       borderColor: '#8a8b8b',
       headerColor: '#8a8b8b',
       highlightCellColor: '#6a9ca9',
+      td: {
+        borderColor: '#828a90',
+      },
+      tr: {
+        color: '#414141',
+        evenCellsBackgroundColor: '#CFD2D3',
+      }
     },
     code: {
       backgroundColor: '#dae6eb',

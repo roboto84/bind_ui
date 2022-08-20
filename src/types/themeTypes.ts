@@ -1,5 +1,3 @@
-import { shared } from '@/styles/themes/sharedTheme';
-
 export interface GlobalThemeType {
   theme: ThemeType
 }
@@ -85,6 +83,7 @@ export type CoreStyleType = {
   mainThemeColor: string,
   bgColor: string,
   textColor: string,
+  basicShadow: string,
   aLink: {
     linkColor: string,
     hoverColor: string,
@@ -94,9 +93,17 @@ export type CoreStyleType = {
     borderColor: string,
   },
   table: {
+    backgroundColor: string,
     borderColor: string,
     headerColor: string,
     highlightCellColor: string,
+    td: {
+      borderColor: string,
+    },
+    tr: {
+      color: string,
+      evenCellsBackgroundColor: string,
+    }
   },
   code: {
     backgroundColor: string,
@@ -106,15 +113,16 @@ export type CoreStyleType = {
 }
 
 export type AirThemeType = {
+  weatherTemperatureApparentColor: string,
+  weatherTitle: {
+    color: string,
+    borderColor: string,
+  },
   weatherSubcategory: {
     fontColor: string,
     borderColor: string,
     backgroundColor: string,
   },
-  weatherTable:{
-    evenCellsBackgroundColor: string,
-    cellBorderColor: string
-  }
 }
 
 export type Wh00tThemeType = {
@@ -167,6 +175,7 @@ export type Wh00tThemeType = {
   }
   connect: {
     labelDescription: string,
+    buttonColor: string,
   }
 }
 

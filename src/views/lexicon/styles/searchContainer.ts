@@ -38,6 +38,7 @@ export const BackButton = styled(LexiconButton)`
 `;
 
 export const SearchButton = styled(LexiconButton)`
+  font-size: 15px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 `;

@@ -12,13 +12,14 @@ export const DarkTheme: ThemeType = {
     mainThemeColor: customTheme.green,
     bgColor: customTheme.background,
     textColor: customTheme.textColor,
+    basicShadow: 'rgb(22, 22, 22) 4px 4px 7px;',
     aLink: {
       linkColor: customTheme.green,
       hoverColor: '#91b400',
     },
     section: {
-      backgroundColor: '#23252c',
-      borderColor: '#484c58',
+      borderColor: '#525963',
+      backgroundColor: '#353843',
     },
     code: {
       backgroundColor: '#363a41',
@@ -26,9 +27,17 @@ export const DarkTheme: ThemeType = {
       textColor: '#e29401',
     },
     table: {
+      backgroundColor: '#1e1f25',
       borderColor: '#373C3F',
       headerColor: '#444A4E',
       highlightCellColor: '#617c07',
+      td: {
+        borderColor: '#404448',
+      },
+      tr: {
+        color: '#e9e9e9',
+        evenCellsBackgroundColor: '#2F3436',
+      },
     },
   },
   chart: {

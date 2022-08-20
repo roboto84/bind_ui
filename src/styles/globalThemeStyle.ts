@@ -42,7 +42,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     width: 100%;
     margin: auto;
     flex-grow: 0;
-    background-color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.backgroundColor};
+    background-color: ${(props: GlobalThemeType) => props.theme.core.table.backgroundColor};
   }
 
   thead tr th { 
@@ -65,7 +65,7 @@ export const GlobalThemeStyle = createGlobalStyle`
 
   tbody td {
     padding: 10px;
-    border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.td.borderColor};
     text-align: left;
   }
 
@@ -73,7 +73,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     color: ${(props: GlobalThemeType) => props.theme.air.weatherSubcategory.fontColor};
     
     :nth-child(even) {
-      background-color: ${(props: GlobalThemeType) => props.theme.air.weatherTable.evenCellsBackgroundColor};
+      background-color: ${(props: GlobalThemeType) => props.theme.core.table.tr.evenCellsBackgroundColor};
     }
 
     :hover {
@@ -91,7 +91,7 @@ export const GlobalThemeStyle = createGlobalStyle`
   tfoot td {
     padding: 4px;
     color: #fff;
-    border: 1px solid ${(props: GlobalThemeType) => props.theme.air.weatherTable.cellBorderColor};
+    border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.td.borderColor};
     text-align: center;
 
     @media ${device.tabletS} {
@@ -142,7 +142,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     }
 
     tbody td {
-      padding: 0px 10px;
+      padding: 0 10px;
     }
 
     tbody td:first-child {

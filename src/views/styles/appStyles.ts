@@ -41,12 +41,18 @@ export const Hoverable = styled.li`
   }
 `;
 
-export const Section = styled.section`
+export interface SectionProps extends GlobalThemeType{
+  withShadow?: boolean
+}
+
+export const Section = styled.section<SectionProps>`
   padding: 20px;
   margin: 20px;
-  border-radius: 10px;
-  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
-  border: 1px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
+  border-radius: 5px;
+  background-color: ${(props: SectionProps) => props.theme.core.section.backgroundColor};
+  border: 1px solid ${(props: SectionProps) => props.theme.core.section.borderColor};
+  box-shadow: ${(props: SectionProps) => (props.withShadow ? props.theme.core.basicShadow : 'inherit')};
+
 
   @media ${device.tabletS} {
     padding: 12px;
