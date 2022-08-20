@@ -1,6 +1,7 @@
 import wh00tBackgroundDark from '@/assets/images/wh00t_background_dark.png';
 import wh00tBackgroundLight from '@/assets/images/wh00t_background_light.png';
 import { Wh00tThemeType } from '@/types';
+import { customThemeLight } from '@/styles/themes/customTheme';
 
 export const wh00tDark: Wh00tThemeType = {
   backgroundImage: wh00tBackgroundDark,
@@ -67,7 +68,7 @@ export const wh00tLight: Wh00tThemeType = {
       color: '#4e4e4e',
       borderColor: '#4e4e4e',
       backgroundColor: '#d4d4d4',
-      backgroundHoverColor: '#6a9ca9',
+      backgroundHoverColor: customThemeLight.lightBlue,
     },
     backgroundColor: '#d4d4d4',
     borderColor: '#949494',

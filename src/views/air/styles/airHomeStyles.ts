@@ -176,3 +176,14 @@ export const WeatherTableContainer = styled.div`
     margin: 0 5px;
   }
 `;
+
+export const WeatherTableNavContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const WeatherTableNavTitle = styled.h1`
+  @media ${device.tabletS} {
+    display: none;
+  }
+`;

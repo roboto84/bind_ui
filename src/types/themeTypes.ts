@@ -49,6 +49,14 @@ export type ChartStyleType = {
   axisXFontColor: string,
   axisYFontColor: string,
   backgroundColor: string,
+  tooltip: {
+    borderColor: string,
+    bgColor: string,
+    timeBgColor: string,
+    timeColor: string,
+    valueBgColor: string,
+    valueColor: string,
+  }
 }
 
 export type LexiconThemeType = {

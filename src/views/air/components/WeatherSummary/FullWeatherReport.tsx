@@ -15,16 +15,16 @@ export function FullWeatherReport(props: CurrentWeatherReportProps) {
       />
       <Weather>
         {
-        report.weatherForecast.map(
-          (forecast:WeatherSummary) => (
-            <ForecastSubTile
-              key={'forecastTile'.concat(String(forecast.date))}
-              forecast={forecast}
-              forecastUnits={report.weatherUnits}
-            />
-          ),
-        )
-      }
+          report.weatherForecast.map(
+            (forecast:WeatherSummary) => (
+              <ForecastSubTile
+                key={'forecastTile'.concat(String(forecast.date))}
+                forecast={forecast}
+                forecastUnits={report.weatherUnits}
+              />
+            ),
+          )
+        }
       </Weather>
     </>
   );

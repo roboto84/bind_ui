@@ -19,6 +19,7 @@ export type ChartObject = {
 }
 
 export type LineChartProps = {
+  title: string,
   yAxisLabel: string,
   xAxisLabel: string,
   chartObject: ChartObject,
@@ -26,7 +27,7 @@ export type LineChartProps = {
 }
 
 export function LineChart(props: LineChartProps) {
-  const { xAxisLabel, yAxisLabel, yDomainRange, chartObject } = props;
+  const { title, xAxisLabel, yAxisLabel, yDomainRange, chartObject } = props;
   const d3Chart = useRef();
   const d3Container = useRef();
 
@@ -109,7 +110,7 @@ export function LineChart(props: LineChartProps) {
           .style('opacity', 1);
         tooltip.html(
           // eslint-disable-next-line no-underscore-dangle
-          `<div class="toolTipXValue">${dataPointDate.month}/${dataPointDate.date} ${dataPointDate.hour}:${dataPointDate.minute}</div><div class="toolTipYValue">${e.currentTarget.__data__[1]} ${yAxisLabel}</div>`,
+          `<div class="toolTipXValue">${dataPointDate.month}/${dataPointDate.date} ${dataPointDate.hour}:${dataPointDate.minute}:${dataPointDate.seconds}</div><div class="toolTipYValue">${e.currentTarget.__data__[1]} ${yAxisLabel}</div>`,
         );
       })
       .on('mousemove', (e) => tooltip
@@ -128,7 +129,7 @@ export function LineChart(props: LineChartProps) {
       .call(xAxis)
       .call((g) => g.append('text')
         .attr('class', 'axisLabel')
-        .attr('x', 600)
+        .attr('x', 670)
         .attr('y', -(margin.bottom - 120))
         .attr('fill', 'currentColor')
         .attr('text-anchor', 'start')
@@ -150,6 +151,14 @@ export function LineChart(props: LineChartProps) {
         .attr('fill', 'currentColor')
         .attr('text-anchor', 'start')
         .text(yAxisLabel));
+
+    // Chart Title
+    svg.append('text')
+      .attr('class', 'chartTitle')
+      .attr('x', 690)
+      .attr('y', -(margin.bottom - 50))
+      .attr('text-anchor', 'middle')
+      .text(title);
 
     return () => {
       svg.remove();

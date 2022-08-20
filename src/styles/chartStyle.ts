@@ -8,18 +8,24 @@ export const LineChartContainer = styled.figure`
   .tooltip {
     position: absolute;
     text-align: left;
-    padding: 10px;
     font-size: 15px;
-    background: ${(props: GlobalThemeType) => props.theme.core.bgColor};
-    border: solid #b2b2b2 2px;
-    border-radius: 3px;
+    background: ${(props: GlobalThemeType) => props.theme.chart.backgroundColor};
+    border: solid ${(props: GlobalThemeType) => props.theme.chart.tooltip.borderColor} 1px;
+    border-radius: 5px;
     pointer-events: none;
+    box-shadow: ${(props: GlobalThemeType) => props.theme.core.basicShadow};
     
     .toolTipXValue{
-      color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+      text-align: center;
+      padding: 5px 10px;
+      background-color: ${(props: GlobalThemeType) => props.theme.chart.tooltip.timeBgColor};
+      color: ${(props: GlobalThemeType) => props.theme.chart.tooltip.timeColor};
     }
     
     .toolTipYValue{
+      text-align: center;
+      padding: 5px 10px;
+      color: ${(props: GlobalThemeType) => props.theme.chart.tooltip.valueColor};
       font-size: 15px;
     }
   }
@@ -44,6 +50,12 @@ export const LineChartContainer = styled.figure`
     .axisLabel{
       font-size: 25px;
       stroke: ${(props: GlobalThemeType) => props.theme.chart.axisLabelFontColor};
+    }
+
+    .chartTitle{
+      font-size: 25px;
+      stroke: ${(props: GlobalThemeType) => props.theme.chart.axisLabelFontColor};
+      background-color: ${(props: GlobalThemeType) => props.theme.chart.backgroundColor}
     }
 
     .line {

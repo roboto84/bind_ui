@@ -11,6 +11,7 @@ export const getStandardTimeObject = (date: Date): StandardTime => ({
   hour: `${padTime(date.getHours())}`,
   minute: `${padTime(date.getMinutes())}`,
   seconds: padTime(date.getSeconds()),
+  timezone: `${Intl.DateTimeFormat().resolvedOptions().timeZone}`,
 });
 
 export function dayOfWeekAbbreviation(timeStamp: string): string {
@@ -36,4 +37,12 @@ export function getD3StandardDateTime(timestamp: string): string {
 export function getLocalStandardDateTime(includeSeconds?: boolean, timestamp?: string): string {
   const dateTime: StandardTime = getLocalStandardDateObject(timestamp);
   return `${dateTime.month}/${dateTime.date} ${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
+}
+
+export function camelCaseToSpaced(camelCasedText: string): string {
+  return camelCasedText.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+}
+
+export function capitalizedFirst(text: string): string {
+  return text.charAt(0).toUpperCase().concat(text.slice(1));
 }

@@ -7,7 +7,8 @@ export type StandardTime = {
   date: string,
   hour: string,
   minute: string,
-  seconds: string
+  seconds: string,
+  timezone: string,
 }
 
 export type PollenSeverity = {

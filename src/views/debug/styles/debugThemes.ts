@@ -1,4 +1,5 @@
 import { tomorrowDark, tomorrowLight } from '@/styles/themes/tomorrowTheme';
+import { customThemeLight } from '@/styles/themes/customTheme';
 
 export const debugLight = {
   messageTitleColor: '#242424',
@@ -8,7 +9,7 @@ export const debugLight = {
   messageHistoryBorder: '#939393',
   messageBackgroundColor: '#e9e9e9',
   messageTime: tomorrowLight.red,
-  latestMessageBorder: '#6a9ca9',
+  latestMessageBorder: customThemeLight.lightBlue,
 };
 
 export const debugDark = {

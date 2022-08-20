@@ -1,5 +1,5 @@
 import React from 'react';
-import { getLocalStandardDateTime } from '@/utils/formatting';
+import { camelCaseToSpaced, capitalizedFirst, getLocalStandardDateTime } from '@/utils/formatting';
 import { useQuery } from 'react-query';
 import { WeatherHistory } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
@@ -9,7 +9,12 @@ import { HeaderTitle, Table } from '@/components/Tables/Table';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import { getWeatherTableTitle } from '@/views/air/utils';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
-import { WeatherSubContainer, WeatherTableContainer } from '../../styles/airHomeStyles';
+import {
+  WeatherSubContainer,
+  WeatherTableContainer,
+  WeatherTableNavContainer,
+  WeatherTableNavTitle,
+} from '../../styles/airHomeStyles';
 import {
   SubWeatherSummary,
   WeatherPollenSummary,
@@ -32,6 +37,7 @@ export function WeatherTable(props: WeatherTablesProps) {
     return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
+  const tableTitle: string = `2 Week ${camelCaseToSpaced(capitalizedFirst(tableType))} Data`;
   const airWeatherData: WeatherHistory = camelcaseKeys<WeatherHistory>(data);
   const weatherRecords: WeatherSummary[] = airWeatherData.weatherHistory;
   const standardUnits = airWeatherData.weatherUnits;
@@ -94,7 +100,10 @@ export function WeatherTable(props: WeatherTablesProps) {
   return (
     <WeatherSubContainer>
       <WeatherTableContainer>
-        <WeatherTableSubNavigation />
+        <WeatherTableNavContainer>
+          <WeatherTableSubNavigation />
+          <WeatherTableNavTitle>{tableTitle}</WeatherTableNavTitle>
+        </WeatherTableNavContainer>
         <Table
           key={weatherSection.title}
           tableKey={weatherSection.title}
