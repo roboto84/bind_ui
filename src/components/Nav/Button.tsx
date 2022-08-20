@@ -47,10 +47,10 @@ export const SubButton = styled(Button)`
 `;
 
 export const ButtonAlert = styled.div`
-  background-color: #af2324;
-  width: 11px;
-  height: 11px;
-  border-radius: 0 0 0 10px;
+  background-color: ${(props: ButtonProps) => props.theme.button.alertColor};
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
   position: absolute;
-  margin: -27px 0 0 50px;
+  margin: -22px 0 0 45px;
 `;

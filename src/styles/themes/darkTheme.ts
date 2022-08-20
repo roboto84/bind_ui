@@ -56,6 +56,7 @@ export const DarkTheme: ThemeType = {
     fontColor: '#d1d2d2',
     transitionFontColor: 'black',
     backgroundColor: '#484c58',
+    alertColor: '#f50809',
   },
   subButton: {
     backgroundColor: '#484c58',

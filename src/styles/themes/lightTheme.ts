@@ -8,13 +8,13 @@ import { shared } from '@/styles/themes/sharedTheme';
 
 export const LightTheme: ThemeType = {
   core: {
-    mainThemeColor: '#6a9ca9',
+    mainThemeColor: '#5397a9',
     bgColor: '#d4d4d4',
     textColor: 'black',
     basicShadow: '0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);',
     aLink: {
-      linkColor: '#86a0a7',
-      hoverColor: '#6898a5',
+      linkColor: '#32889e',
+      hoverColor: '#119dc1',
     },
     section: {
       backgroundColor: '#e3e3e3',
@@ -31,12 +31,12 @@ export const LightTheme: ThemeType = {
       tr: {
         color: '#414141',
         evenCellsBackgroundColor: '#CFD2D3',
-      }
+      },
     },
     code: {
       backgroundColor: '#dae6eb',
       borderColor: '#0B4C8C33',
-      textColor: '#0b4c8c',
+      textColor: '#d85b00',
     },
   },
   button: {
@@ -44,6 +44,7 @@ export const LightTheme: ThemeType = {
     fontColor: '#4e4e4e',
     transitionFontColor: 'white',
     backgroundColor: '#e3e3e3',
+    alertColor: '#dc0e10',
   },
   subButton: {
     backgroundColor: '#8a8b8b',

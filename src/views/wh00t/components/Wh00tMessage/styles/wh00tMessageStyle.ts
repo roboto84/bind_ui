@@ -23,6 +23,7 @@ export const Wh00tBaseUserImageContainer = styled.div`
   margin: 7px 10px 5px 5px;
   color: white;
   width: 33px;
+  min-width: 33px;
   height: 33px;
   padding: 7px 5px 5px 5px;
   border-radius: 5px;
@@ -123,7 +124,7 @@ export const Wh00tImage = styled.img`
   margin-top: 10px;
   border-radius: 10px;
   border: 4px solid ${(props: GlobalThemeType) => props.theme.wh00t.messages.imageBorderColor};
-  box-shadow: 0 10px 16px 0 #00000033,0 6px 20px 0 #00000033;
+  box-shadow: ${(props: GlobalThemeType) => props.theme.wh00t.messages.imageShadow};
   max-width: 40%;
   height: auto;
   transition: 0.4s;

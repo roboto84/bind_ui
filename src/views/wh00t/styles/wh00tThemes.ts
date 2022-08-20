@@ -27,8 +27,12 @@ export const wh00tDark: Wh00tThemeType = {
     timeColor: '#A3A3A3',
     messageText: '#f0c674',
     messageHoverColor: '#646b7833',
-    aLinkColor: '#81a2be',
+    aLink: {
+      Color: '#81a2be',
+      hoverColor: '#609bcd',
+    },
     imageBorderColor: '#444',
+    imageShadow: 'rgb(22,22,22) 4px 4px 7px;',
   },
   chatInput: {
     button: {
@@ -81,8 +85,12 @@ export const wh00tLight: Wh00tThemeType = {
     timeColor: '#8E8D8D',
     messageText: '#004578',
     messageHoverColor: '#bfbfbf33',
-    aLinkColor: '#5c9bd0',
+    aLink: {
+      Color: '#3287cf',
+      hoverColor: '#0288fa',
+    },
     imageBorderColor: '#e5e5e5',
+    imageShadow: '0 10px 16px 0 #00000033,0 6px 20px 0 #00000033',
   },
   chatInput: {
     button: {

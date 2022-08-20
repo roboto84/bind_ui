@@ -20,22 +20,14 @@ export const GlobalThemeStyle = createGlobalStyle`
     }
   }
 
-  a:link {
-    color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
-  }
-
-  a:visited {
+  a:link, a:visited, a:active {
     color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
   }
 
   a:hover {
     color: ${(props: GlobalThemeType) => props.theme.core.aLink.hoverColor};
   }
-
-  a:active {
-    color: ${(props: GlobalThemeType) => props.theme.core.aLink.linkColor};
-  }
-
+  
   table {
     border-collapse: collapse;
     border: 1px solid ${(props: GlobalThemeType) => props.theme.core.table.borderColor};

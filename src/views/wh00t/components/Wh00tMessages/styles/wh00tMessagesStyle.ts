@@ -26,7 +26,11 @@ export const Wh00tMessagesContainer = styled.ul<MessagesContainerProps>`
   border-bottom-right-radius: 5px;
 
   a:link, a:visited {
-    color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLinkColor};
+    color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLink.Color};
+  }
+  
+  a:hover {
+    color: ${(props: MessagesContainerProps) => props.theme.wh00t.messages.aLink.hoverColor};
   }
 
   @media ${device.tabletS} {

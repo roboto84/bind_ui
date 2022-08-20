@@ -33,6 +33,7 @@ export type ButtonStyleType = {
   fontColor: string,
   transitionFontColor: string,
   backgroundColor: string,
+  alertColor: string,
 };
 
 export type SubButtonStyleType = {
@@ -150,8 +151,12 @@ export type Wh00tThemeType = {
     messageHoverColor: string,
     usernameBaseImageBackgroundColor: string,
     otherUsernameBaseImageBackgroundColor: string,
-    aLinkColor: string,
+    aLink: {
+      Color: string,
+      hoverColor: string,
+    }
     imageBorderColor: string,
+    imageShadow: string,
   },
   chatInput: {
     button: {
