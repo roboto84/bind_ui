@@ -27,7 +27,8 @@ export const ChatSendButton = styled(Button)`
   }
 `;
 
-export const EmojiButton = styled(Button)`
+// Needs to be a div instead of a button due to a browser refresh bug
+export const EmojiButton = styled.div<ButtonProps>`
   text-decoration: none;
   text-align: center;
   letter-spacing: 3px;

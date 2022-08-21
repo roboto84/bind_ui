@@ -25,7 +25,7 @@ export const LightTheme: ThemeType = {
       backgroundColor: '#e3e3e3',
       borderColor: '#8a8b8b',
       headerColor: '#8a8b8b',
-      highlightCellColor: '#6a9ca9',
+      highlightCellColor: '#4193a9',
       td: {
         borderColor: '#828a90',
       },
@@ -63,7 +63,7 @@ export const LightTheme: ThemeType = {
       borderColor: '#b2b2b2',
       bgColor: '#d4d4d4',
       timeBgColor: '#d4d4d4',
-      timeColor: '#5397a9',
+      timeColor: customThemeLight.lightBlue,
       valueBgColor: '',
       valueColor: 'black',
     },
