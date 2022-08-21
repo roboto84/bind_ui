@@ -157,6 +157,7 @@ export function LineChart(props: LineChartProps) {
       .attr('class', 'chartTitle')
       .attr('x', 690)
       .attr('y', -(margin.bottom - 50))
+      .attr('fill', 'currentColor')
       .attr('text-anchor', 'middle')
       .text(title);
 
