@@ -16,7 +16,7 @@ import { Wh00tMessageTypeEnum } from '@/context/types/enums';
 function imageGenerator(imageLink: string): JSX.Element {
   return (
     <a href={imageLink} target="_blank" rel="noreferrer">
-      <Wh00tImage alt="Chat_Image" src={imageLink} />
+      <Wh00tImage title={imageLink} alt="Chat_Image" src={imageLink} />
     </a>
   );
 }

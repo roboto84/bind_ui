@@ -1,4 +1,5 @@
 import { BASE_UI_URL } from '@/dataSource/urls';
+import { imageFormatExtensions } from '@/views/wh00t/utils/imageFormatExtensions';
 
 const emojiRegex = require('emoji-regex');
 
@@ -23,17 +24,22 @@ export function emojify(message: string): string {
     `<span style="font-size: 28px;">${emoji}</span>`));
 }
 
-export function isHyperlinkLink(text: string) {
-  return singleUrlRegex.test(text);
+export function isHyperlinkLink(text: string): boolean {
+  return text.indexOf(' ') === -1 && singleUrlRegex.test(text);
 }
 
-export function isImageLink(text: string) {
-  return isHyperlinkLink(text) && (text.endsWith('.png') || text.endsWith('.jpg')
-    || text.endsWith('.jpeg') || text.endsWith('.webp') || text.endsWith('.gif')
-    || text.endsWith('.gifv'));
+export function hasImageExtension(text: string): boolean {
+  return imageFormatExtensions.reduce(
+    (previousBoolState, currentExtension) => (previousBoolState || text.endsWith(currentExtension)),
+    false,
+  );
 }
 
-export function openPopup() {
+export function isImageLink(text: string): boolean {
+  return isHyperlinkLink(text) && hasImageExtension(text);
+}
+
+export function openPopup(): void {
   const params: string = 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=575,height=475';
   window.open(`${BASE_UI_URL}/wh00t/`, 'test', params);
   window.open(`${BASE_UI_URL}/`, '_self');
