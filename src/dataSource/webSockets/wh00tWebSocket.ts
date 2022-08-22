@@ -159,80 +159,82 @@ export class Wh00tWebSocket {
   }
 
   connectWebSocket(clientId?: string): void {
-    if (clientId && clientId.replace(/\s/g, '') !== '') {
-      this.clientId = clientId;
-    } else {
-      const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
-      if (username) {
-        this.clientId = username;
-      }
-    }
-    setLocalStorage(LocalStorageEnum.USERNAME, this.clientId);
-    setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'true');
-    this.wh00tDispatch({
-      source: Wh00tMessageTypeEnum.LOCAL,
-      type: Wh00tActionsEnum.CONNECTING,
-    });
-    this.wh00tWS = new WebSocket(
-      `${WSS_BASE_URL}:8000/wh00t_chat/${this.clientId}`,
-    );
-
-    this.wh00tWS.onopen = () => {
-      this.setWh00tConnectionStatus(true);
-      this.connectionAttemptCount = 0;
-      this.clearWh00tScreen();
-      this.handleMessage(
-        Wh00tMessageTypeEnum.LOCAL,
-        {
-          username: 'wh00t',
-          time: getLocalStandardDateTime(true),
-          message: `You are connected as *${this.clientId}*`,
-        },
-      );
-    };
-
-    this.wh00tWS.onmessage = (event): void => {
-      const parsedMessageData = JSON.parse(event.data);
-      if (Array.isArray(parsedMessageData)) {
-        parsedMessageData.forEach((messagePackage) => (
-          this.handleMessage(Wh00tMessageTypeEnum.HISTORY, messagePackage)
-        ));
+    if (this.wh00tWS === null || this.wh00tWS.readyState !== 1) {
+      if (clientId && clientId.replace(/\s/g, '') !== '') {
+        this.clientId = clientId;
       } else {
-        this.handleMessage(Wh00tMessageTypeEnum.SOCKET, parsedMessageData);
-        if (this.wh00tSpeechSynthesisUtterance) {
-          if (parsedMessageData.data) {
-            if (parsedMessageData.data.voice) {
-              this.wh00tSpeechSynthesisUtterance.text = parsedMessageData.data.voice;
-              window.speechSynthesis.speak(this.wh00tSpeechSynthesisUtterance);
+        const username: string = getLocalStorage(LocalStorageEnum.USERNAME);
+        if (username) {
+          this.clientId = username;
+        }
+      }
+      setLocalStorage(LocalStorageEnum.USERNAME, this.clientId);
+      setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'true');
+      this.wh00tDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        type: Wh00tActionsEnum.CONNECTING,
+      });
+      this.wh00tWS = new WebSocket(
+        `${WSS_BASE_URL}:8000/wh00t_chat/${this.clientId}`,
+      );
+
+      this.wh00tWS.onopen = () => {
+        this.setWh00tConnectionStatus(true);
+        this.connectionAttemptCount = 0;
+        this.clearWh00tScreen();
+        this.handleMessage(
+          Wh00tMessageTypeEnum.LOCAL,
+          {
+            username: 'wh00t',
+            time: getLocalStandardDateTime(true),
+            message: `You are connected as *${this.clientId}*`,
+          },
+        );
+      };
+
+      this.wh00tWS.onmessage = (event): void => {
+        const parsedMessageData = JSON.parse(event.data);
+        if (Array.isArray(parsedMessageData)) {
+          parsedMessageData.forEach((messagePackage) => (
+            this.handleMessage(Wh00tMessageTypeEnum.HISTORY, messagePackage)
+          ));
+        } else {
+          this.handleMessage(Wh00tMessageTypeEnum.SOCKET, parsedMessageData);
+          if (this.wh00tSpeechSynthesisUtterance) {
+            if (parsedMessageData.data) {
+              if (parsedMessageData.data.voice) {
+                this.wh00tSpeechSynthesisUtterance.text = parsedMessageData.data.voice;
+                window.speechSynthesis.speak(this.wh00tSpeechSynthesisUtterance);
+              }
             }
           }
         }
-      }
-    };
+      };
 
-    this.wh00tWS.onerror = (): void => {
-      this.connectionAttemptCount += 1;
-      this.reattemptWh00tSocketConnection();
-      this.clearWh00tScreen();
-      this.wh00tDispatch({
-        source: Wh00tMessageTypeEnum.LOCAL,
-        type: Wh00tActionsEnum.CONNECTION_ERROR,
-      });
-    };
-
-    this.wh00tWS.onclose = (): void => {
-      if (this.wh00tIsConnected) {
-        this.setWh00tConnectionStatus(false);
-        this.wh00tWS.close();
-        this.wh00tWS = null;
-        this.connectionAttemptCount = 0;
+      this.wh00tWS.onerror = (): void => {
+        this.connectionAttemptCount += 1;
+        this.reattemptWh00tSocketConnection();
+        this.clearWh00tScreen();
         this.wh00tDispatch({
           source: Wh00tMessageTypeEnum.LOCAL,
           type: Wh00tActionsEnum.CONNECTION_ERROR,
         });
-        this.connectWebSocket();
-      }
-    };
+      };
+
+      this.wh00tWS.onclose = (): void => {
+        if (this.wh00tIsConnected) {
+          this.setWh00tConnectionStatus(false);
+          this.wh00tWS.close();
+          this.wh00tWS = null;
+          this.connectionAttemptCount = 0;
+          this.wh00tDispatch({
+            source: Wh00tMessageTypeEnum.LOCAL,
+            type: Wh00tActionsEnum.CONNECTION_ERROR,
+          });
+          this.connectWebSocket();
+        }
+      };
+    }
   }
 
   disconnectWebSocket(): void {
