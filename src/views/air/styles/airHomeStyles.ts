@@ -31,8 +31,8 @@ export const AirSubTitleContainer = styled.section`
 
 export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
-  border: 1px solid ${(props: WeatherSubcategoryProps) => (
-    props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
+  border: ${(props: WeatherSubcategoryProps) => (
+    props.isHighLight ? '3px' : '1px')} solid ${(props: WeatherSubcategoryProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
   margin: 20px 10px;
   flex-direction: column;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
