@@ -6,6 +6,7 @@ import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { Wh00tContextActionType, Wh00tMessagePackage } from '@/context/types/wh00tContextTypes';
 import { isSecretMessage } from '@/views/wh00t/utils/chatFlags';
 import { helpMenu } from '@/views/wh00t/utils/helpMenu';
+import { introductionMessage } from '@/views/wh00t/utils/introductoryMessage';
 
 export class Wh00tWebSocket {
   clientId: string;
@@ -87,6 +88,14 @@ export class Wh00tWebSocket {
     if (messageSource !== Wh00tMessageTypeEnum.LOCAL && isSecretMessage(wh00tMessage.message)) {
       this.clearSecretMessage(wh00tMessage);
     } else if (newMessage.value.message === '/clear' || newMessage.value.message === '/c') {
+      this.handleMessage(
+        Wh00tMessageTypeEnum.LOCAL,
+        {
+          username: 'wh00t',
+          time: getLocalStandardDateTime(true),
+          message: 'Clearing Chat Message History...',
+        },
+      );
       setTimeout(() => {
         this.wh00tDispatch({
           source: Wh00tMessageTypeEnum.LOCAL,
@@ -187,7 +196,7 @@ export class Wh00tWebSocket {
           {
             username: 'wh00t',
             time: getLocalStandardDateTime(true),
-            message: `You are connected as *${this.clientId}*`,
+            message: `Welcome to wh00t ! You are connected as *${this.clientId}*. \n\n${introductionMessage()}`,
           },
         );
       };
