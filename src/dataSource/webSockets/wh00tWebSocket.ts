@@ -84,7 +84,7 @@ export class Wh00tWebSocket {
       value: wh00tMessage,
     };
     this.wh00tDispatch(newMessage);
-    if (isSecretMessage(wh00tMessage.message)) {
+    if (messageSource !== Wh00tMessageTypeEnum.LOCAL && isSecretMessage(wh00tMessage.message)) {
       this.clearSecretMessage(wh00tMessage);
     } else if (newMessage.value.message === '/clear' || newMessage.value.message === '/c') {
       setTimeout(() => {

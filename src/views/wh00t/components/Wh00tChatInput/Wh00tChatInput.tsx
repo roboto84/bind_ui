@@ -64,18 +64,29 @@ export function Wh00tChatInput() {
         event.preventDefault();
       }
 
-      if (keyLog.ArrowUp === true && localMessageHistory.length > 0) {
-        if (keyLog.Control === true) {
-          if (localMessageHistory[localMessageHistoryIterator] === textAreaRef.current.value) {
+      if (localMessageHistory.length > 0) {
+        if (keyLog.ArrowUp === true) {
+          if (keyLog.Control === true) {
+            if (localMessageHistory[localMessageHistoryIterator] === textAreaRef.current.value) {
+              localMessageHistoryIterator = localMessageHistoryIterator === (
+                localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
+            }
+            textAreaRef.current.value = localMessageHistory[localMessageHistoryIterator];
             localMessageHistoryIterator = localMessageHistoryIterator === (
               localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
+            event.preventDefault();
+          } else if (textAreaRef.current.value === '') {
+            [textAreaRef.current.value] = localMessageHistory;
+            event.preventDefault();
+          }
+        } else if (keyLog.ArrowDown === true && keyLog.Control === true) {
+          if (localMessageHistory[localMessageHistoryIterator] === textAreaRef.current.value) {
+            localMessageHistoryIterator = localMessageHistoryIterator === 0
+              ? (localMessageHistory.length - 1) : localMessageHistoryIterator - 1;
           }
           textAreaRef.current.value = localMessageHistory[localMessageHistoryIterator];
-          localMessageHistoryIterator = localMessageHistoryIterator === (
-            localMessageHistory.length - 1) ? 0 : localMessageHistoryIterator + 1;
-          event.preventDefault();
-        } else if (textAreaRef.current.value === '') {
-          [textAreaRef.current.value] = localMessageHistory;
+          localMessageHistoryIterator = localMessageHistoryIterator === 0
+            ? (localMessageHistory.length - 1) : localMessageHistoryIterator - 1;
           event.preventDefault();
         }
       }

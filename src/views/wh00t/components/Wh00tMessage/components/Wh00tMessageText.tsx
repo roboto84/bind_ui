@@ -32,7 +32,7 @@ export function Wh00tMessageText(props: Wh00tMessageTextProps) {
     messageTextView = [noneTokenTextSpanElement('')];
     messageImage = imageGenerator(messageText);
   } else {
-    messageIsSecret = isSecretMessage(messageText);
+    messageIsSecret = messageSource !== Wh00tMessageTypeEnum.LOCAL && isSecretMessage(messageText);
     messageTextView = textTransform(messageText);
   }
 

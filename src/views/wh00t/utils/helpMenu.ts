@@ -21,7 +21,7 @@ function helpMenuTableGenerator(
     <thead>
       <tr>
         <th>${firstColumnTitle}</th>
-        <th>${secondColumnTitle}</th>
+        <th class="secondColumn">${secondColumnTitle}</th>
       </tr>
     </thead>
     <tbody>
@@ -36,11 +36,15 @@ export function helpMenu(): string {
     + 'This makes it a pretty good local LAN chat system with chatbot support.';
 
   const commands: {[key: string]: string} = {
-    '/help or /h': 'Print out help menu',
+    '/help, /h': 'Print out help menu',
     '/exit': 'Logout of chat',
-    '/clear or /c': 'Clear chat history',
+    '/clear, /c': 'Clear chat history',
+    '/secret {message}': 'Allows you to tag a message as secret which makes the chat obfuscate it '
+      + 'by default on the chat window, but viewable on mouse hover over.  It also assures it does '
+      + 'not show up on the history, and automatically removes it after 60 seconds.',
     '[ArrowUp]': 'Last Message',
-    '[Ctrl + ArrowUp]': 'Cycle through all your chat history in this current chat session',
+    '[Ctrl + ArrowUp]': 'Cycle through your chat messages in this current session',
+    '[Ctrl + ArrowDown]': 'Cycle through your chat messages in this current session in the reverse way as the ArrowUp version of the command.',
     '/lexi': '🤖 Word dictionary chatbot',
     '/air': '🤖 Weather chatbot',
     '/arc': '🤖 Hyperlink bookmark and search chatbot',
@@ -54,8 +58,8 @@ export function helpMenu(): string {
   };
 
   const specialHandlers: {[key: string]: string} = {
-    '[web_address]': 'Any web address is shown in chat as a hyperlink that opens a new tab',
-    '[image_address]': 'Any image address is attempted to be shown as a scaled image or hyperlink',
+    '[web_URL]': 'Any web address is shown in chat as a hyperlink that opens a new tab',
+    '[image_URL]': 'Popular image type URLs are attempted to be shown as a scaled image or hyperlink',
   };
 
   return `<div class="wh00tHelp">

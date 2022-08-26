@@ -127,9 +127,17 @@ export const GlobalThemeStyle = createGlobalStyle`
       text-align: center;
       padding:3px;
       position: inherit;
-
+      
       &:hover, &.active {
         cursor: inherit;
+      }
+
+      &.secondColumn{
+        width: 80%;
+
+        @media ${device.tabletS} {
+          width: 60%;
+        }
       }
     }
 
