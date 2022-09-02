@@ -14,6 +14,7 @@ export type LiveWeatherReport = {
   weatherLocation: string,
   weatherUnits: WeatherUnits,
   currentWeather: WeatherSummary,
+  previousWeather: WeatherSummary,
   weatherForecast: WeatherSummary[]
 }
 

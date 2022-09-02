@@ -76,6 +76,7 @@ export type CurrentWeatherReportProps = {
 
 export type CurrentWeatherProps = {
   currentWeatherReport: WeatherSummary,
+  previousWeatherReport: WeatherSummary,
   weatherUnits: WeatherUnits
 }
 

@@ -11,6 +11,7 @@ export function FullWeatherReport(props: CurrentWeatherReportProps) {
     <>
       <CurrentWeatherSummary
         currentWeatherReport={report.currentWeather}
+        previousWeatherReport={report.previousWeather}
         weatherUnits={report.weatherUnits}
       />
       <Weather>

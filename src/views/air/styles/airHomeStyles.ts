@@ -130,6 +130,15 @@ export const WeatherElement = styled.li`
   }
 `;
 
+export const WeatherAlert = styled.span`
+  margin-left: 10px;
+  color: white;
+  background-color: #bc2c2c;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+`;
+
 export const WeatherChartSection = styled(Section)`
   max-width: 1385px;
   margin: 10px auto;

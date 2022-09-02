@@ -33,6 +33,13 @@ export function pollenMaxConcern(
   ].sort((a, b) => b.severity - a.severity)[0];
 }
 
+export function pressureConcern(current:number, previous:number): string {
+  if (current - previous > 0.04) {
+    return 'ALERT';
+  }
+  return '';
+}
+
 export function getWeatherTableTitle(weatherTableTitle:string):string {
   const tableTitleLegend: WeatherTitles = {
     date: 'Date',

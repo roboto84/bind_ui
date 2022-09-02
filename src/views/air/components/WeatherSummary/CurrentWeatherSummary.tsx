@@ -2,7 +2,12 @@ import React from 'react';
 import { MoonIcon, MoonPhaseEnum } from '@/components/Images/MoonIcon';
 import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
 import { removeSpaces } from '@/utils/formatting';
-import { pollenMaxConcern, pollenSeverityView, precipitationTypeView } from '../../utils';
+import {
+  pollenMaxConcern,
+  pollenSeverityView,
+  precipitationTypeView,
+  pressureConcern,
+} from '../../utils';
 import { CurrentWeatherProps, PollenSeverity } from '../../types/airTypes';
 import {
   Weather,
@@ -13,16 +18,21 @@ import {
   WeatherElement,
   WeatherIconContainer,
   WeatherSubcategory,
-  MoonPhaseSummaryContainer,
+  MoonPhaseSummaryContainer, WeatherAlert,
 } from '../../styles/airHomeStyles';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
-  const { currentWeatherReport, weatherUnits } = props;
+  const { currentWeatherReport, previousWeatherReport, weatherUnits } = props;
   const { temperature, temperatureApparent, precipitationType, weatherCode,
     precipitationProbability, humidity, dewPoint, epaIndex, epaHealthConcern,
     pressureSurfaceLevel, treeIndex, grassIndex, weedIndex } = currentWeatherReport;
+
   const pollenMax: PollenSeverity = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
   const pollenSeveritySummary: string = pollenSeverityView(pollenMax.severity);
+  const pressureSummary: string = pressureConcern(
+    currentWeatherReport.pressureSurfaceLevel,
+    previousWeatherReport.pressureSurfaceLevel,
+  );
   const moonPhase: MoonPhaseEnum = removeSpaces(currentWeatherReport.moonPhase) as MoonPhaseEnum;
   const weatherState: WeatherConditionEnum = removeSpaces(
     weatherCode,
@@ -63,7 +73,8 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
           {epaHealthConcern} Air Quality ({epaIndex} {weatherUnits.epaIndex})
         </WeatherElement>
         <WeatherElement>
-          {pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure
+          <span>{pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure</span>
+          {pressureSummary ? <WeatherAlert>{pressureSummary}</WeatherAlert> : ''}
         </WeatherElement>
         <WeatherElement>
           {`${pollenMax.pollenType.toUpperCase()} pollen is ${pollenSeveritySummary} 
