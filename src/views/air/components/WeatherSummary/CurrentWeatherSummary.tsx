@@ -8,7 +8,7 @@ import {
   precipitationTypeView,
   pressureConcern,
 } from '../../utils';
-import { CurrentWeatherProps, PollenSeverity } from '../../types/airTypes';
+import { CurrentWeatherProps, PollenSeverity, WeatherAlertSummary } from '../../types/airTypes';
 import {
   Weather,
   WeatherTitle,
@@ -29,7 +29,7 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
 
   const pollenMax: PollenSeverity = pollenMaxConcern(treeIndex, grassIndex, weedIndex);
   const pollenSeveritySummary: string = pollenSeverityView(pollenMax.severity);
-  const pressureSummary: string = pressureConcern(
+  const pressureSummary: WeatherAlertSummary = pressureConcern(
     currentWeatherReport.pressureSurfaceLevel,
     previousWeatherReport.pressureSurfaceLevel,
   );
@@ -74,7 +74,7 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         </WeatherElement>
         <WeatherElement>
           <span>{pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure</span>
-          {pressureSummary ? <WeatherAlert>{pressureSummary}</WeatherAlert> : ''}
+          {pressureSummary.message !== '' ? <WeatherAlert title={pressureSummary.reason.concat(' ', weatherUnits.pressureSurfaceLevel)}>{pressureSummary.message}</WeatherAlert> : ''}
         </WeatherElement>
         <WeatherElement>
           {`${pollenMax.pollenType.toUpperCase()} pollen is ${pollenSeveritySummary} 

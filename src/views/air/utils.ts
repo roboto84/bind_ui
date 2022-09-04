@@ -1,4 +1,10 @@
-import { BaseObject, PollenSeverity, PollenType, WeatherTitles } from '@/views/air/types/airTypes';
+import {
+  BaseObject,
+  PollenSeverity,
+  PollenType,
+  WeatherAlertSummary,
+  WeatherTitles,
+} from '@/views/air/types/airTypes';
 
 export function precipitationTypeView(precipitationType: string): string {
   return precipitationType !== 'N/A' ? precipitationType : 'Rain';
@@ -33,11 +39,24 @@ export function pollenMaxConcern(
   ].sort((a, b) => b.severity - a.severity)[0];
 }
 
-export function pressureConcern(current:number, previous:number): string {
-  if (current - previous > 0.04) {
-    return 'ALERT';
+export function pressureConcern(current:number, previous:number): WeatherAlertSummary {
+  const alertDelta: number = 0.01;
+  let variable: string = 'pressure';
+  variable = variable.charAt(0).toUpperCase().concat(variable.slice(1));
+  const sentencePartition: string = 'by at least';
+  let calculatedMessage: string = '';
+  let calculatedReason: string = '';
+  if (current - previous >= alertDelta) {
+    calculatedMessage = 'GAIN';
+    calculatedReason = `${variable} increased ${sentencePartition} ${alertDelta}`;
+  } else if (previous - current >= alertDelta) {
+    calculatedMessage = 'DROP';
+    calculatedReason = `${variable} decreased ${sentencePartition} ${alertDelta}`;
   }
-  return '';
+  return {
+    message: calculatedMessage,
+    reason: calculatedReason,
+  };
 }
 
 export function getWeatherTableTitle(weatherTableTitle:string):string {

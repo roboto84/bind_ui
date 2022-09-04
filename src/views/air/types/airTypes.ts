@@ -1,6 +1,11 @@
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
 import { GlobalThemeType } from '@/types';
 
+export type WeatherAlertSummary = {
+  message: string,
+  reason: string
+}
+
 export type StandardTime = {
   year: string,
   month: string,
