@@ -40,18 +40,18 @@ export function pollenMaxConcern(
 }
 
 export function pressureConcern(current:number, previous:number): WeatherAlertSummary {
-  const alertDelta: number = 0.01;
+  const alertDelta: number = 0.04;
   let variable: string = 'pressure';
   variable = variable.charAt(0).toUpperCase().concat(variable.slice(1));
-  const sentencePartition: string = 'by at least';
+  const sentencePartition: string = 'by ';
   let calculatedMessage: string = '';
   let calculatedReason: string = '';
   if (current - previous >= alertDelta) {
     calculatedMessage = 'GAIN';
-    calculatedReason = `${variable} increased ${sentencePartition} ${alertDelta}`;
+    calculatedReason = `${variable} increased ${sentencePartition} ${current - previous}`;
   } else if (previous - current >= alertDelta) {
     calculatedMessage = 'DROP';
-    calculatedReason = `${variable} decreased ${sentencePartition} ${alertDelta}`;
+    calculatedReason = `${variable} decreased ${sentencePartition} ${previous - current}`;
   }
   return {
     message: calculatedMessage,
