@@ -1,13 +1,16 @@
 export const customThemeDark = {
   textColor: 'white',
   background: '#2a2b30',
-  green: '#7b9d09',
-  darkGrey: '#3e4150',
+  lightGreen: '#7b9d09',
+  lightBlue: '#38BDF8',
+  lightGrey: '#3e4150',
+  mainThemeColor: '#38BDF8',
 };
 
 export const customThemeLight = {
   textColor: 'black',
-  lightBlue: '#1f8ca9',
   background: '#2a2b30',
-  lightGrey: '#b9baba',
+  darkBlue: '#1f8ca9',
+  darkGrey: '#b9baba',
+  mainThemeColor: '#1f8ca9',
 };

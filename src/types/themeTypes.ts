@@ -20,6 +20,7 @@ export type HeaderStyleType = {
   iconHoverColor: string,
   subTitleColor: string,
   secondaryTitleColor: string,
+  secondaryTitleBrightness: string,
   borderBottomColor: string,
 };
 
@@ -83,8 +84,6 @@ export type DebugThemeType = {
   messageId: string,
   messageCategory: string,
   messageTime: string,
-  messageHistoryBorder: string,
-  messageBackgroundColor: string,
   latestMessageBorder: string,
 }
 
@@ -95,7 +94,6 @@ export type CoreStyleType = {
   basicShadow: string,
   aLink: {
     linkColor: string,
-    hoverColor: string,
   },
   section: {
     backgroundColor: string,
@@ -105,6 +103,7 @@ export type CoreStyleType = {
     backgroundColor: string,
     borderColor: string,
     headerColor: string,
+    highlightCellBackgroundColor: string,
     highlightCellColor: string,
     td: {
       borderColor: string,

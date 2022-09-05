@@ -9,13 +9,12 @@ import { shared } from '@/styles/themes/sharedTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
-    mainThemeColor: customThemeDark.green,
+    mainThemeColor: customThemeDark.mainThemeColor, // Consider rgb(56 189 248)
     bgColor: customThemeDark.background,
     textColor: customThemeDark.textColor,
     basicShadow: 'rgb(22, 22, 22) 4px 4px 7px;',
     aLink: {
-      linkColor: customThemeDark.green,
-      hoverColor: '#91b400',
+      linkColor: customThemeDark.mainThemeColor,
     },
     section: {
       borderColor: '#525963',
@@ -30,7 +29,8 @@ export const DarkTheme: ThemeType = {
       backgroundColor: '#25262e',
       borderColor: '#373C3F',
       headerColor: '#484c58',
-      highlightCellColor: '#617c07',
+      highlightCellBackgroundColor: customThemeDark.mainThemeColor,
+      highlightCellColor: 'black',
       td: {
         borderColor: '#404448',
       },
@@ -50,14 +50,14 @@ export const DarkTheme: ThemeType = {
       borderColor: '#484848',
       bgColor: '#272a2c',
       timeBgColor: '#323131',
-      timeColor: customThemeDark.green,
+      timeColor: customThemeDark.mainThemeColor,
       valueBgColor: '#232528',
       valueColor: 'white',
     },
   },
   throbber: {
-    background: customThemeDark.darkGrey,
-    foreground: customThemeDark.green,
+    background: customThemeDark.lightGrey,
+    foreground: customThemeDark.mainThemeColor,
   },
   button: {
     border: '#484c58',
@@ -74,9 +74,10 @@ export const DarkTheme: ThemeType = {
   },
   header: {
     iconColor: '#dadada',
-    iconHoverColor: customThemeDark.green,
+    iconHoverColor: customThemeDark.mainThemeColor,
     subTitleColor: '#939393',
-    secondaryTitleColor: '#a4d20c',
+    secondaryTitleColor: customThemeDark.mainThemeColor,
+    secondaryTitleBrightness: 'brightness(115%)',
     borderBottomColor: customThemeDark.background,
   },
   home: homeDark,

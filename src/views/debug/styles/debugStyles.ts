@@ -29,7 +29,7 @@ export const LatestMessage = styled.ul`{
   margin: 20px 50px;
   min-height: 25px;
   box-shadow: ${(props: GlobalThemeType) => props.theme.core.basicShadow};
-  background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
 
   li {
     list-style: none;
@@ -41,7 +41,7 @@ export const LatestMessage = styled.ul`{
 }`;
 
 export const MessageHistory = styled.ul`{
-  border: ${(props: GlobalThemeType) => props.theme.debug.messageHistoryBorder} 2px solid;
+  border: ${(props: GlobalThemeType) => props.theme.core.section.borderColor} 1px solid;
   border-radius: 5px;
   padding: 20px;
   margin: 20px 50px 0 50px;
@@ -49,7 +49,7 @@ export const MessageHistory = styled.ul`{
   min-height: 100px;
   height: calc(90vh - 325px);
   box-shadow: ${(props: GlobalThemeType) => props.theme.core.basicShadow};
-  background-color: ${(props: GlobalThemeType) => props.theme.debug.messageBackgroundColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
 
   li {
     list-style: none;

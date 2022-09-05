@@ -65,6 +65,7 @@ export const PrimaryTitle = styled.span`
 export const ColoredTitle = styled.span`
   color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
   margin-left: 8px;
+  filter: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleBrightness};
   
   @media ${device.tablet} {
     margin: -2px 0 0 8px;

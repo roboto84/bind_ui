@@ -25,7 +25,7 @@ export const GlobalThemeStyle = createGlobalStyle`
   }
 
   a:hover {
-    color: ${(props: GlobalThemeType) => props.theme.core.aLink.hoverColor};
+    filter: brightness(115%);
   }
   
   table {
@@ -50,8 +50,8 @@ export const GlobalThemeStyle = createGlobalStyle`
 
     &:hover, &.active {
       cursor: pointer;
-      color: white;
-      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
+      color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
+      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellBackgroundColor};
     }
   }
 
@@ -69,8 +69,8 @@ export const GlobalThemeStyle = createGlobalStyle`
     }
 
     :hover {
-      color: white;
-      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
+      color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellColor};
+      background-color: ${(props: GlobalThemeType) => props.theme.core.table.highlightCellBackgroundColor};
     }
   }
 

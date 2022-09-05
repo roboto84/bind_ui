@@ -68,7 +68,7 @@ export const wh00tLight: Wh00tThemeType = {
       color: '#4e4e4e',
       borderColor: '#4e4e4e',
       backgroundColor: '#d4d4d4',
-      backgroundHoverColor: customThemeLight.lightBlue,
+      backgroundHoverColor: customThemeLight.darkBlue,
     },
     backgroundColor: '#d4d4d4',
     borderColor: '#949494',

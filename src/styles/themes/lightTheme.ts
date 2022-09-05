@@ -9,13 +9,12 @@ import { customThemeLight } from '@/styles/themes/customTheme';
 
 export const LightTheme: ThemeType = {
   core: {
-    mainThemeColor: customThemeLight.lightBlue,
+    mainThemeColor: customThemeLight.darkBlue,
     bgColor: '#d4d4d4',
     textColor: 'black',
     basicShadow: '0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);',
     aLink: {
-      linkColor: '#32889e',
-      hoverColor: '#119dc1',
+      linkColor: customThemeLight.darkBlue,
     },
     section: {
       backgroundColor: '#e3e3e3',
@@ -25,7 +24,8 @@ export const LightTheme: ThemeType = {
       backgroundColor: '#e3e3e3',
       borderColor: '#8a8b8b',
       headerColor: '#8a8b8b',
-      highlightCellColor: '#4193a9',
+      highlightCellBackgroundColor: customThemeLight.darkBlue,
+      highlightCellColor: 'white',
       td: {
         borderColor: '#828a90',
       },
@@ -63,20 +63,21 @@ export const LightTheme: ThemeType = {
       borderColor: '#b2b2b2',
       bgColor: '#d4d4d4',
       timeBgColor: '#d4d4d4',
-      timeColor: customThemeLight.lightBlue,
+      timeColor: customThemeLight.darkBlue,
       valueBgColor: '',
       valueColor: 'black',
     },
   },
   throbber: {
-    background: customThemeLight.lightGrey,
-    foreground: customThemeLight.lightBlue,
+    background: customThemeLight.darkGrey,
+    foreground: customThemeLight.darkBlue,
   },
   header: {
     iconColor: '#636363',
-    iconHoverColor: customThemeLight.lightBlue,
+    iconHoverColor: customThemeLight.darkBlue,
     subTitleColor: '#6c6c6c',
-    secondaryTitleColor: customThemeLight.lightBlue,
+    secondaryTitleColor: customThemeLight.darkBlue,
+    secondaryTitleBrightness: 'brightness(100%)',
     borderBottomColor: '#d4d4d4',
   },
   home: homeLight,

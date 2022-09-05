@@ -46,3 +46,7 @@ export function camelCaseToSpaced(camelCasedText: string): string {
 export function capitalizedFirst(text: string): string {
   return text.charAt(0).toUpperCase().concat(text.slice(1));
 }
+
+export function twoDecimalPlaces(number: number): number {
+  return +number.toFixed(2);
+}
