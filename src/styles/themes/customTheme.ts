@@ -2,7 +2,7 @@ export const customThemeDark = {
   textColor: 'white',
   background: '#2a2b30',
   lightGreen: '#7b9d09',
-  lightBlue: '#38BDF8',
+  lightBlue: '#54c5f8',
   lightGrey: '#3e4150',
   mainThemeColor: '#38BDF8',
 };
