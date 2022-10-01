@@ -31,10 +31,6 @@ export function Wh00tMessages(props: Wh00tMessagesProps) {
         endOfMessages.current?.scrollIntoView();
       }, 200);
     });
-
-    setTimeout(() => {
-      endOfMessages.current?.scrollIntoView();
-    }, 50);
   };
 
   useEffect(() => {
