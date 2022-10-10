@@ -1,4 +1,4 @@
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Wh00tMini } from '@/views/wh00t/Wh00tMini';
@@ -33,4 +33,5 @@ function Index():React.ComponentElement<any, any> {
   );
 }
 
-render(<Index />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Index />);

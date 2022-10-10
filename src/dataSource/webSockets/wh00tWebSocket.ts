@@ -168,7 +168,7 @@ export class Wh00tWebSocket {
   }
 
   connectWebSocket(clientId?: string): void {
-    if (this.wh00tWS === null || this.wh00tWS.readyState !== 1) {
+    if (this.wh00tWS === null || this.wh00tWS.readyState === 3) {
       if (clientId && clientId.replace(/\s/g, '') !== '') {
         this.clientId = clientId;
       } else {
