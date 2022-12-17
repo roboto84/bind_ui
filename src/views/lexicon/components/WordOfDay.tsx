@@ -12,28 +12,43 @@ import { WordOfDayProps } from '../types/lexiconTypes';
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;
   const navigate: NavigateFunction = useNavigate();
-
-  return (
+  let view: JSX.Element = (
     <WordOfDayContainer>
       <DayWordInfo>
-        <DayWord
-          onClick={() => navigate(`/lexicon/search?word=${wordDefinition.word}`)}
-        >
-          {wordDefinition.word}
+        <DayWord>
+          No Words Available
         </DayWord>
-        <DayWordDate>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DayWordDate>
-        <DayWordPartOfSpeech>{wordParamBasicView(wordDefinition.partOfSpeech)}</DayWordPartOfSpeech>
-        <DayWordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</DayWordBreak>
-        <DayWordPronounce>{pronunciationView(...wordDefinition.pronounce)}</DayWordPronounce>
       </DayWordInfo>
-
-      <DayWordDefinitionsList>
-        <DefinitionListView definitions={wordDefinition.definitions} />
-      </DayWordDefinitionsList>
-
-      <DayWordExample>
-        {wordExampleView(wordDefinition.example)}
-      </DayWordExample>
     </WordOfDayContainer>
   );
+
+  if (wordDefinition && wordDefinition.word) {
+    view = (
+      <WordOfDayContainer>
+        <DayWordInfo>
+          <DayWord
+            onClick={() => navigate(`/lexicon/search?word=${wordDefinition.word}`)}
+          >
+            {wordDefinition.word}
+          </DayWord>
+          <DayWordDate>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DayWordDate>
+          <DayWordPartOfSpeech>
+            {wordParamBasicView(wordDefinition.partOfSpeech)}
+          </DayWordPartOfSpeech>
+          <DayWordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</DayWordBreak>
+          <DayWordPronounce>{pronunciationView(...wordDefinition.pronounce)}</DayWordPronounce>
+        </DayWordInfo>
+
+        <DayWordDefinitionsList>
+          <DefinitionListView definitions={wordDefinition.definitions} />
+        </DayWordDefinitionsList>
+
+        <DayWordExample>
+          {wordExampleView(wordDefinition.example)}
+        </DayWordExample>
+      </WordOfDayContainer>
+    );
+  }
+
+  return view;
 }
