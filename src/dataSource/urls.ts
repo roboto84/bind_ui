@@ -1,15 +1,17 @@
-import { HTTP_PROTOCOL } from '@/types';
+import { HTTP_PROTOCOL, WS_PROTOCOL } from '@/types';
+
+export const { API_PORT } = process.env;
+const { API_URL } = process.env;
+const { API_SSL } = process.env;
 
 // eslint-disable-next-line no-restricted-globals
-export const BASE_URL: string = process.env.API_URL !== '' ? process.env.API_URL : `${location.hostname}`;
-export const CURRENT_API_HTTP_PROTOCOL: HTTP_PROTOCOL = HTTP_PROTOCOL.HTTPS;
-function getHttpBaseUrl() {
-  if (CURRENT_API_HTTP_PROTOCOL === HTTP_PROTOCOL.HTTPS) {
-    return `https://${BASE_URL}`;
-  }
-  return `http://${BASE_URL}`;
-}
+export const BASE_API_URL: string = API_URL !== '' ? API_URL : `${location.hostname}`;
+export const CURRENT_API_WS_PROTOCOL: WS_PROTOCOL = API_SSL ? WS_PROTOCOL.WSS : WS_PROTOCOL.WS;
 
-export const API_URL: string = `${getHttpBaseUrl()}:8000`;
-export const WSS_BASE_URL: string = `wss://${BASE_URL}`;
-export const BASE_UI_URL: string = `$http://${BASE_URL}`;
+export const CURRENT_API_HTTP_PROTOCOL: HTTP_PROTOCOL = API_SSL
+  ? HTTP_PROTOCOL.HTTPS
+  : HTTP_PROTOCOL.HTTP;
+
+export const FULL_API_URL: string = `${CURRENT_API_HTTP_PROTOCOL}://${BASE_API_URL}:${API_PORT}`;
+export const WS_BASE_URL: string = `${CURRENT_API_WS_PROTOCOL}://${BASE_API_URL}`;
+export const BASE_UI_URL: string = `${HTTP_PROTOCOL.HTTP}://${BASE_API_URL}`;

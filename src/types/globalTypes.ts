@@ -1,8 +1,13 @@
 import React from 'react';
 
 export enum HTTP_PROTOCOL {
-  HTTP = 'HTTP',
-  HTTPS = 'HTTPS'
+  HTTP = 'http',
+  HTTPS = 'https'
+}
+
+export enum WS_PROTOCOL {
+  WS = 'ws',
+  WSS = 'wss'
 }
 
 export enum Size {

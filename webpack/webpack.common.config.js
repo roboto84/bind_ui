@@ -4,6 +4,8 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
+const DEFAULT_API_PORT = '8000';
+
 module.exports = (env) => ({
   entry: './src',
   output: {
@@ -59,6 +61,8 @@ module.exports = (env) => ({
     }),
     new webpack.DefinePlugin({
       'process.env.API_URL': JSON.stringify(`${env && env.API_URL ? `${env.API_URL}` : ''}`),
+      'process.env.API_PORT': JSON.stringify(`${env && env.API_PORT ? `${env.API_PORT}` : DEFAULT_API_PORT}`),
+      'process.env.API_SSL': JSON.stringify(`${env && env.API_SSL ? `${env.API_SSL}` : true}`),
     }),
   ],
 });

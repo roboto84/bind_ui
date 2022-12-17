@@ -1,5 +1,5 @@
 import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
-import { WSS_BASE_URL } from '@/dataSource/urls';
+import { API_PORT, WS_BASE_URL } from '@/dataSource/urls';
 import { randomIntFromInterval } from '@/utils/utils';
 import { getLocalStandardDateTime } from '@/utils/formatting';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
@@ -184,7 +184,7 @@ export class Wh00tWebSocket {
         type: Wh00tActionsEnum.CONNECTING,
       });
       this.wh00tWS = new WebSocket(
-        `${WSS_BASE_URL}:8000/wh00t_chat/${this.clientId}`,
+        `${WS_BASE_URL}:${API_PORT}/wh00t_chat/${this.clientId}`,
       );
 
       this.wh00tWS.onopen = () => {

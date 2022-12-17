@@ -1,6 +1,6 @@
 import axios, { AxiosPromise } from 'axios';
 import { AirEndpointsType, LexiconEndpointsType, DebugEndpointsType } from '@/dataSource/types/apiTypes';
-import { API_URL } from '@/dataSource/urls';
+import { FULL_API_URL } from '@/dataSource/urls';
 
 const numOfDays: number = 14;
 const weatherHistoryTimeInterval: number = 24 * numOfDays;
@@ -22,9 +22,9 @@ export const debugApiEndpoints: DebugEndpointsType = {
 };
 
 export async function getData(path: string): Promise<AxiosPromise> {
-  return axios.get(API_URL.concat(`${path}`));
+  return axios.get(FULL_API_URL.concat(`${path}`));
 }
 
 export async function getLexiconWordSearch(word: string) {
-  return axios.get(API_URL.concat(`${lexiconApiEndpoints.wordSearch}${word}`));
+  return axios.get(FULL_API_URL.concat(`${lexiconApiEndpoints.wordSearch}${word}`));
 }
