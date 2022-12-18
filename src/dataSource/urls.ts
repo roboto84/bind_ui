@@ -6,9 +6,9 @@ const { API_SSL } = process.env;
 
 // eslint-disable-next-line no-restricted-globals
 export const BASE_API_URL: string = API_URL !== '' ? API_URL : `${location.hostname}`;
-export const CURRENT_API_WS_PROTOCOL: WS_PROTOCOL = API_SSL ? WS_PROTOCOL.WSS : WS_PROTOCOL.WS;
+export const CURRENT_API_WS_PROTOCOL: WS_PROTOCOL = API_SSL === 'true' ? WS_PROTOCOL.WSS : WS_PROTOCOL.WS;
 
-export const CURRENT_API_HTTP_PROTOCOL: HTTP_PROTOCOL = API_SSL
+export const CURRENT_API_HTTP_PROTOCOL: HTTP_PROTOCOL = API_SSL === 'true'
   ? HTTP_PROTOCOL.HTTPS
   : HTTP_PROTOCOL.HTTP;
 
