@@ -1,5 +1,10 @@
 import axios, { AxiosPromise } from 'axios';
-import { AirEndpointsType, LexiconEndpointsType, DebugEndpointsType } from '@/dataSource/types/apiTypes';
+import {
+  AirEndpointsType,
+  LexiconEndpointsType,
+  DebugEndpointsType,
+  ArcadiaEndpointsType,
+} from '@/dataSource/types/apiTypes';
 import { FULL_API_URL } from '@/dataSource/urls';
 
 const numOfDays: number = 14;
@@ -17,6 +22,11 @@ export const lexiconApiEndpoints: LexiconEndpointsType = {
   wordSearch: '/lexicon/word_search/',
 };
 
+export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
+  tags: '/arcadia/subjects',
+  wordSearch: '/arcadia/word_search/',
+};
+
 export const debugApiEndpoints: DebugEndpointsType = {
   wh00tMessages: '/',
 };
@@ -27,4 +37,8 @@ export async function getData(path: string): Promise<AxiosPromise> {
 
 export async function getLexiconWordSearch(word: string) {
   return axios.get(FULL_API_URL.concat(`${lexiconApiEndpoints.wordSearch}${word}`));
+}
+
+export async function getArcadiaWordSearch(word: string) {
+  return axios.get(FULL_API_URL.concat(`${arcadiaApiEndpoints.wordSearch}${word}`));
 }

@@ -1,11 +1,12 @@
 import { ThemeType } from '@/types/themeTypes';
-import { lexiconDark } from '@/views/lexicon/styles/lexiconThemes';
+import { lexiconDark } from '@/views/search/lexicon/styles/lexiconThemes';
 import { debugDark } from '@/views/debug/styles/debugThemes';
 import { customThemeDark } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
 import { homeDark } from '@/views/home/styles/homeThemes';
 import { shared } from '@/styles/themes/sharedTheme';
+import { arcadiaDark } from '@/views/search/arcadia/styles/arcadiaThemes';
 
 export const DarkTheme: ThemeType = {
   core: {
@@ -84,6 +85,7 @@ export const DarkTheme: ThemeType = {
   air: airDark,
   wh00t: wh00tDark,
   lexicon: lexiconDark,
+  arcadia: arcadiaDark,
   debug: debugDark,
   shared,
 };

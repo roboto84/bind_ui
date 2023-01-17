@@ -1,9 +1,8 @@
 import React from 'react';
-import { WordOfDay } from '@/views/lexicon/components/WordOfDay';
-import { LatestWordList } from '@/views/lexicon/components/LatestWordList';
+import { WordOfDay } from '@/views/search/lexicon/components/WordOfDay';
+import { LatestWordList } from '@/views/search/lexicon/components/LatestWordList';
 import { useQuery, UseQueryResult } from 'react-query';
 import Loader from '@/components/Misc/Loader';
-import { SearchBar } from '@/views/lexicon/components/SearchBar';
 import camelcaseKeys from 'camelcase-keys';
 import { lexiconApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { LatestWordListApiResult } from '@/dataSource/types/apiTypes';
@@ -33,7 +32,6 @@ export function Lexicon() {
     }
     return (
       <LexiconContainer>
-        <SearchBar />
         <ErrorViewDefault errorMessage={errorMessage} />
       </LexiconContainer>
     );
@@ -49,7 +47,6 @@ export function Lexicon() {
 
   return (
     <LexiconContainer>
-      <SearchBar />
       <WordOfDaySection withShadow>
         <h2>Word of the Day</h2>
         <WordOfDay wordDefinition={wordOfDayResponse} />

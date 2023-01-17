@@ -1,15 +1,14 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLexiconWordSearch } from '@/dataSource/reactQueryHooks';
-import { SearchBar } from '@/views/lexicon/components/SearchBar';
 import {
   LexiconSpellingIssue,
-} from '@/views/lexicon/components/lexiconSpellingIssue/LexiconSpellingIssue';
+} from '@/views/search/lexicon/components/lexiconSpellingIssue/LexiconSpellingIssue';
 import {
   LexiconSearchDefinition,
-} from '@/views/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
+} from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
 import Loader from '@/components/Misc/Loader';
-import { WordDefinition } from '@/views/lexicon/types/lexiconTypes';
+import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import { LexiconContainer } from '../../styles/lexiconStyles';
@@ -34,7 +33,6 @@ export function LexiconSearchHome() {
   if (!wordSearchResponse.definitionIsAcceptable) {
     return (
       <LexiconContainer>
-        <SearchBar />
         <LexiconSpellingIssue wordDefinition={wordSearchResponse} />
       </LexiconContainer>
     );
@@ -42,7 +40,6 @@ export function LexiconSearchHome() {
 
   return (
     <LexiconContainer>
-      <SearchBar />
       <LexiconSearchDefinition wordDefinition={wordSearchResponse} />
     </LexiconContainer>
   );

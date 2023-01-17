@@ -1,3 +1,5 @@
+import { AlphabetHeader } from '@/views/search/arcadia/styles/arcadiaStyles';
+
 export interface GlobalThemeType {
   theme: ThemeType
 }
@@ -75,6 +77,14 @@ export type LexiconThemeType = {
       color: string,
       background: string
     }
+  }
+}
+
+export type ArcadiaThemeType = {
+  search: {
+    alphabetHeaderColor: string,
+    subTitleColor: string,
+    timeColor: string,
   }
 }
 
@@ -207,6 +217,7 @@ export type ThemeType = {
   home: HomeThemeType,
   air: AirThemeType,
   lexicon: LexiconThemeType,
+  arcadia: ArcadiaThemeType,
   wh00t: Wh00tThemeType,
   debug: DebugThemeType,
   shared: SharedThemeType,

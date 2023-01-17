@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Word } from '@/views/lexicon/styles/wordListStyles';
+import { Word } from '@/views/search/lexicon/styles/wordListStyles';
 import { LatestWordListContainer } from '../styles/lexiconHomeStyles';
 import { LatestWordListProps } from '../types/lexiconTypes';
 
@@ -12,7 +12,7 @@ export function LatestWordList(props: LatestWordListProps) {
     <LatestWordListContainer>
       { wordList.map((word: string) => (
         <Word
-          onClick={() => navigate(`/lexicon/search?word=${word.toLowerCase()}`)}
+          onClick={() => navigate(`/search/system/lexicon?word=${word.toLowerCase()}`)}
           key={'wordListItem'.concat(word)}
         >
           {word.toLowerCase()}

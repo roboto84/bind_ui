@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
+import { LexiconSection } from '@/views/search/lexicon/styles/lexiconHomeStyles';
 import { Hoverable } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types';

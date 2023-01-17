@@ -14,7 +14,7 @@ export const WordOfDaySection = styled(LexiconSection)``;
 export const WordListSection = styled(LexiconSection)``;
 export const LatestWordListContainer = styled.ul`{
   all: unset;
-  margin: 0 50px;
+  margin: 0 0 0 50px;
   display: flex;
   height: 100%;
   flex-wrap: wrap;

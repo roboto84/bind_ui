@@ -19,15 +19,15 @@ export default function HeaderLinks() {
       <NavigationOptional>
         <NavigationLink title="home" borderRadius={borderRadius} linkTo="/">/</NavigationLink>
       </NavigationOptional>
-      <NavigationLink title="Air Weather App" borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
-      <NavigationLink title="Lexicon Dictionary App" borderRadius={borderRadius} linkTo="/lexicon">Lexicon</NavigationLink>
+      <NavigationLink title="Air Weather" borderRadius={borderRadius} linkTo="/air">Air</NavigationLink>
+      <NavigationLink title="Arcadia Search" borderRadius={borderRadius} linkTo="/search">Search</NavigationLink>
       <NavigationLink
         title="Wh00t Chat App"
         borderRadius={borderRadius}
         alert={wh00tState.wh00tInternalAlert}
-        linkTo="/wh00t"
+        linkTo="/chat"
       >
-        wh00t
+        Chat
       </NavigationLink>
       <NavigationLink
         title="Roboto Debug View"

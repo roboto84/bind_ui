@@ -1,7 +1,7 @@
 import React from 'react';
-import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
+import { WordSearchDefinitionProps } from '@/views/search/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
+import { DefinitionListView } from '@/views/search/lexicon/components/WordDefinitions';
 import {
   pronunciationView,
   wordEtymologyView,
@@ -29,11 +29,11 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const navigate: NavigateFunction = useNavigate();
   let wordAudioComponent: JSX.Element = <span />;
 
-  const wordStemsView: {}[] = wordDefinition.stems.map(
+  const wordStemsView: JSX.Element[] = wordDefinition.stems.map(
     (wordStem:string) => (
       <Stem
         key={'wordStem-'.concat(wordStem)}
-        onClick={() => navigate(`/lexicon/search?word=${wordStem}`)}
+        onClick={() => navigate(`/search/system/lexicon?word=${wordStem}`)}
       >
         {wordStem}
       </Stem>

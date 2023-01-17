@@ -1,6 +1,6 @@
 import React from 'react';
-import { WordOfDay } from '@/views/lexicon/components/WordOfDay';
-import { WordDefinition } from '@/views/lexicon/types/lexiconTypes';
+import { WordOfDay } from '@/views/search/lexicon/components/WordOfDay';
+import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import { RobotoDescriptionContainer } from './appDescriptionsStyles';
 
 export default function RobotoDescription() {

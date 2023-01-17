@@ -24,7 +24,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const HeaderTitleContainer = styled.div`
-  width: calc(100% - 375px);
+  width: calc(100% - 360px);
   display: flex;
 
   @media ${device.tablet} {
@@ -111,7 +111,7 @@ export const NavContainer = styled.div`
   all: unset;
   display: flex;
   height: 34px;
-  width: 360px;
+  width: 345px;
   justify-content: space-between;
 
   @media ${device.mobileXL} {

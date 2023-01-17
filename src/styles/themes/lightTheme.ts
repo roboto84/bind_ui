@@ -1,11 +1,12 @@
 import { ThemeType } from '@/types/themeTypes';
-import { lexiconLight } from '@/views/lexicon/styles/lexiconThemes';
+import { lexiconLight } from '@/views/search/lexicon/styles/lexiconThemes';
 import { debugLight } from '@/views/debug/styles/debugThemes';
 import { wh00tLight } from '@/views/wh00t/styles/wh00tThemes';
 import { airLight } from '@/views/air/styles/airThemeStyle';
 import { homeLight } from '@/views/home/styles/homeThemes';
 import { shared } from '@/styles/themes/sharedTheme';
 import { customThemeLight } from '@/styles/themes/customTheme';
+import { arcadiaLight } from '@/views/search/arcadia/styles/arcadiaThemes';
 
 export const LightTheme: ThemeType = {
   core: {
@@ -84,6 +85,7 @@ export const LightTheme: ThemeType = {
   air: airLight,
   wh00t: wh00tLight,
   lexicon: lexiconLight,
+  arcadia: arcadiaLight,
   debug: debugLight,
   shared,
 };

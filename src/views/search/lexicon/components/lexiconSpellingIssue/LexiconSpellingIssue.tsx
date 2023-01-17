@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   SpellingErrorDisplay, SpellingErrorMessage, SpellingSuggestion, SpellingSuggestions,
-} from '@/views/lexicon/components/lexiconSpellingIssue/styles/LexiconSpellingIssuesStyle';
-import { WordSearchDefinitionProps } from '@/views/lexicon/types/lexiconTypes';
-import { LatestWordListContainer, LexiconSection } from '@/views/lexicon/styles/lexiconHomeStyles';
+} from '@/views/search/lexicon/components/lexiconSpellingIssue/styles/LexiconSpellingIssuesStyle';
+import { WordSearchDefinitionProps } from '@/views/search/lexicon/types/lexiconTypes';
+import { LatestWordListContainer, LexiconSection } from '@/views/search/lexicon/styles/lexiconHomeStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 

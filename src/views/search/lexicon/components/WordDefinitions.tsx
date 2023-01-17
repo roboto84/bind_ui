@@ -1,5 +1,5 @@
 import React from 'react';
-import { WordDefinitionsProps } from '@/views/lexicon/types/lexiconTypes';
+import { WordDefinitionsProps } from '@/views/search/lexicon/types/lexiconTypes';
 
 export function DefinitionListView(props: WordDefinitionsProps) {
   const { definitions } = props;

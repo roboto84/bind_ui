@@ -4,8 +4,8 @@ import {
   DayWord, DayWordInfo, DayWordBreak,
   DayWordDate, DayWordDefinitionsList, DayWordExample,
   DayWordPartOfSpeech, DayWordPronounce, WordOfDayContainer,
-} from '@/views/lexicon/styles/wordOfDayStyles';
-import { DefinitionListView } from '@/views/lexicon/components/WordDefinitions';
+} from '@/views/search/lexicon/styles/wordOfDayStyles';
+import { DefinitionListView } from '@/views/search/lexicon/components/WordDefinitions';
 import { pronunciationView, wordExampleView, wordParamBasicView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
 
@@ -27,7 +27,7 @@ export function WordOfDay(props: WordOfDayProps) {
       <WordOfDayContainer>
         <DayWordInfo>
           <DayWord
-            onClick={() => navigate(`/lexicon/search?word=${wordDefinition.word}`)}
+            onClick={() => navigate(`/search/system/lexicon?word=${wordDefinition.word}`)}
           >
             {wordDefinition.word}
           </DayWord>

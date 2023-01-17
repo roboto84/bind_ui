@@ -19,7 +19,7 @@ import { Wh00tChatHeader } from './components/Wh00tChatHeader/Wh00tChatHeader';
 export function Wh00tMini() {
   const { pathname } = useLocation();
   const { state, dispatch } = useWh00tWebsocket();
-  const isLargeWh00t: boolean = (pathname.includes('wh00t'));
+  const isLargeWh00t: boolean = (pathname.includes('chat'));
   const wh00tMinimizeSwitch = () => {
     dispatch({
       source: Wh00tMessageTypeEnum.LOCAL,

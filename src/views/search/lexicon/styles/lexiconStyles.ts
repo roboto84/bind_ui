@@ -6,9 +6,4 @@ export const LexiconContainer = styled.div`
   font-size: 17px;
   margin: 0;
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
-  padding-top: 20px;
-
-  @media ${device.tabletS} {
-    padding-top: 0px;
-  }
 `;
