@@ -30,8 +30,8 @@ export function WeatherChart(props: WeatherChartProps) {
     chartData: [],
   };
   weatherRecords.forEach((weatherRecord:WeatherSummary, index:number) => {
-    const recordNumberValue:number = weatherRecord[chartKey];
-    if (!Number.isNaN(recordNumberValue) && index % 2 === 0) {
+    const recordNumberValue: number = weatherRecord[chartKey];
+    if (!Number.isNaN(Number(recordNumberValue)) && index % 2 === 0) {
       weatherSection.chartData.push({
         x: weatherRecord.date,
         y: recordNumberValue,
