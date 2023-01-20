@@ -30,7 +30,10 @@ export function Search() {
     system: 'Arcadia',
     icon: <DiDatabase />,
     onHomeClick: () => (navigate('/search')),
-    onSearchKeyUp: (value: string) => { setSearchTerm(value); },
+    onSearchKeyUp: (value: string) => {
+      setSearchTerm(value);
+      navigate('/search');
+    },
     onSendSearch: (value: string) => (generalSearch('/search/system/arcadia/data?word=', value)),
   };
 
