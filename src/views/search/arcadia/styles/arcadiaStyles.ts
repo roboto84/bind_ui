@@ -9,7 +9,7 @@ export const AlphabetHeader = styled.h1`
 
 export const SubTagHeader = styled.h2`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
-  padding: 40px 0 0 40px;
+  padding: 25px 0 0 40px;
 `;
 
 export const ArcResultTimeStamp = styled.span`

@@ -1,13 +1,19 @@
 import React from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { NavigateFunction, useNavigate, useSearchParams } from 'react-router-dom';
 import { useArcadiaWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
-import { HomeSection } from '@/views/search/styles/searchStyles';
-import { ArcadiaContainer, ArcResultTimeStamp, SubTagHeader } from './styles/arcadiaStyles';
+import { HomeSection, LatestTagsListContainer, Tag } from '@/views/search/styles/searchStyles';
+import {
+  AlphabetHeader,
+  ArcadiaContainer,
+  ArcResultTimeStamp,
+  SubTagHeader,
+} from './styles/arcadiaStyles';
 
 export function ArcadiaSearch() {
+  const navigate: NavigateFunction = useNavigate();
   const [searchParams] = useSearchParams();
   const searchWord: string = searchParams.get('word');
   const { data, error, isLoading, isError } = useArcadiaWordSearch(searchWord);
@@ -19,16 +25,39 @@ export function ArcadiaSearch() {
     return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
-  console.log(data);
   const wordSearchResponse: any = camelcaseKeys<any>(
     data,
     { deep: true },
   );
-  const mainNode = wordSearchResponse.mainNode
-    ? wordSearchResponse.mainNode.urls.map(
+
+  const { searchResults } = wordSearchResponse;
+  const { similarTags } = wordSearchResponse;
+
+  const tagComparison = similarTags && similarTags.length > 0
+    ? (
+      <HomeSection withShadow>
+        <AlphabetHeader>Similar Tags</AlphabetHeader>
+        <LatestTagsListContainer>
+          {
+            similarTags.map((tag: string) => (
+              <Tag
+                onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+                key={'tagListItem'.concat(tag)}
+              >
+                {tag}
+              </Tag>
+            ))
+          }
+        </LatestTagsListContainer>
+      </HomeSection>
+    )
+    : <div />;
+
+  const mainNode = searchResults.mainNode
+    ? searchResults.mainNode.urls.map(
       (url: any) => (
         <div
-          style={{ color: 'rgb(145, 184, 16)', padding: '10px 0 0 0' }}
+          style={{ color: 'rgb(145, 184, 16)', padding: '0' }}
           key={'mainNodeUrl'.concat(url.timeStamp)}
         >
           <ArcResultTimeStamp>{url.timeStamp} </ArcResultTimeStamp>
@@ -40,7 +69,7 @@ export function ArcadiaSearch() {
     )
     : <div />;
 
-  const subNodes = wordSearchResponse.subNode.map(
+  const subNodes = searchResults.subNode.map(
     (element: any) => (
       <div key={'subNodeSubject'.concat(element.subject)}>
         <SubTagHeader>{element.subject}</SubTagHeader>
@@ -48,7 +77,7 @@ export function ArcadiaSearch() {
           {
             element.urls.map((url: any) => (
               <div
-                style={{ color: 'rgb(145, 184, 16)', padding: '10px 0 0 0' }}
+                style={{ color: 'rgb(145, 184, 16)', padding: '0' }}
                 key={'subNodeUrl'.concat(url.timeStamp)}
               >
                 <ArcResultTimeStamp>{url.timeStamp} </ArcResultTimeStamp>
@@ -65,8 +94,9 @@ export function ArcadiaSearch() {
 
   return (
     <ArcadiaContainer>
+      {tagComparison}
       <HomeSection>
-        <h1 style={{ marginBottom: '25px' }}>{wordSearchResponse.subject}</h1>
+        <h1 style={{ marginBottom: '15px' }}>{searchResults.subject}</h1>
         <div style={{ marginLeft: '50px' }}>
           {mainNode}
         </div>
