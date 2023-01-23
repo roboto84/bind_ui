@@ -5,7 +5,7 @@ import { arcadiaApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import Loader from '@/components/Misc/Loader';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
-import { HomeSection, LatestTagsListContainer, Tag } from '@/views/search/styles/searchStyles';
+import { LatestTagsListContainer, Tag, TagsSection } from '@/views/search/styles/searchStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { ArcadiaProps } from '@/views/search/types/searchTypes';
 import { AlphabetHeader, ArcadiaContainer } from './styles/arcadiaStyles';
@@ -46,9 +46,9 @@ export function Arcadia(props: ArcadiaProps) {
   }
 
   let viewBody: JSX.Element = (
-    <HomeSection withShadow>
+    <TagsSection withShadow>
       <AlphabetHeader>No Matching Results Found</AlphabetHeader>
-    </HomeSection>
+    </TagsSection>
   );
 
   if (!tagsMatchIsEmpty) {
@@ -58,7 +58,7 @@ export function Arcadia(props: ArcadiaProps) {
             Object.entries(arcadiaTags).map(([key, tags]: [string, []]) => {
               if (tags.length > 0) {
                 return (
-                  <HomeSection withShadow key={'section'.concat(key)}>
+                  <TagsSection withShadow key={'section'.concat(key)}>
                     <AlphabetHeader>{key.toUpperCase()}</AlphabetHeader>
                     <LatestTagsListContainer>
                       {
@@ -72,7 +72,7 @@ export function Arcadia(props: ArcadiaProps) {
                         ))
                       }
                     </LatestTagsListContainer>
-                  </HomeSection>
+                  </TagsSection>
                 );
               }
               return (<div key={'section'.concat(key)} />);

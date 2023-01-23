@@ -50,3 +50,14 @@ export function capitalizedFirst(text: string): string {
 export function twoDecimalPlaces(number: number): number {
   return +number.toFixed(2);
 }
+
+export function substringDotted(text: string, subStringLength: number): string {
+  return text.length > subStringLength ? text.substring(0, subStringLength).concat('...') : text;
+}
+
+export function urlArrowSplit(url: string): string {
+  const urlSplit = url.split('/');
+  const urlFront = `${urlSplit[0]}${urlSplit[1]}//${urlSplit[2]}`;
+  const urlBack = urlSplit.slice(2).join(' › ');
+  return urlFront.concat(urlBack);
+}

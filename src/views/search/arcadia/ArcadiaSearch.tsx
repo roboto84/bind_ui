@@ -4,12 +4,22 @@ import { useArcadiaWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
-import { HomeSection, LatestTagsListContainer, Tag } from '@/views/search/styles/searchStyles';
+import {
+  GeneralSection,
+  LatestTagsListContainer,
+  Tag,
+} from '@/views/search/styles/searchStyles';
+import { substringDotted, urlArrowSplit } from '@/utils/formatting';
 import {
   AlphabetHeader,
   ArcadiaContainer,
+  ArcResultContainer,
+  ArcResultDescription,
   ArcResultTimeStamp,
+  ArcResultTitle,
+  InlineHeader,
   SubTagHeader,
+  SimilarResultsSection,
 } from './styles/arcadiaStyles';
 
 export function ArcadiaSearch() {
@@ -35,36 +45,49 @@ export function ArcadiaSearch() {
 
   const tagComparison = similarTags && similarTags.length > 0
     ? (
-      <HomeSection withShadow>
+      <GeneralSection>
         <AlphabetHeader>Similar Tags</AlphabetHeader>
-        <LatestTagsListContainer>
-          {
-            similarTags.map((tag: string) => (
-              <Tag
-                onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
-                key={'tagListItem'.concat(tag)}
-              >
-                {tag}
-              </Tag>
-            ))
-          }
-        </LatestTagsListContainer>
-      </HomeSection>
+        <SimilarResultsSection>
+          <LatestTagsListContainer>
+            {
+              similarTags.map((tag: string) => (
+                <Tag
+                  onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+                  key={'tagListItem'.concat(tag)}
+                >
+                  {tag}
+                </Tag>
+              ))
+            }
+          </LatestTagsListContainer>
+        </SimilarResultsSection>
+      </GeneralSection>
     )
     : <div />;
 
   const mainNode = searchResults.mainNode
     ? searchResults.mainNode.urls.map(
-      (url: any) => (
-        <div
-          style={{ color: 'rgb(145, 184, 16)', padding: '0' }}
-          key={'mainNodeUrl'.concat(url.timeStamp)}
-        >
-          <ArcResultTimeStamp>{url.timeStamp} </ArcResultTimeStamp>
-          <span>
-            <a href={url.data} rel="noreferrer" target="_blank">{url.data}</a>
-          </span>
-        </div>
+      (url: any, index:number) => (
+        <ArcResultContainer key={'arcResultItem'.concat(url, index.toString())}>
+          <div style={{ margin: 'auto 0' }}>
+            <img style={{ borderRadius: '5px' }} height="75" src={url.image} alt="image" />
+          </div>
+          <div style={{ paddingLeft: '20px' }}>
+            <div>
+              <a style={{ fontSize: '18px' }} href={url.data} rel="noreferrer" target="_blank">
+                {substringDotted(urlArrowSplit(url.data), 100)}
+              </a>
+            </div>
+            <div key={'mainNodeUrl'.concat(url.timeStamp)}>
+              <ArcResultTitle>{url.title}</ArcResultTitle>
+              <span> | </span>
+              <ArcResultTimeStamp>{url.timeStamp}</ArcResultTimeStamp>
+            </div>
+            <ArcResultDescription>
+              <span>{url.description}...</span>
+            </ArcResultDescription>
+          </div>
+        </ArcResultContainer>
       ),
     )
     : <div />;
@@ -75,16 +98,27 @@ export function ArcadiaSearch() {
         <SubTagHeader>{element.subject}</SubTagHeader>
         <div style={{ paddingLeft: '100px' }}>
           {
-            element.urls.map((url: any) => (
-              <div
-                style={{ color: 'rgb(145, 184, 16)', padding: '0' }}
-                key={'subNodeUrl'.concat(url.timeStamp)}
-              >
-                <ArcResultTimeStamp>{url.timeStamp} </ArcResultTimeStamp>
-                <span>
-                  <a href={url.data} rel="noreferrer" target="_blank">{url.data}</a>
-                </span>
-              </div>
+            element.urls.map((url: any, index:number) => (
+              <ArcResultContainer key={'arcResultItem'.concat(url, index.toString())}>
+                <div style={{ margin: 'auto 0' }}>
+                  <img style={{ borderRadius: '5px' }} height="75" src={url.image} alt="image" />
+                </div>
+                <div style={{ paddingLeft: '20px' }}>
+                  <div>
+                    <a style={{ fontSize: '18px' }} href={url.data} rel="noreferrer" target="_blank">
+                      {substringDotted(urlArrowSplit(url.data), 100)}
+                    </a>
+                  </div>
+                  <div key={'mainNodeUrl'.concat(url.timeStamp)}>
+                    <ArcResultTitle>{url.title} - </ArcResultTitle>
+                    <span> | </span>
+                    <ArcResultTimeStamp>{url.timeStamp}</ArcResultTimeStamp>
+                  </div>
+                  <ArcResultDescription>
+                    <span>{url.description}...</span>
+                  </ArcResultDescription>
+                </div>
+              </ArcResultContainer>
             ))
           }
         </div>
@@ -95,13 +129,16 @@ export function ArcadiaSearch() {
   return (
     <ArcadiaContainer>
       {tagComparison}
-      <HomeSection>
-        <h1 style={{ marginBottom: '15px' }}>{searchResults.subject}</h1>
+      <GeneralSection style={{ marginTop: '20px' }}>
+        <h1 style={{ marginBottom: '15px' }}>
+          <InlineHeader>Searched for: </InlineHeader>
+          {searchResults.subject}
+        </h1>
         <div style={{ marginLeft: '50px' }}>
           {mainNode}
         </div>
         {subNodes}
-      </HomeSection>
+      </GeneralSection>
     </ArcadiaContainer>
   );
 }

@@ -15,7 +15,15 @@ export const SearchContainer = styled.div`
   }
 `;
 
-export const HomeSection = styled(LexiconSection)``;
+export const TagsSection = styled(LexiconSection)``;
+
+export const GeneralSection = styled(LexiconSection)`
+  border-radius: 0;
+  background-color: inherit;
+  border: 0;
+  box-shadow: none;
+`;
+
 export const Tag = styled(Hoverable)``;
 
 export const LatestTagsListContainer = styled.ul`{
