@@ -76,12 +76,27 @@ export function urlArrowSplit(url: string): string {
 }
 
 export function imageUrlCompletion(url: string, imageUrl: string): string {
-  if (imageUrl[0] === '/' && imageUrl[1] !== '/') {
-    return getBaseUrl(url).concat(imageUrl);
-  }
+  if (imageUrl !== 'None') {
+    if (imageUrl[0] === '/' && imageUrl[1] !== '/') {
+      return getBaseUrl(url).concat(imageUrl);
+    }
 
-  if (imageUrl[0] === '.' && imageUrl[1] === '/') {
-    return getBaseUrl(url).concat(imageUrl.substring(1));
+    if (imageUrl[0] === '.' && imageUrl[1] === '/') {
+      return getBaseUrl(url).concat(imageUrl.substring(1));
+    }
+
+    if (imageUrl[0] === '/' && imageUrl[1] === '/') {
+      return imageUrl;
+    }
+
+    if (imageUrl[0] !== 'h') {
+      const urlSplit = url.split('/');
+
+      if (urlSplit.length <= 3) {
+        return url.concat(`/${imageUrl}`);
+      }
+      return url.split('/').slice(0, -1).join('/').concat(`/${imageUrl}`);
+    }
   }
   return imageUrl;
 }

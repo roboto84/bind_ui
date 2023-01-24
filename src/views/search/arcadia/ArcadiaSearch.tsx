@@ -45,8 +45,10 @@ export function ArcadiaSearch() {
   const subNodes = searchResults.subNode.map(
     (element: any) => (
       <div key={'subNodeSubject'.concat(element.subject)}>
-        <SubTagHeader>{element.subject}</SubTagHeader>
-        <div style={{ paddingLeft: '100px' }}>
+        <div style={{ padding: '25px 0 0' }}>
+          <SubTagHeader>{element.subject}</SubTagHeader>
+        </div>
+        <div style={{ paddingLeft: '25px' }}>
           {
             element.urls.map((url: any) => (
               <ArcResult key={'arcResultItem'.concat(url.id.toString())} arcResultPackage={url} />
@@ -61,11 +63,11 @@ export function ArcadiaSearch() {
     <ArcadiaContainer>
       {tagComparison}
       <GeneralSection>
-        <h1 style={{ marginBottom: '15px' }}>
+        <h1 style={{ marginLeft: '0' }}>
           <InlineHeader>Searched for: </InlineHeader>
           {searchResults.subject}
         </h1>
-        <div style={{ marginLeft: '50px' }}>
+        <div>
           {mainNode}
         </div>
         {subNodes}

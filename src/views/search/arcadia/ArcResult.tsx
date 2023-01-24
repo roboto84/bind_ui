@@ -6,6 +6,7 @@ import {
   urlArrowSplit,
 } from '@/utils/formatting';
 import {
+  ArcImageContainer,
   ArcResultContainer,
   ArcResultDescription,
   ArcResultTimeStamp,
@@ -16,24 +17,37 @@ import { ArcResultProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage } = props;
-  const { timeStamp, data, title, description, image } = arcResultPackage;
-  const formattedTimeStamp = timeStamp.indexOf('Z') > -1
+  const { timeStamp, data, tags, title, description, image } = arcResultPackage;
+  const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp)
     : timeStamp;
+
+  const isImageValid = image !== 'None';
+  const resultImage: JSX.Element = isImageValid
+    ? (
+      <img
+        style={{ borderRadius: '5px' }}
+        height="75"
+        src={imageUrlCompletion(data, image)}
+        alt="image"
+      />
+    )
+    : <div />;
+  const tagsView = tags.map((tag: string) => (<span>{tag}</span>));
+  if (tagsView.length > 0) {
+    tagsView.push(<span> | </span>);
+  }
+
   return (
     <ArcResultContainer>
-      <div style={{ margin: 'auto 0' }}>
-        <img
-          style={{ borderRadius: '5px' }}
-          height="75"
-          src={imageUrlCompletion(data, image)}
-          alt="image"
-        />
-      </div>
-      <div style={{ paddingLeft: '20px' }}>
+      <ArcImageContainer style={{ margin: 'auto 0' }}>
+        {resultImage}
+      </ArcImageContainer>
+      <div style={isImageValid ? { paddingLeft: '20px' } : {}}>
         <div key={'mainNodeUrl'.concat(timeStamp)}>
           <ArcResultTitle>{title === 'None' ? 'No title' : title}</ArcResultTitle>
           <span> | </span>
+          {tagsView}
           <ArcResultTimeStamp>{formattedTimeStamp}</ArcResultTimeStamp>
         </div>
         <div>

@@ -1,16 +1,28 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { Section } from '@/views/styles/appStyles';
+import { device } from '@/styles/responsive';
 
-export const ArcadiaContainer = styled.div``;
+export const ArcadiaContainer = styled.div`
+  width: 80vw;
+  margin: auto;
+
+  @media ${device.laptopL} {
+    width: 99%;
+  }
+`;
 
 export const AlphabetHeader = styled.h1`
+  margin-left: 0;
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.alphabetHeaderColor};
 `;
 
-export const SubTagHeader = styled.h2`
+export const SubTagHeader = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
-  padding: 25px 0 0 40px;
+  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 18px;
 `;
 
 export const InlineHeader = styled.span`
@@ -36,6 +48,15 @@ export const ArcResultContainer = styled(Section)`
 
 export const SimilarResultsSection = styled(ArcResultContainer)`
   font-size: 16px;
+`;
+
+export const ArcImageContainer = styled.div`
+  margin: auto 0;
+  display: inherit;
+  
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 export const ArcResultTitle = styled.span`
