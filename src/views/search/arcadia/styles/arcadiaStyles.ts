@@ -24,6 +24,14 @@ export const ArcResultContainer = styled(Section)`
   border: 0;
   margin: 20px 0;
   font-size: 20px;
+
+  a:link {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const SimilarResultsSection = styled(ArcResultContainer)`
@@ -36,7 +44,7 @@ export const ArcResultTitle = styled.span`
 `;
 
 export const ArcResultDescription = styled.span`
-  font-size: 15px;
+  font-size: 16px;
 `;
 
 export const ArcResultTimeStamp = styled.span`

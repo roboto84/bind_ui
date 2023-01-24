@@ -55,9 +55,33 @@ export function substringDotted(text: string, subStringLength: number): string {
   return text.length > subStringLength ? text.substring(0, subStringLength).concat('...') : text;
 }
 
+export function formatUrl(url: string): string {
+  return !url.startsWith('http://') && !url.startsWith('https://') ? `https://${url}` : url;
+}
+
+export function getBaseUrl(url: string): string {
+  const urlArray = url.split('/');
+  const protocol = urlArray[0];
+  const host = urlArray[2];
+  return `${protocol}//${host}`;
+}
+
 export function urlArrowSplit(url: string): string {
   const urlSplit = url.split('/');
-  const urlFront = `${urlSplit[0]}${urlSplit[1]}//${urlSplit[2]}`;
-  const urlBack = urlSplit.slice(2).join(' › ');
-  return urlFront.concat(urlBack);
+  let newUrlView = `${urlSplit[0]}${urlSplit[1]}//`.concat(urlSplit.slice(2).join(' › '));
+  newUrlView = newUrlView[newUrlView.length - 2] === '›'
+    ? newUrlView.substring(0, newUrlView.length - 3)
+    : newUrlView;
+  return newUrlView;
+}
+
+export function imageUrlCompletion(url: string, imageUrl: string): string {
+  if (imageUrl[0] === '/' && imageUrl[1] !== '/') {
+    return getBaseUrl(url).concat(imageUrl);
+  }
+
+  if (imageUrl[0] === '.' && imageUrl[1] === '/') {
+    return getBaseUrl(url).concat(imageUrl.substring(1));
+  }
+  return imageUrl;
 }
