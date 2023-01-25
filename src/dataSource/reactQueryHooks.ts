@@ -6,6 +6,7 @@ import {
 } from '@/dataSource/restApis/robotoRestApi';
 import { QueryHookError } from '@/dataSource/types/hookTypes';
 import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
+import { ArcSearchResults } from '@/views/search/arcadia/types/arcadiaTypes';
 
 const defaultQueryFn = async ({ queryKey }: any) => {
   const { data } = await getData(queryKey[0]);
@@ -34,6 +35,6 @@ const getArcadiaSearch = async (word: string): Promise<any> => {
 };
 
 export const useArcadiaWordSearch = (word: string): UseQueryResult<
-  WordDefinition, QueryHookError> => (
+  ArcSearchResults, QueryHookError> => (
   useQuery(['arcadiaWordSearch', word], () => getArcadiaSearch(word))
 );

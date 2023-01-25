@@ -12,3 +12,18 @@ export type ArcResultPackage = {
 export type ArcResultProps = {
   arcResultPackage: ArcResultPackage
 }
+
+export type ArcSearchResultsNode = {
+  subject: string,
+  notes: string[],
+  urls: ArcResultPackage[]
+}
+
+export type ArcSearchResults = {
+  similarTags: string[],
+  searchResults: {
+    subject: string,
+    mainNode: ArcSearchResultsNode,
+    subNode: ArcSearchResultsNode[]
+  }
+}

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { Section } from '@/views/styles/appStyles';
+import { NonListHoverable, Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 
 export const ArcadiaContainer = styled.div`
@@ -17,7 +17,7 @@ export const AlphabetHeader = styled.h1`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.alphabetHeaderColor};
 `;
 
-export const SubTagHeader = styled.span`
+export const SubTagHeader = styled(NonListHoverable)`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
   background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
   padding: 5px 10px;

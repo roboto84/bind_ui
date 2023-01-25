@@ -46,7 +46,7 @@ export function ArcResult(props: ArcResultProps) {
     </NonListHoverable>
   ));
   if (tagsView.length > 0) {
-    tagsView.push(<span> | </span>);
+    tagsView.push(<span key="resultTagListEnd"> | </span>);
   }
 
   return (
@@ -55,7 +55,7 @@ export function ArcResult(props: ArcResultProps) {
         {resultImage}
       </ArcImageContainer>
       <div style={isImageValid ? { paddingLeft: '20px' } : {}}>
-        <div key={'mainNodeUrl'.concat(timeStamp)}>
+        <div>
           <ArcResultTitle>{title === 'None' ? 'No title' : title}</ArcResultTitle>
           <span> | </span>
           {tagsView}
