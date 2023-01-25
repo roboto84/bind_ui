@@ -7,6 +7,7 @@ import { airDark } from '@/views/air/styles/airThemeStyle';
 import { homeDark } from '@/views/home/styles/homeThemes';
 import { shared } from '@/styles/themes/sharedTheme';
 import { arcadiaDark } from '@/views/search/arcadia/styles/arcadiaThemes';
+import { tomorrowDark } from '@/styles/themes/tomorrowTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
@@ -65,7 +66,7 @@ export const DarkTheme: ThemeType = {
     fontColor: '#d1d2d2',
     transitionFontColor: 'black',
     backgroundColor: '#484c58',
-    alertColor: '#f50809',
+    alertColor: tomorrowDark.yellow,
   },
   subButton: {
     backgroundColor: '#484c58',

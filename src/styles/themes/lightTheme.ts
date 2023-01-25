@@ -46,7 +46,7 @@ export const LightTheme: ThemeType = {
     fontColor: '#4e4e4e',
     transitionFontColor: 'white',
     backgroundColor: '#e3e3e3',
-    alertColor: '#dc0e10',
+    alertColor: '#d36010',
   },
   subButton: {
     backgroundColor: '#848585',

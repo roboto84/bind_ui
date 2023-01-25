@@ -52,5 +52,5 @@ export const ButtonAlert = styled.div`
   height: 9px;
   border-radius: 100%;
   position: absolute;
-  margin: -22px 0 0 45px;
+  margin: -22px 0 0 35px;
 `;
