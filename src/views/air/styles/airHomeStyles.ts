@@ -133,6 +133,7 @@ export const WeatherElement = styled.li`
 export const WeatherAlert = styled.span`
   margin-left: 10px;
   color: white;
+  cursor: pointer;
   background-color: #bc2c2c;
   padding: 1px 5px;
   border-radius: 3px;

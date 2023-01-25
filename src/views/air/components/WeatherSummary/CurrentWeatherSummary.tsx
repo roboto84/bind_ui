@@ -1,27 +1,37 @@
 import React from 'react';
 import { MoonIcon, MoonPhaseEnum } from '@/components/Images/MoonIcon';
-import { WeatherConditionEnum, WeatherConditionIcon } from '@/components/Images/WeatherConditionIcon';
+import {
+  WeatherConditionEnum,
+  WeatherConditionIcon,
+} from '@/components/Images/WeatherConditionIcon';
 import { removeSpaces } from '@/utils/formatting';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import {
   pollenMaxConcern,
   pollenSeverityView,
   precipitationTypeView,
   pressureConcern,
 } from '../../utils';
-import { CurrentWeatherProps, PollenSeverity, WeatherAlertSummary } from '../../types/airTypes';
 import {
-  Weather,
-  WeatherTitle,
+  CurrentWeatherProps,
+  PollenSeverity,
+  WeatherAlertSummary,
+} from '../../types/airTypes';
+import {
   CurrentTemperature,
   MoonPhase,
+  MoonPhaseSummaryContainer,
+  Weather,
+  WeatherAlert,
   WeatherBlurb,
   WeatherElement,
   WeatherIconContainer,
   WeatherSubcategory,
-  MoonPhaseSummaryContainer, WeatherAlert,
+  WeatherTitle,
 } from '../../styles/airHomeStyles';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
+  const navigate: NavigateFunction = useNavigate();
   const { currentWeatherReport, previousWeatherReport, weatherUnits } = props;
   const { temperature, temperatureApparent, precipitationType, weatherCode,
     precipitationProbability, humidity, dewPoint, epaIndex, epaHealthConcern,
@@ -74,11 +84,33 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
         </WeatherElement>
         <WeatherElement>
           <span>{pressureSurfaceLevel} {weatherUnits.pressureSurfaceLevel} Pressure</span>
-          {pressureSummary.message !== '' ? <WeatherAlert title={pressureSummary.reason.concat(' ', weatherUnits.pressureSurfaceLevel)}>{pressureSummary.message}</WeatherAlert> : ''}
+          {
+            pressureSummary.message !== ''
+              ? (
+                <WeatherAlert
+                  title={pressureSummary.reason.concat(' ', weatherUnits.pressureSurfaceLevel)}
+                  onClick={() => navigate('/air/data/charts/pressure')}
+                >{pressureSummary.message}
+                </WeatherAlert>
+              )
+              : ''
+          }
         </WeatherElement>
         <WeatherElement>
-          {`${pollenMax.pollenType.toUpperCase()} pollen is ${pollenSeveritySummary} 
-          (Severity ${pollenMax.severity})`}
+          {
+            `${pollenMax.pollenType.toUpperCase()} pollen is`
+          }
+          {
+            pollenMax.severity > 2
+              ? (
+                <WeatherAlert
+                  title="Pollen Alert"
+                  onClick={() => navigate(`/air/data/charts/pollen_${pollenMax.pollenType}`)}
+                >{pollenSeveritySummary}
+                </WeatherAlert>
+              )
+              : ` ${pollenSeveritySummary}`
+          }
         </WeatherElement>
       </WeatherSubcategory>
     </Weather>
