@@ -14,10 +14,13 @@ import {
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React from 'react';
 import { ArcResultProps } from '@/views/search/arcadia/types/arcadiaTypes';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NonListHoverable } from '@/views/styles/appStyles';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
+  const navigate: NavigateFunction = useNavigate();
   const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp)
     : timeStamp;
@@ -33,7 +36,15 @@ export function ArcResult(props: ArcResultProps) {
       />
     )
     : <div />;
-  const tagsView = tags.map((tag: string) => (<span>{tag}</span>));
+  const tagsView = tags.map((tag: string) => (
+    <NonListHoverable
+      style={{ fontSize: '17px' }}
+      key={'resultTagListItem'.concat(tag)}
+      onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+    >
+      {tag}
+    </NonListHoverable>
+  ));
   if (tagsView.length > 0) {
     tagsView.push(<span> | </span>);
   }

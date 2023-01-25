@@ -41,6 +41,19 @@ export const Hoverable = styled.li`
   }
 `;
 
+export const NonListHoverable = styled.span`
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 4px;
+  min-width: 170px;
+  transition: 0.4s;
+
+  :hover{
+    background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
+  }
+`;
+
 export interface SectionProps extends GlobalThemeType{
   withShadow?: boolean
 }
