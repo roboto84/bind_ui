@@ -36,7 +36,8 @@ export function getD3StandardDateTime(timestamp: string): string {
 
 export function getLocalStandardDateTime(includeSeconds?: boolean, timestamp?: string): string {
   const dateTime: StandardTime = getLocalStandardDateObject(timestamp);
-  return `${dateTime.month}/${dateTime.date} ${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
+  const year: string = getLocalStandardDateObject().year === dateTime.year ? '' : `/${dateTime.year}`;
+  return `${dateTime.month}/${dateTime.date}${year}-${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
 }
 
 export function camelCaseToSpaced(camelCasedText: string): string {

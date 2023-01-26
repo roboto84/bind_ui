@@ -1,5 +1,9 @@
-import { AlphabetHeader, SimilarResultsSection } from '@/views/search/arcadia/styles/arcadiaStyles';
-import { GeneralSection, LatestTagsListContainer, Tag } from '@/views/search/styles/searchStyles';
+import {
+  AlphabetHeader,
+  SimilarResultsSection,
+  SubTagHeader,
+} from '@/views/search/arcadia/styles/arcadiaStyles';
+import { GeneralSection, LatestTagsListContainer } from '@/views/search/styles/searchStyles';
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
@@ -13,12 +17,13 @@ export function SimilarTags(props: { similarTags: string[] }) {
         <LatestTagsListContainer>
           {
             similarTags.map((tag: string) => (
-              <Tag
-                onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+              <SubTagHeader
                 key={'tagListItem'.concat(tag)}
+                onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+                style={{ minWidth: 'auto', width: 'auto' }}
               >
                 {tag}
-              </Tag>
+              </SubTagHeader>
             ))
           }
         </LatestTagsListContainer>

@@ -9,11 +9,11 @@ import { ArcResult } from '@/views/search/arcadia/ArcResult';
 import { SimilarTags } from '@/views/search/arcadia/SimilarTags';
 import {
   ArcResultPackage,
-  ArcSearchResults,
+  ArcSearchResults, ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import {
   ArcadiaContainer,
-  InlineHeader,
+  InlineHeader, InnerLinks,
   SubTagHeader,
 } from './styles/arcadiaStyles';
 
@@ -38,6 +38,7 @@ export function ArcadiaSearch() {
   const { searchResults } = wordSearchResponse;
   const { similarTags } = wordSearchResponse;
   const urlCache: string[] = [];
+  const tagCache: string[] = [];
 
   if (searchResults.mainNode) {
     searchResults.mainNode.urls.forEach((url:ArcResultPackage) => {
@@ -59,24 +60,54 @@ export function ArcadiaSearch() {
     if (searchResults.subNode[i].urls.length === 0) {
       searchResults.subNode.splice(i, 1);
     } else {
+      tagCache.push(searchResults.subNode[i].subject);
       i += 1;
     }
   }
 
-  const tagComparison = similarTags && similarTags.length > 0
+  tagCache.sort((a: string, b: string) => a.localeCompare(b));
+  if (searchResults.subNode.length > 1) {
+    searchResults.subNode.sort(
+      (a: ArcSearchResultsNode, b: ArcSearchResultsNode) => a.subject.localeCompare(b.subject),
+    );
+  }
+
+  const tagComparison: JSX.Element = similarTags && similarTags.length > 0
     ? (<SimilarTags similarTags={similarTags} />)
     : <div />;
 
-  const mainNode = searchResults.mainNode
+  const innerLinks: JSX.Element = tagCache.length > 1
+    ? (
+      <InnerLinks style={{ marginBottom: '38px' }}>
+        {
+        tagCache.map((tag: string) => (
+          <SubTagHeader
+            key={'tagInnerLink'.concat(tag)}
+            style={{ minWidth: 'auto', width: 'auto', fontSize: '16px' }}
+          >
+            <a href={'#SubTagHeader-'.concat(tag)}>
+              {tag}
+            </a>
+          </SubTagHeader>
+        ))
+      }
+      </InnerLinks>
+    )
+    : <div />;
+
+  const mainNode: JSX.Element|JSX.Element[] = searchResults.mainNode
     ? searchResults.mainNode.urls.map((url: any) => (
       <ArcResult key={'arcResultItem'.concat(url.id.toString())} arcResultPackage={url} />))
     : <div />;
 
-  const subNodes = searchResults.subNode.map(
+  const subNodes: JSX.Element|JSX.Element[] = searchResults.subNode.map(
     (element: any) => (
       <div key={'subNodeSubject'.concat(element.subject)}>
         <div style={{ padding: '25px 0 0' }}>
-          <SubTagHeader onClick={() => navigate(`/search/system/arcadia/data?word=${element.subject}`)}>
+          <SubTagHeader
+            id={'SubTagHeader-'.concat(element.subject)}
+            onClick={() => navigate(`/search/system/arcadia/data?word=${element.subject}`)}
+          >
             {element.subject}
           </SubTagHeader>
         </div>
@@ -95,15 +126,21 @@ export function ArcadiaSearch() {
     <ArcadiaContainer>
       {tagComparison}
       <GeneralSection>
-        <h1 style={{ marginLeft: '0' }}>
-          {urlCache.length}
-          <InlineHeader> Results for </InlineHeader>
-          {searchResults.subject}
-        </h1>
+        <div>
+          <h1 style={{ marginLeft: '0' }}>
+            <InlineHeader>{urlCache.length} </InlineHeader>
+            result{urlCache.length > 1 ? 's' : ''} for
+            <InlineHeader> {searchResults.subject} </InlineHeader>
+            { tagCache.length > 1 ? 'in the following tags ...' : '...'}
+          </h1>
+          {innerLinks}
+        </div>
         <div>
           {mainNode}
         </div>
-        {subNodes}
+        <div>
+          {subNodes}
+        </div>
       </GeneralSection>
     </ArcadiaContainer>
   );

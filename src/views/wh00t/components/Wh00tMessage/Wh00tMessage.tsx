@@ -23,7 +23,7 @@ export function Wh00tMessage(props: Wh00tMessageProps) {
       ? getLocalStandardDateTime(true, messagePackage.time)
       : messagePackage.time;
 
-    const messageTimeParts: string[] = localTime.split(' ');
+    const messageTimeParts: string[] = localTime.split('-');
     const messageTime: string = messageTimeParts[0] === simpleMonthDateFormat()
       ? messageTimeParts[1]
       : `${messageTimeParts[0]} ${messageTimeParts[1]}`;

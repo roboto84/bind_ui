@@ -23,8 +23,25 @@ export const SubTagHeader = styled(NonListHoverable)`
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 18px;
+
+  a:link {
+    text-decoration: none;
+    color: inherit
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: inherit
+  }
 `;
 
+export const InnerLinks = styled.div`
+  margin: 20px 0;
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 5px;
+`;
 export const InlineHeader = styled.span`
   font-size: 25px;
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.alphabetHeaderColor};
