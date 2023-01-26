@@ -47,7 +47,7 @@ export function Arcadia(props: ArcadiaProps) {
 
   let viewBody: JSX.Element = (
     <TagsSection withShadow>
-      <AlphabetHeader>No Matching Results Found</AlphabetHeader>
+      <AlphabetHeader>No Matching Tags Found</AlphabetHeader>
     </TagsSection>
   );
 

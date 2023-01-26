@@ -96,7 +96,8 @@ export function ArcadiaSearch() {
       {tagComparison}
       <GeneralSection>
         <h1 style={{ marginLeft: '0' }}>
-          <InlineHeader>Searched for: </InlineHeader>
+          {urlCache.length}
+          <InlineHeader> Results for </InlineHeader>
           {searchResults.subject}
         </h1>
         <div>
