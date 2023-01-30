@@ -91,20 +91,18 @@ export const SubTitle = styled.div`
 `;
 
 export const NavLinksContainer = styled.nav`
-  padding-top: 20px;
+  padding-top: 18px;
   padding-right: 10px;
   display: flex;
   justify-content: right;
-  margin-bottom: -22px;
 
   @media ${device.tablet} {
-    margin-bottom: -30px;
+    padding-top: 25px;
   }
-  
+
   @media ${device.mobileXL} {
     padding: 10px 0;
     justify-content: center;
-    margin-bottom: 0;
     border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
   }
 `;
