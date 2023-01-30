@@ -8,15 +8,10 @@ export const SearchContainer = styled.menu`
   all: unset;
   font-size: 13px;
   width: 98%;
-  margin: 20px 0;
+  margin: auto;
   display: flex;
   justify-content: center;
   height: 70px;
-  
-  @media ${device.tabletS} {
-    margin: 0 5px;
-  }
-  
 `;
 
 export const SearchInput = styled(Input)`

@@ -33,7 +33,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     (wordStem:string) => (
       <Stem
         key={'wordStem-'.concat(wordStem)}
-        onClick={() => navigate(`/search/system/lexicon?word=${wordStem}`)}
+        onClick={() => navigate(`/search/system/lexicon/definition?word=${wordStem}`)}
       >
         {wordStem}
       </Stem>

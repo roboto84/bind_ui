@@ -23,7 +23,7 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
             { wordDefinition.spellingSuggestions.map((word: string) => (
               <SpellingSuggestion
                 key={'spelling-suggestion-'.concat(word)}
-                onClick={() => navigate(`/lexicon/search?word=${word}`)}
+                onClick={() => navigate(`/search/system/lexicon/definition?word=${word}`)}
               >
                 {word}
               </SpellingSuggestion>

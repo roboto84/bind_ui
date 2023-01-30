@@ -27,7 +27,7 @@ export function WordOfDay(props: WordOfDayProps) {
       <WordOfDayContainer>
         <DayWordInfo>
           <DayWord
-            onClick={() => navigate(`/search/system/lexicon?word=${wordDefinition.word}`)}
+            onClick={() => navigate(`/search/system/lexicon/definition?word=${wordDefinition.word}`)}
           >
             {wordDefinition.word}
           </DayWord>
