@@ -40,5 +40,7 @@ export async function getLexiconWordSearch(word: string) {
 }
 
 export async function getArcadiaWordSearch(word: string) {
-  return axios.get(FULL_API_URL.concat(`${arcadiaApiEndpoints.wordSearch}${word}`));
+  return axios.get(FULL_API_URL.concat(
+    `${arcadiaApiEndpoints.wordSearch}?term=${encodeURIComponent(word)}`,
+  ));
 }

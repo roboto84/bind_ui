@@ -34,7 +34,9 @@ export function Search() {
       setSearchTerm(value);
       navigate('/search');
     },
-    onSendSearch: (value: string) => (generalSearch('/search/system/arcadia/data?word=', value)),
+    onSendSearch: (value: string) => (
+      generalSearch('/search/system/arcadia/data?word=', encodeURIComponent(value))
+    ),
   };
 
   const lexiconSys: SearchSystem = {
@@ -42,7 +44,9 @@ export function Search() {
     icon: <TbNotebook />,
     onHomeClick: () => (navigate('/search')),
     onSearchKeyUp: (value: string) => { setSearchTerm(value); },
-    onSendSearch: (value: string) => (generalSearch('/search/system/lexicon/definition?word=', value)),
+    onSendSearch: (value: string) => (
+      generalSearch('/search/system/lexicon/definition?word=', encodeURIComponent(value))
+    ),
   };
 
   const [system, setSystem] = useState<SearchSystem>(isLexicon ? lexiconSys : arcadiaSys);
