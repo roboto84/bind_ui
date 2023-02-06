@@ -33,7 +33,8 @@ export type LexiconEndpointsType = {
 export type ArcadiaEndpointsType = {
   tags: string,
   wordSearch: string,
-  removeItem: string
+  removeItem: string,
+  editItem: string
 }
 
 export type ArcadiaTagsApiResult = {

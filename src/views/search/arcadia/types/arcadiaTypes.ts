@@ -15,6 +15,14 @@ export type ArcResultPackage = {
   image: string
 }
 
+export type ArcEditPackage = {
+  data: string,
+  tags: string[],
+  title: string,
+  description: string,
+  image: string
+}
+
 export type ArcResultProps = {
   arcResultPackage: ArcResultPackage
 }
@@ -28,6 +36,25 @@ export type ArcResultViewProps = {
 export type ArcResultDeleteProps = {
   itemKey: string
   onReset: CallableFunction
+}
+
+export type ArcResultEditProps = {
+  itemKey: string,
+  image: string,
+  tags: string,
+  title: string,
+  description: string,
+  onReset: CallableFunction
+}
+
+export type ArcResultEditViewProps = {
+  itemKey: string,
+  image: string,
+  tags: string,
+  title: string,
+  description: string,
+  onReset: CallableFunction
+  onEdit: CallableFunction
 }
 
 export type ArcResultDeleteQuestionProps = {
@@ -58,4 +85,15 @@ export type ArcDeleteItemResults = {
   deletedItem: boolean,
   reason: string,
   data: string[]
+}
+
+export type ArcEditItemResults = {
+  updatedItem: boolean,
+  reason: string,
+  data: string[]
+}
+
+export type ArcResultEditConfirmProps = {
+  itemEditPackage: ArcEditPackage
+  onReset: CallableFunction
 }

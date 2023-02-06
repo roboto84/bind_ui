@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { NonListHoverable, Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
+import { Input } from '@/components/Input/Input';
+import { InputTextArea } from '@/components/Input/InputTextArea';
 
 export const ArcadiaContainer = styled.div`
   width: 80vw;
@@ -76,6 +78,8 @@ export const ArcImageContainer = styled.div`
   }
 `;
 
+export const ArcEditFieldContainer = styled.div``;
+
 export const ArcResultTitle = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
   font-size: 20px;
@@ -95,3 +99,27 @@ export const ArcResultDeleteQuestionContainer = styled.div`
 `;
 
 export const ArcResultDeleteMessage = styled.div``;
+
+export const ArcInputTitle = styled.div`
+  font-size: 16px;
+  margin: 2px;
+`;
+
+export const ArcInput = styled(Input)`
+  font-size: 12px;
+  width: 90%;
+  border-radius: 5px;
+  
+  :focus{
+    border-color: #696969;
+    background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
+    color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.inputColor};
+  }
+
+  @media ${device.tabletS} {}
+`;
+
+export const ArcInputTextArea = styled(InputTextArea)`
+  border-radius: 5px;
+  width: 90%;
+`;

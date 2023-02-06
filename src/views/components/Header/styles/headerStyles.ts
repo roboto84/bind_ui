@@ -141,7 +141,8 @@ export const MobileNavigationMenuContainer = styled.div`
   
   @media ${device.mobileXL} {
     display: inherit;
-  }
+    margin: 12px 2px 0 0;
+    height: 51px;
 `;
 
 export const MobileNavContainer = styled.div`

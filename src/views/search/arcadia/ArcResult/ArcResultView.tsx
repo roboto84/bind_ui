@@ -51,7 +51,7 @@ export function ArcResultView(props: ArcResultViewProps) {
 
   return (
     <>
-      <ArcImageContainer style={{ margin: 'auto 0' }}>
+      <ArcImageContainer>
         {resultImage}
       </ArcImageContainer>
       <div style={isImageValid ? { paddingLeft: '20px' } : {}}>
@@ -61,6 +61,16 @@ export function ArcResultView(props: ArcResultViewProps) {
           {tagsView}
           <ArcResultTimeStamp>{formattedTimeStamp}</ArcResultTimeStamp>
           <span> | </span>
+          <Button
+            fontSize="14px"
+            padding="1px 5px"
+            margin="5px"
+            borderRadius="5px"
+            onClick={() => onEdit(ArcResultDisplay.EDIT)}
+            title="Edit Item"
+          >
+            edit
+          </Button>
           <Button
             fontSize="14px"
             padding="1px 5px"

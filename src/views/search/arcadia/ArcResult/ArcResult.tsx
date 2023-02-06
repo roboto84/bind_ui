@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { ArcResultProps, ArcResultDisplay } from '@/views/search/arcadia/types/arcadiaTypes';
 import { ArcResultView } from '@/views/search/arcadia/ArcResult/ArcResultView';
 import { ArcResultDelete } from '@/views/search/arcadia/ArcResult/ArcResultDelete/ArcResultDelete';
+import { ArcResultEdit } from '@/views/search/arcadia/ArcResult/ArcResultEdit/ArcResultEdit';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage } = props;
-  const { data } = arcResultPackage;
+  const { data, tags, title, description, image } = arcResultPackage;
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
-  let body: JSX.Element = <ArcResultDelete onReset={setDisplay} itemKey={data} />;
+  let body: JSX.Element;
 
   if (display === ArcResultDisplay.VIEW) {
     body = (
@@ -18,8 +19,19 @@ export function ArcResult(props: ArcResultProps) {
         onEdit={setDisplay}
       />
     );
+  } else if (display === ArcResultDisplay.DELETE) {
+    body = <ArcResultDelete itemKey={data} onReset={setDisplay} />;
   } else if (display === ArcResultDisplay.EDIT) {
-    body = <div>gonna edit</div>;
+    body = (
+      <ArcResultEdit
+        itemKey={data}
+        image={image}
+        tags={tags.join(',')}
+        title={title}
+        description={description}
+        onReset={setDisplay}
+      />
+    );
   }
 
   return (
