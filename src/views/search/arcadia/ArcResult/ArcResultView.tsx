@@ -7,18 +7,18 @@ import {
 } from '@/utils/formatting';
 import {
   ArcImageContainer,
-  ArcResultContainer,
   ArcResultDescription,
   ArcResultTimeStamp,
   ArcResultTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React from 'react';
-import { ArcResultProps } from '@/views/search/arcadia/types/arcadiaTypes';
+import { ArcResultViewProps, ArcResultDisplay } from '@/views/search/arcadia/types/arcadiaTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { NonListHoverable } from '@/views/styles/appStyles';
+import { Button } from '@/components/Nav/Button';
 
-export function ArcResult(props: ArcResultProps) {
-  const { arcResultPackage } = props;
+export function ArcResultView(props: ArcResultViewProps) {
+  const { arcResultPackage, onEdit, onDelete } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
   const navigate: NavigateFunction = useNavigate();
   const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
@@ -32,7 +32,7 @@ export function ArcResult(props: ArcResultProps) {
         style={{ borderRadius: '5px' }}
         height="75"
         src={imageUrlCompletion(data, image)}
-        alt="image"
+        alt="img"
       />
     )
     : <div />;
@@ -50,7 +50,7 @@ export function ArcResult(props: ArcResultProps) {
   }
 
   return (
-    <ArcResultContainer>
+    <>
       <ArcImageContainer style={{ margin: 'auto 0' }}>
         {resultImage}
       </ArcImageContainer>
@@ -60,6 +60,17 @@ export function ArcResult(props: ArcResultProps) {
           <span> | </span>
           {tagsView}
           <ArcResultTimeStamp>{formattedTimeStamp}</ArcResultTimeStamp>
+          <span> | </span>
+          <Button
+            fontSize="14px"
+            padding="1px 5px"
+            margin="5px"
+            borderRadius="5px"
+            onClick={() => onDelete(ArcResultDisplay.DELETE)}
+            title="Delete Item"
+          >
+            delete
+          </Button>
         </div>
         <div>
           <a style={{ fontSize: '16px' }} href={data} rel="noreferrer" target="_blank">
@@ -70,6 +81,6 @@ export function ArcResult(props: ArcResultProps) {
           <span>{description === 'None' ? 'No description' : description}...</span>
         </ArcResultDescription>
       </div>
-    </ArcResultContainer>
+    </>
   );
 }

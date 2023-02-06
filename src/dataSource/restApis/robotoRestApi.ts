@@ -25,6 +25,7 @@ export const lexiconApiEndpoints: LexiconEndpointsType = {
 export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
   tags: '/arcadia/subjects',
   wordSearch: '/arcadia/word_search/',
+  removeItem: '/arcadia/remove/',
 };
 
 export const debugApiEndpoints: DebugEndpointsType = {
@@ -42,5 +43,11 @@ export async function getLexiconWordSearch(word: string) {
 export async function getArcadiaWordSearch(word: string) {
   return axios.get(FULL_API_URL.concat(
     `${arcadiaApiEndpoints.wordSearch}?term=${encodeURIComponent(word)}`,
+  ));
+}
+
+export async function deleteArcadiaRecord(dataKey: string) {
+  return axios.delete(FULL_API_URL.concat(
+    `${arcadiaApiEndpoints.removeItem}?data_key=${encodeURIComponent(dataKey)}`,
   ));
 }

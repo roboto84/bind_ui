@@ -1,3 +1,9 @@
+export enum ArcResultDisplay {
+  VIEW = 'VIEW',
+  EDIT = 'EDIT',
+  DELETE = 'DELETE',
+}
+
 export type ArcResultPackage = {
   id: number,
   timeStamp: string,
@@ -13,6 +19,26 @@ export type ArcResultProps = {
   arcResultPackage: ArcResultPackage
 }
 
+export type ArcResultViewProps = {
+  arcResultPackage: ArcResultPackage
+  onDelete: CallableFunction
+  onEdit: CallableFunction
+}
+
+export type ArcResultDeleteProps = {
+  itemKey: string
+  onReset: CallableFunction
+}
+
+export type ArcResultDeleteQuestionProps = {
+  onConfirm: CallableFunction
+  onDeny: CallableFunction
+}
+
+export type ArcResultDeleteConfirmProps = {
+  itemKey: string
+}
+
 export type ArcSearchResultsNode = {
   subject: string,
   notes: string[],
@@ -26,4 +52,10 @@ export type ArcSearchResults = {
     mainNode: ArcSearchResultsNode,
     subNode: ArcSearchResultsNode[]
   }
+}
+
+export type ArcDeleteItemResults = {
+  deletedItem: boolean,
+  reason: string,
+  data: string[]
 }

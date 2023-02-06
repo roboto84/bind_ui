@@ -89,3 +89,9 @@ export const ArcResultTimeStamp = styled.span`
   font-size: 16px;
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.timeColor};
 `;
+
+export const ArcResultDeleteQuestionContainer = styled.div`
+  height: 85px;
+`;
+
+export const ArcResultDeleteMessage = styled.div``;

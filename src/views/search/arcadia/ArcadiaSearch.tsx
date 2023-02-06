@@ -5,7 +5,7 @@ import Loader from '@/components/Misc/Loader';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
-import { ArcResult } from '@/views/search/arcadia/ArcResult';
+import { ArcResult } from '@/views/search/arcadia/ArcResult/ArcResult';
 import { SimilarTags } from '@/views/search/arcadia/SimilarTags';
 import {
   ArcResultPackage,

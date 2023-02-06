@@ -7,6 +7,7 @@ export interface ButtonProps extends GlobalThemeType {
   fontSize ?: string,
   padding ?: string
   borderRadius ?: string,
+  margin ?: string,
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -14,6 +15,7 @@ export const Button = styled.button<ButtonProps>`
   color: ${(props:ButtonProps) => props.theme.button.fontColor};
   border: 1px solid ${(props:ButtonProps) => props.theme.button.border};
   padding: ${(props:ButtonProps) => (props.padding || '10px')};
+  margin: ${(props:ButtonProps) => (props.margin || 'inherit')};
   text-decoration: none;
   text-align: center;
   letter-spacing: 3px;
