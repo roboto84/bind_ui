@@ -4,6 +4,10 @@ export enum GlobalActionsEnum {
 
 export enum Wh00tActionsEnum {
   MINIMIZED_SWITCH = 'MINIMIZED_SWITCH',
+  WINDOW_CLOSED = 'WINDOW_CLOSED',
+  WINDOW_MIN = 'WINDOW_MIN',
+  WINDOW_MED = 'WINDOW_MED',
+  WINDOW_MAX = 'WINDOW_MAX',
   NEW_MESSAGE = 'NEW_MESSAGE',
   HISTORICAL_MESSAGE = 'HISTORICAL_MESSAGE',
   CLEAR_MESSAGES = 'CLEAR_MESSAGES',
@@ -20,6 +24,12 @@ export enum Wh00tMessageTypeEnum {
   LOCAL = 'LOCAL',
   HISTORY = 'HISTORY',
   SOCKET = 'SOCKET',
+}
+
+export enum Wh00tWindowStateEnum {
+  MIN = 'MIN',
+  MED = 'MED',
+  MAX = 'MAX',
 }
 
 export enum ThemeModeEnum {

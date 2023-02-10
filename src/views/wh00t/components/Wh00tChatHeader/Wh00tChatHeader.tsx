@@ -1,8 +1,10 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { FiLogOut, FiMaximize, FiMinimize } from 'react-icons/fi';
 import { BsFillChatTextFill } from 'react-icons/bs';
+import {
+  Wh00tWindowStateEnum,
+} from '@/context/types/enums';
 import {
   Wh00tChannelTitle, Wh00tChatHeaderButtonsContainer,
   Wh00tChatHeaderButton, Wh00tChatHeaderContainer,
@@ -11,8 +13,7 @@ import {
 import { ElementSize, Wh00tChatHeaderProps } from '../../types/wh00tTypes';
 
 export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
-  const { headerSize, headerButtons, minimizeSwitch } = props;
-  const navigate: NavigateFunction = useNavigate();
+  const { headerSize, headerButtons, windowSwitch } = props;
   const { state } = useWh00tWebsocket();
   let headerMargin: string = '0';
   let headerBorderRadius: string = '0';
@@ -21,8 +22,8 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
     state.wh00tWebSocket.disconnectWebSocket();
   };
 
-  const wh00tMinimizeSwitch = () => {
-    minimizeSwitch();
+  const wh00tWindowSwitch = (newWindowState: Wh00tWindowStateEnum) => {
+    windowSwitch(newWindowState);
   };
 
   const connectedTitle: JSX.Element = (
@@ -49,13 +50,19 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
   }
 
   const minimizeButton: JSX.Element = headerButtons.minimize ? (
-    <Wh00tChatHeaderButton title="Minimize Chat" onClick={wh00tMinimizeSwitch}>
+    <Wh00tChatHeaderButton
+      title="Minimize Chat"
+      onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MIN)}
+    >
       <FiMinimize />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
   const maximizeButton: JSX.Element = headerButtons.maximize ? (
-    <Wh00tChatHeaderButton title="Maximize Chat" onClick={() => navigate('/wh00t')}>
+    <Wh00tChatHeaderButton
+      title="Maximize Chat"
+      onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MAX)}
+    >
       <FiMaximize />
     </Wh00tChatHeaderButton>
   ) : undefined;

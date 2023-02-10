@@ -6,7 +6,7 @@ import { Input } from '@/components/Input/Input';
 import { InputTextArea } from '@/components/Input/InputTextArea';
 
 export const ArcadiaContainer = styled.div`
-  width: 80vw;
+  width: 80%;
   margin: auto;
 
   @media ${device.laptopL} {

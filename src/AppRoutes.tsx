@@ -38,7 +38,7 @@ export default function AppRoutes() {
           path="chat"
           element={<Layout secondaryTitle="Chat" subtitle="A-O River Communication System" />}
         >
-          <Route index element={<Wh00t />} />
+          <Route index element={<Wh00t windowControls={false} />} />
         </Route>
         <Route
           path="debug"

@@ -18,7 +18,7 @@ export const SearchContainer = styled.div`
 export const TagsSection = styled(LexiconSection)``;
 
 export const GeneralSection = styled(LexiconSection)`
-  margin: 0 5vw;
+  margin: 0;
   border-radius: 0;
   background-color: inherit;
   border: 0;

@@ -16,7 +16,7 @@ export const AppContainer = styled.div`
 
 export const MainContainer = styled.main`
   overflow-y: auto;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 65px);
 
   &.side-flexed {
     display: flex;

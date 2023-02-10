@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  ArcDeleteItemResults, ArcEditItemResults, ArcResultDisplay,
+  ArcEditItemResults,
+  ArcResultDisplay,
   ArcResultEditConfirmProps,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import { useArcadiaEditItem } from '@/dataSource/reactQueryHooks';
@@ -25,7 +26,7 @@ export function ArcResultEditConfirm(props: ArcResultEditConfirmProps) {
       message = `Successfully Edited "${itemEditPackage.data}".  Going back the the original data in 5 seconds.  To see the newest data, please refresh this search.`;
       setTimeout(() => onReset(ArcResultDisplay.VIEW), 5000);
     } else {
-      message = `There was an issue with deleting: ${itemEditPackage.data}`;
+      message = `There was an issue with deleting: "${itemEditPackage.data}"`;
     }
   }
 

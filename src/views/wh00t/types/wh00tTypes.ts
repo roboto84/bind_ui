@@ -34,10 +34,14 @@ export enum ElementSize {
   LARGE = 'LARGE'
 }
 
+export type Wh00tProps = {
+  windowControls: boolean
+}
+
 export type Wh00tChatHeaderProps = {
   headerButtons: HeaderButtons,
   headerSize: ElementSize,
-  minimizeSwitch?: Function
+  windowSwitch?: CallableFunction
 }
 
 export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {
