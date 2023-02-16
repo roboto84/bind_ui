@@ -17,6 +17,7 @@ export type ArcResultPackage = {
 
 export type ArcEditPackage = {
   data: string,
+  dataUpdate: string,
   tags: string[],
   title: string,
   description: string,

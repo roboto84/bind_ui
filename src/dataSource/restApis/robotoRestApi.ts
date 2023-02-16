@@ -59,7 +59,7 @@ export async function editArcadiaRecord(itemEditPackage: ArcEditPackage) {
     FULL_API_URL.concat(`${arcadiaApiEndpoints.editItem}`),
     {
       data_key: itemEditPackage.data,
-      new_data_key: itemEditPackage.data,
+      new_data_key: itemEditPackage.dataUpdate,
       title: itemEditPackage.title,
       tags: itemEditPackage.tags,
       description: itemEditPackage.description,

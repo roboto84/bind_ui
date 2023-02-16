@@ -21,7 +21,8 @@ export function ArcResultEditView(props: ArcResultEditViewProps) {
 
   const editItem = () => {
     const editItemPackage: ArcEditPackage = {
-      data: urlInputRef.current.value,
+      data: itemKey,
+      dataUpdate: urlInputRef.current.value,
       tags: String(tagsInputRef.current.value).replace(/\s+/g, '').split(','),
       title: titleInputRef.current.value,
       description: descriptionInputRef.current.value,

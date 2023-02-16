@@ -15,7 +15,7 @@ export function ArcResultEdit(props: ArcResultEditProps) {
   const [confirmEdit, setConfirmEdit] = useState<boolean>(false);
   const [editItemPackage, setEditItemPackage] = useState<ArcEditPackage>();
 
-  const editItem = (itemPackage: ArcResultPackage) => {
+  const editItem = (itemPackage: ArcEditPackage) => {
     setEditItemPackage(itemPackage);
     setConfirmEdit(true);
   };
