@@ -5,7 +5,7 @@ import { HeaderContainerProps } from '@/views/components/Header/types/headerType
 
 export const HeaderContainer = styled.header<HeaderContainerProps>`
   font-size: 11px;
-  margin: 0 0 0 10px;
+  padding: 0 0 0 10px;
   display: flex;
   flex-direction: row;
   border-bottom: solid 1px ${(props:HeaderContainerProps) => (

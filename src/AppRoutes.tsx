@@ -6,6 +6,7 @@ import { Error404 } from '@/views/404/404';
 import { Layout } from '@/views/components/Layout';
 import { Air } from '@/views/air/Air';
 import { Search } from '@/views/search/Search';
+import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Debug } from './views/debug/Debug';
 
 export default function AppRoutes() {
@@ -38,7 +39,7 @@ export default function AppRoutes() {
           path="chat"
           element={<Layout secondaryTitle="Chat" subtitle="A-O River Communication System" />}
         >
-          <Route index element={<Wh00t windowControls={false} />} />
+          <Route index element={<Wh00t windowSize={ElementSize.LARGE} windowControls={false} />} />
         </Route>
         <Route
           path="debug"

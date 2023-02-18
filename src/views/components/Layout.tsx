@@ -5,6 +5,7 @@ import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { LayoutWithHeaderProps } from '@/views/components/Header/types/headerTypes';
 import { Wh00t } from '@/views/wh00t/Wh00t';
 import { Wh00tWindowStateEnum } from '@/context/types/enums';
+import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { MainContainer } from '../styles/appStyles';
 
 export function Layout(props: LayoutWithHeaderProps) {
@@ -24,7 +25,7 @@ export function Layout(props: LayoutWithHeaderProps) {
     mainBodyFlexBasis = '70%';
     sideWindow = (
       <div style={{ flexBasis: '35%', borderLeft: '1px solid gray', marginLeft: '3px' }}>
-        <Wh00t windowControls />
+        <Wh00t windowSize={ElementSize.MED} windowControls />
       </div>
     );
   }

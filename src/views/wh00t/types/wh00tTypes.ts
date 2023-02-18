@@ -31,11 +31,13 @@ export type Wh00tMessageTextProps = {
 
 export enum ElementSize {
   SMALL = 'SMALL',
+  MED = 'MED',
   LARGE = 'LARGE'
 }
 
 export type Wh00tProps = {
-  windowControls: boolean
+  windowControls: boolean,
+  windowSize: ElementSize
 }
 
 export type Wh00tChatHeaderProps = {

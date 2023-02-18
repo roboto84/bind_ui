@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import Wh00tConnect from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
-import { ElementSize, Wh00tProps } from '@/views/wh00t/types/wh00tTypes';
+import { Wh00tProps } from '@/views/wh00t/types/wh00tTypes';
 import Wh00tConnectionStatus from '@/views/wh00t/components/Wh00tConnect/Wh00tConnectStatus';
 import {
   Wh00tActionsEnum,
@@ -17,7 +17,7 @@ import { Wh00tChatHeader } from './components/Wh00tChatHeader/Wh00tChatHeader';
 export function Wh00t(props: Wh00tProps) {
   const navigate: NavigateFunction = useNavigate();
   const { state, dispatch } = useWh00tWebsocket();
-  const { windowControls } = props;
+  const { windowControls, windowSize } = props;
   const wh00tWindowSwitch = (newWindowState: Wh00tWindowStateEnum) => {
     if (newWindowState === Wh00tWindowStateEnum.MAX) {
       navigate('/chat');
@@ -33,11 +33,11 @@ export function Wh00t(props: Wh00tProps) {
     return (
       <Wh00tContainer>
         <Wh00tChatHeader
-          headerSize={ElementSize.LARGE}
+          headerSize={windowSize}
           headerButtons={{
             maximize: windowControls,
             minimize: windowControls,
-            disconnect: windowControls,
+            disconnect: true,
           }}
           windowSwitch={wh00tWindowSwitch}
         />

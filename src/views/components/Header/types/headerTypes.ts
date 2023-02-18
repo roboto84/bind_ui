@@ -10,8 +10,8 @@ export interface HeaderContainerProps extends GlobalThemeType {
 }
 
 export type HeaderProps = {
-  title: string,
-  secondaryTitle: string,
+  title ?: string,
+  secondaryTitle ?: string,
   sidePanelActive ?: boolean,
   subtitle: string
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { FiLogOut, FiMaximize, FiMinimize } from 'react-icons/fi';
+import { GoSignOut } from 'react-icons/go';
+import { VscChromeMaximize, VscChromeMinimize, VscDiffRenamed } from 'react-icons/vsc';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import {
   Wh00tWindowStateEnum,
@@ -16,7 +17,7 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
   const { headerSize, headerButtons, windowSwitch } = props;
   const { state } = useWh00tWebsocket();
   let headerMargin: string = '0';
-  let headerBorderRadius: string = '0';
+  let headerBorderRadius: string = '3px';
 
   const wh00tDisconnect = () => {
     state.wh00tWebSocket.disconnectWebSocket();
@@ -46,7 +47,9 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
 
   if (headerSize === ElementSize.LARGE) {
     headerMargin = '0 5px';
-    headerBorderRadius = '3px';
+  } else if (headerSize === ElementSize.MED) {
+    headerMargin = '0';
+    headerBorderRadius = '0';
   }
 
   const minimizeButton: JSX.Element = headerButtons.minimize ? (
@@ -54,7 +57,7 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
       title="Minimize Chat"
       onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MIN)}
     >
-      <FiMinimize />
+      <VscChromeMinimize />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
@@ -63,13 +66,13 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
       title="Maximize Chat"
       onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MAX)}
     >
-      <FiMaximize />
+      <VscChromeMaximize />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
   const disconnectButton: JSX.Element = headerButtons.disconnect ? (
     <Wh00tChatHeaderButton title="Logout of Chat" onClick={wh00tDisconnect}>
-      <FiLogOut />
+      <VscDiffRenamed />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
