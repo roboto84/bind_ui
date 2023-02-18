@@ -5,7 +5,8 @@ import { device } from '@/styles/responsive';
 
 export interface ButtonProps extends GlobalThemeType {
   fontSize ?: string,
-  padding ?: string
+  letterSpacing ?: string,
+  padding ?: string,
   borderRadius ?: string,
   margin ?: string,
 }
@@ -18,7 +19,7 @@ export const Button = styled.button<ButtonProps>`
   margin: ${(props:ButtonProps) => (props.margin || 'inherit')};
   text-decoration: none;
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: ${(props:ButtonProps) => (props.letterSpacing || '3px')};;
   word-spacing: 10px;
   transition: 0.4s;
   font-size: ${(props:ButtonProps) => (props.fontSize || 'inherit')};

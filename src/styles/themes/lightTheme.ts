@@ -18,7 +18,7 @@ export const LightTheme: ThemeType = {
       linkColor: customThemeLight.darkBlue,
     },
     section: {
-      backgroundColor: '#e3e3e3',
+      backgroundColor: '#E9E9E9',
       borderColor: '#c7c7c7',
     },
     table: {

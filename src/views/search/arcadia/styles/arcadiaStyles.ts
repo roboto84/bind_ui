@@ -66,11 +66,12 @@ export const ArcResultContainer = styled(Section)`
 `;
 
 export const SimilarResultsSection = styled(ArcResultContainer)`
+  padding: 20px 0;
   font-size: 16px;
 `;
 
 export const ArcImageContainer = styled.div`
-  margin: auto 0;
+  margin: 10px 0 0 0;
   display: inherit;
   
   @media ${device.tablet} {

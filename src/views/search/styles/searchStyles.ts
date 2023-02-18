@@ -29,7 +29,7 @@ export const Tag = styled(Hoverable)``;
 
 export const LatestTagsListContainer = styled.ul`{
   all: unset;
-  margin: 0 0 0 50px;
+  margin: 0 0 0 30px;
   display: flex;
   height: 100%;
   flex-wrap: wrap;

@@ -16,6 +16,7 @@ import { ArcResultViewProps, ArcResultDisplay } from '@/views/search/arcadia/typ
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { NonListHoverable } from '@/views/styles/appStyles';
 import { Button } from '@/components/Nav/Button';
+import { BsFillImageFill } from 'react-icons/bs';
 
 export function ArcResultView(props: ArcResultViewProps) {
   const { arcResultPackage, onEdit, onDelete } = props;
@@ -28,12 +29,13 @@ export function ArcResultView(props: ArcResultViewProps) {
   const isImageValid = image !== 'None';
   const resultImage: JSX.Element = isImageValid
     ? (
-      <img
-        style={{ borderRadius: '5px' }}
+      <object
+        style={{ borderRadius: '5px', maxWidth: '175px' }}
         height="75"
-        src={imageUrlCompletion(data, image)}
-        alt="img"
-      />
+        data={imageUrlCompletion(data, image)}
+      >
+        <BsFillImageFill style={{ fontSize: '60px' }} />
+      </object>
     )
     : <div />;
   const tagsView = tags.map((tag: string) => (
@@ -62,9 +64,10 @@ export function ArcResultView(props: ArcResultViewProps) {
           <ArcResultTimeStamp>{formattedTimeStamp}</ArcResultTimeStamp>
           <span> | </span>
           <Button
-            fontSize="14px"
+            fontSize="12px"
+            letterSpacing="2px"
             padding="1px 5px"
-            margin="5px"
+            margin="3px"
             borderRadius="5px"
             onClick={() => onEdit(ArcResultDisplay.EDIT)}
             title="Edit Item"
@@ -72,9 +75,10 @@ export function ArcResultView(props: ArcResultViewProps) {
             edit
           </Button>
           <Button
-            fontSize="14px"
+            fontSize="12px"
+            letterSpacing="2px"
             padding="1px 5px"
-            margin="5px"
+            margin="3px"
             borderRadius="5px"
             onClick={() => onDelete(ArcResultDisplay.DELETE)}
             title="Delete Item"

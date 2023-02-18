@@ -1,6 +1,5 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { GoSignOut } from 'react-icons/go';
 import { VscChromeMaximize, VscChromeMinimize, VscDiffRenamed } from 'react-icons/vsc';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import {
