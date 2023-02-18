@@ -1,5 +1,3 @@
-import { AlphabetHeader } from '@/views/search/arcadia/styles/arcadiaStyles';
-
 export interface GlobalThemeType {
   theme: ThemeType
 }
@@ -23,7 +21,8 @@ export type HeaderStyleType = {
   subTitleColor: string,
   secondaryTitleColor: string,
   secondaryTitleBrightness: string,
-  borderBottomColor: string,
+  activeBorderBottomColor: string,
+  inactiveBorderBottomColor: string,
 };
 
 export type ThrobberStyleType = {

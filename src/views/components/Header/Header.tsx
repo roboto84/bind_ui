@@ -9,14 +9,14 @@ import HeaderTitle from './HeaderTitle';
 import { HeaderProps } from './types/headerTypes';
 
 export default function Header(props: HeaderProps) {
-  const { title, secondaryTitle, subtitle } = props;
+  const { title, secondaryTitle, subtitle, sidePanelActive } = props;
   const [menu, setMenu] = useState(false);
   const iconPadding: string = '4px 8px';
   const iconFontSize: string = '23px';
   const borderRadius: string = '3px';
   return (
     <>
-      <HeaderContainer>
+      <HeaderContainer sidePanelActive={sidePanelActive}>
         <HeaderTitle title={title} secondaryTitle={secondaryTitle} subtitle={subtitle} />
         <HeaderNavigation />
         <MobileNavigationMenuContainer>

@@ -18,11 +18,12 @@ export function Layout(props: LayoutWithHeaderProps) {
   const body:React.ReactNode = children || <Outlet />;
   let mainBodyFlexBasis = '100%';
   let sideWindow: JSX.Element = <div />;
+  const isSidePanelActive = state.wh00tWindowState === Wh00tWindowStateEnum.MAX && !(pathname.includes('chat'));
 
-  if (state.wh00tWindowState === Wh00tWindowStateEnum.MAX && !(pathname.includes('chat'))) {
+  if (isSidePanelActive) {
     mainBodyFlexBasis = '70%';
     sideWindow = (
-      <div style={{ flexBasis: '35%', borderLeft: '1px solid gray' }}>
+      <div style={{ flexBasis: '35%', borderLeft: '1px solid gray', marginLeft: '3px' }}>
         <Wh00t windowControls />
       </div>
     );
@@ -30,7 +31,12 @@ export function Layout(props: LayoutWithHeaderProps) {
 
   return (
     <>
-      <Header title={pageTitle} secondaryTitle={secondaryTitle} subtitle={subtitle} />
+      <Header
+        title={pageTitle}
+        secondaryTitle={secondaryTitle}
+        subtitle={subtitle}
+        sidePanelActive={isSidePanelActive}
+      />
       <div style={{ display: 'flex' }}>
         <MainContainer style={{ flexBasis: mainBodyFlexBasis }}>
           {body}

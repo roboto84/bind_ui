@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types/themeTypes';
+import { HeaderContainerProps } from '@/views/components/Header/types/headerTypes';
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<HeaderContainerProps>`
   font-size: 11px;
   margin: 0 0 0 10px;
   display: flex;
   flex-direction: row;
-  border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
+  border-bottom: solid 1px ${(props:HeaderContainerProps) => (
+    props.sidePanelActive
+      ? props.theme.header.activeBorderBottomColor : props.theme.header.inactiveBorderBottomColor
+  )};
   height: 65px;
   
   & a:link, a:visited {
