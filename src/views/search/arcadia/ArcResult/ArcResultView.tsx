@@ -17,6 +17,7 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { NonListHoverable } from '@/views/styles/appStyles';
 import { Button } from '@/components/Nav/Button';
 import { BsFillImageFill } from 'react-icons/bs';
+import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 
 export function ArcResultView(props: ArcResultViewProps) {
   const { arcResultPackage, onEdit, onDelete } = props;
@@ -29,13 +30,14 @@ export function ArcResultView(props: ArcResultViewProps) {
   const isImageValid = image !== 'None';
   const resultImage: JSX.Element = isImageValid
     ? (
-      <object
-        style={{ borderRadius: '5px', maxWidth: '175px' }}
+      <ImageWithPlaceHolder
+        borderRadius="5px"
+        maxWidth="175px"
         height="75"
-        data={imageUrlCompletion(data, image)}
-      >
-        <BsFillImageFill style={{ fontSize: '60px' }} />
-      </object>
+        src={imageUrlCompletion(data, image)}
+        alt="img"
+        placeHolderImage={<BsFillImageFill style={{ fontSize: '60px' }} />}
+      />
     )
     : <div />;
   const tagsView = tags.map((tag: string) => (
