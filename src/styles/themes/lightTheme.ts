@@ -79,7 +79,7 @@ export const LightTheme: ThemeType = {
     subTitleColor: '#6c6c6c',
     secondaryTitleColor: customThemeLight.darkBlue,
     secondaryTitleBrightness: 'brightness(100%)',
-    activeBorderBottomColor: '#a5a5a5',
+    activeBorderBottomColor: '#bebebe',
     inactiveBorderBottomColor: '#d4d4d4',
   },
   home: homeLight,

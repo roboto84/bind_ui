@@ -80,7 +80,7 @@ export const DarkTheme: ThemeType = {
     subTitleColor: '#939393',
     secondaryTitleColor: customThemeDark.mainThemeColor,
     secondaryTitleBrightness: 'brightness(115%)',
-    activeBorderBottomColor: '#616161',
+    activeBorderBottomColor: '#3F3F3F',
     inactiveBorderBottomColor: customThemeDark.background,
   },
   home: homeDark,
