@@ -107,7 +107,7 @@ export const NavLinksContainer = styled.nav`
   @media ${device.mobileXL} {
     padding: 10px 0;
     justify-content: center;
-    border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
+    border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.activeBorderBottomColor};
   }
 `;
 

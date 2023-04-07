@@ -57,7 +57,7 @@ export function Wh00tMini() {
     return (
       <MinimizedWh00tButton
         title="Wh00t Mini Chat"
-        onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MED)}
+        onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MAX)}
       >
         <MinimizedWh00tIconContainer>
           <BsFillChatTextFill />
