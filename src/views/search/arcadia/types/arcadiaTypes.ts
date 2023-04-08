@@ -94,6 +94,12 @@ export type ArcEditItemResults = {
   data: string[]
 }
 
+export type ArcAddItemResults = {
+  addedItem: boolean,
+  reason: string,
+  data: string[]
+}
+
 export type ArcResultEditConfirmProps = {
   itemEditPackage: ArcEditPackage
   onReset: CallableFunction

@@ -1,14 +1,14 @@
 import {
   ArcEditPackage,
-  ArcResultEditProps, ArcResultPackage,
+  ArcResultEditProps,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import React, { useState } from 'react';
 import {
   ArcResultEditView,
-} from '@/views/search/arcadia/ArcResult/ArcResultEdit/ArcResultEditView';
+} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditView';
 import {
   ArcResultEditConfirm,
-} from '@/views/search/arcadia/ArcResult/ArcResultEdit/ArcResultEditConfirm';
+} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditConfirm';
 
 export function ArcResultEdit(props: ArcResultEditProps) {
   const { itemKey, tags, title, description, image, onReset } = props;

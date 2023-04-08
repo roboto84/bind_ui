@@ -12,13 +12,19 @@ import {
   LexiconSearchHome,
 } from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
 import { SearchSystem } from '@/views/search/types/searchTypes';
-import { SearchContainer } from './styles/searchStyles';
+import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecordButton';
+import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
+import { SearchMainContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const navigate: NavigateFunction = useNavigate();
   const { pathname } = useLocation();
   const isLexicon: boolean = (pathname.includes('lexicon'));
+  const [isAddRecordViewable, setIsAddRecordViewable] = useState<boolean>(false);
+  const switchAddRecordFormView = () => {
+    setIsAddRecordViewable(!isAddRecordViewable);
+  };
 
   const generalSearch = (url: string, value: string) => {
     if (value !== '') {
@@ -65,9 +71,16 @@ export function Search() {
   ];
 
   return (
-    <SearchContainer>
-      <SearchBar searchSystem={system} onSystemSwitch={switchSystem} />
+    <SearchMainContainer>
+      <SearchMenuContainer>
+        <SearchBar searchSystem={system} onSystemSwitch={switchSystem} />
+        <AddSearchRecordButton switchAddFormView={switchAddRecordFormView} />
+      </SearchMenuContainer>
+      <AddRecord
+        isAddRecordViewable={isAddRecordViewable}
+        switchAddRecordView={switchAddRecordFormView}
+      />
       <RoutesGenerator routerRoutesConfig={routerConfig} />
-    </SearchContainer>
+    </SearchMainContainer>
   );
 }

@@ -2,16 +2,18 @@ import { useQuery, UseQueryResult } from 'react-query';
 import {
   getData,
   getLexiconWordSearch,
-  getArcadiaWordSearch, deleteArcadiaRecord, editArcadiaRecord,
+  getArcadiaWordSearch, deleteArcadiaRecord, editArcadiaRecord, addArcadiaRecord,
 } from '@/dataSource/restApis/robotoRestApi';
 import { QueryHookError } from '@/dataSource/types/hookTypes';
 import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import {
+  ArcAddItemResults,
   ArcDeleteItemResults,
   ArcEditItemResults,
   ArcEditPackage,
   ArcSearchResults,
 } from '@/views/search/arcadia/types/arcadiaTypes';
+import { ArcAddPackage } from '@/views/search/types/searchTypes';
 
 const defaultQueryFn = async ({ queryKey }: any) => {
   const { data } = await getData(queryKey[0]);
@@ -49,6 +51,11 @@ const editArcadiaItem = async (itemEditPackage: ArcEditPackage): Promise<any> =>
   return data;
 };
 
+const addArcadiaItem = async (itemAddPackage: ArcAddPackage): Promise<any> => {
+  const { data } = await addArcadiaRecord(itemAddPackage);
+  return data;
+};
+
 export const useArcadiaWordSearch = (word: string): UseQueryResult<
   ArcSearchResults, QueryHookError> => (
   useQuery(['arcadiaWordSearch', word], () => getArcadiaSearch(word))
@@ -61,5 +68,10 @@ export const useArcadiaDeleteItem = (dataKey: string): UseQueryResult<
 
 export const useArcadiaEditItem = (itemEditPackage: ArcEditPackage): UseQueryResult<
   ArcEditItemResults, QueryHookError> => (
-  useQuery(['arcadiaDeleteItem', itemEditPackage.data], () => editArcadiaItem(itemEditPackage))
+  useQuery(['arcadiaEditItem', itemEditPackage.data], () => editArcadiaItem(itemEditPackage))
+);
+
+export const useArcadiaAddItem = (itemAddPackage: ArcAddPackage): UseQueryResult<
+  ArcAddItemResults, QueryHookError> => (
+  useQuery(['arcadiaAddItem', itemAddPackage.data], () => addArcadiaItem(itemAddPackage))
 );

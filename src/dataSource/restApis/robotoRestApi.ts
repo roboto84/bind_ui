@@ -7,6 +7,7 @@ import {
 } from '@/dataSource/types/apiTypes';
 import { FULL_API_URL } from '@/dataSource/urls';
 import { ArcEditPackage } from '@/views/search/arcadia/types/arcadiaTypes';
+import { ArcAddPackage } from '@/views/search/types/searchTypes';
 
 const numOfDays: number = 14;
 const weatherHistoryTimeInterval: number = 24 * numOfDays;
@@ -28,6 +29,7 @@ export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
   wordSearch: '/arcadia/word_search/',
   removeItem: '/arcadia/remove/',
   editItem: '/arcadia/update/',
+  addItem: '/arcadia/create/',
 };
 
 export const debugApiEndpoints: DebugEndpointsType = {
@@ -64,6 +66,16 @@ export async function editArcadiaRecord(itemEditPackage: ArcEditPackage) {
       tags: itemEditPackage.tags,
       description: itemEditPackage.description,
       image_location: itemEditPackage.image,
+    },
+  );
+}
+
+export async function addArcadiaRecord(itemAddPackage: ArcAddPackage) {
+  return axios.post(
+    FULL_API_URL.concat(`${arcadiaApiEndpoints.addItem}`),
+    {
+      data_key: itemAddPackage.data,
+      tags: itemAddPackage.tags,
     },
   );
 }

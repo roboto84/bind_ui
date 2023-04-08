@@ -5,10 +5,10 @@ import {
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import {
   ArcResultDeleteQuestion,
-} from '@/views/search/arcadia/ArcResult/ArcResultDelete/ArcResultDeleteQuestion';
+} from '@/views/search/arcadia/ArcResult/components/ArcResultDelete/ArcResultDeleteQuestion';
 import {
   ArcResultDeleteConfirm,
-} from '@/views/search/arcadia/ArcResult/ArcResultDelete/ArcResultDeleteConfirm';
+} from '@/views/search/arcadia/ArcResult/components/ArcResultDelete/ArcResultDeleteConfirm';
 
 export function ArcResultDelete(props: ArcResultDeleteProps) {
   const { itemKey, onReset } = props;

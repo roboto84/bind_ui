@@ -34,7 +34,8 @@ export type ArcadiaEndpointsType = {
   tags: string,
   wordSearch: string,
   removeItem: string,
-  editItem: string
+  editItem: string,
+  addItem: string
 }
 
 export type ArcadiaTagsApiResult = {
