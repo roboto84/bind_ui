@@ -38,6 +38,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const Title = styled.h1`
   display: flex;
+  margin-left: 10px;
   margin-top: 10px;
   
   @media ${device.tablet} {
@@ -87,7 +88,7 @@ export const TagContainer = styled.div`
 export const SubTitle = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.header.subTitleColor};
   font-size: 13px;
-  margin: 0 30px 10px 17px;
+  margin: 0 30px 10px 10px;
 
   @media ${device.tablet} {
     display: none;
@@ -130,7 +131,6 @@ export const NavContainer = styled.div`
 
 export const NavigationOptional = styled.div`
   display: flex;
-  width: 30px;
   justify-content: space-between;
   
   @media ${device.mobileXL} {

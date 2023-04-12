@@ -13,16 +13,14 @@ import {
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React from 'react';
 import { ArcResultViewProps, ArcResultDisplay } from '@/views/search/arcadia/types/arcadiaTypes';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { NonListHoverable } from '@/views/styles/appStyles';
 import { Button } from '@/components/Nav/Button';
 import { BsFillImageFill } from 'react-icons/bs';
 import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 
 export function ArcResultView(props: ArcResultViewProps) {
-  const { arcResultPackage, onEdit, onDelete } = props;
+  const { arcResultPackage, onEdit, onDelete, onSubTagClick } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
-  const navigate: NavigateFunction = useNavigate();
   const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp)
     : timeStamp;
@@ -44,7 +42,7 @@ export function ArcResultView(props: ArcResultViewProps) {
     <NonListHoverable
       style={{ fontSize: '17px' }}
       key={'resultTagListItem'.concat(tag)}
-      onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+      onClick={() => onSubTagClick(tag)}
     >
       {tag}
     </NonListHoverable>

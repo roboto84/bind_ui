@@ -11,7 +11,7 @@ import { ArcadiaProps } from '@/views/search/types/searchTypes';
 import { AlphabetHeader, ArcadiaContainer } from './styles/arcadiaStyles';
 
 export function Arcadia(props: ArcadiaProps) {
-  const { subTag } = props;
+  const { subTag, setContext } = props;
   const navigate: NavigateFunction = useNavigate();
   const arcadiaTagsHook: UseQueryResult<ArcadiaTagsApiResult> = useQuery<ArcadiaTagsApiResult,
     Error>(arcadiaApiEndpoints.tags);
@@ -30,6 +30,10 @@ export function Arcadia(props: ArcadiaProps) {
     );
   }
 
+  const onTagClick = (term: string) => {
+    setContext(term);
+    navigate(`/search/system/arcadia/data?word=${term}`);
+  };
   const arcadiaTagsResponse: any = camelcaseKeys<any>(
     arcadiaTagsHook.data,
     { deep: true },
@@ -64,7 +68,7 @@ export function Arcadia(props: ArcadiaProps) {
                       {
                         tags.map((tag: string) => (
                           <Tag
-                            onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+                            onClick={() => onTagClick(tag)}
                             key={'tagListItem'.concat(tag)}
                           >
                             {tag}

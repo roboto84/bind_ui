@@ -6,7 +6,7 @@ import { ArcResultDelete } from '@/views/search/arcadia/ArcResult/components/Arc
 import { ArcResultEdit } from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEdit';
 
 export function ArcResult(props: ArcResultProps) {
-  const { arcResultPackage } = props;
+  const { arcResultPackage, onSubTagClick } = props;
   const { data, tags, title, description, image } = arcResultPackage;
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
   let body: JSX.Element;
@@ -17,6 +17,7 @@ export function ArcResult(props: ArcResultProps) {
         arcResultPackage={arcResultPackage}
         onDelete={setDisplay}
         onEdit={setDisplay}
+        onSubTagClick={onSubTagClick}
       />
     );
   } else if (display === ArcResultDisplay.DELETE) {

@@ -1,5 +1,3 @@
-import { ArcEditPackage } from '@/views/search/arcadia/types/arcadiaTypes';
-
 export type SearchSystem = {
   system: string,
   icon: JSX.Element,
@@ -15,6 +13,7 @@ export type SearchBarProps = {
 
 export type ArcadiaProps = {
   subTag: string,
+  setContext: CallableFunction
 }
 
 export type AddRecordProps = {
@@ -26,7 +25,7 @@ export type AddRecordProps = {
 export type AddRecordFormProps = {
   cancelAddForm: CallableFunction,
   onAddItem: CallableFunction,
-  initialTags: string
+  possibleTag: string
 }
 
 export type ArcAddPackage = {

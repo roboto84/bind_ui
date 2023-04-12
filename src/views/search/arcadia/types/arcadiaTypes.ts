@@ -25,17 +25,19 @@ export type ArcEditPackage = {
 }
 
 export type ArcResultProps = {
-  arcResultPackage: ArcResultPackage
+  arcResultPackage: ArcResultPackage,
+  onSubTagClick: CallableFunction
 }
 
 export type ArcResultViewProps = {
-  arcResultPackage: ArcResultPackage
-  onDelete: CallableFunction
-  onEdit: CallableFunction
+  arcResultPackage: ArcResultPackage,
+  onDelete: CallableFunction,
+  onEdit: CallableFunction,
+  onSubTagClick: CallableFunction
 }
 
 export type ArcResultDeleteProps = {
-  itemKey: string
+  itemKey: string,
   onReset: CallableFunction
 }
 
@@ -54,17 +56,26 @@ export type ArcResultEditViewProps = {
   tags: string,
   title: string,
   description: string,
-  onReset: CallableFunction
+  onReset: CallableFunction,
   onEdit: CallableFunction
 }
 
 export type ArcResultDeleteQuestionProps = {
-  onConfirm: CallableFunction
-  onDeny: CallableFunction
+  onConfirm: CallableFunction,
+  onDeny: CallableFunction,
 }
 
 export type ArcResultDeleteConfirmProps = {
   itemKey: string
+}
+
+export type ArcadiaSearchProps = {
+  setContext: CallableFunction
+}
+
+export type SimilarTagsProps = {
+  similarTags: string[],
+  onTagClick: CallableFunction
 }
 
 export type ArcSearchResultsNode = {
@@ -101,6 +112,6 @@ export type ArcAddItemResults = {
 }
 
 export type ArcResultEditConfirmProps = {
-  itemEditPackage: ArcEditPackage
+  itemEditPackage: ArcEditPackage,
   onReset: CallableFunction
 }

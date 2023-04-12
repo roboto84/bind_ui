@@ -8,8 +8,10 @@ import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { ArcResult } from '@/views/search/arcadia/ArcResult/ArcResult';
 import { SimilarTags } from '@/views/search/arcadia/SimilarTags';
 import {
+  ArcadiaSearchProps,
   ArcResultPackage,
-  ArcSearchResults, ArcSearchResultsNode,
+  ArcSearchResults,
+  ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import {
   ArcadiaContainer,
@@ -17,7 +19,8 @@ import {
   SubTagHeader,
 } from './styles/arcadiaStyles';
 
-export function ArcadiaSearch() {
+export function ArcadiaSearch(props: ArcadiaSearchProps) {
+  const { setContext } = props;
   const navigate: NavigateFunction = useNavigate();
   const [searchParams] = useSearchParams();
   const searchWord: string = searchParams.get('word');
@@ -34,6 +37,11 @@ export function ArcadiaSearch() {
     data,
     { deep: true },
   );
+
+  const onSubTagClick = (term: string) => {
+    setContext(term);
+    navigate(`/search/system/arcadia/data?word=${term}`);
+  };
 
   const { searchResults } = wordSearchResponse;
   const { similarTags } = wordSearchResponse;
@@ -73,7 +81,7 @@ export function ArcadiaSearch() {
   }
 
   const tagComparison: JSX.Element = similarTags && similarTags.length > 0
-    ? (<SimilarTags similarTags={similarTags} />)
+    ? (<SimilarTags similarTags={similarTags} onTagClick={onSubTagClick} />)
     : <div />;
 
   const innerLinks: JSX.Element = tagCache.length > 1
@@ -97,7 +105,12 @@ export function ArcadiaSearch() {
 
   const mainNode: JSX.Element|JSX.Element[] = searchResults.mainNode
     ? searchResults.mainNode.urls.map((url: any) => (
-      <ArcResult key={'arcResultItem'.concat(url.id.toString())} arcResultPackage={url} />))
+      <ArcResult
+        key={'arcResultItem'.concat(url.id.toString())}
+        arcResultPackage={url}
+        onSubTagClick={onSubTagClick}
+      />
+    ))
     : <div />;
 
   const subNodes: JSX.Element|JSX.Element[] = searchResults.subNode.map(
@@ -106,7 +119,7 @@ export function ArcadiaSearch() {
         <div style={{ padding: '25px 0 0' }}>
           <SubTagHeader
             id={'SubTagHeader-'.concat(element.subject)}
-            onClick={() => navigate(`/search/system/arcadia/data?word=${element.subject}`)}
+            onClick={() => onSubTagClick(element.subject)}
           >
             {element.subject}
           </SubTagHeader>
@@ -114,7 +127,11 @@ export function ArcadiaSearch() {
         <div style={{ paddingLeft: '25px' }}>
           {
             element.urls.map((url: any) => (
-              <ArcResult key={'arcResultItem'.concat(url.id.toString())} arcResultPackage={url} />
+              <ArcResult
+                key={'arcResultItem'.concat(url.id.toString())}
+                arcResultPackage={url}
+                onSubTagClick={onSubTagClick}
+              />
             ))
           }
         </div>

@@ -34,7 +34,7 @@ export function AddRecord(props: AddRecordProps) {
     } else {
       body = (
         <AddRecordForm
-          initialTags={initialTags}
+          possibleTag={initialTags}
           cancelAddForm={switchAddRecordView}
           onAddItem={addItem}
         />

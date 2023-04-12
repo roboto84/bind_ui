@@ -6,10 +6,11 @@ import {
 import { GeneralSection, LatestTagsListContainer } from '@/views/search/styles/searchStyles';
 import React from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { SimilarTagsProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
-export function SimilarTags(props: { similarTags: string[] }) {
+export function SimilarTags(props: SimilarTagsProps) {
   const navigate: NavigateFunction = useNavigate();
-  const { similarTags } = props;
+  const { similarTags, onTagClick } = props;
   return (
     <GeneralSection>
       <AlphabetHeader>Similar Tags</AlphabetHeader>
@@ -19,7 +20,7 @@ export function SimilarTags(props: { similarTags: string[] }) {
             similarTags.map((tag: string) => (
               <SubTagHeader
                 key={'tagListItem'.concat(tag)}
-                onClick={() => navigate(`/search/system/arcadia/data?word=${tag}`)}
+                onClick={() => onTagClick(tag)}
                 style={{ minWidth: 'auto', width: 'auto' }}
               >
                 {tag}
