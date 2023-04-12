@@ -29,7 +29,7 @@ export default function HeaderLinks() {
       >
         Chat
       </NavigationLink>
-      <NavigationLink
+      {/* <NavigationLink
         title="Roboto Debug View"
         borderRadius={borderRadius}
         padding={iconPadding}
@@ -37,7 +37,7 @@ export default function HeaderLinks() {
         linkTo="/debug"
       >
         <BsBug />
-      </NavigationLink>
+      </NavigationLink> */}
       <NavigationLink
         title={state.theme === ThemeModeEnum.LIGHT ? 'Dark Theme' : 'Light Theme'}
         borderRadius={borderRadius}

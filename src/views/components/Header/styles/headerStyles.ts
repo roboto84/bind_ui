@@ -13,6 +13,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
       ? props.theme.header.activeBorderBottomColor : props.theme.header.inactiveBorderBottomColor
   )};
   height: 65px;
+  justify-content: space-between;
   
   & a:link, a:visited {
     margin: 0;
@@ -28,7 +29,6 @@ export const TitleContainer = styled.div`
 `;
 
 export const HeaderTitleContainer = styled.div`
-  width: calc(100% - 360px);
   display: flex;
 
   @media ${device.tablet} {
@@ -115,7 +115,7 @@ export const NavContainer = styled.div`
   all: unset;
   display: flex;
   height: 34px;
-  width: 345px;
+  gap: 3px;
   justify-content: space-between;
 
   @media ${device.mobileXL} {

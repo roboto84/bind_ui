@@ -8,7 +8,7 @@ import { Button } from '@/components/Nav/Button';
 import { AddRecordFormProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 
 export function AddRecordForm(props: AddRecordFormProps) {
-  const { cancelAddForm, onAddItem } = props;
+  const { cancelAddForm, onAddItem, initialTags } = props;
   const urlInputRef: React.MutableRefObject<any> = useRef();
   const tagsInputRef: React.MutableRefObject<any> = useRef();
   const addItem = () => {
@@ -36,14 +36,16 @@ export function AddRecordForm(props: AddRecordFormProps) {
             title="Tags Edit"
             type="text"
             ref={tagsInputRef}
+            defaultValue={initialTags}
           />
         </div>
       </ArcEditFieldContainer>
-      <ArcEditFieldContainer style={{ paddingLeft: '20px', width: '10%', marginTop: '20px' }}>
+      <ArcEditFieldContainer style={{ width: '10%', marginTop: '20px' }}>
         <div>
           <Button
             fontSize="14px"
             padding="8px"
+            width="74px"
             margin="0 0 15px 0"
             borderRadius="5px"
             onClick={() => addItem()}
@@ -56,6 +58,7 @@ export function AddRecordForm(props: AddRecordFormProps) {
           <Button
             fontSize="14px"
             padding="8px"
+            width="74px"
             borderRadius="5px"
             onClick={() => cancelAddForm()}
             title="Cancel"

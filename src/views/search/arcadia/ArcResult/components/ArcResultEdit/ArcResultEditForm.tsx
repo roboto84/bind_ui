@@ -11,7 +11,7 @@ import {
 import React, { useRef } from 'react';
 import { Button } from '@/components/Nav/Button';
 
-export function ArcResultEditView(props: ArcResultEditViewProps) {
+export function ArcResultEditForm(props: ArcResultEditViewProps) {
   const { itemKey, tags, title, description, image, onReset, onEdit } = props;
   const imageInputRef: React.MutableRefObject<any> = useRef();
   const urlInputRef: React.MutableRefObject<any> = useRef();
@@ -90,12 +90,13 @@ export function ArcResultEditView(props: ArcResultEditViewProps) {
           />
         </div>
       </ArcEditFieldContainer>
-      <ArcEditFieldContainer style={{ paddingLeft: '20px', width: '10%', marginTop: '20px' }}>
+      <ArcEditFieldContainer style={{ width: '10%', marginTop: '20px' }}>
         <div>
           <Button
             fontSize="14px"
             padding="8px"
             margin="0 0 15px 0"
+            width="74px"
             borderRadius="5px"
             onClick={() => editItem()}
             title="Update"
@@ -107,6 +108,7 @@ export function ArcResultEditView(props: ArcResultEditViewProps) {
           <Button
             fontSize="14px"
             padding="8px"
+            width="74px"
             borderRadius="5px"
             onClick={() => resetEditView()}
             title="Cancel"

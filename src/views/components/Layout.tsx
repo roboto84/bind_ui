@@ -13,7 +13,7 @@ export function Layout(props: LayoutWithHeaderProps) {
   const { pathname } = useLocation();
   const { state } = useWh00tWebsocket();
   const { children, title, secondaryTitle, subtitle } = props;
-  const pageTitle: string = title || 'Roboto';
+  const pageTitle: string = title || 'Bind';
   const newTitle: string = `${pageTitle}${secondaryTitle ? ' | ' : ''}${secondaryTitle || ''}`;
   state.wh00tNotifier.setTitleCache(newTitle);
   document.title = newTitle;

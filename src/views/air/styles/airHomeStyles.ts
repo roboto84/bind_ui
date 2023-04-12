@@ -171,6 +171,7 @@ export const SubNavigationContainer = styled.nav<SubNavigationProps>`
   display: flex;
   justify-content: ${(props: SubNavigationProps) => props.justifyContent};
   margin: ${(props: SubNavigationProps) => props.margin || 'inherit'};
+  gap: ${(props: SubNavigationProps) => props.gap || '0'};
   flex-wrap: wrap;
 
   @media ${device.tabletS} {

@@ -77,6 +77,7 @@ export function Search() {
         <AddSearchRecordButton switchAddFormView={switchAddRecordFormView} />
       </SearchMenuContainer>
       <AddRecord
+        initialTags={searchTerm}
         isAddRecordViewable={isAddRecordViewable}
         switchAddRecordView={switchAddRecordFormView}
       />

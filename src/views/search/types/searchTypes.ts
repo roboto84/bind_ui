@@ -19,12 +19,14 @@ export type ArcadiaProps = {
 
 export type AddRecordProps = {
   isAddRecordViewable: boolean,
-  switchAddRecordView: CallableFunction
+  switchAddRecordView: CallableFunction,
+  initialTags: string
 }
 
 export type AddRecordFormProps = {
   cancelAddForm: CallableFunction,
-  onAddItem: CallableFunction
+  onAddItem: CallableFunction,
+  initialTags: string
 }
 
 export type ArcAddPackage = {

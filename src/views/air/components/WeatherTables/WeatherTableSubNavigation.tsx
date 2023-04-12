@@ -15,6 +15,7 @@ export function WeatherTableSubNavigation() {
       navLinkType={NavigationLinkType.sub}
       padding="7px 10px"
       margin="10px 0 25px 0"
+      gap="1px"
       justifyContent="left"
       navConfig={navConfig}
     />

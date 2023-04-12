@@ -5,16 +5,16 @@ import { RobotoDescriptionContainer } from './appDescriptionsStyles';
 
 export default function RobotoDescription() {
   const robotoDefinition: WordDefinition = {
-    word: 'roboto',
+    word: 'Bind',
     definitionIsAcceptable: true,
     spellingSuggestions: [],
     stems: [],
     dateFirstUsed: '1984',
     partOfSpeech: 'noun',
-    wordBreak: 'ro*bot*o',
-    pronounce: ['ˈrō-ˌbätˌō', ''],
+    wordBreak: 'ˈbīnd',
+    pronounce: ['ˈbīnd', ''],
     audio: 'n/a',
-    etymology: 'from a song',
+    etymology: '',
     definitions: [
       'a compendium of useful, and personal web based tools.',
       'a web platform that helps organize internet data streams using chat bots and custom UIs.',

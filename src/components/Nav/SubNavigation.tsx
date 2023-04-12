@@ -9,13 +9,14 @@ type SubNavigationProps = {
   padding: string,
   margin: string,
   justifyContent: string,
+  gap: string,
   navConfig: NavigationItemConfig[]
 }
 
 export function SubNavigation(props: SubNavigationProps) {
-  const { navKey, navConfig, navLinkType, padding, margin, justifyContent } = props;
+  const { navKey, navConfig, navLinkType, padding, margin, justifyContent, gap } = props;
   return (
-    <SubNavigationContainer margin={margin} justifyContent={justifyContent}>
+    <SubNavigationContainer margin={margin} justifyContent={justifyContent} gap={gap}>
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink

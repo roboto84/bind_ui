@@ -51,7 +51,7 @@ export default function AppRoutes() {
       <Route
         path="*"
         element={(
-          <Layout title="Error" subtitle="have you tried turning it off and on again?">
+          <Layout secondaryTitle="Error" subtitle="have you tried turning it off and on again?">
             <Error404 />
           </Layout>
         )}

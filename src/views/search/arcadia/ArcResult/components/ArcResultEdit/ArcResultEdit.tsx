@@ -4,8 +4,8 @@ import {
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import React, { useState } from 'react';
 import {
-  ArcResultEditView,
-} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditView';
+  ArcResultEditForm,
+} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditForm';
 import {
   ArcResultEditConfirm,
 } from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditConfirm';
@@ -26,7 +26,7 @@ export function ArcResultEdit(props: ArcResultEditProps) {
     body = <ArcResultEditConfirm itemEditPackage={editItemPackage} onReset={onReset} />;
   } else {
     body = (
-      <ArcResultEditView
+      <ArcResultEditForm
         itemKey={itemKey}
         image={image}
         tags={tags}

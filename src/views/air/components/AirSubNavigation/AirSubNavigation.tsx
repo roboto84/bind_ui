@@ -36,7 +36,7 @@ export function AirSubNavigation() {
     },
   ];
   return (
-    <SubNavigationContainer margin="0 25px 0 0" justifyContent="right">
+    <SubNavigationContainer margin="0 25px 0 0" justifyContent="right" gap="1px">
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink

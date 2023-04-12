@@ -11,22 +11,22 @@ export type AppDescriptionType = {
 
 export const appDescriptionsConfig: {[key:string] : AppDescriptionType} = {
   Air: {
-    description: 'A location specific weather, and air quality tracking system.',
+    description: 'A location specific weather and air quality tracking system.',
     link: '/air',
     icon: <TiWeatherStormy />,
   },
-  Lexicon: {
-    description: 'A personalized dictionary made up of the words you curate.',
-    link: '/lexicon',
+  Search: {
+    description: 'A search system for a personal graph based collection/library.',
+    link: '/search',
     icon: <GiBookmarklet />,
   },
-  wh00t: {
+  Chat: {
     description: 'A chat system with no external dependencies.',
     link: '/wh00t',
     icon: <BsFillChatTextFill />,
   },
   Debug: {
-    description: 'Roboto\'s own debugging zone.',
+    description: 'Bind\'s own debugging zone.',
     link: '/debug',
     icon: <BsBug />,
   },

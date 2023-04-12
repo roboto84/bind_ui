@@ -4,6 +4,6 @@ import { device } from '@/styles/responsive';
 
 export const LexiconContainer = styled.div`
   font-size: 17px;
-  margin: 0;
+  margin: 0 30px;
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
 `;
