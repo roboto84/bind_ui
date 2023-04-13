@@ -53,7 +53,7 @@ module.exports = (env) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/assets/favicon/favicon-16x16.png',
+      favicon: './src/assets/favicon/favicon-32x32.png',
     }),
     new CompressionPlugin(),
     new CopyPlugin({

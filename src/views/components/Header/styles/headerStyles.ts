@@ -38,7 +38,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const Title = styled.h1`
   display: flex;
-  margin-left: 10px;
+  margin-left: 8px;
   margin-top: 10px;
   
   @media ${device.tablet} {

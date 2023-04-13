@@ -16,14 +16,14 @@ export default function AppRoutes() {
         <Route
           index
           element={(
-            <Layout subtitle="software worth debugging">
+            <Layout subtitle="Data Curator">
               <Home />
             </Layout>
           )}
         />
         <Route
           path="air"
-          element={<Layout secondaryTitle="Air" subtitle="it's what you live in and breathe" />}
+          element={<Layout secondaryTitle="Air" subtitle="it's what you breathe" />}
         >
           <Route index element={<Air />} />
           <Route path="data/*" element={<Air />} />

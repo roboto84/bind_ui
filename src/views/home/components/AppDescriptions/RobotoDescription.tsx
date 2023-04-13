@@ -16,7 +16,6 @@ export default function RobotoDescription() {
     audio: 'n/a',
     etymology: '',
     definitions: [
-      'a compendium of useful, and personal web based tools.',
       'a web platform that helps organize internet data streams using chat bots and custom UIs.',
       'a web platform that allows for the quick development of tools which organize specific data streams of interest.',
     ],
