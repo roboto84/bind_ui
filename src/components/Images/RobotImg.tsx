@@ -1,7 +1,9 @@
 import { RobotImgContainer } from '@/styles/robotImageStyle';
 import { SiProbot } from 'react-icons/si';
-import { GiRobotAntennas, GiSpiderWeb } from 'react-icons/gi';
+import { GiRobotAntennas, GiBubblingFlask, GiRoundBottomFlask } from 'react-icons/gi';
 import React from 'react';
+import { AiOutlineExperiment } from 'react-icons/ai';
+import { TbFlask2 } from 'react-icons/tb';
 
 export type RobotImgProps = {
   robotType ?: string,
@@ -15,13 +17,13 @@ function RobotImg(props: RobotImgProps):React.ComponentElement<any, any> {
   const robotPicker = (robot: string) => {
     switch (robot) {
       case 'FaRobot':
-        return <GiSpiderWeb />;
+        return <AiOutlineExperiment />;
       case 'SiProbot':
         return <SiProbot />;
       case 'GiRobotAntennas':
         return <GiRobotAntennas />;
       default:
-        return <GiSpiderWeb />;
+        return <AiOutlineExperiment />;
     }
   };
 
