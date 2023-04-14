@@ -54,11 +54,38 @@ module.exports = (env) => ({
     new HtmlWebpackPlugin({
       template: './src/index.html',
       favicon: './src/assets/favicon/favicon-32x32.png',
+      meta: {
+        description: {
+          name: 'description',
+          content: 'A web platform that serves as a internet data curator.',
+        },
+        keyword: {
+          name: 'keywords',
+          content: 'data,curator,bind',
+        },
+        'og:title': {
+          property: 'og:title',
+          content: 'Bind',
+        },
+        'og:description': {
+          property: 'og:description',
+          content: 'A web platform that serves as a internet data curator.',
+        },
+        'og:type': {
+          property: 'og:type',
+          content: 'website',
+        },
+        'og:image': {
+          property: 'og:image',
+          content: './og_image.webp',
+        },
+      },
     }),
     new CompressionPlugin(),
     new CopyPlugin({
       patterns: [
         { from: 'src/robots.txt', to: 'robots.txt' },
+        { from: 'src/assets/images/og_image.webp', to: 'og_image.webp' },
       ],
     }),
     new webpack.DefinePlugin({
