@@ -10,7 +10,7 @@ export const AppContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 99vh;
   width: 100vw;
 `;
 

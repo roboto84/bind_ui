@@ -1,9 +1,8 @@
 import { RobotImgContainer } from '@/styles/robotImageStyle';
 import { SiProbot } from 'react-icons/si';
-import { GiRobotAntennas, GiBubblingFlask, GiRoundBottomFlask } from 'react-icons/gi';
+import { GiRobotAntennas } from 'react-icons/gi';
 import React from 'react';
 import { AiOutlineExperiment } from 'react-icons/ai';
-import { TbFlask2 } from 'react-icons/tb';
 
 export type RobotImgProps = {
   robotType ?: string,

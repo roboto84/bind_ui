@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { NonListHoverable, Section } from '@/views/styles/appStyles';
+import { NonListHoverable, Section, SectionProps } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { Input } from '@/components/Input/Input';
 import { InputTextArea } from '@/components/Input/InputTextArea';
@@ -25,6 +25,7 @@ export const SubTagHeader = styled(NonListHoverable)`
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 18px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
 
   a:link {
     text-decoration: none;
@@ -55,7 +56,9 @@ export const ArcResultContainer = styled(Section)`
   border: 0;
   margin: 20px 0;
   font-size: 20px;
-
+  //clip-path: polygon(20px 0%,calc(100% - 0px) 0%,100% 20px,100% calc(100% - 20px),calc(100% - 20px) 100%,0px 100%,0% calc(100% - 20px),0% 20px);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
+  
   a:link {
     text-decoration: none;
   }

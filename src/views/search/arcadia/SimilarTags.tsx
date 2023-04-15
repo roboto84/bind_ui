@@ -9,7 +9,6 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SimilarTagsProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export function SimilarTags(props: SimilarTagsProps) {
-  const navigate: NavigateFunction = useNavigate();
   const { similarTags, onTagClick } = props;
   return (
     <GeneralSection>
@@ -21,7 +20,7 @@ export function SimilarTags(props: SimilarTagsProps) {
               <SubTagHeader
                 key={'tagListItem'.concat(tag)}
                 onClick={() => onTagClick(tag)}
-                style={{ minWidth: 'auto', width: 'auto' }}
+                style={{ minWidth: 'auto', width: 'auto', boxShadow: 'none' }}
               >
                 {tag}
               </SubTagHeader>
