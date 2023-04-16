@@ -23,9 +23,8 @@ export const SearchMenuContainer = styled.div`
 `;
 
 export const SearchAddRecordContainer = styled.div`
-  max-width: 763px;
-  min-width: 100px;
-  margin: auto;
+  flex-grow: 1;
+  min-width: 500px;
 `;
 
 export const TagsSection = styled(LexiconSection)``;
@@ -36,6 +35,10 @@ export const GeneralSection = styled(LexiconSection)`
   background-color: inherit;
   border: 0;
   box-shadow: none;
+`;
+
+export const SimilarTagsSection = styled(GeneralSection)`
+  flex-grow: 1;
 `;
 
 export const Tag = styled(Hoverable)``;

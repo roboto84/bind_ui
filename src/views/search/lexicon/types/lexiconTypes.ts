@@ -1,3 +1,5 @@
+import { Size } from '@/types';
+
 export type WordDefinition = {
   word: string,
   definitionIsAcceptable: boolean,
@@ -20,6 +22,11 @@ export type WordOfDayProps = {
 
 export type WordSearchDefinitionProps = {
   wordDefinition: WordDefinition
+  size ?: Size
+}
+
+export type LexiconSearchDefinitionSmallViewProps = {
+  wordDefinition: WordDefinition
 }
 
 export type LatestWordListProps = {
@@ -28,4 +35,12 @@ export type LatestWordListProps = {
 
 export type WordDefinitionsProps = {
   definitions: string[]
+}
+
+export type LexiconCardProps = {
+  searchTerm: string
+}
+
+export type LexiconCardViewProps = {
+  searchTerm: string
 }

@@ -69,6 +69,11 @@ export type ArcResultDeleteConfirmProps = {
   itemKey: string
 }
 
+export type ArcResultSubNodeProps = {
+  node: ArcSearchResultsNode,
+  onTagClick: CallableFunction
+}
+
 export type ArcadiaSearchProps = {
   setContext: CallableFunction
 }
@@ -84,13 +89,15 @@ export type ArcSearchResultsNode = {
   urls: ArcResultPackage[]
 }
 
+export type ArcSearchResultPackage = {
+  subject: string,
+  mainNode: ArcSearchResultsNode,
+  subNode: ArcSearchResultsNode[]
+}
+
 export type ArcSearchResults = {
   similarTags: string[],
-  searchResults: {
-    subject: string,
-    mainNode: ArcSearchResultsNode,
-    subNode: ArcSearchResultsNode[]
-  }
+  searchResults: ArcSearchResultPackage
 }
 
 export type ArcDeleteItemResults = {
@@ -114,4 +121,14 @@ export type ArcAddItemResults = {
 export type ArcResultEditConfirmProps = {
   itemEditPackage: ArcEditPackage,
   onReset: CallableFunction
+}
+
+export type ArcSearchPageInnerLinksProps = {
+  tags: string []
+}
+
+export type ArcSearchPageHeaderProps = {
+  urlLength: number,
+  tagsLength: number,
+  subject: string,
 }

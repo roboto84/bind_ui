@@ -127,3 +127,13 @@ export const ArcInputTextArea = styled(InputTextArea)`
   border-radius: 5px;
   width: 90%;
 `;
+
+export const ArcInitialSearchResultsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+
+  @media ${device.tablet} {
+    flex-wrap: wrap;
+  }
+`;

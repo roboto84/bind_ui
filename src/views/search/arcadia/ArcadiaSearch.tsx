@@ -9,15 +9,15 @@ import { ArcResult } from '@/views/search/arcadia/ArcResult/ArcResult';
 import { SimilarTags } from '@/views/search/arcadia/SimilarTags';
 import {
   ArcadiaSearchProps,
-  ArcResultPackage,
   ArcSearchResults,
   ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
-import {
-  ArcadiaContainer,
-  InlineHeader, InnerLinks,
-  SubTagHeader,
-} from './styles/arcadiaStyles';
+import { LexiconCard } from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
+import { ArcResultSubNode } from '@/views/search/arcadia/ArcResultSubNode';
+import { organizeNodes } from '@/views/search/arcadia/utils';
+import { ArcSearchPageInnerLinks } from '@/views/search/arcadia/components/ArcSearchPageInnerLinks';
+import { ArcSearchPageHeader } from '@/views/search/arcadia/components/ArcSearchPageHeader';
+import { ArcadiaContainer, ArcInitialSearchResultsContainer } from './styles/arcadiaStyles';
 
 export function ArcadiaSearch(props: ArcadiaSearchProps) {
   const { setContext } = props;
@@ -33,74 +33,16 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
-  const wordSearchResponse: ArcSearchResults = camelcaseKeys<ArcSearchResults>(
-    data,
-    { deep: true },
-  );
-
   const onSubTagClick = (term: string) => {
     setContext(term);
     navigate(`/search/system/arcadia/data?word=${term}`);
   };
 
-  const { searchResults } = wordSearchResponse;
-  const { similarTags } = wordSearchResponse;
-  const urlCache: string[] = [];
-  const tagCache: string[] = [];
-
-  if (searchResults.mainNode) {
-    searchResults.mainNode.urls.forEach((url:ArcResultPackage) => {
-      urlCache.push(url.data);
-    });
-  }
-
-  let i = 0;
-  while (i < searchResults.subNode.length) {
-    let j = 0;
-    while (j < searchResults.subNode[i].urls.length) {
-      if (urlCache.indexOf(searchResults.subNode[i].urls[j].data) > -1) {
-        searchResults.subNode[i].urls.splice(j, 1);
-      } else {
-        urlCache.push(searchResults.subNode[i].urls[j].data);
-        j += 1;
-      }
-    }
-    if (searchResults.subNode[i].urls.length === 0) {
-      searchResults.subNode.splice(i, 1);
-    } else {
-      tagCache.push(searchResults.subNode[i].subject);
-      i += 1;
-    }
-  }
-
-  tagCache.sort((a: string, b: string) => a.localeCompare(b));
-  if (searchResults.subNode.length > 1) {
-    searchResults.subNode.sort(
-      (a: ArcSearchResultsNode, b: ArcSearchResultsNode) => a.subject.localeCompare(b.subject),
-    );
-  }
-
-  const tagComparison: JSX.Element = similarTags && similarTags.length > 0
-    ? (<SimilarTags similarTags={similarTags} onTagClick={onSubTagClick} />)
-    : <div />;
+  const { searchResults, similarTags } = camelcaseKeys<ArcSearchResults>(data, { deep: true });
+  const { urlCache, tagCache } = organizeNodes(searchResults);
 
   const innerLinks: JSX.Element = tagCache.length > 1
-    ? (
-      <InnerLinks style={{ marginBottom: '38px' }}>
-        {
-        tagCache.map((tag: string) => (
-          <SubTagHeader
-            key={'tagInnerLink'.concat(tag)}
-            style={{ minWidth: 'auto', width: 'auto', fontSize: '16px' }}
-          >
-            <a href={'#SubTagHeader-'.concat(tag)}>
-              {tag}
-            </a>
-          </SubTagHeader>
-        ))
-      }
-      </InnerLinks>
-    )
+    ? (<ArcSearchPageInnerLinks tags={tagCache} />)
     : <div />;
 
   const mainNode: JSX.Element|JSX.Element[] = searchResults.mainNode
@@ -114,50 +56,28 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     : <div />;
 
   const subNodes: JSX.Element|JSX.Element[] = searchResults.subNode.map(
-    (element: any) => (
-      <div key={'subNodeSubject'.concat(element.subject)}>
-        <div style={{ padding: '25px 0 0' }}>
-          <SubTagHeader
-            id={'SubTagHeader-'.concat(element.subject)}
-            onClick={() => onSubTagClick(element.subject)}
-          >
-            {element.subject}
-          </SubTagHeader>
-        </div>
-        <div style={{ paddingLeft: '25px' }}>
-          {
-            element.urls.map((url: any) => (
-              <ArcResult
-                key={'arcResultItem'.concat(url.id.toString())}
-                arcResultPackage={url}
-                onSubTagClick={onSubTagClick}
-              />
-            ))
-          }
-        </div>
-      </div>
+    (element: ArcSearchResultsNode) => (
+      <ArcResultSubNode node={element} onTagClick={onSubTagClick} />
     ),
   );
 
   return (
     <ArcadiaContainer>
-      {tagComparison}
+      <ArcInitialSearchResultsContainer>
+        <LexiconCard searchTerm={searchResults.subject} />
+        <SimilarTags similarTags={similarTags} onTagClick={onSubTagClick} />
+      </ArcInitialSearchResultsContainer>
       <GeneralSection>
         <div>
-          <h1 style={{ marginLeft: '0' }}>
-            <InlineHeader>{urlCache.length} </InlineHeader>
-            result{urlCache.length > 1 ? 's' : ''} for
-            <InlineHeader> {searchResults.subject} </InlineHeader>
-            { tagCache.length > 1 ? 'in the following tags ...' : '...'}
-          </h1>
+          <ArcSearchPageHeader
+            urlLength={urlCache.length}
+            tagsLength={tagCache.length}
+            subject={searchResults.subject}
+          />
           {innerLinks}
         </div>
-        <div>
-          {mainNode}
-        </div>
-        <div>
-          {subNodes}
-        </div>
+        <div>{mainNode}</div>
+        <div>{subNodes}</div>
       </GeneralSection>
     </ArcadiaContainer>
   );

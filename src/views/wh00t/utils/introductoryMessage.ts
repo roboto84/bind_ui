@@ -4,7 +4,7 @@ export function introductionMessage(): string {
     + 'This makes it a pretty good local LAN chat system with chatbot support.  A big part of wh00t '
     + 'is interacting with bots which help you get information from various systems fast. To explore '
     + 'wh00t\'s features, just message `/help` or `/h`.\n\n'
-    + 'Here are some quick hints to communicating with currently bots:\n\n'
+    + 'Here are some quick hints to communicating with current bots:\n\n'
     + '  ◦ Look up word definitions with `/lexi` (uses the Lexicon chatbot).\n'
     + '  ◦ Check out the current weather Air is tracking with `/air` (This is not your local '
     + 'weather, but the weather the Air system is set to track).\n'

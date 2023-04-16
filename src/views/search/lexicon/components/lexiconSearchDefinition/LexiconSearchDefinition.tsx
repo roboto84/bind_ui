@@ -2,6 +2,10 @@ import React from 'react';
 import { WordSearchDefinitionProps } from '@/views/search/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { DefinitionListView } from '@/views/search/lexicon/components/WordDefinitions';
+import { Size } from '@/types';
+import {
+  LexiconSearchDefinitionSmallView,
+} from '@/views/search/lexicon/components/lexiconSearchDefinition/components/LexiconSearchDefinitionSmallView';
 import {
   pronunciationView,
   wordEtymologyView,
@@ -9,23 +13,23 @@ import {
   wordParamBasicView,
 } from '../../utils';
 import {
-  WordDefinitionIntroduction,
+  DateFirstUsed,
+  PartOfSpeech,
+  Pronunciation,
+  Stem,
   Word,
   WordAudio,
   WordBreak,
-  PartOfSpeech,
-  Pronunciation,
-  DateFirstUsed,
-  WordDefStems,
   WordDefEtymology,
-  WordExamples,
-  WordDefinitionList,
   WordDefinition,
-  Stem,
+  WordDefinitionIntroduction,
+  WordDefinitionList,
+  WordDefStems,
+  WordExamples,
 } from './styles/wordSearchDefinitionStyle';
 
 export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
-  const { wordDefinition } = props;
+  const { wordDefinition, size } = props;
   const navigate: NavigateFunction = useNavigate();
   let wordAudioComponent: JSX.Element = <span />;
 
@@ -52,6 +56,10 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         </audio>
       </WordAudio>
     );
+  }
+
+  if (size === Size.small) {
+    return <LexiconSearchDefinitionSmallView wordDefinition={wordDefinition} />;
   }
 
   return (

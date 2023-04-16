@@ -11,6 +11,7 @@ import Loader from '@/components/Misc/Loader';
 import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
 import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import { Size } from '@/types';
 import { LexiconContainer } from '../../styles/lexiconStyles';
 
 export function LexiconSearchHome() {

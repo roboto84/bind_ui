@@ -22,7 +22,7 @@ export const appDescriptionsConfig: {[key:string] : AppDescriptionType} = {
   },
   Chat: {
     description: 'A chat system with no external dependencies.',
-    link: '/wh00t',
+    link: '/chat',
     icon: <BsFillChatTextFill />,
   },
   Debug: {
