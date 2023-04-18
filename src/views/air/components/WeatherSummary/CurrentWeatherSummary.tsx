@@ -4,7 +4,7 @@ import {
   WeatherConditionEnum,
   WeatherConditionIcon,
 } from '@/components/Images/WeatherConditionIcon';
-import { removeSpaces } from '@/utils/formatting';
+import { getLocalStandardDateTime, removeSpaces } from '@/utils/formatting';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import {
   pollenMaxConcern,
@@ -29,6 +29,7 @@ import {
   WeatherSubcategory,
   WeatherTitle,
 } from '../../styles/airHomeStyles';
+import { FromNowType, getTimeFromNow } from '@/utils/fromNowUtil';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const navigate: NavigateFunction = useNavigate();
@@ -47,6 +48,8 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const weatherState: WeatherConditionEnum = removeSpaces(
     weatherCode,
   ) as WeatherConditionEnum;
+  const dateView: FromNowType = getTimeFromNow(currentWeatherReport.date);
+
   return (
     <Weather>
       <WeatherSubcategory>
@@ -58,6 +61,7 @@ export function CurrentWeatherSummary(props: CurrentWeatherProps) {
           {weatherCode}...
           feels like {temperatureApparent} {weatherUnits.temperatureApparent}
         </WeatherBlurb>
+        <WeatherBlurb>{dateView.value} {dateView.unit} ago</WeatherBlurb>
       </WeatherSubcategory>
       <WeatherSubcategory>
         <WeatherTitle>moon</WeatherTitle>

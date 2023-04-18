@@ -30,15 +30,17 @@ export const AirSubTitleContainer = styled.section`
 `;
 
 export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.fontColor};
   border: ${(props: WeatherSubcategoryProps) => (
     props.isHighLight ? '3px' : '1px')} solid ${(props: WeatherSubcategoryProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
-  margin: 20px 10px;
-  flex-direction: column;
+  margin: 15px 10px;
+  padding: 10px;
   background-color: ${(props: WeatherSubcategoryProps) => props.theme.air.weatherSubcategory.backgroundColor};
   box-shadow: ${(props: WeatherSubcategoryProps) => props.theme.core.basicShadow};
   border-radius: 3px;
-  padding: 10px;
   width: 230px;
 
   @media ${device.tabletS} {
@@ -53,13 +55,12 @@ export const WeatherSubcategory = styled.ul<WeatherSubcategoryProps>`
 
 export const Weather = styled.section`
   font-size: 12px;
-  height: 85%;
-  width: 95%;
-  margin: 15px 30px 0 30px;
+  margin: 14px;
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 5px;
   
   &.weather_data{
     border-top: #2F3436 solid 1px;
@@ -85,12 +86,10 @@ export const WeatherTitle = styled.li<GlobalThemeType>`
 
 export const CurrentTemperature = styled.li`
   font-size: 32px;
-  margin: 0 30px 7px 30px;
   text-align: center;
 `;
 
 export const WeatherBlurb = styled.li`
-  margin: 0 20px;
   font-size: 14px;
   color: ${(props: GlobalThemeType) => props.theme.air.weatherTemperatureApparentColor};
   text-align: center;
