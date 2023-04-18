@@ -12,13 +12,19 @@ export const IconContainer = styled.div`
 `;
 
 export const LexiconOverviewContainer = styled.div`
+  gap: 20px;
+`;
+
+export const LexiconConfirmSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const LexiconCardContainer = styled(SimilarResultsSection)`
   max-width: 100%;
   min-width: 100px;
   padding: 20px;
-  gap: 20px 0;
+  gap: 20px;
 `;
 
 export const GeneralDictionarySection = styled(GeneralSection)`

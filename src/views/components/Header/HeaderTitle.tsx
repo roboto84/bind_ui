@@ -1,7 +1,7 @@
 import React from 'react';
 import { HeaderProps } from '@/views/components/Header/types/headerTypes';
 
-import RobotImg from '@/components/Images/RobotImg';
+import Icon from '@/components/Images/Icon';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Tag } from '@/components/Misc/Tag';
 import {
@@ -22,7 +22,7 @@ export default function HeaderTitle(props: HeaderProps) {
   return (
     <HeaderTitleContainer>
       <SmallHeaderIconContainer onClick={() => navigate('/')}>
-        <RobotImg margin="5px 0px 0px 5px" fontSize="48px" />
+        <Icon margin="5px 0px 0px 5px" fontSize="48px" />
       </SmallHeaderIconContainer>
       <TitleContainer>
         <Title title={htmlTitle}>

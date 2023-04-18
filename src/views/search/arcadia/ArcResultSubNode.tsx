@@ -6,7 +6,7 @@ import { ArcResultSubNodeProps } from '@/views/search/arcadia/types/arcadiaTypes
 export function ArcResultSubNode(props: ArcResultSubNodeProps) {
   const { node, onTagClick } = props;
   return (
-    <div key={'subNodeSubject'.concat(node.subject)}>
+    <div>
       <div style={{ padding: '25px 0 0' }}>
         <SubTagHeader
           id={'SubTagHeader-'.concat(node.subject)}

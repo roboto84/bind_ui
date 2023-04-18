@@ -57,7 +57,11 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
 
   const subNodes: JSX.Element|JSX.Element[] = searchResults.subNode.map(
     (element: ArcSearchResultsNode) => (
-      <ArcResultSubNode node={element} onTagClick={onSubTagClick} />
+      <ArcResultSubNode
+        key={'subNodeSubject'.concat(element.subject)}
+        node={element}
+        onTagClick={onSubTagClick}
+      />
     ),
   );
 

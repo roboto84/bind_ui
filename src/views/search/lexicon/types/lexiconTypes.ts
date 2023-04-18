@@ -41,6 +41,10 @@ export type LexiconCardProps = {
   searchTerm: string
 }
 
+export type LexiconConfirmSearchProps = {
+  shouldSearch: CallableFunction
+}
+
 export type LexiconCardViewProps = {
   searchTerm: string
 }
