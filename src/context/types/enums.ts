@@ -3,8 +3,6 @@ export enum GlobalActionsEnum {
 }
 
 export enum Wh00tActionsEnum {
-  MINIMIZED_SWITCH = 'MINIMIZED_SWITCH',
-  WINDOW_CLOSED = 'WINDOW_CLOSED',
   WINDOW_MIN = 'WINDOW_MIN',
   WINDOW_MED = 'WINDOW_MED',
   WINDOW_MAX = 'WINDOW_MAX',
@@ -40,5 +38,6 @@ export enum ThemeModeEnum {
 export enum LocalStorageEnum {
   THEME = 'THEME',
   USERNAME ='USERNAME',
-  STAY_CONNECTED ='STAY_CONNECTED'
+  STAY_CONNECTED ='STAY_CONNECTED',
+  CHAT_STATE = 'CHAT_STATE'
 }

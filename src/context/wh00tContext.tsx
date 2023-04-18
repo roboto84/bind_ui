@@ -12,7 +12,7 @@ import {
   Wh00tWindowStateEnum,
 } from '@/context/types/enums';
 import { Wh00tWebSocket } from '@/dataSource/webSockets/wh00tWebSocket';
-import { getLocalStorage } from '@/utils/localStorage';
+import { getInitialChatState, getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 import { AppNotification } from '@/utils/appNotification';
 import { userIsBot } from '@/views/wh00t/utils/utils';
 
@@ -23,7 +23,7 @@ const initialState: Wh00tContextStateType = {
   wh00tIsConnecting: false,
   wh00tConnectionError: false,
   wh00tWebSocket: new Wh00tWebSocket(),
-  wh00tWindowState: Wh00tWindowStateEnum.MIN,
+  wh00tWindowState: getInitialChatState(),
   wh00tNotifier: new AppNotification(),
   wh00tInternalAlert: false,
 };
@@ -49,16 +49,19 @@ const wh00tReducer = (state: Wh00tContextStateType, action: Wh00tContextActionTy
         wh00tInternalAlert: false,
       };
     case Wh00tActionsEnum.WINDOW_MIN:
+      setLocalStorage(LocalStorageEnum.CHAT_STATE, Wh00tWindowStateEnum.MIN);
       return {
         ...state,
         wh00tWindowState: Wh00tWindowStateEnum.MIN,
       };
     case Wh00tActionsEnum.WINDOW_MED:
+      setLocalStorage(LocalStorageEnum.CHAT_STATE, Wh00tWindowStateEnum.MED);
       return {
         ...state,
         wh00tWindowState: Wh00tWindowStateEnum.MED,
       };
     case Wh00tActionsEnum.WINDOW_MAX:
+      setLocalStorage(LocalStorageEnum.CHAT_STATE, Wh00tWindowStateEnum.MAX);
       return {
         ...state,
         wh00tWindowState: Wh00tWindowStateEnum.MAX,

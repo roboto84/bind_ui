@@ -1,4 +1,8 @@
-import { LocalStorageEnum, Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
+import {
+  LocalStorageEnum,
+  Wh00tActionsEnum,
+  Wh00tMessageTypeEnum,
+} from '@/context/types/enums';
 import { API_PORT, WS_BASE_URL } from '@/dataSource/urls';
 import { randomIntFromInterval } from '@/utils/utils';
 import { getLocalStandardDateTime } from '@/utils/formatting';
@@ -253,6 +257,10 @@ export class Wh00tWebSocket {
       this.wh00tWS = null;
       this.connectionAttemptCount = 0;
       setLocalStorage(LocalStorageEnum.STAY_CONNECTED, 'false');
+      this.wh00tDispatch({
+        source: Wh00tMessageTypeEnum.LOCAL,
+        type: Wh00tActionsEnum.WINDOW_MIN,
+      });
       Wh00tWebSocket.generateRandomClientId();
     }
   }
