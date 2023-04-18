@@ -34,6 +34,9 @@ export function SearchBar(props: SearchBarProps) {
   };
 
   /* const systemSwitchButton: JSX.Element = (
+    <HomeButton title={`${searchSystem.system} Home`} onClick={() => onHomeClick()}>
+      <AiOutlineHome />
+    </HomeButton>
     <BackButton title={`${searchSystem.system} Search`} onClick={() => onSystemSwitch()}>
       {searchSystem.icon}
     </BackButton>
@@ -41,9 +44,6 @@ export function SearchBar(props: SearchBarProps) {
 
   return (
     <SearchContainer>
-      <HomeButton title={`${searchSystem.system} Home`} onClick={() => onHomeClick()}>
-        <AiOutlineHome />
-      </HomeButton>
       <SearchInput
         title="Search Term Input"
         type="text"

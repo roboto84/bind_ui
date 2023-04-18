@@ -14,6 +14,7 @@ export const SearchInput = styled(Input)`
   width: 500px;
   min-width: 100px;
   margin: 13px 0;
+  border-radius: 5px 0 0 5px;
 `;
 
 export const LexiconButton = styled(Button)`
