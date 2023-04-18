@@ -17,7 +17,7 @@ export function wordExampleView(wordExample: string): string {
 }
 
 export function wordEtymologyView(wordEtymology: string): string {
-  if ((typeof wordEtymology === 'object' && wordEtymology[0] !== 'n/a')
+  if ((typeof wordEtymology === 'object' && wordEtymology && wordEtymology[0] !== 'n/a')
     || (typeof wordEtymology === 'string' && wordEtymology !== "['n/a']")) {
     return `◦ etymology: ${wordEtymology}`;
   }
@@ -29,4 +29,8 @@ export function wordParamBasicView(wordParam: string): string {
     return wordParam;
   }
   return '';
+}
+
+export function isAudioAvailable(src: string): boolean {
+  return src && src !== 'n/a' && src !== 'unk';
 }

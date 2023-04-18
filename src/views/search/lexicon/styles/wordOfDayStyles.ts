@@ -10,11 +10,16 @@ const GeneralStyle = styled.li`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 `;
 
-export const WordOfDayContainer = styled.div`
-  margin: 0 20px;
+export const WordOfDayOuterContainer = styled.div`
+  padding: 0 20px;
 
   @media ${device.tabletS} {
-    margin: 0 10px;
+    padding: 0 10px;
+  }
+`;
+
+export const WordOfDayContainer = styled.div`
+  @media ${device.tabletS} {
     font-size: 16px;
   }
 `;

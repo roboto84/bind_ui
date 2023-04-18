@@ -24,7 +24,7 @@ export function LexiconCard(props: LexiconCardProps) {
   // TODO: Under construction due to Oxford API update
   // <LexiconCardView searchTerm={searchTerm} />
   const mainBody: JSX.Element = shouldSearchDefinition && searchDictionary
-    ? <UnderConstruction reason="due to Dictionary API switch (Oxford API will no longer be available)" />
+    ? <LexiconCardView searchTerm={searchTerm} />
     : <LexiconConfirmSearch shouldSearch={setShouldSearchDefinition} />;
 
   if (searchDictionary) {

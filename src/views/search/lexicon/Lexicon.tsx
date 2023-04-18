@@ -10,6 +10,7 @@ import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
 import { WordDefinition } from './types/lexiconTypes';
 import { WordListSection, WordOfDaySection } from './styles/lexiconHomeStyles';
 import { LexiconContainer } from './styles/lexiconStyles';
+import { WordOfDayOuterContainer } from '@/views/search/lexicon/styles/wordOfDayStyles';
 
 export function Lexicon() {
   const latestWordsHook: UseQueryResult<LatestWordListApiResult> = useQuery<LatestWordListApiResult,
@@ -49,7 +50,9 @@ export function Lexicon() {
     <LexiconContainer>
       <WordOfDaySection withShadow>
         <h2>Word of the Day</h2>
-        <WordOfDay wordDefinition={wordOfDayResponse} />
+        <WordOfDayOuterContainer>
+          <WordOfDay wordDefinition={wordOfDayResponse} />
+        </WordOfDayOuterContainer>
       </WordOfDaySection>
       <WordListSection withShadow>
         <h2>Latest 30 Words Searched</h2>

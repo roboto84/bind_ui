@@ -6,7 +6,9 @@ import { Size } from '@/types';
 import {
   LexiconSearchDefinitionSmallView,
 } from '@/views/search/lexicon/components/lexiconSearchDefinition/components/LexiconSearchDefinitionSmallView';
+import { AudioPlayer } from '@/components/Audio/AudioPlayer';
 import {
+  isAudioAvailable,
   pronunciationView,
   wordEtymologyView,
   wordExampleView,
@@ -33,6 +35,14 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   const navigate: NavigateFunction = useNavigate();
   let wordAudioComponent: JSX.Element = <span />;
 
+  if (isAudioAvailable(wordDefinition.audio)) {
+    wordAudioComponent = (
+      <WordAudio>
+        <AudioPlayer size={Size.medium} src={wordDefinition.audio} />
+      </WordAudio>
+    );
+  }
+
   const wordStemsView: JSX.Element[] = wordDefinition.stems.map(
     (wordStem:string) => (
       <Stem
@@ -43,20 +53,6 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
       </Stem>
     ),
   );
-
-  if (wordDefinition.audio && wordDefinition.audio !== 'n/a' && wordDefinition.audio !== 'unk') {
-    wordAudioComponent = (
-      <WordAudio>
-        <audio preload="auto" controls key={wordDefinition.audio}>
-          <source src={wordDefinition.audio} type="audio/mpeg" />
-          <p>
-            Your browser does not support HTML5 audio.
-            Here is a <a href={wordDefinition.audio}>link to download the audio</a> instead.
-          </p>
-        </audio>
-      </WordAudio>
-    );
-  }
 
   if (size === Size.small) {
     return <LexiconSearchDefinitionSmallView wordDefinition={wordDefinition} />;

@@ -11,9 +11,7 @@ export const IconContainer = styled.div`
   }
 `;
 
-export const LexiconOverviewContainer = styled.div`
-  gap: 20px;
-`;
+export const LexiconOverviewContainer = styled.div``;
 
 export const LexiconConfirmSearchContainer = styled.div`
   display: flex;
@@ -24,7 +22,8 @@ export const LexiconCardContainer = styled(SimilarResultsSection)`
   max-width: 100%;
   min-width: 100px;
   padding: 20px;
-  gap: 20px;
+  display: flex;
+  gap: 0 20px;
 `;
 
 export const GeneralDictionarySection = styled(GeneralSection)`
