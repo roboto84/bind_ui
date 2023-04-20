@@ -34,7 +34,8 @@ export type LatestWordListProps = {
 }
 
 export type WordDefinitionsProps = {
-  definitions: string[]
+  definitions: string[],
+  definitionsToShow ?: number
 }
 
 export type LexiconCardProps = {

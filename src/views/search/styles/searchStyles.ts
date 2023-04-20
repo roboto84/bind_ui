@@ -23,8 +23,9 @@ export const SearchMenuContainer = styled.div`
 `;
 
 export const SearchAddRecordContainer = styled.div`
-  flex-grow: 1;
-  min-width: 500px;
+  max-width: 660px;
+  min-width: 100px;
+  margin: auto;
 `;
 
 export const TagsSection = styled(LexiconSection)``;
@@ -39,6 +40,7 @@ export const GeneralSection = styled(LexiconSection)`
 
 export const SimilarTagsSection = styled(GeneralSection)`
   flex-grow: 1;
+  min-width: 400px;
 `;
 
 export const Tag = styled(Hoverable)``;

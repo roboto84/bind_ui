@@ -11,11 +11,18 @@ export const IconContainer = styled.div`
   }
 `;
 
-export const LexiconOverviewContainer = styled.div``;
+export const LexiconOverviewContainer = styled.div`
+  width: 100%;
+`;
 
 export const LexiconConfirmSearchContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const LexiconCardExternalContainer = styled.section`
+  flex-grow: 1;
+  min-width: 50%;
 `;
 
 export const LexiconCardContainer = styled(SimilarResultsSection)`

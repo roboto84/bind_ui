@@ -3,7 +3,7 @@ import { useQuery, UseQueryResult } from 'react-query';
 import { ArcadiaTagsApiResult } from '@/dataSource/types/apiTypes';
 import { arcadiaApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import Loader from '@/components/Misc/Loader';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
 import { LatestTagsListContainer, Tag, TagsSection } from '@/views/search/styles/searchStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLexiconWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { LexiconCardViewProps, WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
 import {
@@ -20,7 +20,12 @@ export function LexiconCardView(props: LexiconCardViewProps) {
     return (<Loader size={Size.small} />);
   }
   if (isError) {
-    return (<ErrorViewDefault errorMessage={error.message} />);
+    const errorMessage: string = error
+      ? error.message
+      : 'Sorry about that, an error has occurred getting the data.';
+    return (
+      <ErrorViewDefault title="Data Issue" size={Size.small} errorMessage={errorMessage} />
+    );
   }
 
   const wordSearchResponse: WordDefinition = camelcaseKeys<WordDefinition>(

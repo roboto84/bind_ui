@@ -12,6 +12,11 @@ export const AppContainer = styled.div`
   left: 0;
   height: 99vh;
   width: 100vw;
+  
+  @media ${device.mobileXL} {
+    height: inherit;
+  }
+
 `;
 
 export const MainContainer = styled.main`

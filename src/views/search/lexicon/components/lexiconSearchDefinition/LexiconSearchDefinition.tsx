@@ -1,7 +1,7 @@
 import React from 'react';
 import { WordSearchDefinitionProps } from '@/views/search/lexicon/types/lexiconTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { DefinitionListView } from '@/views/search/lexicon/components/WordDefinitions';
+import DefinitionListView from '@/views/search/lexicon/components/DefintitionListView';
 import { Size } from '@/types';
 import {
   LexiconSearchDefinitionSmallView,

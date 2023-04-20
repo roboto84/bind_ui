@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigateFunction, useNavigate, useSearchParams } from 'react-router-dom';
 import { useArcadiaWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { ArcResult } from '@/views/search/arcadia/ArcResult/ArcResult';

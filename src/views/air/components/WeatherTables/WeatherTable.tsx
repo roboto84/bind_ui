@@ -8,7 +8,7 @@ import camelcaseKeys from 'camelcase-keys';
 import { HeaderTitle, Table } from '@/components/Tables/Table';
 import { WeatherTableSubNavigation } from '@/views/air/components/WeatherTables/WeatherTableSubNavigation';
 import { getWeatherTableTitle } from '@/views/air/utils';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import {
   WeatherSubContainer,
   WeatherTableContainer,

@@ -6,7 +6,7 @@ import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
 import { lexiconApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { LatestWordListApiResult } from '@/dataSource/types/apiTypes';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { WordDefinition } from './types/lexiconTypes';
 import { WordListSection, WordOfDaySection } from './styles/lexiconHomeStyles';
 import { LexiconContainer } from './styles/lexiconStyles';

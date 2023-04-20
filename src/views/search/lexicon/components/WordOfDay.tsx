@@ -8,19 +8,21 @@ import {
   DayWordExample,
   DayWordInfo,
   DayWordPartOfSpeech,
-  DayWordPronounce,
+  DayWordPronounce, ShowMoreButtonContainer,
   WordOfDayContainer,
 } from '@/views/search/lexicon/styles/wordOfDayStyles';
-import { DefinitionListView } from '@/views/search/lexicon/components/WordDefinitions';
+import DefinitionListView from '@/views/search/lexicon/components/DefintitionListView';
 import { AudioPlayer } from '@/components/Audio/AudioPlayer';
 import { Size } from '@/types';
+import { Button } from '@/components/Nav/Button';
 import { isAudioAvailable, pronunciationView, wordExampleView, wordParamBasicView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
 
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;
+  const definitionsToShow: number = 4;
   const navigate: NavigateFunction = useNavigate();
-  let wordAudioComponent: JSX.Element = <span />;
+
   let view: JSX.Element = (
     <WordOfDayContainer>
       <DayWordInfo>
@@ -31,16 +33,34 @@ export function WordOfDay(props: WordOfDayProps) {
     </WordOfDayContainer>
   );
 
-  if (isAudioAvailable(wordDefinition.audio)) {
-    wordAudioComponent = <AudioPlayer size={Size.small} src={wordDefinition.audio} />;
-  }
-
   if (wordDefinition && wordDefinition.word) {
+    const navigateToWord: CallableFunction = () => {
+      navigate(`/search/system/lexicon/definition?word=${wordDefinition.word}`);
+    };
+
+    const showMoreDefButton: JSX.Element = wordDefinition.definitions.length > definitionsToShow
+      ? (
+        <Button
+          fontSize="14px"
+          padding="8px"
+          borderRadius="5px"
+          onClick={() => navigateToWord()}
+          title="Show More"
+        >
+          Show More
+        </Button>
+      )
+      : <div />;
+
+    const wordAudioComponent: JSX.Element = isAudioAvailable(wordDefinition.audio)
+      ? <AudioPlayer size={Size.small} src={wordDefinition.audio} />
+      : <span />;
+
     view = (
       <WordOfDayContainer>
         <DayWordInfo>
           <DayWord
-            onClick={() => navigate(`/search/system/lexicon/definition?word=${wordDefinition.word}`)}
+            onClick={() => navigateToWord()}
           >
             {wordDefinition.word}
           </DayWord>
@@ -54,12 +74,18 @@ export function WordOfDay(props: WordOfDayProps) {
         </DayWordInfo>
 
         <DayWordDefinitionsList>
-          <DefinitionListView definitions={wordDefinition.definitions} />
+          <DefinitionListView
+            definitionsToShow={definitionsToShow}
+            definitions={wordDefinition.definitions}
+          />
         </DayWordDefinitionsList>
 
         <DayWordExample>
           {wordExampleView(wordDefinition.example)}
         </DayWordExample>
+        <ShowMoreButtonContainer>
+          {showMoreDefButton}
+        </ShowMoreButtonContainer>
       </WordOfDayContainer>
     );
   }

@@ -71,6 +71,12 @@ export const DayWordDefinitionsList = styled.ol`
   }
 `;
 
-export const DayWordExample = styled.div`{
+export const DayWordExample = styled.div`
   margin-top: 15px;
-}`;
+`;
+
+export const ShowMoreButtonContainer = styled.div`
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+`;

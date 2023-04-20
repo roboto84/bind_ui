@@ -20,7 +20,7 @@ export const HeaderContainer = styled.header<HeaderContainerProps>`
   }
 
   @media ${device.tablet} {
-    margin: -15px 5px 0 5px;
+    margin: -15px 5px 0 0;
     height: 68px;
   }
 `;
