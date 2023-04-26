@@ -11,7 +11,7 @@ import Loader from '@/components/Misc/Loader';
 import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
-import { LexiconContainer } from '../../styles/lexiconStyles';
+import { ArcadiaSearchHomeContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function LexiconSearchHome() {
   const [searchParams] = useSearchParams();
@@ -32,15 +32,15 @@ export function LexiconSearchHome() {
 
   if (!wordSearchResponse.definitionIsAcceptable) {
     return (
-      <LexiconContainer>
+      <ArcadiaSearchHomeContainer>
         <LexiconSpellingIssue wordDefinition={wordSearchResponse} />
-      </LexiconContainer>
+      </ArcadiaSearchHomeContainer>
     );
   }
 
   return (
-    <LexiconContainer>
+    <ArcadiaSearchHomeContainer>
       <LexiconSearchDefinition wordDefinition={wordSearchResponse} />
-    </LexiconContainer>
+    </ArcadiaSearchHomeContainer>
   );
 }

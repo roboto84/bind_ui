@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { NavigateFunction, useLocation, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { SearchBar } from '@/views/search/components/SearchBar';
-import { Lexicon } from '@/views/search/lexicon/Lexicon';
 import { RouterItemConfig } from '@/types';
 import { DiDatabase } from 'react-icons/di';
-import { TbNotebook } from 'react-icons/tb';
 import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import { Arcadia } from '@/views/search/arcadia/Arcadia';
-import { ArcadiaSearch } from '@/views/search/arcadia/ArcadiaSearch';
+import { ArcadiaSearch } from '@/views/search/arcadia/components/ArcadiaSearch';
 import {
   LexiconSearchHome,
 } from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
@@ -20,8 +18,6 @@ export function Search() {
   const [searchContext, setSearchContext] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const navigate: NavigateFunction = useNavigate();
-  const { pathname } = useLocation();
-  const isLexicon: boolean = (pathname.includes('lexicon'));
   const [isAddRecordViewable, setIsAddRecordViewable] = useState<boolean>(false);
   const switchAddRecordFormView = () => {
     setIsAddRecordViewable(!isAddRecordViewable);
@@ -50,34 +46,8 @@ export function Search() {
     },
   };
 
-  const lexiconSys: SearchSystem = {
-    system: 'Lexicon',
-    icon: <TbNotebook />,
-    onHomeClick: () => {
-      navigate('/search');
-      setSearchContext('');
-    },
-    onSearchKeyUp: (value: string) => { setSearchTerm(value); },
-    onSendSearch: (value: string) => {
-      setSearchContext(value);
-      generalSearch(
-        '/search/system/lexicon/definition?word=',
-        encodeURIComponent(value),
-      );
-    },
-  };
-
-  const [system, setSystem] = useState<SearchSystem>(isLexicon ? lexiconSys : arcadiaSys);
-  const switchSystem = () => {
-    if (system.system === 'Arcadia') {
-      setSystem(lexiconSys);
-    } else {
-      setSystem(arcadiaSys);
-    }
-  };
-
   const routerConfig: RouterItemConfig[] = [
-    { index: true, element: system.system === 'Arcadia' ? <Arcadia subTag={searchTerm} setContext={setSearchContext} /> : <Lexicon /> },
+    { index: true, element: <Arcadia subTag={searchTerm} setContext={setSearchContext} /> },
     { path: 'lexicon/definition', element: <LexiconSearchHome /> },
     { path: 'arcadia/data', element: <ArcadiaSearch setContext={setSearchContext} /> },
   ];
@@ -85,7 +55,7 @@ export function Search() {
   return (
     <SearchMainContainer>
       <SearchMenuContainer>
-        <SearchBar searchSystem={system} onSystemSwitch={switchSystem} />
+        <SearchBar searchSystem={arcadiaSys} />
         <AddSearchRecordButton switchAddFormView={switchAddRecordFormView} />
       </SearchMenuContainer>
       <AddRecord

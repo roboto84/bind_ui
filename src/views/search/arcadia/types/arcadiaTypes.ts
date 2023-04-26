@@ -1,3 +1,6 @@
+import { ArcadiaTags } from '@/dataSource/types/apiTypes';
+import { GlobalThemeType, Size } from '@/types';
+
 export enum ArcResultDisplay {
   VIEW = 'VIEW',
   EDIT = 'EDIT',
@@ -78,9 +81,15 @@ export type ArcadiaSearchProps = {
   setContext: CallableFunction
 }
 
-export type SimilarTagsProps = {
-  similarTags: string[],
+export type TagGroupProps = {
+  highlight ?: boolean,
+  title: string,
+  tagList: string[],
   onTagClick: CallableFunction
+}
+
+export interface TagGroupSectionProps extends GlobalThemeType {
+  isHighLight ?: boolean
 }
 
 export type ArcSearchResultsNode = {
@@ -130,5 +139,22 @@ export type ArcSearchPageInnerLinksProps = {
 export type ArcSearchPageHeaderProps = {
   urlLength: number,
   tagsLength: number,
-  subject: string,
+  subject: string
+}
+
+export type ArcadiaSearchHomeProps = {
+  tagSearchTerm ?: string
+  arcadiaTags: ArcadiaTags,
+  onTagClick: CallableFunction
+}
+
+export type ArcadiaTagIndexProps = {
+  size ?: Size,
+  arcadiaTags: ArcadiaTags,
+  onTagClick: CallableFunction
+}
+
+export type TagIndexProps = {
+  arcadiaTags: [string, string[]][],
+  onTagClick: CallableFunction
 }

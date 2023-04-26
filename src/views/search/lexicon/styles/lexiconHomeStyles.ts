@@ -3,8 +3,6 @@ import { Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 
 export const LexiconSection = styled(Section)`
-  // margin: 40px 5vw 20px 5vw;
-  
   @media ${device.tabletS} {
     padding: 5px;
     margin: 0 5px 15px 5px;

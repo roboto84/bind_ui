@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SimilarResultsSection } from '@/views/search/arcadia/styles/arcadiaStyles';
+import { TagsSection } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { device } from '@/styles/responsive';
 
@@ -25,7 +25,7 @@ export const LexiconCardExternalContainer = styled.section`
   min-width: 50%;
 `;
 
-export const LexiconCardContainer = styled(SimilarResultsSection)`
+export const LexiconCardContainer = styled(TagsSection)`
   max-width: 100%;
   min-width: 100px;
   padding: 20px;

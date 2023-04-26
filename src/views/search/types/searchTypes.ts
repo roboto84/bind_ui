@@ -7,8 +7,7 @@ export type SearchSystem = {
 }
 
 export type SearchBarProps = {
-  searchSystem: SearchSystem,
-  onSystemSwitch: CallableFunction,
+  searchSystem: SearchSystem
 }
 
 export type ArcadiaProps = {

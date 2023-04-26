@@ -6,6 +6,7 @@ import {
 } from '@/components/Images/WeatherConditionIcon';
 import { getLocalStandardDateTime, removeSpaces } from '@/utils/formatting';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { FromNowType, getTimeFromNow } from '@/utils/fromNowUtil';
 import {
   pollenMaxConcern,
   pollenSeverityView,
@@ -29,7 +30,6 @@ import {
   WeatherSubcategory,
   WeatherTitle,
 } from '../../styles/airHomeStyles';
-import { FromNowType, getTimeFromNow } from '@/utils/fromNowUtil';
 
 export function CurrentWeatherSummary(props: CurrentWeatherProps) {
   const navigate: NavigateFunction = useNavigate();

@@ -38,8 +38,12 @@ export type ArcadiaEndpointsType = {
   addItem: string
 }
 
+export type ArcadiaTags = {
+  [key: string]: string[]
+}
+
 export type ArcadiaTagsApiResult = {
-  arcadiaSubjects: object
+  arcadiaSubjects: ArcadiaTags
 }
 
 export type LatestWordListApiResult = {

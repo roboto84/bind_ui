@@ -1,5 +1,5 @@
 import { SubTagHeader } from '@/views/search/arcadia/styles/arcadiaStyles';
-import { ArcResult } from '@/views/search/arcadia/ArcResult/ArcResult';
+import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
 import React from 'react';
 import { ArcResultSubNodeProps } from '@/views/search/arcadia/types/arcadiaTypes';
 

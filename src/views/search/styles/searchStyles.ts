@@ -3,6 +3,7 @@ import { GlobalThemeType } from '@/types';
 import { device } from '@/styles/responsive';
 import { LexiconSection } from '@/views/search/lexicon/styles/lexiconHomeStyles';
 import { Hoverable } from '@/views/styles/appStyles';
+import { TagGroupSectionProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export const SearchMainContainer = styled.div`
   font-size: 17px;
@@ -38,7 +39,7 @@ export const GeneralSection = styled(LexiconSection)`
   box-shadow: none;
 `;
 
-export const SimilarTagsSection = styled(GeneralSection)`
+export const TagGroupSection = styled(GeneralSection)`
   flex-grow: 1;
   min-width: 400px;
 `;

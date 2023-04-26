@@ -1,9 +1,9 @@
 import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React, { useState } from 'react';
 import { ArcResultProps, ArcResultDisplay } from '@/views/search/arcadia/types/arcadiaTypes';
-import { ArcResultView } from '@/views/search/arcadia/ArcResult/components/ArcResultView';
-import { ArcResultDelete } from '@/views/search/arcadia/ArcResult/components/ArcResultDelete/ArcResultDelete';
-import { ArcResultEdit } from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEdit';
+import { ArcResultView } from '@/views/search/arcadia/components/ArcResult/components/ArcResultView';
+import { ArcResultDelete } from '@/views/search/arcadia/components/ArcResult/components/ArcResultDelete/ArcResultDelete';
+import { ArcResultEdit } from '@/views/search/arcadia/components/ArcResult/components/ArcResultEdit/ArcResultEdit';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage, onSubTagClick } = props;

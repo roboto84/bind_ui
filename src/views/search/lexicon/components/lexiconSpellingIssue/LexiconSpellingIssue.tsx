@@ -12,7 +12,7 @@ import {
 } from '@/views/search/lexicon/styles/lexiconHomeStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Size } from '@/types';
-import { LexiconContainer } from '../../styles/lexiconStyles';
+import { ArcadiaSearchHomeContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
   const { wordDefinition, size } = props;
@@ -41,17 +41,17 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
 
   if (size === Size.small) {
     return (
-      <LexiconContainer>
+      <ArcadiaSearchHomeContainer>
         {mainBody}
-      </LexiconContainer>
+      </ArcadiaSearchHomeContainer>
     );
   }
 
   return (
-    <LexiconContainer>
+    <ArcadiaSearchHomeContainer>
       <LexiconSection withShadow>
         {mainBody}
       </LexiconSection>
-    </LexiconContainer>
+    </ArcadiaSearchHomeContainer>
   );
 }

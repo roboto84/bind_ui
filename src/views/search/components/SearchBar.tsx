@@ -1,16 +1,13 @@
 import React, { useRef } from 'react';
 import { SearchBarProps } from '@/views/search/types/searchTypes';
-import { AiOutlineHome } from 'react-icons/ai';
 import {
-  BackButton,
-  HomeButton,
   SearchButton,
   SearchContainer,
   SearchInput,
 } from '../lexicon/styles/searchContainer';
 
 export function SearchBar(props: SearchBarProps) {
-  const { searchSystem, onSystemSwitch } = props;
+  const { searchSystem } = props;
   const searchInputRef: React.MutableRefObject<any> = useRef();
   const sendSearchWord = () => {
     searchSystem.onSendSearch(searchInputRef.current.value);
@@ -20,11 +17,7 @@ export function SearchBar(props: SearchBarProps) {
       searchSystem.onSearchKeyUp(searchInputRef.current.value);
     }
   };
-  const onHomeClick = () => {
-    searchInputRef.current.value = '';
-    updateSearchWord();
-    searchSystem.onHomeClick();
-  };
+
   const searchKeyInput = (event: { key: string; }) => {
     if (event.key === 'Enter') {
       sendSearchWord();
@@ -32,15 +25,6 @@ export function SearchBar(props: SearchBarProps) {
       updateSearchWord();
     }
   };
-
-  /* const systemSwitchButton: JSX.Element = (
-    <HomeButton title={`${searchSystem.system} Home`} onClick={() => onHomeClick()}>
-      <AiOutlineHome />
-    </HomeButton>
-    <BackButton title={`${searchSystem.system} Search`} onClick={() => onSystemSwitch()}>
-      {searchSystem.icon}
-    </BackButton>
-  ); */
 
   return (
     <SearchContainer>

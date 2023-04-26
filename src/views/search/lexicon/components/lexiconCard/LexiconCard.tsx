@@ -13,14 +13,14 @@ import { LexiconCardView } from '@/views/search/lexicon/components/lexiconCard/L
 import { shouldDictionarySearch } from '@/views/search/arcadia/utils';
 
 export function LexiconCard(props: LexiconCardProps) {
-  const { searchTerm } = props;
+  const { title, searchTerm } = props;
   const searchDictionary = shouldDictionarySearch(searchTerm);
 
   if (searchDictionary) {
     return (
       <LexiconCardExternalContainer>
         <GeneralDictionarySection>
-          <AlphabetHeader>Dictionary</AlphabetHeader>
+          <AlphabetHeader>{title}</AlphabetHeader>
           <LexiconCardContainer>
             <IconContainer>
               <GiSpellBook />

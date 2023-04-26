@@ -5,10 +5,10 @@ import {
 import React, { useState } from 'react';
 import {
   ArcResultEditForm,
-} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditForm';
+} from '@/views/search/arcadia/components/ArcResult/components/ArcResultEdit/ArcResultEditForm';
 import {
   ArcResultEditConfirm,
-} from '@/views/search/arcadia/ArcResult/components/ArcResultEdit/ArcResultEditConfirm';
+} from '@/views/search/arcadia/components/ArcResult/components/ArcResultEdit/ArcResultEditConfirm';
 
 export function ArcResultEdit(props: ArcResultEditProps) {
   const { itemKey, tags, title, description, image, onReset } = props;

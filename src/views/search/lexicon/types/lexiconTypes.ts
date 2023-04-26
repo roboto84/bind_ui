@@ -39,6 +39,7 @@ export type WordDefinitionsProps = {
 }
 
 export type LexiconCardProps = {
+  title: string,
   searchTerm: string
 }
 

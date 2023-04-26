@@ -1,26 +1,26 @@
 import {
   AlphabetHeader,
-  SimilarResultsSection,
+  TagsSection,
   SubTagHeader,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import {
   LatestTagsListContainer,
-  SimilarTagsSection
+  TagGroupSection,
 } from '@/views/search/styles/searchStyles';
 import React from 'react';
-import { SimilarTagsProps } from '@/views/search/arcadia/types/arcadiaTypes';
+import { TagGroupProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
-export function SimilarTags(props: SimilarTagsProps) {
-  const { similarTags, onTagClick } = props;
+function TagGroup(props: TagGroupProps) {
+  const { title, tagList, onTagClick, highlight } = props;
 
-  if (similarTags && similarTags.length > 0) {
+  if (tagList && tagList.length > 0) {
     return (
-      <SimilarTagsSection>
-        <AlphabetHeader>Similar Tags</AlphabetHeader>
-        <SimilarResultsSection>
+      <TagGroupSection>
+        <AlphabetHeader>{title}</AlphabetHeader>
+        <TagsSection isHighLight={highlight}>
           <LatestTagsListContainer>
             {
-              similarTags.map((tag: string) => (
+              tagList.map((tag: string) => (
                 <SubTagHeader
                   key={'tagListItem'.concat(tag)}
                   onClick={() => onTagClick(tag)}
@@ -31,9 +31,15 @@ export function SimilarTags(props: SimilarTagsProps) {
               ))
             }
           </LatestTagsListContainer>
-        </SimilarResultsSection>
-      </SimilarTagsSection>
+        </TagsSection>
+      </TagGroupSection>
     );
   }
   return <div />;
 }
+
+TagGroup.defaultProps = {
+  highlight: false,
+};
+
+export default TagGroup;

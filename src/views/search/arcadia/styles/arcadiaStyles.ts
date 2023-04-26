@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
-import { NonListHoverable, Section, SectionProps } from '@/views/styles/appStyles';
+import { NonListHoverable, Section } from '@/views/styles/appStyles';
 import { device } from '@/styles/responsive';
 import { Input } from '@/components/Input/Input';
 import { InputTextArea } from '@/components/Input/InputTextArea';
+import { TagGroupSectionProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export const ArcadiaContainer = styled.div`
   width: 90%;
@@ -68,9 +69,11 @@ export const ArcResultContainer = styled(Section)`
   }
 `;
 
-export const SimilarResultsSection = styled(ArcResultContainer)`
+export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   padding: 20px 0;
   font-size: 16px;
+  border: ${(props: TagGroupSectionProps) => (
+    props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
 `;
 
 export const ArcImageContainer = styled.div`
@@ -128,7 +131,7 @@ export const ArcInputTextArea = styled(InputTextArea)`
   width: 90%;
 `;
 
-export const ArcInitialSearchResultsContainer = styled.div`
+export const ArcInitialDataContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -136,4 +139,10 @@ export const ArcInitialSearchResultsContainer = styled.div`
   @media ${device.tablet} {
     flex-wrap: wrap;
   }
+`;
+
+export const ArcadiaSearchHomeContainer = styled.div`
+  font-size: 17px;
+  margin: 0 30px;
+  color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
 `;
