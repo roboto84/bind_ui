@@ -11,6 +11,7 @@ import { arcadiaLight } from '@/views/search/arcadia/styles/arcadiaThemes';
 export const LightTheme: ThemeType = {
   core: {
     mainThemeColor: customThemeLight.darkBlue,
+    colorScheme: 'light',
     bgColor: '#d4d4d4',
     textColor: 'black',
     basicShadow: '0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);',

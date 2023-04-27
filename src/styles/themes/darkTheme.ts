@@ -12,6 +12,7 @@ import { tomorrowDark } from '@/styles/themes/tomorrowTheme';
 export const DarkTheme: ThemeType = {
   core: {
     mainThemeColor: customThemeDark.mainThemeColor, // Consider rgb(56 189 248)
+    colorScheme: 'dark',
     bgColor: customThemeDark.background,
     textColor: customThemeDark.textColor,
     basicShadow: 'rgb(22, 22, 22) 4px 4px 7px;',

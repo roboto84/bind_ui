@@ -73,7 +73,7 @@ export const DayWordExample = styled.div`
 export const ShowMoreButtonContainer = styled.div`
   display: flex;
   justify-content: end;
-  border-top: 1px solid #515961;
+  border-top: 1px solid ${(props: GlobalThemeType) => props.theme.core.section.borderColor};
   padding-top: 10px;
   margin-top: 10px;
 `;

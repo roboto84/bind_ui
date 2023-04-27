@@ -44,7 +44,6 @@ export const SubTagHeader = styled(NonListHoverable)`
 
 export const InnerLinks = styled.div`
   margin: 20px 0;
-  max-width: 80vw;
   display: flex;
   flex-wrap: wrap;
   gap: 7px 5px;
@@ -90,6 +89,19 @@ export const ArcImageContainer = styled.div`
 `;
 
 export const ArcEditFieldContainer = styled.div``;
+
+export const ArcResultTextContainer = styled.div`
+  width: 100%;
+`;
+
+export const ArcResultFirstLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+  
+  @media ${device.laptop} {
+    flex-direction: column;
+  }
+`;
 
 export const ArcResultTitle = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};

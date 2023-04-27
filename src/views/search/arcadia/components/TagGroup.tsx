@@ -16,7 +16,6 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 function TagGroup(props: TagGroupProps) {
   const { title, tagList, onTagClick, highlight } = props;
   const navigate: NavigateFunction = useNavigate();
-
   const navigateToTagIndex: CallableFunction = () => {
     navigate('/search/system/arcadia/index');
   };
@@ -43,7 +42,7 @@ function TagGroup(props: TagGroupProps) {
       </>
     );
   } else {
-    viewBody = <AlphabetHeader>No Matching Tags Found</AlphabetHeader>;
+    viewBody = <h1>No Matching Tags Found</h1>;
   }
 
   return (

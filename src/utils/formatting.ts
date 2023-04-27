@@ -34,9 +34,13 @@ export function getD3StandardDateTime(timestamp: string): string {
   return `${dateTime.year}-${dateTime.month}-${dateTime.date}T${dateTime.hour}:${dateTime.minute}:${dateTime.seconds}`;
 }
 
-export function getLocalStandardDateTime(includeSeconds?: boolean, timestamp?: string): string {
+export function getLocalStandardDateTime(
+  includeSeconds?: boolean,
+  timestamp?: string,
+  includeYear?: boolean,
+): string {
   const dateTime: StandardTime = getLocalStandardDateObject(timestamp);
-  const year: string = getLocalStandardDateObject().year === dateTime.year ? '' : `/${dateTime.year}`;
+  const year: string = getLocalStandardDateObject().year !== dateTime.year || includeYear ? `/${dateTime.year}` : '';
   return `${dateTime.month}/${dateTime.date}${year}-${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
 }
 

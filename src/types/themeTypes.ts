@@ -98,6 +98,7 @@ export type DebugThemeType = {
 
 export type CoreStyleType = {
   mainThemeColor: string,
+  colorScheme: string,
   bgColor: string,
   textColor: string,
   basicShadow: string,

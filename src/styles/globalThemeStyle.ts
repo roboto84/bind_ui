@@ -12,6 +12,7 @@ export const GlobalThemeStyle = createGlobalStyle`
     font-size: 12px;
     text-align: left;
     color: ${(props: GlobalThemeType) => props.theme.core.textColor};
+    color-scheme: ${(props: GlobalThemeType) => props.theme.core.colorScheme};
     height: 100%;
     width: 99%;
     

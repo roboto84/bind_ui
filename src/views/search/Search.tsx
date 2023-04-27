@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavigateFunction, useNavigate, useLocation, Location } from 'react-router-dom';
+import { NavigateFunction, useNavigate, useLocation } from 'react-router-dom';
 import { SearchBar } from '@/views/search/components/SearchBar';
 import { RouterItemConfig } from '@/types';
 import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
@@ -18,7 +18,7 @@ export function Search() {
   const [searchContext, setSearchContext] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const navigate: NavigateFunction = useNavigate();
-  const location: Location = useLocation();
+  const { pathname } = useLocation();
   const [isAddRecordViewable, setIsAddRecordViewable] = useState<boolean>(false);
   const { ref } = useClickOutside(() => {
     setIsAddRecordViewable(false);
@@ -41,7 +41,7 @@ export function Search() {
     },
     onSearchKeyUp: (value: string) => {
       setSearchTerm(value);
-      if (location.pathname !== '/search' && location.pathname !== '/search/system/arcadia/index') {
+      if (pathname !== '/search' && pathname !== '/search/system/arcadia/index') {
         navigate('/search');
       }
     },

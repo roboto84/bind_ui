@@ -29,6 +29,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
   if (isLoading) {
     return (<Loader />);
   }
+
   if (isError) {
     return (<ErrorViewDefault errorMessage={error.message} />);
   }
@@ -43,6 +44,10 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
 
   const innerLinks: JSX.Element = tagCache.length > 1
     ? (<ArcSearchPageInnerLinks tags={tagCache} />)
+    : <div />;
+
+  const tagView: JSX.Element = tagCache.length > 1
+    ? (<TagGroup title="Similar Tags" tagList={similarTags} onTagClick={onSubTagClick} />)
     : <div />;
 
   const mainNode: JSX.Element|JSX.Element[] = searchResults.mainNode
@@ -69,7 +74,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     <ArcadiaContainer>
       <ArcInitialDataContainer>
         <LexiconCard title="Dictionary" searchTerm={searchResults.subject} />
-        <TagGroup title="Similar Tags" tagList={similarTags} onTagClick={onSubTagClick} />
+        {tagView}
       </ArcInitialDataContainer>
       <GeneralSection>
         <div>

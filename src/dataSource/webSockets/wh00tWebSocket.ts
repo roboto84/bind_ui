@@ -90,7 +90,7 @@ export class Wh00tWebSocket {
     };
     this.wh00tDispatch(newMessage);
     if (messageSource !== Wh00tMessageTypeEnum.LOCAL && isSecretMessage(wh00tMessage.message)) {
-      this.clearSecretMessage(wh00tMessage);
+      this.setClearSecretMessageTimer(wh00tMessage);
     } else if (newMessage.value.message === '/clear' || newMessage.value.message === '/c') {
       this.handleMessage(
         Wh00tMessageTypeEnum.LOCAL,
@@ -155,7 +155,7 @@ export class Wh00tWebSocket {
     }
   }
 
-  clearSecretMessage(message: Wh00tMessagePackage): void {
+  setClearSecretMessageTimer(message: Wh00tMessagePackage): void {
     setTimeout(() => {
       this.wh00tDispatch({
         source: Wh00tMessageTypeEnum.LOCAL,
