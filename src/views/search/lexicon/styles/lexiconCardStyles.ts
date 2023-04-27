@@ -28,9 +28,14 @@ export const LexiconCardExternalContainer = styled.section`
 export const LexiconCardContainer = styled(TagsSection)`
   max-width: 100%;
   min-width: 100px;
-  padding: 20px;
+  padding: 15px 8px 10px 20px;
   display: flex;
   gap: 0 20px;
+  flex-direction: row;
+`;
+
+export const LexiconWordListContainer = styled(LexiconCardContainer)`
+  padding: 15px;
 `;
 
 export const GeneralDictionarySection = styled(GeneralSection)`

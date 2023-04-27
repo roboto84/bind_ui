@@ -55,6 +55,15 @@ export function Wh00t(props: Wh00tProps) {
 
   return (
     <Wh00tContainer>
+      <Wh00tChatHeader
+        headerSize={windowSize}
+        headerButtons={{
+          maximize: windowControls,
+          minimize: windowControls,
+          disconnect: false,
+        }}
+        windowSwitch={wh00tWindowSwitch}
+      />
       <Wh00tConnect />
       <Wh00tBackground />
     </Wh00tContainer>

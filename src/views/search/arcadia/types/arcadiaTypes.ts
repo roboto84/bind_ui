@@ -144,6 +144,7 @@ export type ArcSearchPageHeaderProps = {
 
 export type ArcadiaSearchHomeProps = {
   tagSearchTerm ?: string
+  tagsMatchIsEmpty ?: boolean,
   arcadiaTags: ArcadiaTags,
   onTagClick: CallableFunction
 }

@@ -10,15 +10,10 @@ const GeneralStyle = styled.li`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 `;
 
-export const WordOfDayOuterContainer = styled.div`
-  padding: 0 20px;
-
-  @media ${device.tabletS} {
-    padding: 0 10px;
-  }
-`;
-
 export const WordOfDayContainer = styled.div`
+  height: 190px;
+  overflow: auto;
+  
   @media ${device.tabletS} {
     font-size: 16px;
   }
@@ -78,5 +73,7 @@ export const DayWordExample = styled.div`
 export const ShowMoreButtonContainer = styled.div`
   display: flex;
   justify-content: end;
+  border-top: 1px solid #515961;
+  padding-top: 10px;
   margin-top: 10px;
 `;

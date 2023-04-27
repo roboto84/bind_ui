@@ -5,15 +5,14 @@ import { arcadiaApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import Loader from '@/components/Misc/Loader';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import camelcaseKeys from 'camelcase-keys';
-import { TagsSection } from '@/views/search/styles/searchStyles';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { ArcadiaProps } from '@/views/search/types/searchTypes';
-import { ArcadiaTagIndex } from '@/views/search/arcadia/components/ArcadiaTagIndex/ArcadiaTagIndex';
+import { ArcadiaProps, ArcadiaView } from '@/views/search/types/searchTypes';
 import ArcadiaSearchHome from '@/views/search/arcadia/components/ArcadiaSearchHome';
-import { AlphabetHeader, ArcadiaContainer } from './styles/arcadiaStyles';
+import { ArcadiaTagIndex } from '@/views/search/arcadia/components/ArcadiaTagIndex/ArcadiaTagIndex';
+import { ArcadiaContainer } from './styles/arcadiaStyles';
 
 export function Arcadia(props: ArcadiaProps) {
-  const { subTag, setContext } = props;
+  const { view, subTag, setContext } = props;
   const navigate: NavigateFunction = useNavigate();
   const arcadiaTagsHook: UseQueryResult<ArcadiaTagsApiResult> = useQuery<ArcadiaTagsApiResult,
     Error>(arcadiaApiEndpoints.tags);
@@ -46,7 +45,11 @@ export function Arcadia(props: ArcadiaProps) {
   let viewBody: JSX.Element;
 
   if (subTag === '') {
-    viewBody = <ArcadiaSearchHome arcadiaTags={arcadiaTags} onTagClick={onTagClick} />;
+    if (view === ArcadiaView.INDEX) {
+      viewBody = <ArcadiaTagIndex arcadiaTags={arcadiaTags} onTagClick={onTagClick} />;
+    } else {
+      viewBody = <ArcadiaSearchHome arcadiaTags={arcadiaTags} onTagClick={onTagClick} />;
+    }
   } else {
     tagsMatchIsEmpty = true;
     for (const key of Object.keys(arcadiaTags)) {
@@ -54,19 +57,18 @@ export function Arcadia(props: ArcadiaProps) {
       tagsMatchIsEmpty = tagsMatchIsEmpty && (arcadiaTags[key].length === 0);
     }
 
-    viewBody = tagsMatchIsEmpty
-      ? (
-        <TagsSection withShadow>
-          <AlphabetHeader>No Matching Tags Found</AlphabetHeader>
-        </TagsSection>
-      )
-      : (
+    if (view === ArcadiaView.INDEX) {
+      viewBody = <ArcadiaTagIndex arcadiaTags={arcadiaTags} onTagClick={onTagClick} />;
+    } else {
+      viewBody = (
         <ArcadiaSearchHome
           tagSearchTerm={subTag}
+          tagsMatchIsEmpty={tagsMatchIsEmpty}
           arcadiaTags={arcadiaTags}
           onTagClick={onTagClick}
         />
       );
+    }
   }
 
   return (

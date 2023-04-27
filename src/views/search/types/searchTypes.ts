@@ -1,6 +1,5 @@
 export type SearchSystem = {
   system: string,
-  icon: JSX.Element,
   onHomeClick: CallableFunction,
   onSearchKeyUp: CallableFunction|null,
   onSendSearch: CallableFunction,
@@ -10,21 +9,25 @@ export type SearchBarProps = {
   searchSystem: SearchSystem
 }
 
+export enum ArcadiaView {
+  INDEX = 'INDEX',
+  MAIN = 'MAIN'
+}
+
 export type ArcadiaProps = {
+  view: ArcadiaView,
   subTag: string,
   setContext: CallableFunction
 }
 
 export type AddRecordProps = {
   isAddRecordViewable: boolean,
-  switchAddRecordView: CallableFunction,
-  initialTags: string
+  switchAddRecordView: CallableFunction
 }
 
 export type AddRecordFormProps = {
   cancelAddForm: CallableFunction,
-  onAddItem: CallableFunction,
-  possibleTag: string
+  onAddItem: CallableFunction
 }
 
 export type ArcAddPackage = {

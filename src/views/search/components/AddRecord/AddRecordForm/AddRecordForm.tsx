@@ -3,23 +3,14 @@ import {
   ArcInput,
   ArcInputTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Button } from '@/components/Nav/Button';
 import { AddRecordFormProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 
 export function AddRecordForm(props: AddRecordFormProps) {
-  const [formTags, setFormTags] = useState<string>('');
-  const { cancelAddForm, onAddItem, possibleTag } = props;
+  const { cancelAddForm, onAddItem } = props;
   const urlInputRef: React.MutableRefObject<any> = useRef();
   const tagsInputRef: React.MutableRefObject<any> = useRef();
-
-  const defaultTagGenerator = (tag: string) => {
-    if (formTags) {
-      setFormTags(`${formTags},${tag}`);
-    } else {
-      setFormTags(tag);
-    }
-  };
 
   const addItem = () => {
     const addItemPackage: ArcAddPackage = {
@@ -28,10 +19,6 @@ export function AddRecordForm(props: AddRecordFormProps) {
     };
     onAddItem(addItemPackage);
   };
-
-  if (possibleTag && (!formTags || formTags.indexOf(possibleTag) === -1)) {
-    defaultTagGenerator(possibleTag);
-  }
 
   return (
     <>
@@ -50,7 +37,6 @@ export function AddRecordForm(props: AddRecordFormProps) {
             title="Tags Edit"
             type="text"
             ref={tagsInputRef}
-            defaultValue={formTags}
           />
         </div>
       </ArcEditFieldContainer>

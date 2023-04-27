@@ -8,14 +8,13 @@ export const LexiconSection = styled(Section)`
     margin: 0 5px 15px 5px;
   }
 `;
-export const WordOfDaySection = styled(LexiconSection)``;
-export const WordListSection = styled(LexiconSection)``;
+
 export const LatestWordListContainer = styled.ul`{
   all: unset;
-  margin: 0 0 0 50px;
   display: flex;
   height: 100%;
   flex-wrap: wrap;
+  column-gap: 15px;
   
   li {
     list-style: none

@@ -18,13 +18,15 @@ import { LexiconCard } from '@/views/search/lexicon/components/lexiconCard/Lexic
 import TagGroup from '@/views/search/arcadia/components/TagGroup';
 import { randomIntFromInterval } from '@/utils/utils';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
-import { LexiconCardContainer } from '@/views/search/lexicon/styles/lexiconCardStyles';
+import {
+  LexiconWordListContainer,
+} from '@/views/search/lexicon/styles/lexiconCardStyles';
 import { WordDefinition } from '../../lexicon/types/lexiconTypes';
 
 const searchTags = (tagSearchTerm: string, arcadiaTags: ArcadiaTags): string[] => {
   const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(arcadiaTags);
   return arcadiaTagsArrayRepresentation.map(
-    ([key, tags]: [string, string[]]) => (
+    ([, tags]: [string, string[]]) => (
       tags.filter((value: string) => value.indexOf(tagSearchTerm) > -1)
     ),
   ).reduce(
@@ -35,7 +37,7 @@ const searchTags = (tagSearchTerm: string, arcadiaTags: ArcadiaTags): string[] =
 const generateRandomTags = (arcadiaTags: ArcadiaTags): string[] => {
   const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(arcadiaTags);
   return arcadiaTagsArrayRepresentation.map(
-    ([key, tags]: [string, string[]]) => (tags[randomIntFromInterval(0, tags.length - 1)]),
+    ([, tags]: [string, string[]]) => (tags[randomIntFromInterval(0, tags.length - 1)]),
   ).filter((value: string) => value.length > 0);
 };
 
@@ -81,7 +83,7 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
 
   if (isSearch) {
     relevantTags = searchTags(tagSearchTerm, arcadiaTags);
-    tagGroupTitle = 'Tag Search';
+    tagGroupTitle = `Tag Search (${relevantTags.length})`;
     highlightTags = true;
   } else {
     relevantTags = generateRandomTags(arcadiaTags);
@@ -104,9 +106,9 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
       </ArcInitialDataContainer>
       <GeneralSection>
         <AlphabetHeader>Latest {wordListResult.lexiconWords.length} Words Added</AlphabetHeader>
-        <LexiconCardContainer>
+        <LexiconWordListContainer>
           <LatestWordList wordList={wordListResult.lexiconWords} />
-        </LexiconCardContainer>
+        </LexiconWordListContainer>
       </GeneralSection>
     </>
   );
@@ -114,6 +116,7 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
 
 ArcadiaSearchHome.defaultProps = {
   tagSearchTerm: '',
+  tagsMatchIsEmpty: false,
 };
 
 export default ArcadiaSearchHome;

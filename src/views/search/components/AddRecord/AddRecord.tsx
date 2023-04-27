@@ -12,7 +12,7 @@ import { SearchAddRecordContainer } from '@/views/search/styles/searchStyles';
 import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function AddRecord(props: AddRecordProps) {
-  const { isAddRecordViewable, switchAddRecordView, initialTags } = props;
+  const { isAddRecordViewable, switchAddRecordView } = props;
   const [confirmAdd, setConfirmAdd] = useState<boolean>(false);
   const [addItemPackage, setAddItemPackage] = useState<ArcAddPackage>(null);
 
@@ -34,7 +34,6 @@ export function AddRecord(props: AddRecordProps) {
     } else {
       body = (
         <AddRecordForm
-          possibleTag={initialTags}
           cancelAddForm={switchAddRecordView}
           onAddItem={addItem}
         />

@@ -15,9 +15,12 @@ export const ArcadiaContainer = styled.div`
   }
 `;
 
-export const AlphabetHeader = styled.h1`
-  margin-left: 0;
+export const ColoredHeader = styled.h1`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.alphabetHeaderColor};
+`;
+
+export const AlphabetHeader = styled(ColoredHeader)`
+  margin-left: 0;
 `;
 
 export const SubTagHeader = styled(NonListHoverable)`
@@ -70,7 +73,8 @@ export const ArcResultContainer = styled(Section)`
 `;
 
 export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
-  padding: 20px 0;
+  flex-direction: column;
+  padding: 10px;
   font-size: 16px;
   border: ${(props: TagGroupSectionProps) => (
     props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
@@ -135,6 +139,7 @@ export const ArcInitialDataContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  column-gap: 20px;
 
   @media ${device.tablet} {
     flex-wrap: wrap;
