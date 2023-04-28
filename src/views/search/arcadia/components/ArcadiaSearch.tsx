@@ -46,7 +46,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     ? (<ArcSearchPageInnerLinks tags={tagCache} />)
     : <div />;
 
-  const tagView: JSX.Element = tagCache.length > 1
+  const tagView: JSX.Element = similarTags.length > 1
     ? (<TagGroup title="Similar Tags" tagList={similarTags} onTagClick={onSubTagClick} />)
     : <div />;
 

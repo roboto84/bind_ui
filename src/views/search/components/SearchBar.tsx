@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { KeyboardEvent, useRef } from 'react';
 import { SearchBarProps } from '@/views/search/types/searchTypes';
+import { acceptableCharactersTest } from '@/utils/utils';
 import {
   SearchButton,
   SearchContainer,
@@ -18,10 +19,10 @@ export function SearchBar(props: SearchBarProps) {
     }
   };
 
-  const searchKeyInput = (event: { key: string; }) => {
+  const searchKeyInput = (event: KeyboardEvent) => {
     if (event.key === 'Enter') {
       sendSearchWord();
-    } else {
+    } else if (acceptableCharactersTest(event.key)) {
       updateSearchWord();
     }
   };

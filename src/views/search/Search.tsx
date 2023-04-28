@@ -11,7 +11,6 @@ import {
 import { ArcadiaView, SearchSystem } from '@/views/search/types/searchTypes';
 import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecordButton';
 import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
-import { useClickOutside } from '@/hooks/useClickOutside';
 import { SearchMainContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
@@ -20,11 +19,13 @@ export function Search() {
   const navigate: NavigateFunction = useNavigate();
   const { pathname } = useLocation();
   const [isAddRecordViewable, setIsAddRecordViewable] = useState<boolean>(false);
-  const { ref } = useClickOutside(() => {
+
+  const activateAddRecordFormView = () => {
+    setIsAddRecordViewable(true);
+  };
+
+  const hideAddRecordFormView = () => {
     setIsAddRecordViewable(false);
-  });
-  const switchAddRecordFormView = () => {
-    setIsAddRecordViewable(!isAddRecordViewable);
   };
 
   const generalSearch = (url: string, value: string) => {
@@ -70,16 +71,14 @@ export function Search() {
 
   return (
     <SearchMainContainer>
-      <div ref={ref}>
-        <SearchMenuContainer>
-          <SearchBar searchSystem={arcadiaSys} />
-          <AddSearchRecordButton switchAddFormView={switchAddRecordFormView} />
-        </SearchMenuContainer>
-        <AddRecord
-          isAddRecordViewable={isAddRecordViewable}
-          switchAddRecordView={switchAddRecordFormView}
-        />
-      </div>
+      <SearchMenuContainer>
+        <SearchBar searchSystem={arcadiaSys} />
+        <AddSearchRecordButton activateAction={activateAddRecordFormView} />
+      </SearchMenuContainer>
+      <AddRecord
+        isAddRecordViewable={isAddRecordViewable}
+        cancelAddRecordFormView={hideAddRecordFormView}
+      />
       <RoutesGenerator routerRoutesConfig={routerConfig} />
     </SearchMainContainer>
   );

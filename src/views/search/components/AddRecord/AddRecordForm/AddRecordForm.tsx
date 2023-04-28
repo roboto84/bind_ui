@@ -13,11 +13,13 @@ export function AddRecordForm(props: AddRecordFormProps) {
   const tagsInputRef: React.MutableRefObject<any> = useRef();
 
   const addItem = () => {
-    const addItemPackage: ArcAddPackage = {
-      data: urlInputRef.current.value,
-      tags: String(tagsInputRef.current.value).replace(/\s+/g, '').split(','),
-    };
-    onAddItem(addItemPackage);
+    if (urlInputRef.current.value !== '') {
+      const addItemPackage: ArcAddPackage = {
+        data: urlInputRef.current.value,
+        tags: String(tagsInputRef.current.value).replace(/\s+/g, '').split(','),
+      };
+      onAddItem(addItemPackage);
+    }
   };
 
   return (

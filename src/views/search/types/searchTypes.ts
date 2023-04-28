@@ -22,7 +22,7 @@ export type ArcadiaProps = {
 
 export type AddRecordProps = {
   isAddRecordViewable: boolean,
-  switchAddRecordView: CallableFunction
+  cancelAddRecordFormView: CallableFunction
 }
 
 export type AddRecordFormProps = {

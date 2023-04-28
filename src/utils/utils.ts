@@ -18,3 +18,32 @@ export function timeFormatMorph(timeStamp: string):string {
   }
   return timeMorph;
 }
+
+export function acceptableCharactersTest(key: string):boolean {
+  const nonAcceptableKeys = [
+    'Control',
+    'Shift',
+    'Alt',
+    'AltGraph',
+    'Control',
+    'ArrowUp',
+    'ArrowDown',
+    'Shift',
+    'CapsLock',
+    'Fn',
+    'Meta',
+    'NumLock',
+    'ScrollLock',
+    'ArrowDown',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowUp',
+    'End',
+    'Home',
+    'PageDown',
+    'PageUp',
+    'Escape',
+  ];
+
+  return nonAcceptableKeys.indexOf(key) === -1;
+}
