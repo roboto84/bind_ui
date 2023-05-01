@@ -11,7 +11,6 @@ import { ArcResultEdit } from '@/views/search/arcadia/components/ArcResult/compo
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage, onSubTagClick } = props;
-  const { data, tags, title, description, image } = arcResultPackage;
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
   const [editMessage, setEditMessage] = useState<string>('');
   const [resultPackage, setResultPackage] = useState<ArcResultPackage>(arcResultPackage);
@@ -30,7 +29,7 @@ export function ArcResult(props: ArcResultProps) {
     });
     setEditMessage(editingPackage.editingMessage);
     setDisplay(ArcResultDisplay.VIEW);
-    setTimeout(() => setEditMessage(''), 10000);
+    setTimeout(() => setEditMessage(''), 5000);
   };
 
   if (display === ArcResultDisplay.VIEW) {
@@ -44,15 +43,15 @@ export function ArcResult(props: ArcResultProps) {
       />
     );
   } else if (display === ArcResultDisplay.DELETE) {
-    body = <ArcResultDelete itemKey={data} onReset={setDisplay} />;
+    body = <ArcResultDelete itemKey={resultPackage.data} onReset={setDisplay} />;
   } else if (display === ArcResultDisplay.EDIT) {
     body = (
       <ArcResultEdit
-        itemKey={data}
-        image={image}
-        tags={tags.join(',')}
-        title={title}
-        description={description}
+        itemKey={resultPackage.data}
+        image={resultPackage.image}
+        tags={resultPackage.tags.join(',')}
+        title={resultPackage.title}
+        description={resultPackage.description}
         onReset={setDisplay}
         onEditConfirmed={updateResultOnEdit}
       />
