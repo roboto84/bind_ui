@@ -163,3 +163,10 @@ export const ArcadiaSearchHomeContainer = styled.div`
   margin: 0 30px;
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
 `;
+
+export const ArcResultChangeStatusContainer = styled.div`
+  color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
+  margin-top: 15px;
+  border-top: 1px dotted;
+  padding-top: 5px;
+`;

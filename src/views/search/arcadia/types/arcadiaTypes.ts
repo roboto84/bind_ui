@@ -18,6 +18,11 @@ export type ArcResultPackage = {
   image: string
 }
 
+export type ArcResultEditingPackage = {
+  itemPackage: ArcEditPackage,
+  editingMessage: string
+}
+
 export type ArcEditPackage = {
   data: string,
   dataUpdate: string,
@@ -37,6 +42,7 @@ export type ArcResultViewProps = {
   onDelete: CallableFunction,
   onEdit: CallableFunction,
   onSubTagClick: CallableFunction
+  displayMessage: string
 }
 
 export type ArcResultDeleteProps = {
@@ -50,7 +56,8 @@ export type ArcResultEditProps = {
   tags: string,
   title: string,
   description: string,
-  onReset: CallableFunction
+  onReset: CallableFunction,
+  onEditConfirmed: CallableFunction
 }
 
 export type ArcResultEditViewProps = {
@@ -129,7 +136,7 @@ export type ArcAddItemResults = {
 
 export type ArcResultEditConfirmProps = {
   itemEditPackage: ArcEditPackage,
-  onReset: CallableFunction
+  onEditConfirmed: CallableFunction
 }
 
 export type ArcSearchPageInnerLinksProps = {

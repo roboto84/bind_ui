@@ -8,7 +8,7 @@ export function ArcSearchPageHeader(props: ArcSearchPageHeaderProps) {
   return (
     <h1 style={{ marginLeft: '0' }}>
       <InlineHeader>{urlLength} </InlineHeader>
-      result{urlLength > 1 ? 's' : ''} for
+      result{urlLength === 1 ? '' : 's'} for
       <InlineHeader> {subject} </InlineHeader>
       { tagsLength > 1 ? 'in the following tags ...' : '...'}
     </h1>

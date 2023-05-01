@@ -7,6 +7,7 @@ import {
 } from '@/utils/formatting';
 import {
   ArcImageContainer,
+  ArcResultChangeStatusContainer,
   ArcResultDescription,
   ArcResultFirstLine,
   ArcResultTextContainer,
@@ -21,7 +22,7 @@ import { BsFillImageFill } from 'react-icons/bs';
 import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 
 export function ArcResultView(props: ArcResultViewProps) {
-  const { arcResultPackage, onEdit, onDelete, onSubTagClick } = props;
+  const { arcResultPackage, onEdit, onDelete, onSubTagClick, displayMessage } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
   const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp, true)
@@ -49,6 +50,10 @@ export function ArcResultView(props: ArcResultViewProps) {
 
   const descriptionView: JSX.Element = description !== 'None'
     ? <ArcResultDescription><span>{`${description}`}</span></ArcResultDescription>
+    : <div />;
+
+  const changeMessage: JSX.Element = displayMessage !== ''
+    ? <ArcResultChangeStatusContainer>{displayMessage}</ArcResultChangeStatusContainer>
     : <div />;
 
   return (
@@ -99,6 +104,7 @@ export function ArcResultView(props: ArcResultViewProps) {
         <PillContainer>
           {tagsView}
         </PillContainer>
+        {changeMessage}
       </ArcResultTextContainer>
     </>
   );

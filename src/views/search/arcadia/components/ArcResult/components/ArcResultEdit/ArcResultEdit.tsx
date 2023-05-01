@@ -11,7 +11,7 @@ import {
 } from '@/views/search/arcadia/components/ArcResult/components/ArcResultEdit/ArcResultEditConfirm';
 
 export function ArcResultEdit(props: ArcResultEditProps) {
-  const { itemKey, tags, title, description, image, onReset } = props;
+  const { itemKey, tags, title, description, image, onReset, onEditConfirmed } = props;
   const [confirmEdit, setConfirmEdit] = useState<boolean>(false);
   const [editItemPackage, setEditItemPackage] = useState<ArcEditPackage>();
 
@@ -23,7 +23,12 @@ export function ArcResultEdit(props: ArcResultEditProps) {
   let body: JSX.Element;
 
   if (confirmEdit) {
-    body = <ArcResultEditConfirm itemEditPackage={editItemPackage} onReset={onReset} />;
+    body = (
+      <ArcResultEditConfirm
+        itemEditPackage={editItemPackage}
+        onEditConfirmed={onEditConfirmed}
+      />
+    );
   } else {
     body = (
       <ArcResultEditForm
