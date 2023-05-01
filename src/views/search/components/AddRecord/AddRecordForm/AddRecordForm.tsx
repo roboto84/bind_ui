@@ -1,5 +1,5 @@
 import {
-  ArcEditFieldContainer,
+  ArcAddFieldContainer, ArcAddInputContainer,
   ArcInput,
   ArcInputTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
@@ -8,7 +8,7 @@ import { Button } from '@/components/Nav/Button';
 import { AddRecordFormProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 
 export function AddRecordForm(props: AddRecordFormProps) {
-  const { cancelAddForm, onAddItem } = props;
+  const { cancelAddForm, onAddItem, isFormActive } = props;
   const urlInputRef: React.MutableRefObject<any> = useRef();
   const tagsInputRef: React.MutableRefObject<any> = useRef();
 
@@ -22,27 +22,34 @@ export function AddRecordForm(props: AddRecordFormProps) {
     }
   };
 
+  if (isFormActive && urlInputRef.current && tagsInputRef.current) {
+    urlInputRef.current.value = '';
+    tagsInputRef.current.value = '';
+  }
+
   return (
     <>
-      <ArcEditFieldContainer style={{ margin: 'auto 0', width: '85%' }}>
-        <div style={{ marginTop: '10px' }}>
+      <ArcAddFieldContainer>
+        <ArcAddInputContainer>
           <ArcInputTitle>URL</ArcInputTitle>
           <ArcInput
             title="URL Edit"
             type="text"
             ref={urlInputRef}
+            disabled={!isFormActive}
           />
-        </div>
-        <div style={{ marginTop: '10px' }}>
+        </ArcAddInputContainer>
+        <ArcAddInputContainer>
           <ArcInputTitle>Tags (comma seperated)</ArcInputTitle>
           <ArcInput
             title="Tags Edit"
             type="text"
             ref={tagsInputRef}
+            disabled={!isFormActive}
           />
-        </div>
-      </ArcEditFieldContainer>
-      <ArcEditFieldContainer style={{ width: '10%', marginTop: '20px' }}>
+        </ArcAddInputContainer>
+      </ArcAddFieldContainer>
+      <ArcAddFieldContainer style={{ marginTop: '20px', justifyContent: 'end' }}>
         <div>
           <Button
             fontSize="14px"
@@ -52,6 +59,7 @@ export function AddRecordForm(props: AddRecordFormProps) {
             borderRadius="5px"
             onClick={() => addItem()}
             title="Add"
+            disabled={!isFormActive}
           >
             Add
           </Button>
@@ -68,7 +76,7 @@ export function AddRecordForm(props: AddRecordFormProps) {
             Cancel
           </Button>
         </div>
-      </ArcEditFieldContainer>
+      </ArcAddFieldContainer>
     </>
   );
 }

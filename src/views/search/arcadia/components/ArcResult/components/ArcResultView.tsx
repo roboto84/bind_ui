@@ -7,7 +7,7 @@ import {
 } from '@/utils/formatting';
 import {
   ArcImageContainer,
-  ArcResultChangeStatusContainer,
+  ArcChangeStatusContainer,
   ArcResultDescription,
   ArcResultFirstLine,
   ArcResultTextContainer,
@@ -53,7 +53,7 @@ export function ArcResultView(props: ArcResultViewProps) {
     : <div />;
 
   const changeMessage: JSX.Element = displayMessage !== ''
-    ? <ArcResultChangeStatusContainer>{displayMessage}</ArcResultChangeStatusContainer>
+    ? <ArcChangeStatusContainer>{displayMessage}</ArcChangeStatusContainer>
     : <div />;
 
   return (

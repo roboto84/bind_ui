@@ -1,21 +1,20 @@
 import React from 'react';
 import { useArcadiaAddItem } from '@/dataSource/reactQueryHooks';
-import {
-  ArcAddItemResults,
-} from '@/views/search/arcadia/types/arcadiaTypes';
-import camelcaseKeys from 'camelcase-keys';
 import { AddRecordConfirmProps } from '@/views/search/types/searchTypes';
+import Loader from '@/components/Misc/Loader';
+import { Size } from '@/types';
+import { ArcAddItemResults } from '@/views/search/arcadia/types/arcadiaTypes';
+import camelcaseKeys from 'camelcase-keys';
 
 export function AddRecordConfirm(props: AddRecordConfirmProps) {
-  const { itemAddPackage, onReset } = props;
+  const { itemAddPackage, onConfirmation } = props;
   const { data, error, isLoading, isError } = useArcadiaAddItem(itemAddPackage);
-  let message:string;
+  let message:JSX.Element;
 
   if (isError && error) {
-    message = `An error has occurred adding: ${itemAddPackage.data}`;
-    setTimeout(() => onReset(), 5000);
+    message = <span>Error occurred adding record</span>;
   } else if (isLoading) {
-    message = `Adding Item: ${itemAddPackage.data}`;
+    message = <Loader size={Size.small} />;
   } else if (data) {
     const recordAddResult: ArcAddItemResults = camelcaseKeys<ArcAddItemResults>(
       data,
@@ -23,11 +22,11 @@ export function AddRecordConfirm(props: AddRecordConfirmProps) {
     );
 
     if (recordAddResult.addedItem) {
-      message = `Successfully Added "${itemAddPackage.data}".  Going back the to the input form in 5 seconds.`;
+      message = <span>Record Successfully Added</span>;
     } else {
-      message = `There was an issue with adding: "${itemAddPackage.data}"`;
+      message = <span>There was an issue adding record</span>;
     }
-    setTimeout(() => onReset(), 5000);
+    setTimeout(() => onConfirmation(), 3000);
   }
 
   return <div>{message}</div>;

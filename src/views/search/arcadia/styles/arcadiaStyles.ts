@@ -71,6 +71,10 @@ export const ArcResultContainer = styled(Section)`
   }
 `;
 
+export const ArcAddContainer = styled(ArcResultContainer)`
+  flex-direction: column;
+`;
+
 export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   flex-direction: column;
   padding: 10px;
@@ -89,6 +93,17 @@ export const ArcImageContainer = styled.div`
 `;
 
 export const ArcEditFieldContainer = styled.div``;
+
+export const ArcAddFieldContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 10px;
+`;
+
+export const ArcAddInputContainer = styled.div`
+  margin-top: 10px;
+  flex-grow: 1;
+`;
 
 export const ArcResultTextContainer = styled.div`
   width: 100%;
@@ -164,7 +179,7 @@ export const ArcadiaSearchHomeContainer = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.lexicon.textColor};
 `;
 
-export const ArcResultChangeStatusContainer = styled.div`
+export const ArcChangeStatusContainer = styled.div`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
   margin-top: 15px;
   border-top: 1px dotted;

@@ -27,7 +27,8 @@ export type AddRecordProps = {
 
 export type AddRecordFormProps = {
   cancelAddForm: CallableFunction,
-  onAddItem: CallableFunction
+  onAddItem: CallableFunction,
+  isFormActive: boolean
 }
 
 export type ArcAddPackage = {
@@ -37,5 +38,5 @@ export type ArcAddPackage = {
 
 export type AddRecordConfirmProps = {
   itemAddPackage: ArcAddPackage
-  onReset: CallableFunction
+  onConfirmation: CallableFunction
 }

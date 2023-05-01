@@ -9,48 +9,57 @@ import {
   AddRecordConfirm,
 } from '@/views/search/components/AddRecord/AddRecordForm/AddRecordConfirm';
 import { SearchAddRecordContainer } from '@/views/search/styles/searchStyles';
-import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
+import {
+  ArcAddContainer,
+  ArcChangeStatusContainer,
+} from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function AddRecord(props: AddRecordProps) {
   const { isAddRecordViewable, cancelAddRecordFormView } = props;
   const [confirmAdd, setConfirmAdd] = useState<boolean>(false);
   const [addItemPackage, setAddItemPackage] = useState<ArcAddPackage>(null);
+  const [isFormActive, setIsFormActive] = useState<boolean>(true);
 
   const addItem = (itemPackage: ArcEditPackage) => {
     setAddItemPackage(itemPackage);
+    setIsFormActive(false);
     setConfirmAdd(true);
   };
 
   const resetFormAfterConfirm = () => {
     setAddItemPackage(null);
     setConfirmAdd(false);
+    setIsFormActive(true);
   };
 
   let body: JSX.Element;
-
   if (isAddRecordViewable) {
+    let addRecordCall: JSX.Element = <div />;
     if (confirmAdd) {
-      body = <AddRecordConfirm itemAddPackage={addItemPackage} onReset={resetFormAfterConfirm} />;
-    } else {
-      body = (
-        <AddRecordForm
-          cancelAddForm={cancelAddRecordFormView}
-          onAddItem={addItem}
-        />
+      addRecordCall = (
+        <ArcChangeStatusContainer>
+          <AddRecordConfirm
+            itemAddPackage={addItemPackage}
+            onConfirmation={resetFormAfterConfirm}
+          />
+        </ArcChangeStatusContainer>
       );
     }
 
     body = (
       <SearchAddRecordContainer>
-        <ArcResultContainer>
-          {body}
-        </ArcResultContainer>
+        <ArcAddContainer>
+          <AddRecordForm
+            cancelAddForm={cancelAddRecordFormView}
+            onAddItem={addItem}
+            isFormActive={isFormActive}
+          />
+          {addRecordCall}
+        </ArcAddContainer>
       </SearchAddRecordContainer>
     );
   } else {
-    body = (
-      <div />
-    );
+    body = <div />;
   }
 
   return (body);
