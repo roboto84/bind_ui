@@ -35,7 +35,7 @@ export const GeneralSection = styled(LexiconSection)`
   background-color: inherit;
   border: 0;
   box-shadow: none;
-  padding: 20px 0;
+  padding: 20px 0 0 0;
 `;
 
 export const TagGroupSection = styled(GeneralSection)`

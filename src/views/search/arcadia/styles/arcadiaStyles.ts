@@ -42,6 +42,18 @@ export const SubTagHeader = styled(NonListHoverable)`
   }
 `;
 
+export const SubTagHeaderContainer = styled.div`
+  padding: 25px 0 0;
+`;
+
+export const ArcResultOuterContainer = styled.div`
+  padding-left: 25px;
+  
+  @media ${device.mobileXL} {
+    padding-left: 0;
+  }
+`;
+
 export const InnerLinks = styled.div`
   margin: 20px 0;
   display: flex;
@@ -92,12 +104,36 @@ export const ArcImageContainer = styled.div`
   }
 `;
 
-export const ArcEditFieldContainer = styled.div``;
+export const ArcEditFormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 20px;
+`;
+
+export const ArcEditFormInputGroupContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
+
+export const ArcEditFieldContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const ArcEditButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 20px;
+`;
 
 export const ArcAddFieldContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 `;
 
 export const ArcAddInputContainer = styled.div`
@@ -132,9 +168,7 @@ export const ArcResultTimeStamp = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.timeColor};
 `;
 
-export const ArcResultDeleteQuestionContainer = styled.div`
-  height: 85px;
-`;
+export const ArcResultDeleteQuestionContainer = styled.div``;
 
 export const ArcResultDeleteMessage = styled.div``;
 
@@ -145,7 +179,7 @@ export const ArcInputTitle = styled.div`
 
 export const ArcInput = styled(Input)`
   font-size: 12px;
-  width: 90%;
+  width: calc(100% - 26px);
   border-radius: 5px;
   
   :focus{
@@ -159,7 +193,7 @@ export const ArcInput = styled(Input)`
 
 export const ArcInputTextArea = styled(InputTextArea)`
   border-radius: 5px;
-  width: 90%;
+  width: calc(100% - 26px);
 `;
 
 export const ArcInitialDataContainer = styled.div`
@@ -168,8 +202,14 @@ export const ArcInitialDataContainer = styled.div`
   align-items: baseline;
   column-gap: 20px;
 
+  @media ${device.laptopL} {
+    width: 97vw;
+  }
+  
   @media ${device.tablet} {
+    width: 100%;
     flex-wrap: wrap;
+    column-gap: 0;
   }
 `;
 

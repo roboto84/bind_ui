@@ -62,16 +62,18 @@ export const NonListHoverable = styled.span`
 export const Pill = styled(NonListHoverable)`
   font-size: 17px;
   background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
-  margin: 0 5px;
+  margin: 0;
   padding: 1px 8px;
-  
-  :first-child{
-    margin: 0 5px 0 0;
-  }
+  min-width: auto;
+  width: auto;
 `;
 
 export const PillContainer = styled.div`
   margin-top: 10px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
 export interface SectionProps extends GlobalThemeType{

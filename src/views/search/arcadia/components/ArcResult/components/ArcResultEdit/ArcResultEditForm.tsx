@@ -1,7 +1,11 @@
 import {
+  ArcEditButtonsContainer,
   ArcEditFieldContainer,
+  ArcEditFormContainer,
+  ArcEditFormInputGroupContainer,
   ArcInput,
-  ArcInputTextArea, ArcInputTitle,
+  ArcInputTextArea,
+  ArcInputTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import {
   ArcEditPackage,
@@ -36,61 +40,63 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
   };
 
   return (
-    <>
-      <ArcEditFieldContainer style={{ margin: 'auto 0', width: '45%' }}>
-        <div>
-          <ArcInputTitle>Title</ArcInputTitle>
-          <ArcInput
-            title="Title Edit"
-            type="text"
-            defaultValue={title}
-            ref={titleInputRef}
-          />
-        </div>
-        <div style={{ marginTop: '10px' }}>
-          <ArcInputTitle>URL</ArcInputTitle>
-          <ArcInput
-            title="URL Edit"
-            type="text"
-            defaultValue={itemKey}
-            ref={urlInputRef}
-          />
-        </div>
-        <div style={{ marginTop: '10px' }}>
-          <ArcInputTitle>Tags (comma seperated)</ArcInputTitle>
-          <ArcInput
-            title="Tags Edit"
-            type="text"
-            defaultValue={tags}
-            ref={tagsInputRef}
-          />
-        </div>
-      </ArcEditFieldContainer>
-      <ArcEditFieldContainer style={{ paddingLeft: '20px', width: '45%' }}>
-        <div>
-          <ArcInputTitle>Image</ArcInputTitle>
-          <ArcInput
-            title="Image Edit"
-            type="text"
-            min={2}
-            max={90}
-            defaultValue={image}
-            ref={imageInputRef}
-          />
-        </div>
-        <div style={{ marginTop: '10px' }}>
-          <ArcInputTitle>Description</ArcInputTitle>
-          <ArcInputTextArea
-            title="Description Edit"
-            rows={5}
-            maxLength={300}
-            defaultValue={description}
-            ref={descriptionInputRef}
-            autoComplete="off"
-          />
-        </div>
-      </ArcEditFieldContainer>
-      <ArcEditFieldContainer style={{ width: '10%', marginTop: '20px' }}>
+    <ArcEditFormContainer>
+      <ArcEditFormInputGroupContainer>
+        <ArcEditFieldContainer>
+          <div>
+            <ArcInputTitle>Title</ArcInputTitle>
+            <ArcInput
+              title="Title Edit"
+              type="text"
+              defaultValue={title}
+              ref={titleInputRef}
+            />
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <ArcInputTitle>URL</ArcInputTitle>
+            <ArcInput
+              title="URL Edit"
+              type="text"
+              defaultValue={itemKey}
+              ref={urlInputRef}
+            />
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <ArcInputTitle>Tags (comma seperated)</ArcInputTitle>
+            <ArcInput
+              title="Tags Edit"
+              type="text"
+              defaultValue={tags}
+              ref={tagsInputRef}
+            />
+          </div>
+        </ArcEditFieldContainer>
+        <ArcEditFieldContainer>
+          <div>
+            <ArcInputTitle>Image</ArcInputTitle>
+            <ArcInput
+              title="Image Edit"
+              type="text"
+              min={2}
+              max={90}
+              defaultValue={image}
+              ref={imageInputRef}
+            />
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <ArcInputTitle>Description</ArcInputTitle>
+            <ArcInputTextArea
+              title="Description Edit"
+              rows={5}
+              maxLength={300}
+              defaultValue={description}
+              ref={descriptionInputRef}
+              autoComplete="off"
+            />
+          </div>
+        </ArcEditFieldContainer>
+      </ArcEditFormInputGroupContainer>
+      <ArcEditButtonsContainer>
         <div>
           <Button
             fontSize="14px"
@@ -116,7 +122,7 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
             Cancel
           </Button>
         </div>
-      </ArcEditFieldContainer>
-    </>
+      </ArcEditButtonsContainer>
+    </ArcEditFormContainer>
   );
 }

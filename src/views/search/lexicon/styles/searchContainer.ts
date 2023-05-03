@@ -2,12 +2,17 @@ import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 import { Input } from '@/components/Input/Input';
 import { Button } from '@/components/Nav/Button';
+import { device } from '@/styles/responsive';
 
 export const SearchContainer = styled.menu`
   all: unset;
   font-size: 13px;
   display: flex;
   height: 70px;
+  
+  @media ${device.tablet} {
+    width: 100%
+  }
 `;
 
 export const SearchInput = styled(Input)`
@@ -15,6 +20,10 @@ export const SearchInput = styled(Input)`
   min-width: 100px;
   margin: 13px 0;
   border-radius: 5px 0 0 5px;
+
+  @media ${device.tablet} {
+    width: 100%
+  }
 `;
 
 export const LexiconButton = styled(Button)`
