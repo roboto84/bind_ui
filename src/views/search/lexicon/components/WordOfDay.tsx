@@ -37,7 +37,7 @@ export function WordOfDay(props: WordOfDayProps) {
     };
 
     const wordAudioComponent: JSX.Element = isAudioAvailable(wordDefinition.audio)
-      ? <AudioPlayer size={Size.small} src={wordDefinition.audio} />
+      ? <AudioPlayer src={wordDefinition.audio} />
       : <span />;
 
     view = (
@@ -54,7 +54,7 @@ export function WordOfDay(props: WordOfDayProps) {
           </DayWordPartOfSpeech>
           <DayWordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</DayWordBreak>
           <DayWordPronounce>{pronunciationView(...wordDefinition.pronounce)}</DayWordPronounce>
-          <li style={{ marginLeft: '15px' }}>{wordAudioComponent}</li>
+          <li style={{ marginLeft: '5px' }}>{wordAudioComponent}</li>
         </DayWordInfo>
 
         <DayWordDefinitionsList>
