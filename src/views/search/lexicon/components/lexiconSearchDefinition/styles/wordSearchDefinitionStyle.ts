@@ -72,17 +72,8 @@ export const Pronunciation = styled(wordInfo)`
   letter-spacing: 3px;
 `;
 
-export const WordAudio = styled.div`
-  margin-left: 100px;
-  margin-top: 15px;
-  font-style: italic;
-  letter-spacing: 3px;
-  border-radius: 5px;
-
-  @media ${device.tabletS} {
-    margin: 5px;
-    text-align: center;
-  }
+export const WordAudio = styled.li`
+  margin: 10px 0 0 10px;
 `;
 
 export const WordDefStems = styled.ul`

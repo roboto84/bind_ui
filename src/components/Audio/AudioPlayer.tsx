@@ -1,31 +1,39 @@
-import {
-  WordAudio,
-} from '@/views/search/lexicon/components/lexiconSearchDefinition/styles/wordSearchDefinitionStyle';
-import React from 'react';
-import { Size } from '@/types';
+import React, { useState } from 'react';
+import { FaPlay, FaPause } from 'react-icons/fa';
+import { Button } from '@/components/Nav/Button';
 
 type AudioPlayerProps = {
-  src: string,
-  size: Size
+  src: string
 }
 
 export function AudioPlayer(props: AudioPlayerProps) {
-  const { src, size } = props;
-  let audioPlayerStyle = {};
+  const { src } = props;
+  const [audio] = useState<HTMLAudioElement>(new Audio(src));
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
-  if (size === Size.small) {
-    audioPlayerStyle = {
-      width: '50px',
-    };
-  }
+  const controlAudio = () => {
+    if (!audio.paused && !audio.ended) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
+  audio.addEventListener('ended', () => {
+    setIsPlaying(false);
+  });
 
   return (
-    <audio style={audioPlayerStyle} preload="auto" controls key={src}>
-      <source src={src} type="audio/mpeg" />
-      <p>
-        Your browser does not support HTML5 audio.
-        Here is a <a href={src}>link to download the audio</a> instead.
-      </p>
-    </audio>
+    <Button
+      title="Play Audio"
+      borderRadius="100%"
+      padding="9px 11px 8px 12px"
+      fontSize="15px"
+      onClick={controlAudio}
+    >
+      {isPlaying ? <FaPause /> : <FaPlay />}
+    </Button>
   );
 }

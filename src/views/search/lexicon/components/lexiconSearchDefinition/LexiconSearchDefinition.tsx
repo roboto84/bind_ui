@@ -38,7 +38,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
   if (isAudioAvailable(wordDefinition.audio)) {
     wordAudioComponent = (
       <WordAudio>
-        <AudioPlayer size={Size.medium} src={wordDefinition.audio} />
+        <AudioPlayer src={wordDefinition.audio} />
       </WordAudio>
     );
   }
@@ -66,9 +66,9 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         <PartOfSpeech>{wordParamBasicView(wordDefinition.partOfSpeech.toLowerCase())}</PartOfSpeech>
         <WordBreak>{wordParamBasicView(wordDefinition.wordBreak)}</WordBreak>
         <Pronunciation>{pronunciationView(...wordDefinition.pronounce)}</Pronunciation>
+        {wordAudioComponent}
       </WordDefinitionIntroduction>
       <WordDefStems>{wordStemsView}</WordDefStems>
-      {wordAudioComponent}
       <WordDefEtymology>
         {wordEtymologyView(wordDefinition.etymology)}
       </WordDefEtymology>
