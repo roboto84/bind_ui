@@ -32,7 +32,7 @@ export function SearchBar(props: SearchBarProps) {
       <SearchInput
         title="Search Term Input"
         type="text"
-        placeholder="Search Word"
+        placeholder="Search Term"
         ref={searchInputRef}
         onKeyUp={searchKeyInput}
         autoFocus

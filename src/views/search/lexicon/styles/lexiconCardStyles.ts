@@ -30,7 +30,7 @@ export const LexiconCardContainer = styled(TagsSection)`
   min-width: 100px;
   padding: 15px 8px 10px 20px;
   display: flex;
-  gap: 0 20px;
+  gap: 0 8px;
   flex-direction: row;
 `;
 
