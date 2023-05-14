@@ -1,6 +1,6 @@
 import React from 'react';
 import { HomeBottomRight, HomeContainer, HomeRightContainer } from '@/views/home/styles/homeStyles';
-import RobotImg from '../../components/Images/RobotImg';
+import Icon from '../../components/Images/Icon';
 import { AppDescriptions } from './components/AppDescriptions/AppDescriptions';
 
 export function Home() {
@@ -8,7 +8,7 @@ export function Home() {
     <HomeContainer className="side-flexed">
       <AppDescriptions />
       <HomeRightContainer>
-        <RobotImg fontSize="395px" opacity="0.7" />
+        <Icon fontSize="395px" opacity="0.7" />
         <HomeBottomRight>
           ... more in development 😅
         </HomeBottomRight>

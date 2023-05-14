@@ -10,13 +10,18 @@ export const AppContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 99vh;
   width: 100vw;
+  
+  @media ${device.mobileXL} {
+    height: inherit;
+  }
+
 `;
 
 export const MainContainer = styled.main`
   overflow-y: auto;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 65px);
 
   &.side-flexed {
     display: flex;
@@ -39,6 +44,36 @@ export const Hoverable = styled.li`
   @media ${device.tabletS} {
     padding: 5px;
   }
+`;
+
+export const NonListHoverable = styled.span`
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 0 4px;
+  min-width: 170px;
+  transition: 0.4s;
+
+  :hover{
+    background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
+    color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
+  }
+`;
+
+export const Pill = styled(NonListHoverable)`
+  font-size: 17px;
+  background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
+  margin: 0;
+  padding: 1px 8px;
+  min-width: auto;
+  width: auto;
+`;
+
+export const PillContainer = styled.div`
+  margin-top: 10px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
 export interface SectionProps extends GlobalThemeType{

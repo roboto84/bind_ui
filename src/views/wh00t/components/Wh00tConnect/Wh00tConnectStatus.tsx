@@ -5,8 +5,8 @@ import {
   Wh00tConnectStatusSection,
   Wh00tConnectTitle, Wh00tStatusContainer, Wh00tStatusTimer,
 } from '@/views/wh00t/components/Wh00tConnect/styles/wh00tConnectStyle';
-import Wh00tIcon from '@/components/Images/Wh00tIcon';
 import Loader from '@/components/Misc/Loader';
+import Icon from '@/components/Images/Icon';
 
 type Wh00tConnectionStatusProps = {
   connectionStatus: string,
@@ -31,7 +31,7 @@ function Wh00tConnectionStatus(props: Wh00tConnectionStatusProps) {
   return (
     <Wh00tConnectContainer>
       <Wh00tConnectStatusSection size={size}>
-        <Wh00tIcon fontSize="70px" opacity="0.7" margin="20px 0 0 0" />
+        <Icon fontSize="70px" opacity="0.7" margin="20px 0 0 0" />
         <Wh00tStatusContainer>
           {progressView}
           <Wh00tConnectTitle fontSize={titleFontSize} margin={titleMargin}>

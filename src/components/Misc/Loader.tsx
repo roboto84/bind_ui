@@ -28,7 +28,7 @@ function Loader(props: LoaderProps) {
       diameter = '30px';
       speed = '1.5s';
       loaderPadding = '0';
-      loaderMargin = '20px';
+      loaderMargin = '18px';
       break;
     default:
       borderThickness = '16px';

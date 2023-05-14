@@ -3,7 +3,9 @@ export enum GlobalActionsEnum {
 }
 
 export enum Wh00tActionsEnum {
-  MINIMIZED_SWITCH = 'MINIMIZED_SWITCH',
+  WINDOW_MIN = 'WINDOW_MIN',
+  WINDOW_MED = 'WINDOW_MED',
+  WINDOW_MAX = 'WINDOW_MAX',
   NEW_MESSAGE = 'NEW_MESSAGE',
   HISTORICAL_MESSAGE = 'HISTORICAL_MESSAGE',
   CLEAR_MESSAGES = 'CLEAR_MESSAGES',
@@ -22,6 +24,12 @@ export enum Wh00tMessageTypeEnum {
   SOCKET = 'SOCKET',
 }
 
+export enum Wh00tWindowStateEnum {
+  MIN = 'MIN',
+  MED = 'MED',
+  MAX = 'MAX',
+}
+
 export enum ThemeModeEnum {
   LIGHT = 'LIGHT',
   DARK = 'DARK'
@@ -30,5 +38,6 @@ export enum ThemeModeEnum {
 export enum LocalStorageEnum {
   THEME = 'THEME',
   USERNAME ='USERNAME',
-  STAY_CONNECTED ='STAY_CONNECTED'
+  STAY_CONNECTED ='STAY_CONNECTED',
+  CHAT_STATE = 'CHAT_STATE'
 }

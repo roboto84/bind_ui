@@ -22,7 +22,7 @@ export function WeatherChartSubNavigation() {
     { borderRadius: '0 5px 5px 0', linkTo: 'pollen_weed', navTitle: getWeatherTableTitle('weedIndex') },
   ];
   return (
-    <SubNavigationContainer margin="40px 0 0 0" justifyContent="center">
+    <SubNavigationContainer margin="40px 0 0 0" justifyContent="center" gap="12px 6px">
       {
         navConfig.map((navItem: NavigationItemConfig) => (
           <NavigationLink

@@ -12,7 +12,7 @@ import { WeatherBasics } from '@/dataSource/types/apiTypes';
 import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 
 export function Air() {
   const { isLoading, isError, data, error } = useQuery<WeatherBasics,

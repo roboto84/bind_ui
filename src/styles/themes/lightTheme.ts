@@ -1,15 +1,17 @@
 import { ThemeType } from '@/types/themeTypes';
-import { lexiconLight } from '@/views/lexicon/styles/lexiconThemes';
+import { lexiconLight } from '@/views/search/lexicon/styles/lexiconThemes';
 import { debugLight } from '@/views/debug/styles/debugThemes';
 import { wh00tLight } from '@/views/wh00t/styles/wh00tThemes';
 import { airLight } from '@/views/air/styles/airThemeStyle';
 import { homeLight } from '@/views/home/styles/homeThemes';
 import { shared } from '@/styles/themes/sharedTheme';
 import { customThemeLight } from '@/styles/themes/customTheme';
+import { arcadiaLight } from '@/views/search/arcadia/styles/arcadiaThemes';
 
 export const LightTheme: ThemeType = {
   core: {
     mainThemeColor: customThemeLight.darkBlue,
+    colorScheme: 'light',
     bgColor: '#d4d4d4',
     textColor: 'black',
     basicShadow: '0 0 0 1px rgba(0,0,0,0.06) , 0 2px 2px rgba(0,0,0,0.04) , 0 4px 4px rgba(0,0,0,0.05) , 0 6px 6px rgba(0,0,0,0.06);',
@@ -17,7 +19,7 @@ export const LightTheme: ThemeType = {
       linkColor: customThemeLight.darkBlue,
     },
     section: {
-      backgroundColor: '#e3e3e3',
+      backgroundColor: '#E9E9E9',
       borderColor: '#c7c7c7',
     },
     table: {
@@ -45,7 +47,7 @@ export const LightTheme: ThemeType = {
     fontColor: '#4e4e4e',
     transitionFontColor: 'white',
     backgroundColor: '#e3e3e3',
-    alertColor: '#dc0e10',
+    alertColor: '#d36010',
   },
   subButton: {
     backgroundColor: '#848585',
@@ -78,12 +80,14 @@ export const LightTheme: ThemeType = {
     subTitleColor: '#6c6c6c',
     secondaryTitleColor: customThemeLight.darkBlue,
     secondaryTitleBrightness: 'brightness(100%)',
-    borderBottomColor: '#d4d4d4',
+    activeBorderBottomColor: '#bebebe',
+    inactiveBorderBottomColor: '#d4d4d4',
   },
   home: homeLight,
   air: airLight,
   wh00t: wh00tLight,
   lexicon: lexiconLight,
+  arcadia: arcadiaLight,
   debug: debugLight,
   shared,
 };

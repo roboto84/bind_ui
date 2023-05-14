@@ -30,6 +30,22 @@ export type LexiconEndpointsType = {
   wordSearch: string
 }
 
+export type ArcadiaEndpointsType = {
+  tags: string,
+  wordSearch: string,
+  removeItem: string,
+  editItem: string,
+  addItem: string
+}
+
+export type ArcadiaTags = {
+  [key: string]: string[]
+}
+
+export type ArcadiaTagsApiResult = {
+  arcadiaSubjects: ArcadiaTags
+}
+
 export type LatestWordListApiResult = {
   lexiconWords: string[]
 }

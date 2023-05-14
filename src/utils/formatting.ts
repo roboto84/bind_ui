@@ -34,9 +34,14 @@ export function getD3StandardDateTime(timestamp: string): string {
   return `${dateTime.year}-${dateTime.month}-${dateTime.date}T${dateTime.hour}:${dateTime.minute}:${dateTime.seconds}`;
 }
 
-export function getLocalStandardDateTime(includeSeconds?: boolean, timestamp?: string): string {
+export function getLocalStandardDateTime(
+  includeSeconds?: boolean,
+  timestamp?: string,
+  includeYear?: boolean,
+): string {
   const dateTime: StandardTime = getLocalStandardDateObject(timestamp);
-  return `${dateTime.month}/${dateTime.date} ${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
+  const year: string = getLocalStandardDateObject().year !== dateTime.year || includeYear ? `/${dateTime.year}` : '';
+  return `${dateTime.month}/${dateTime.date}${year}-${dateTime.hour}:${dateTime.minute}${includeSeconds ? `:${dateTime.seconds}` : ''}`;
 }
 
 export function camelCaseToSpaced(camelCasedText: string): string {
@@ -49,4 +54,54 @@ export function capitalizedFirst(text: string): string {
 
 export function twoDecimalPlaces(number: number): number {
   return +number.toFixed(2);
+}
+
+export function substringDotted(text: string, subStringLength: number): string {
+  return text.length > subStringLength ? text.substring(0, subStringLength).concat('...') : text;
+}
+
+export function formatUrl(url: string): string {
+  return !url.startsWith('http://') && !url.startsWith('https://') ? `https://${url}` : url;
+}
+
+export function getBaseUrl(url: string): string {
+  const urlArray = url.split('/');
+  const protocol = urlArray[0];
+  const host = urlArray[2];
+  return `${protocol}//${host}`;
+}
+
+export function urlArrowSplit(url: string): string {
+  const urlSplit = url.split('/');
+  let newUrlView = `${urlSplit[0]}${urlSplit[1]}//`.concat(urlSplit.slice(2).join(' › '));
+  newUrlView = newUrlView[newUrlView.length - 2] === '›'
+    ? newUrlView.substring(0, newUrlView.length - 3)
+    : newUrlView;
+  return newUrlView;
+}
+
+export function imageUrlCompletion(url: string, imageUrl: string): string {
+  if (imageUrl !== 'None') {
+    if (imageUrl[0] === '/' && imageUrl[1] !== '/') {
+      return getBaseUrl(url).concat(imageUrl);
+    }
+
+    if (imageUrl[0] === '.' && imageUrl[1] === '/') {
+      return getBaseUrl(url).concat(imageUrl.substring(1));
+    }
+
+    if (imageUrl[0] === '/' && imageUrl[1] === '/') {
+      return imageUrl;
+    }
+
+    if (imageUrl[0] !== 'h') {
+      const urlSplit = url.split('/');
+
+      if (urlSplit.length <= 3) {
+        return url.concat(`/${imageUrl}`);
+      }
+      return url.split('/').slice(0, -1).join('/').concat(`/${imageUrl}`);
+    }
+  }
+  return imageUrl;
 }

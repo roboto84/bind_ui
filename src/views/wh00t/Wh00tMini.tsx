@@ -2,7 +2,11 @@ import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import Wh00tConnect from '@/views/wh00t/components/Wh00tConnect/Wh00tConnect';
 import { useLocation } from 'react-router-dom';
-import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
+import {
+  Wh00tActionsEnum,
+  Wh00tMessageTypeEnum,
+  Wh00tWindowStateEnum,
+} from '@/context/types/enums';
 import { BsFillChatTextFill } from 'react-icons/bs';
 import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Size } from '@/types';
@@ -19,11 +23,18 @@ import { Wh00tChatHeader } from './components/Wh00tChatHeader/Wh00tChatHeader';
 export function Wh00tMini() {
   const { pathname } = useLocation();
   const { state, dispatch } = useWh00tWebsocket();
-  const isLargeWh00t: boolean = (pathname.includes('wh00t'));
-  const wh00tMinimizeSwitch = () => {
+  const isWh00tLarger: boolean = (pathname.includes('chat')) || state.wh00tWindowState === Wh00tWindowStateEnum.MAX;
+  const wh00tWindowSwitch = (newWindowState: Wh00tWindowStateEnum) => {
+    let dispatchAction: Wh00tActionsEnum = Wh00tActionsEnum.WINDOW_MIN;
+
+    if (newWindowState === Wh00tWindowStateEnum.MED) {
+      dispatchAction = Wh00tActionsEnum.WINDOW_MED;
+    } else if (newWindowState === Wh00tWindowStateEnum.MAX) {
+      dispatchAction = Wh00tActionsEnum.WINDOW_MAX;
+    }
     dispatch({
       source: Wh00tMessageTypeEnum.LOCAL,
-      type: Wh00tActionsEnum.MINIMIZED_SWITCH,
+      type: dispatchAction,
     });
   };
   const miniChatHeader: JSX.Element = (
@@ -34,17 +45,20 @@ export function Wh00tMini() {
         minimize: true,
         disconnect: true,
       }}
-      minimizeSwitch={wh00tMinimizeSwitch}
+      windowSwitch={wh00tWindowSwitch}
     />
   );
 
-  if (isLargeWh00t) {
+  if (isWh00tLarger) {
     return (<div />);
   }
 
-  if (state.wh00tMinimizedSwitch) {
+  if (state.wh00tWindowState === Wh00tWindowStateEnum.MIN) {
     return (
-      <MinimizedWh00tButton title="Wh00t Mini Chat" onClick={wh00tMinimizeSwitch}>
+      <MinimizedWh00tButton
+        title="Wh00t Mini Chat"
+        onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MAX)}
+      >
         <MinimizedWh00tIconContainer>
           <BsFillChatTextFill />
         </MinimizedWh00tIconContainer>

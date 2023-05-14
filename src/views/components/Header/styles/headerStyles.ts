@@ -1,21 +1,26 @@
 import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types/themeTypes';
+import { HeaderContainerProps } from '@/views/components/Header/types/headerTypes';
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.header<HeaderContainerProps>`
   font-size: 11px;
-  margin: 0 0 0 10px;
+  padding: 0 0 0 10px;
   display: flex;
   flex-direction: row;
-  border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
+  border-bottom: solid 1px ${(props:HeaderContainerProps) => (
+    props.sidePanelActive
+      ? props.theme.header.activeBorderBottomColor : props.theme.header.inactiveBorderBottomColor
+  )};
   height: 65px;
+  justify-content: space-between;
   
   & a:link, a:visited {
     margin: 0;
   }
 
   @media ${device.tablet} {
-    margin: -15px 5px 0 5px;
+    margin: -15px 5px 0 -8px;
     height: 68px;
   }
 `;
@@ -24,7 +29,6 @@ export const TitleContainer = styled.div`
 `;
 
 export const HeaderTitleContainer = styled.div`
-  width: calc(100% - 375px);
   display: flex;
 
   @media ${device.tablet} {
@@ -34,6 +38,7 @@ export const HeaderTitleContainer = styled.div`
 
 export const Title = styled.h1`
   display: flex;
+  margin-left: 8px;
   margin-top: 10px;
   
   @media ${device.tablet} {
@@ -83,7 +88,7 @@ export const TagContainer = styled.div`
 export const SubTitle = styled.div`
   color: ${(props:GlobalThemeType) => props.theme.header.subTitleColor};
   font-size: 13px;
-  margin: 0 30px 10px 17px;
+  margin: 0 30px 10px 10px;
 
   @media ${device.tablet} {
     display: none;
@@ -103,7 +108,7 @@ export const NavLinksContainer = styled.nav`
   @media ${device.mobileXL} {
     padding: 10px 0;
     justify-content: center;
-    border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.borderBottomColor};
+    border-bottom: solid 1px ${(props:GlobalThemeType) => props.theme.header.activeBorderBottomColor};
   }
 `;
 
@@ -111,7 +116,7 @@ export const NavContainer = styled.div`
   all: unset;
   display: flex;
   height: 34px;
-  width: 360px;
+  gap: 3px;
   justify-content: space-between;
 
   @media ${device.mobileXL} {
@@ -126,7 +131,6 @@ export const NavContainer = styled.div`
 
 export const NavigationOptional = styled.div`
   display: flex;
-  width: 30px;
   justify-content: space-between;
   
   @media ${device.mobileXL} {
@@ -141,7 +145,8 @@ export const MobileNavigationMenuContainer = styled.div`
   
   @media ${device.mobileXL} {
     display: inherit;
-  }
+    margin: 12px 2px 0 0;
+    height: 51px;
 `;
 
 export const MobileNavContainer = styled.div`

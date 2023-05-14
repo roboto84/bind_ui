@@ -1,5 +1,5 @@
-import faviconDefault from '@/assets/favicon/favicon-16x16.png';
-import faviconNotify from '@/assets/favicon/favicon-16x16-notify.png';
+import faviconDefault from '@/assets/favicon/favicon-32x32.png';
+import faviconNotify from '@/assets/favicon/favicon-32x32-notify.png';
 import notificationSound from '@/assets/sound/messageAlert.mp3';
 
 import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
@@ -44,7 +44,7 @@ export class AppNotification {
   }
 
   notificationTimer() {
-    const newMessageText: string = 'New Wh00t';
+    const newMessageText: string = 'New Message';
     setTimeout(() => {
       if (this.externalNotificationIsActive) {
         this.notificationTimer();

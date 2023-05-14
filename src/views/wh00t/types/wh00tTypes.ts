@@ -31,13 +31,19 @@ export type Wh00tMessageTextProps = {
 
 export enum ElementSize {
   SMALL = 'SMALL',
+  MED = 'MED',
   LARGE = 'LARGE'
+}
+
+export type Wh00tProps = {
+  windowControls: boolean,
+  windowSize: ElementSize
 }
 
 export type Wh00tChatHeaderProps = {
   headerButtons: HeaderButtons,
   headerSize: ElementSize,
-  minimizeSwitch?: Function
+  windowSwitch?: CallableFunction
 }
 
 export interface Wh00tChatHeaderContainerProps extends GlobalThemeType {

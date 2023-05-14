@@ -1,8 +1,10 @@
 import React from 'react';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { FiLogOut, FiMaximize, FiMinimize } from 'react-icons/fi';
+import { VscChromeMaximize, VscChromeMinimize, VscDiffRenamed } from 'react-icons/vsc';
 import { BsFillChatTextFill } from 'react-icons/bs';
+import {
+  Wh00tWindowStateEnum,
+} from '@/context/types/enums';
 import {
   Wh00tChannelTitle, Wh00tChatHeaderButtonsContainer,
   Wh00tChatHeaderButton, Wh00tChatHeaderContainer,
@@ -11,18 +13,17 @@ import {
 import { ElementSize, Wh00tChatHeaderProps } from '../../types/wh00tTypes';
 
 export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
-  const { headerSize, headerButtons, minimizeSwitch } = props;
-  const navigate: NavigateFunction = useNavigate();
+  const { headerSize, headerButtons, windowSwitch } = props;
   const { state } = useWh00tWebsocket();
   let headerMargin: string = '0';
-  let headerBorderRadius: string = '0';
+  let headerBorderRadius: string = '3px';
 
   const wh00tDisconnect = () => {
     state.wh00tWebSocket.disconnectWebSocket();
   };
 
-  const wh00tMinimizeSwitch = () => {
-    minimizeSwitch();
+  const wh00tWindowSwitch = (newWindowState: Wh00tWindowStateEnum) => {
+    windowSwitch(newWindowState);
   };
 
   const connectedTitle: JSX.Element = (
@@ -45,24 +46,32 @@ export function Wh00tChatHeader(props: Wh00tChatHeaderProps) {
 
   if (headerSize === ElementSize.LARGE) {
     headerMargin = '0 5px';
-    headerBorderRadius = '3px';
+  } else if (headerSize === ElementSize.MED) {
+    headerMargin = '0';
+    headerBorderRadius = '0';
   }
 
   const minimizeButton: JSX.Element = headerButtons.minimize ? (
-    <Wh00tChatHeaderButton title="Minimize Chat" onClick={wh00tMinimizeSwitch}>
-      <FiMinimize />
+    <Wh00tChatHeaderButton
+      title="Minimize Chat"
+      onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MIN)}
+    >
+      <VscChromeMinimize />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
   const maximizeButton: JSX.Element = headerButtons.maximize ? (
-    <Wh00tChatHeaderButton title="Maximize Chat" onClick={() => navigate('/wh00t')}>
-      <FiMaximize />
+    <Wh00tChatHeaderButton
+      title="Maximize Chat"
+      onClick={() => wh00tWindowSwitch(Wh00tWindowStateEnum.MAX)}
+    >
+      <VscChromeMaximize />
     </Wh00tChatHeaderButton>
   ) : undefined;
 
   const disconnectButton: JSX.Element = headerButtons.disconnect ? (
     <Wh00tChatHeaderButton title="Logout of Chat" onClick={wh00tDisconnect}>
-      <FiLogOut />
+      <VscDiffRenamed />
     </Wh00tChatHeaderButton>
   ) : undefined;
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { GlobalThemeType } from '@/types';
 
 export const Wh00tContainer = styled.section`
-  display: unset;
+  height: calc(100vh - 65px);
 `;
 
 export const Wh00tBackground = styled.div`

@@ -10,7 +10,7 @@ import Loader from '@/components/Misc/Loader';
 import { ErrorView } from '@/components/Error/ErrorView';
 import { DebugMessage, DebugApiResponse } from '@/dataSource/types/apiTypes';
 import { debugApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { DebugMessageContainer } from './components/DebugMessage';
 
 export function Debug() {

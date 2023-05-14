@@ -1,15 +1,18 @@
 import { ThemeType } from '@/types/themeTypes';
-import { lexiconDark } from '@/views/lexicon/styles/lexiconThemes';
+import { lexiconDark } from '@/views/search/lexicon/styles/lexiconThemes';
 import { debugDark } from '@/views/debug/styles/debugThemes';
 import { customThemeDark } from '@/styles/themes/customTheme';
 import { wh00tDark } from '@/views/wh00t/styles/wh00tThemes';
 import { airDark } from '@/views/air/styles/airThemeStyle';
 import { homeDark } from '@/views/home/styles/homeThemes';
 import { shared } from '@/styles/themes/sharedTheme';
+import { arcadiaDark } from '@/views/search/arcadia/styles/arcadiaThemes';
+import { tomorrowDark } from '@/styles/themes/tomorrowTheme';
 
 export const DarkTheme: ThemeType = {
   core: {
     mainThemeColor: customThemeDark.mainThemeColor, // Consider rgb(56 189 248)
+    colorScheme: 'dark',
     bgColor: customThemeDark.background,
     textColor: customThemeDark.textColor,
     basicShadow: 'rgb(22, 22, 22) 4px 4px 7px;',
@@ -64,7 +67,7 @@ export const DarkTheme: ThemeType = {
     fontColor: '#d1d2d2',
     transitionFontColor: 'black',
     backgroundColor: '#484c58',
-    alertColor: '#f50809',
+    alertColor: tomorrowDark.yellow,
   },
   subButton: {
     backgroundColor: '#484c58',
@@ -78,12 +81,14 @@ export const DarkTheme: ThemeType = {
     subTitleColor: '#939393',
     secondaryTitleColor: customThemeDark.mainThemeColor,
     secondaryTitleBrightness: 'brightness(115%)',
-    borderBottomColor: customThemeDark.background,
+    activeBorderBottomColor: '#3F3F3F',
+    inactiveBorderBottomColor: customThemeDark.background,
   },
   home: homeDark,
   air: airDark,
   wh00t: wh00tDark,
   lexicon: lexiconDark,
+  arcadia: arcadiaDark,
   debug: debugDark,
   shared,
 };

@@ -11,8 +11,8 @@ import { device } from '@/styles/responsive';
 export const Wh00tConnectContainer = styled.div`
   max-width: 375px;
   height: 210px;
-  margin: 10% auto auto;
-  padding: 20px;
+  margin: auto;
+  padding: 10% 20px 0;
 `;
 
 interface Wh00tConnectSectionProps extends GlobalThemeType {

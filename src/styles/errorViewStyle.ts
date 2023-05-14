@@ -19,3 +19,8 @@ export const ErrorReason = styled.span`
   margin-left: 20px;
   color: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleColor};
 `;
+
+export const ErrorSmallContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

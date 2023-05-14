@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 
 export const HomeContainer = styled.div`
-  padding-top: calc(11vh);
+  padding-top: calc(10vh);
 
   &.side-flexed {
     display: flex;

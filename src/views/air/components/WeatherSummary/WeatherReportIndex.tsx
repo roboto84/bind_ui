@@ -21,7 +21,7 @@ export function WeatherReportIndex() {
       <ErrorView title="Data Error">
         <div>Is it for latest words? {isError}</div>
         <div>What is the error?</div>
-        <div>{error}</div>
+        <div>{error.message}</div>
       </ErrorView>
     );
   }

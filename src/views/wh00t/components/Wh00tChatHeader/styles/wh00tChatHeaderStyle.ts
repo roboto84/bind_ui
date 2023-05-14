@@ -36,7 +36,7 @@ export const Wh00tChatHeaderButtonsContainer = styled.ul`
 `;
 
 export const Wh00tChatHeaderButton = styled.li`
-  padding: 0 8px;
+  padding: 0 7px;
   color: #eee;
   font-size: 16px;
   

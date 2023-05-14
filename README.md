@@ -1,23 +1,24 @@
-<h1 align="center">roboto_ui</h1>
+<h1 align="center">bind_ui</h1>
 
 <div align="center">
-	<img src="assets/roboto_ui.png" width="250" title="roboto logo">
+	<img src="assets/bind_ui.png" width="250" title="Bind logo">
 </div>
 
 ## About
-`roboto_ui` is the frontend for [roboto](https://github.com/roboto84/roboto). Check out the `roboto` repository to learn more.
+`bind_ui` is the frontend for [Bind](https://github.com/roboto84/bind). Check out the `Bind` repository to learn 
+more.
 
 ## Usage
-To run `roboto_ui` with all of its respective services (api, chat server, etc) goto the [roboto](https://github.com/roboto84/roboto) repo and follow its README.
+To run `bind_ui` with all of its respective services (api, chat server, etc) goto the [Bind](https://github.com/roboto84/Bind) repo and follow its README.
 
 <br/>
 
 <div align="center">
-	<img src="assets/roboto_ui_1.png" title="roboto light mode">
+	<img src="assets/ui_1.png" title="Bind light mode">
     <br/>
     Light mode
     <br/><br/>
-    <img src="assets/roboto_ui_2.png" title="roboto dark mode">
+    <img src="assets/ui_2.png" title="Bind dark mode">
     <br/>
     Dark mode
 </div>
@@ -27,7 +28,7 @@ Git commits follow [Conventional Commits](https://www.conventionalcommits.org) m
 
 <br/>
 <sup>
-    <a href="https://www.flaticon.com/free-icons/robot" target="_blank" title="robot icons">
-        roboto_ui icon created by Freepik - Flaticon
+    <a href="https://www.flaticon.com/free-icons/flask" target="_blank" title="flask icons">
+        bind_ui icon created by Freepik - Flaticon
     </a>
 </sup>

@@ -2,12 +2,11 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from '@/views/home/Home';
 import { Wh00t } from '@/views/wh00t/Wh00t';
-import { LexiconSearchHome } from '@/views/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
-import { Lexicon } from '@/views/lexicon/Lexicon';
 import { Error404 } from '@/views/404/404';
 import { Layout } from '@/views/components/Layout';
-import { Alexandria } from '@/views/arcadia/Alexandria';
 import { Air } from '@/views/air/Air';
+import { Search } from '@/views/search/Search';
+import { ElementSize } from '@/views/wh00t/types/wh00tTypes';
 import { Debug } from './views/debug/Debug';
 
 export default function AppRoutes() {
@@ -17,38 +16,30 @@ export default function AppRoutes() {
         <Route
           index
           element={(
-            <Layout subtitle="software worth debugging">
+            <Layout subtitle="Data Curator">
               <Home />
             </Layout>
           )}
         />
         <Route
           path="air"
-          element={<Layout secondaryTitle="Air" subtitle="it's what you live in and breathe" />}
+          element={<Layout secondaryTitle="Air" subtitle="it's what you breathe" />}
         >
           <Route index element={<Air />} />
           <Route path="data/*" element={<Air />} />
         </Route>
         <Route
-          path="alexandria"
-          element={(
-            <Layout secondaryTitle="Alexandria" subtitle="learn as if you'll live forever" />
-          )}
+          path="search"
+          element={<Layout secondaryTitle="Search" subtitle="learn as if you'll live forever" />}
         >
-          <Route index element={<Alexandria />} />
+          <Route index element={<Search />} />
+          <Route path="system/*" element={<Search />} />
         </Route>
         <Route
-          path="lexicon"
-          element={<Layout secondaryTitle="Lexicon" subtitle="alphabetical arrangement of words" />}
+          path="chat"
+          element={<Layout secondaryTitle="Chat" subtitle="A-O River Communication System" />}
         >
-          <Route index element={<Lexicon />} />
-          <Route path="search" element={<LexiconSearchHome />} />
-        </Route>
-        <Route
-          path="wh00t"
-          element={<Layout secondaryTitle="wh00t" subtitle="A-O River Communication System" />}
-        >
-          <Route index element={<Wh00t />} />
+          <Route index element={<Wh00t windowSize={ElementSize.LARGE} windowControls={false} />} />
         </Route>
         <Route
           path="debug"
@@ -60,7 +51,7 @@ export default function AppRoutes() {
       <Route
         path="*"
         element={(
-          <Layout title="Error" subtitle="have you tried turning it off and on again?">
+          <Layout secondaryTitle="Error" subtitle="have you tried turning it off and on again?">
             <Error404 />
           </Layout>
         )}

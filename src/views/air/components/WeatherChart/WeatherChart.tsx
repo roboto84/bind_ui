@@ -6,7 +6,7 @@ import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
 import { LineChart, ChartObject } from '@/components/Charts/LineChart';
 import { WeatherChartSummary } from '@/views/air/components/WeatherChart/WeatherChartSummary';
-import { ErrorViewDefault } from '@/components/Error/ErrorViewDefault';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { camelCaseToSpaced, capitalizedFirst } from '@/utils/formatting';
 import { WeatherChartSection, WeatherSubContainer } from '../../styles/airHomeStyles';
 import { WeatherChartProps, WeatherSummary } from '../../types/airTypes';

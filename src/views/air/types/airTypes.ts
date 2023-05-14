@@ -156,7 +156,7 @@ export type WeatherTablesProps = {
 }
 
 export interface WeatherSubcategoryProps extends GlobalThemeType{
-  isHighLight?: boolean
+  isHighLight ?: boolean
 }
 
 export type WeatherTableObject<Type> = {
@@ -171,4 +171,5 @@ export interface WeatherChartProps {
 export interface SubNavigationProps extends GlobalThemeType{
   margin ?: string,
   justifyContent: string
+  gap ?: string
 }

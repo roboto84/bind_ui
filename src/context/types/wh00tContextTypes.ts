@@ -1,6 +1,10 @@
 import { Wh00tWebSocket } from '@/dataSource/webSockets/wh00tWebSocket';
 import { AppNotification } from '@/utils/appNotification';
-import { Wh00tActionsEnum, Wh00tMessageTypeEnum } from '@/context/types/enums';
+import {
+  Wh00tActionsEnum,
+  Wh00tMessageTypeEnum,
+  Wh00tWindowStateEnum,
+} from '@/context/types/enums';
 
 export type Wh00tMessagePackageData = {
   voice ?: string
@@ -24,7 +28,7 @@ export type Wh00tContextStateType = {
   wh00tIsConnecting: boolean,
   wh00tConnectionError: boolean,
   wh00tWebSocket: Wh00tWebSocket,
-  wh00tMinimizedSwitch: boolean,
+  wh00tWindowState: Wh00tWindowStateEnum,
   wh00tNotifier: AppNotification,
   wh00tInternalAlert: boolean
 }

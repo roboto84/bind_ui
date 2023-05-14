@@ -21,7 +21,8 @@ export type HeaderStyleType = {
   subTitleColor: string,
   secondaryTitleColor: string,
   secondaryTitleBrightness: string,
-  borderBottomColor: string,
+  activeBorderBottomColor: string,
+  inactiveBorderBottomColor: string,
 };
 
 export type ThrobberStyleType = {
@@ -78,6 +79,14 @@ export type LexiconThemeType = {
   }
 }
 
+export type ArcadiaThemeType = {
+  search: {
+    alphabetHeaderColor: string,
+    subTitleColor: string,
+    timeColor: string,
+  }
+}
+
 export type DebugThemeType = {
   messageTitleColor: string,
   messageTextColor: string,
@@ -89,6 +98,7 @@ export type DebugThemeType = {
 
 export type CoreStyleType = {
   mainThemeColor: string,
+  colorScheme: string,
   bgColor: string,
   textColor: string,
   basicShadow: string,
@@ -207,6 +217,7 @@ export type ThemeType = {
   home: HomeThemeType,
   air: AirThemeType,
   lexicon: LexiconThemeType,
+  arcadia: ArcadiaThemeType,
   wh00t: Wh00tThemeType,
   debug: DebugThemeType,
   shared: SharedThemeType,
