@@ -11,6 +11,7 @@ import {
 import { ArcadiaView, SearchSystem } from '@/views/search/types/searchTypes';
 import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecordButton';
 import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
+import { quickSearchSystems } from '@/views/search/arcadia/utils';
 import { SearchMainContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
@@ -28,9 +29,23 @@ export function Search() {
     setIsAddRecordViewable(false);
   };
 
-  const generalSearch = (url: string, value: string) => {
-    if (value !== '') {
-      navigate(`${url}${value}`);
+  const generalSearch = (url: string, generalSearchTerm: string) => {
+    if (generalSearchTerm !== '') {
+      let quickSearchUrl: string;
+      Object.keys(quickSearchSystems).forEach((key: string) => {
+        const quickSearchKey = `!${key}`;
+        if (generalSearchTerm.indexOf(quickSearchKey) > -1) {
+          quickSearchUrl = quickSearchSystems[key](
+            generalSearchTerm.replace(quickSearchKey, ''),
+          );
+        }
+      });
+
+      if (quickSearchUrl) {
+        window.location.href = quickSearchUrl;
+      } else {
+        navigate(`${url}${generalSearchTerm}`);
+      }
     }
   };
 

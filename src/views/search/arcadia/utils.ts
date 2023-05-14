@@ -46,3 +46,24 @@ export function organizeNodes(nodes: ArcSearchResultPackage) {
 
   return { urlCache, tagCache };
 }
+
+export const quickSearchSystems: {[key: string]: Function} = {
+  ph(searchTerm: string) {
+    return `https://www.phind.com/search?q=${searchTerm}&source=searchbox`;
+  },
+  g(searchTerm: string) {
+    return `https://www.google.com/search?q=${searchTerm}`;
+  },
+  dd(searchTerm: string) {
+    return `https://duckduckgo.com/?t=ffab&q=${searchTerm}&ia=web`;
+  },
+  w(searchTerm: string) {
+    return `https://en.wikipedia.org/wiki/${searchTerm}`;
+  },
+  st(searchTerm: string) {
+    return `https://store.steampowered.com/search/?term=${searchTerm}`;
+  },
+  r(searchTerm: string) {
+    return `https://www.reddit.com/search/?q=${searchTerm}`;
+  },
+};
