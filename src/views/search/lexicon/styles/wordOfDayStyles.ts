@@ -11,7 +11,7 @@ const GeneralStyle = styled.li`
 `;
 
 export const WordOfDayContainer = styled.div`
-  height: 190px;
+  height: 220px;
   overflow: auto;
   
   @media ${device.tabletS} {

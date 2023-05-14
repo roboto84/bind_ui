@@ -1,5 +1,4 @@
 import React from 'react';
-import { LatestWordList } from '@/views/search/lexicon/components/LatestWordList';
 import { useQuery, UseQueryResult } from 'react-query';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
@@ -7,7 +6,6 @@ import { lexiconApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
 import { ArcadiaTags, LatestWordListApiResult } from '@/dataSource/types/apiTypes';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import {
-  AlphabetHeader,
   ArcadiaSearchHomeContainer,
   ArcInitialDataContainer,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
@@ -17,10 +15,6 @@ import {
 import { LexiconCard } from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
 import TagGroup from '@/views/search/arcadia/components/TagGroup';
 import { randomIntFromInterval } from '@/utils/utils';
-import { GeneralSection } from '@/views/search/styles/searchStyles';
-import {
-  LexiconWordListContainer,
-} from '@/views/search/lexicon/styles/lexiconCardStyles';
 import { WordDefinition } from '../../lexicon/types/lexiconTypes';
 
 const searchTags = (tagSearchTerm: string, arcadiaTags: ArcadiaTags): string[] => {
@@ -72,9 +66,6 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     wordOfDayHook.data,
     { deep: true },
   );
-  const wordListResult: LatestWordListApiResult = camelcaseKeys<LatestWordListApiResult>(
-    latestWordsHook.data,
-  );
 
   const isSearch: boolean = tagSearchTerm.length > 0;
   let relevantTags: string[];
@@ -93,23 +84,17 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
   return (
     <>
       <ArcInitialDataContainer>
-        <LexiconCard
-          title="Word of the Day"
-          searchTerm={wordOfDayResponse.word}
-        />
         <TagGroup
           highlight={highlightTags}
           title={tagGroupTitle}
           tagList={relevantTags}
           onTagClick={onTagClick}
         />
+        <LexiconCard
+          title="Word of the Day"
+          searchTerm={wordOfDayResponse.word}
+        />
       </ArcInitialDataContainer>
-      <GeneralSection>
-        <AlphabetHeader>Latest {wordListResult.lexiconWords.length} Words Added</AlphabetHeader>
-        <LexiconWordListContainer>
-          <LatestWordList wordList={wordListResult.lexiconWords} />
-        </LexiconWordListContainer>
-      </GeneralSection>
     </>
   );
 }

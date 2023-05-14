@@ -73,8 +73,8 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
   return (
     <ArcadiaContainer>
       <ArcInitialDataContainer>
-        <LexiconCard title="Dictionary" searchTerm={searchResults.subject} />
         {tagView}
+        <LexiconCard title="Dictionary" searchTerm={searchResults.subject} />
       </ArcInitialDataContainer>
       <GeneralSection>
         <div>

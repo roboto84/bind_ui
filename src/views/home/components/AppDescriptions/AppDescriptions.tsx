@@ -1,13 +1,13 @@
 import { AppDescriptionContainer, ChildAppDescriptionContainer } from '@/views/home/styles/homeStyles';
 import React from 'react';
-import RobotoDescription from '@/views/home/components/AppDescriptions/RobotoDescription';
+import BindDescription from '@/views/home/components/AppDescriptions/BindDescription';
 import { appDescriptionsConfig } from '@/views/home/components/AppDescriptions/appDescriptionsConfig';
 import AppDescription from '@/views/home/components/AppDescriptions/AppDescription';
 
 export function AppDescriptions() {
   return (
     <AppDescriptionContainer>
-      <RobotoDescription />
+      <BindDescription />
       <ChildAppDescriptionContainer>
         {
           Object.keys(appDescriptionsConfig).map(

@@ -51,7 +51,7 @@ export const LatestTagsListContainer = styled.ul`{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-height: 145px;
+  max-height: 225px;
   overflow: auto;
   justify-content: center;
   

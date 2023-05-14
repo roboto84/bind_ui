@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { device } from '@/styles/responsive';
 import { GlobalThemeType } from '@/types';
 
-export const RobotoDescriptionContainer = styled.div`
+export const BindDescriptionContainer = styled.div`
   font-size: 16px;
   background-color: ${(props: GlobalThemeType) => props.theme.home.robotoDescription.backgroundColor};
   border: 2px dashed ${(props: GlobalThemeType) => props.theme.home.robotoDescription.borderColor};

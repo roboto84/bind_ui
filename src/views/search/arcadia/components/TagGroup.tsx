@@ -9,17 +9,9 @@ import {
 } from '@/views/search/styles/searchStyles';
 import React from 'react';
 import { TagGroupProps } from '@/views/search/arcadia/types/arcadiaTypes';
-import { Button } from '@/components/Nav/Button';
-import { ShowMoreButtonContainer } from '@/views/search/lexicon/styles/wordOfDayStyles';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 function TagGroup(props: TagGroupProps) {
   const { title, tagList, onTagClick, highlight } = props;
-  const navigate: NavigateFunction = useNavigate();
-  const navigateToTagIndex: CallableFunction = () => {
-    navigate('/search/system/arcadia/index');
-  };
-
   let viewBody: JSX.Element;
   if (tagList && tagList.length > 0) {
     viewBody = (
@@ -52,18 +44,6 @@ function TagGroup(props: TagGroupProps) {
         <LatestTagsListContainer>
           {viewBody}
         </LatestTagsListContainer>
-        <ShowMoreButtonContainer>
-          <Button
-            fontSize="11px"
-            padding="5px"
-            borderRadius="5px"
-            onClick={() => navigateToTagIndex()}
-            title="Show All Tags"
-            margin="0"
-          >
-            Show All Tags
-          </Button>
-        </ShowMoreButtonContainer>
       </TagsSection>
     </TagGroupSection>
   );
