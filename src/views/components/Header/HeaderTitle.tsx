@@ -1,16 +1,14 @@
 import React from 'react';
 import { HeaderProps } from '@/views/components/Header/types/headerTypes';
-
-import Icon from '@/components/Images/Icon';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Tag } from '@/components/Misc/Tag';
+import appLogoIcon from '@/assets/images/app_icon.webp';
 import {
   TitleContainer,
   SubTitle,
   Title,
   ColoredTitle,
   PrimaryTitle,
-  SmallHeaderIconContainer, TagContainer, HeaderTitleContainer,
+  SmallHeaderIconContainer, HeaderTitleContainer,
 } from './styles/headerStyles';
 
 export default function HeaderTitle(props: HeaderProps) {
@@ -22,7 +20,7 @@ export default function HeaderTitle(props: HeaderProps) {
   return (
     <HeaderTitleContainer>
       <SmallHeaderIconContainer onClick={() => navigate('/')}>
-        <Icon margin="5px 0px 0px 5px" fontSize="48px" />
+        <img src={appLogoIcon} alt="Bind logo" />
       </SmallHeaderIconContainer>
       <TitleContainer>
         <Title title={htmlTitle}>

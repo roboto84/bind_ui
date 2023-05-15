@@ -7,6 +7,8 @@ const webpack = require('webpack');
 const DEFAULT_API_PORT = '8000';
 const DEFAULT_API_URL = '';
 const DEFAULT_API_SSL = 'true';
+const DEFAULT_APP_DESCRIPTION = 'A platform which provides a flexible interface for data that' +
+  ' supports curiosity and learning.';
 
 module.exports = (env) => ({
   entry: './src',
@@ -16,7 +18,7 @@ module.exports = (env) => ({
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.png', '.jpg'],
+    extensions: ['.tsx', '.ts', '.js', '.png', '.jpg', '.webp'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },
@@ -29,7 +31,7 @@ module.exports = (env) => ({
         exclude: /node_modules/,
       },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpg|png|webp)$/,
         use: {
           loader: 'url-loader',
         },
@@ -57,7 +59,7 @@ module.exports = (env) => ({
       meta: {
         description: {
           name: 'description',
-          content: 'A web platform that serves as a internet data curator.',
+          content: DEFAULT_APP_DESCRIPTION,
         },
         keyword: {
           name: 'keywords',
@@ -69,7 +71,7 @@ module.exports = (env) => ({
         },
         'og:description': {
           property: 'og:description',
-          content: 'A web platform that serves as a internet data curator.',
+          content: DEFAULT_APP_DESCRIPTION,
         },
         'og:type': {
           property: 'og:type',

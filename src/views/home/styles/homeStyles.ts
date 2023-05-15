@@ -72,6 +72,10 @@ export const HomeRightContainer = styled.div`
   }
 `;
 
+export const AppLogoContainer = styled.div`
+  margin: 70px 0 120px 0;
+`;
+
 export const HomeBottomRight = styled.div`
   text-align: center;
   letter-spacing: 2px;

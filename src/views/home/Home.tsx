@@ -1,6 +1,11 @@
 import React from 'react';
-import { HomeBottomRight, HomeContainer, HomeRightContainer } from '@/views/home/styles/homeStyles';
-import Icon from '../../components/Images/Icon';
+import {
+  AppLogoContainer,
+  HomeBottomRight,
+  HomeContainer,
+  HomeRightContainer,
+} from '@/views/home/styles/homeStyles';
+import appLogo from '@/assets/images/app_logo.webp';
 import { AppDescriptions } from './components/AppDescriptions/AppDescriptions';
 
 export function Home() {
@@ -8,7 +13,9 @@ export function Home() {
     <HomeContainer className="side-flexed">
       <AppDescriptions />
       <HomeRightContainer>
-        <Icon fontSize="395px" opacity="0.7" />
+        <AppLogoContainer>
+          <img src={appLogo} alt="Bind logo" />
+        </AppLogoContainer>
         <HomeBottomRight>
           ... more in development 😅
         </HomeBottomRight>

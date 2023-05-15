@@ -48,16 +48,16 @@ export const Title = styled.h1`
 `;
 
 export const SmallHeaderIconContainer = styled.span`
-  color: ${(props:GlobalThemeType) => props.theme.header.iconColor};
-  display: inherit;
+  color: ${(props: GlobalThemeType) => props.theme.header.iconColor};
+  margin-top: 14px;
 
   &:hover {
     cursor: pointer;
-    color: ${(props:GlobalThemeType) => props.theme.header.iconHoverColor};
+    color: ${(props: GlobalThemeType) => props.theme.header.iconHoverColor};
   }
-  
+
   @media ${device.tablet} {
-    margin: 10px -7px 0px -2px;
+    margin: 19px 0 0 0;
   }
 `;
 

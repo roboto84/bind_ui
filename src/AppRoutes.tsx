@@ -16,7 +16,7 @@ export default function AppRoutes() {
         <Route
           index
           element={(
-            <Layout subtitle="Data Curator">
+            <Layout subtitle="curiosity platform">
               <Home />
             </Layout>
           )}
