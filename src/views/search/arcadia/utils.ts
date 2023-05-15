@@ -43,8 +43,11 @@ export function organizeNodes(nodes: ArcSearchResultPackage) {
       (a: ArcSearchResultsNode, b: ArcSearchResultsNode) => a.subject.localeCompare(b.subject),
     );
   }
-
   return { urlCache, tagCache };
+}
+
+export function openInNewTab(url: string) {
+  window.open(url, '_blank').focus();
 }
 
 export const quickSearchSystems: {[key: string]: Function} = {

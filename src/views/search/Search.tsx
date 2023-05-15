@@ -11,7 +11,7 @@ import {
 import { ArcadiaView, SearchSystem } from '@/views/search/types/searchTypes';
 import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecordButton';
 import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
-import { quickSearchSystems } from '@/views/search/arcadia/utils';
+import { openInNewTab, quickSearchSystems } from '@/views/search/arcadia/utils';
 import { SearchMainContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
@@ -42,7 +42,7 @@ export function Search() {
       });
 
       if (quickSearchUrl) {
-        window.location.href = quickSearchUrl;
+        openInNewTab(quickSearchUrl);
       } else {
         navigate(`${url}${generalSearchTerm}`);
       }
