@@ -1,5 +1,5 @@
 FROM node:19-alpine3.16
-WORKDIR /usr/src/roboto_ui
+WORKDIR /usr/src/bind_ui
 COPY package.json ./
 RUN npm install
 RUN npm install -g http-server
