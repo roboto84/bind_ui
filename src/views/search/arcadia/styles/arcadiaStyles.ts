@@ -225,3 +225,21 @@ export const ArcChangeStatusContainer = styled.div`
   border-top: 1px dotted;
   padding-top: 5px;
 `;
+
+export const ArcadiaGraphCoherenceDataContainer = styled(ArcResultContainer)`
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+`;
+
+export const ArcadiaGraphCoherenceContainer = styled.div`
+  flex-grow: 1;
+`;
+
+export const ArcadiaGraphCoherenceMainNumber = styled.div`
+  font-size: 50px;
+`;
+
+export const ArcadiaGraphCoherenceFormulaContainer = styled.div`
+  margin-top: 20px;
+`;

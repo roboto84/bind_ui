@@ -2,68 +2,52 @@ import React from 'react';
 import { useQuery, UseQueryResult } from 'react-query';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
-import { lexiconApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
-import { ArcadiaTags, LatestWordListApiResult } from '@/dataSource/types/apiTypes';
+import { arcadiaApiEndpoints, lexiconApiEndpoints } from '@/dataSource/restApis/bindRestApi';
+import {
+  ArcadiaSummaryApiResult,
+  LexiconSummaryApiResult,
+} from '@/dataSource/types/apiTypes';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import {
   ArcadiaSearchHomeContainer,
   ArcInitialDataContainer,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
-import {
-  ArcadiaSearchHomeProps,
-} from '@/views/search/arcadia/types/arcadiaTypes';
-import { LexiconCard } from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
+import { ArcadiaSearchHomeProps } from '@/views/search/arcadia/types/arcadiaTypes';
+import LexiconCard from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
 import TagGroup from '@/views/search/arcadia/components/TagGroup';
-import { randomIntFromInterval } from '@/utils/utils';
-import { WordDefinition } from '../../lexicon/types/lexiconTypes';
-
-const searchTags = (tagSearchTerm: string, arcadiaTags: ArcadiaTags): string[] => {
-  const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(arcadiaTags);
-  return arcadiaTagsArrayRepresentation.map(
-    ([, tags]: [string, string[]]) => (
-      tags.filter((value: string) => value.indexOf(tagSearchTerm) > -1)
-    ),
-  ).reduce(
-    (previousValue:string[], currentValue: string[]) => ([...previousValue, ...currentValue]),
-  );
-};
-
-const generateRandomTags = (arcadiaTags: ArcadiaTags): string[] => {
-  const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(arcadiaTags);
-  return arcadiaTagsArrayRepresentation.map(
-    ([, tags]: [string, string[]]) => (tags[randomIntFromInterval(0, tags.length - 1)]),
-  ).filter((value: string) => value.length > 0);
-};
+import { searchTags } from '@/views/search/arcadia/utils';
+import { ArcadiaGraphCoherence } from '@/views/search/arcadia/components/ArcadiaGraphCoherence';
+import { LexiconDictionarySize } from '@/views/search/lexicon/components/LexiconDictionarySize';
+import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
+import { ArcRandomRecord } from '@/views/search/arcadia/components/ArcRandomRecord';
 
 function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
-  const { tagSearchTerm, arcadiaTags, onTagClick } = props;
-  const latestWordsHook: UseQueryResult<LatestWordListApiResult> = useQuery<LatestWordListApiResult,
-    Error>(lexiconApiEndpoints.latestWords);
-  const wordOfDayHook: UseQueryResult<WordDefinition> = useQuery<WordDefinition,
-    Error>(lexiconApiEndpoints.wordOfDay);
+  const { tagSearchTerm, onTagClick } = props;
+  const lexiconSummary: UseQueryResult<LexiconSummaryApiResult> = useQuery<LexiconSummaryApiResult,
+    Error>(lexiconApiEndpoints.summary);
+  const arcadiaSummary: UseQueryResult<ArcadiaSummaryApiResult> = useQuery<ArcadiaSummaryApiResult,
+    Error>(arcadiaApiEndpoints.summary);
 
-  if (latestWordsHook.isLoading || wordOfDayHook.isLoading) {
+  if (lexiconSummary.isLoading || arcadiaSummary.isLoading) {
     return <Loader />;
   }
 
-  if (latestWordsHook.isError || wordOfDayHook.isError) {
-    let errorMessage: string = 'Unknown Error';
-    if (latestWordsHook.isError) {
-      const { message } = latestWordsHook.error as Error;
-      errorMessage = message;
-    } else if (wordOfDayHook.isError) {
-      const { message } = wordOfDayHook.error as Error;
-      errorMessage = message;
-    }
+  if (lexiconSummary.isError || arcadiaSummary.error) {
+    const message = 'Error has occurred getting system summaries';
     return (
       <ArcadiaSearchHomeContainer>
-        <ErrorViewDefault errorMessage={errorMessage} />
+        <ErrorViewDefault errorMessage={message} />
       </ArcadiaSearchHomeContainer>
     );
   }
 
-  const wordOfDayResponse: WordDefinition = camelcaseKeys<WordDefinition>(
-    wordOfDayHook.data,
+  const lexiconSummaryResponse: LexiconSummaryApiResult = camelcaseKeys<LexiconSummaryApiResult>(
+    lexiconSummary.data,
+    { deep: true },
+  );
+
+  const arcadiaSummaryResponse: ArcadiaSummaryApiResult = camelcaseKeys<ArcadiaSummaryApiResult>(
+    arcadiaSummary.data,
     { deep: true },
   );
 
@@ -73,11 +57,11 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
   let highlightTags: boolean = false;
 
   if (isSearch) {
-    relevantTags = searchTags(tagSearchTerm, arcadiaTags);
+    relevantTags = searchTags(tagSearchTerm, arcadiaSummaryResponse.subjects);
     tagGroupTitle = `Tag Search (${relevantTags.length})`;
     highlightTags = true;
   } else {
-    relevantTags = generateRandomTags(arcadiaTags);
+    relevantTags = arcadiaSummaryResponse.randomSubjectSample;
     tagGroupTitle = 'Interesting Tags';
   }
 
@@ -92,7 +76,27 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
         />
         <LexiconCard
           title="Word of the Day"
-          searchTerm={wordOfDayResponse.word}
+          definition={lexiconSummaryResponse.wordOfDay}
+        />
+      </ArcInitialDataContainer>
+      <ArcInitialDataContainer>
+        <ArcadiaGraphCoherence
+          numberOfSubjects={arcadiaSummaryResponse.numberOfSubjects}
+          numberOfUrlRecords={arcadiaSummaryResponse.numberOfUrlRecords}
+        />
+        <LexiconDictionarySize size={lexiconSummaryResponse.numberOfWords} />
+        <ArcRandomRecord
+          record={{
+            id: 3,
+            timeStamp: '',
+            data: 'google.com',
+            tags: [],
+            dataType: 'url',
+            title: 'Temp',
+            description: 'Doing stuff',
+            image: '',
+          }}
+          onTagClick={onTagClick}
         />
       </ArcInitialDataContainer>
     </>
@@ -101,7 +105,6 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
 
 ArcadiaSearchHome.defaultProps = {
   tagSearchTerm: '',
-  tagsMatchIsEmpty: false,
 };
 
 export default ArcadiaSearchHome;

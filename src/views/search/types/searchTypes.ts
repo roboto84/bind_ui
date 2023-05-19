@@ -16,7 +16,7 @@ export enum ArcadiaView {
 
 export type ArcadiaProps = {
   view: ArcadiaView,
-  subTag: string,
+  searchTerm: string,
   setContext: CallableFunction
 }
 

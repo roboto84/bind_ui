@@ -4,8 +4,8 @@ import { GlobalThemeType } from '@/types';
 
 export const BindDescriptionContainer = styled.div`
   font-size: 16px;
-  background-color: ${(props: GlobalThemeType) => props.theme.home.robotoDescription.backgroundColor};
-  border: 2px dashed ${(props: GlobalThemeType) => props.theme.home.robotoDescription.borderColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.home.bindDescription.backgroundColor};
+  border: 2px dashed ${(props: GlobalThemeType) => props.theme.home.bindDescription.borderColor};
   border-radius: 5px;
   box-shadow: ${(props: GlobalThemeType) => props.theme.core.basicShadow};
   padding: 15px 0;

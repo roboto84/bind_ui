@@ -16,6 +16,7 @@ export const LexiconOverviewContainer = styled.div`
 `;
 
 export const LexiconConfirmSearchContainer = styled.div`
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
 `;
@@ -32,6 +33,15 @@ export const LexiconCardContainer = styled(TagsSection)`
   display: flex;
   gap: 0 8px;
   flex-direction: row;
+`;
+
+export const LexiconDictionarySizeValueContainer = styled(LexiconCardContainer)`
+  font-size: 50px;
+  justify-content: center;
+`;
+
+export const LexiconDictionarySizeContainer = styled.div`
+  flex-grow: 1;
 `;
 
 export const LexiconWordListContainer = styled(LexiconCardContainer)`

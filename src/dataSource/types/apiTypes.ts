@@ -1,4 +1,6 @@
 import { WeatherSummary, WeatherUnits } from '@/views/air/types/airTypes';
+import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
+import { ArcResultPackage } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export type AirEndpointsType = {
   weather: string,
@@ -25,12 +27,15 @@ export type WeatherHistory = {
 }
 
 export type LexiconEndpointsType = {
+  summary: string,
   wordOfDay: string,
   latestWords: string,
   wordSearch: string
 }
 
 export type ArcadiaEndpointsType = {
+  summary: string,
+  randomTags: string,
   tags: string,
   wordSearch: string,
   removeItem: string,
@@ -38,12 +43,25 @@ export type ArcadiaEndpointsType = {
   addItem: string
 }
 
-export type ArcadiaTags = {
+export type ArcadiaTagsIndex = {
   [key: string]: string[]
 }
 
+export type ArcadiaSummaryApiResult = {
+  numberOfSubjects: number,
+  numberOfUrlRecords: number,
+  randomSubjectSample: string[],
+  subjects: string[],
+  randomRecordSample: ArcResultPackage
+}
+
 export type ArcadiaTagsApiResult = {
-  arcadiaSubjects: ArcadiaTags
+  subjectIndex: ArcadiaTagsIndex
+}
+
+export type LexiconSummaryApiResult = {
+  numberOfWords: number,
+  wordOfDay: WordDefinition
 }
 
 export type LatestWordListApiResult = {

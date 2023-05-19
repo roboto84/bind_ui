@@ -1,5 +1,4 @@
-import { ArcadiaTags } from '@/dataSource/types/apiTypes';
-import { GlobalThemeType, Size } from '@/types';
+import { GlobalThemeType } from '@/types';
 
 export enum ArcResultDisplay {
   VIEW = 'VIEW',
@@ -151,14 +150,21 @@ export type ArcSearchPageHeaderProps = {
 
 export type ArcadiaSearchHomeProps = {
   tagSearchTerm ?: string
-  tagsMatchIsEmpty ?: boolean,
-  arcadiaTags: ArcadiaTags,
+  onTagClick: CallableFunction
+}
+
+export type ArcadiaGraphCoherenceProps = {
+  numberOfSubjects: number,
+  numberOfUrlRecords: number
+}
+
+export type ArcRandomRecordProps = {
+  record: ArcResultPackage,
   onTagClick: CallableFunction
 }
 
 export type ArcadiaTagIndexProps = {
-  size ?: Size,
-  arcadiaTags: ArcadiaTags,
+  searchTerm: string,
   onTagClick: CallableFunction
 }
 

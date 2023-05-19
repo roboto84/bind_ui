@@ -3,7 +3,7 @@ import {
   getData,
   getLexiconWordSearch,
   getArcadiaWordSearch, deleteArcadiaRecord, editArcadiaRecord, addArcadiaRecord,
-} from '@/dataSource/restApis/robotoRestApi';
+} from '@/dataSource/restApis/bindRestApi';
 import { QueryHookError } from '@/dataSource/types/hookTypes';
 import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import {

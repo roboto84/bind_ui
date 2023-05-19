@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { WeatherHistory } from '@/dataSource/types/apiTypes';
-import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
+import { airApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
 import { LineChart, ChartObject } from '@/components/Charts/LineChart';

@@ -71,13 +71,13 @@ export function Search() {
     {
       index: true,
       element: (
-        <Arcadia view={ArcadiaView.MAIN} subTag={searchTerm} setContext={setSearchContext} />
+        <Arcadia view={ArcadiaView.MAIN} searchTerm={searchTerm} setContext={setSearchContext} />
       ),
     },
     {
       path: 'arcadia/index',
       element: (
-        <Arcadia view={ArcadiaView.INDEX} subTag={searchTerm} setContext={setSearchContext} />
+        <Arcadia view={ArcadiaView.INDEX} searchTerm={searchTerm} setContext={setSearchContext} />
       ),
     },
     { path: 'lexicon/definition', element: <LexiconSearchHome /> },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AlphabetHeader } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { GiSpellBook } from 'react-icons/gi';
 import {
@@ -10,13 +10,30 @@ import {
 } from '@/views/search/lexicon/styles/lexiconCardStyles';
 import { LexiconCardProps } from '@/views/search/lexicon/types/lexiconTypes';
 import { LexiconCardView } from '@/views/search/lexicon/components/lexiconCard/LexiconCardView';
-import { shouldDictionarySearch } from '@/views/search/arcadia/utils';
+import { dictionarySearchTermValidator } from '@/views/search/arcadia/utils';
+import { Size } from '@/types';
+import {
+  LexiconSearchDefinition,
+} from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
+import {
+  LexiconConfirmSearch,
+} from '@/views/search/lexicon/components/lexiconCard/LexiconConfirmSearch';
 
-export function LexiconCard(props: LexiconCardProps) {
-  const { title, searchTerm } = props;
-  const searchDictionary = shouldDictionarySearch(searchTerm);
+function LexiconCard(props: LexiconCardProps) {
+  const { title, searchTerm, definition } = props;
+  const [shouldSearchDefinition, setShouldSearchDefinition] = useState<boolean>(false);
+  const displayDictionaryDefinition = (definition || dictionarySearchTermValidator(searchTerm));
 
-  if (searchDictionary) {
+  if (displayDictionaryDefinition) {
+    let definitionView: JSX.Element;
+    if (definition) {
+      definitionView = <LexiconSearchDefinition size={Size.small} wordDefinition={definition} />;
+    } else if (shouldSearchDefinition) {
+      definitionView = <LexiconCardView searchTerm={searchTerm} />;
+    } else {
+      definitionView = <LexiconConfirmSearch shouldSearch={setShouldSearchDefinition} />;
+    }
+
     return (
       <LexiconCardExternalContainer>
         <GeneralDictionarySection>
@@ -26,7 +43,7 @@ export function LexiconCard(props: LexiconCardProps) {
               <GiSpellBook />
             </IconContainer>
             <LexiconOverviewContainer>
-              <LexiconCardView searchTerm={searchTerm} />
+              {definitionView}
             </LexiconOverviewContainer>
           </LexiconCardContainer>
         </GeneralDictionarySection>
@@ -35,3 +52,10 @@ export function LexiconCard(props: LexiconCardProps) {
   }
   return <div />;
 }
+
+LexiconCard.defaultProps = {
+  searchTerm: '',
+  definition: null,
+};
+
+export default LexiconCard;

@@ -19,13 +19,16 @@ export const airApiEndpoints: AirEndpointsType = {
 };
 
 export const lexiconApiEndpoints: LexiconEndpointsType = {
+  summary: '/lexicon/summary',
   wordOfDay: '/lexicon/word_of_day',
   latestWords: '/lexicon/words/30',
   wordSearch: '/lexicon/word_search/',
 };
 
 export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
-  tags: '/arcadia/subjects',
+  summary: '/arcadia/summary',
+  randomTags: '/arcadia/random_subjects',
+  tags: '/arcadia/subjects_index',
   wordSearch: '/arcadia/word_search/',
   removeItem: '/arcadia/remove/',
   editItem: '/arcadia/update/',
