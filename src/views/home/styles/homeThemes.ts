@@ -2,7 +2,7 @@ import { HomeThemeType } from '@/types';
 import { customThemeDark, customThemeLight } from '@/styles/themes/customTheme';
 
 export const homeDark:HomeThemeType = {
-  robotoDescription: {
+  bindDescription: {
     borderColor: '#9e9f9f',
     backgroundColor: '#353843',
   },
@@ -15,7 +15,7 @@ export const homeDark:HomeThemeType = {
 };
 
 export const homeLight:HomeThemeType = {
-  robotoDescription: {
+  bindDescription: {
     borderColor: customThemeLight.darkBlue,
     backgroundColor: '#e3e3e3',
   },

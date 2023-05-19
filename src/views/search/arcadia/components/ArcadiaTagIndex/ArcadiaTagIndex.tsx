@@ -1,23 +1,58 @@
 import { ArcadiaTagIndexProps } from '@/views/search/arcadia/types/arcadiaTypes';
 import React from 'react';
-import { Size } from '@/types';
 import {
   TagIndexDefault,
 } from '@/views/search/arcadia/components/ArcadiaTagIndex/components/TagIndexDefault';
+import { useQuery, UseQueryResult } from 'react-query';
+import { ArcadiaTagsApiResult } from '@/dataSource/types/apiTypes';
+import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
+import Loader from '@/components/Misc/Loader';
+import { ArcadiaContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
+import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
+import camelcaseKeys from 'camelcase-keys';
 
 export function ArcadiaTagIndex(props: ArcadiaTagIndexProps) {
-  const { size, arcadiaTags, onTagClick } = props;
-  const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(arcadiaTags);
-  switch (size) {
-    case Size.small:
-    case Size.medium:
-    case Size.large:
-    default:
-      return (
-        <TagIndexDefault
-          arcadiaTags={arcadiaTagsArrayRepresentation}
-          onTagClick={onTagClick}
-        />
-      );
+  const { onTagClick, searchTerm } = props;
+  const arcadiaTagsHook: UseQueryResult<ArcadiaTagsApiResult> = useQuery<ArcadiaTagsApiResult,
+    Error>(arcadiaApiEndpoints.tags);
+
+  if (arcadiaTagsHook.isLoading) {
+    return <Loader />;
   }
+
+  if (arcadiaTagsHook.isError) {
+    const { message } = arcadiaTagsHook.error as Error;
+
+    return (
+      <ArcadiaContainer>
+        <ErrorViewDefault errorMessage={message} />
+      </ArcadiaContainer>
+    );
+  }
+
+  const arcadiaTagsResponse: ArcadiaTagsApiResult = camelcaseKeys<ArcadiaTagsApiResult>(
+    arcadiaTagsHook.data,
+    { deep: true },
+  );
+
+  const { subjectIndex } = arcadiaTagsResponse;
+
+  if (searchTerm !== '') {
+    for (const key of Object.keys(subjectIndex)) {
+      subjectIndex[key] = subjectIndex[key].filter(
+        (value: string) => (value.includes(searchTerm)),
+      );
+    }
+  }
+
+  const arcadiaTagsArrayRepresentation: [string, string[]][] = Object.entries(
+    subjectIndex,
+  );
+
+  return (
+    <TagIndexDefault
+      arcadiaTags={arcadiaTagsArrayRepresentation}
+      onTagClick={onTagClick}
+    />
+  );
 }

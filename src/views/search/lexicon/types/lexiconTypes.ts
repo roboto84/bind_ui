@@ -33,6 +33,10 @@ export type LatestWordListProps = {
   wordList: string[]
 }
 
+export type LexiconDictionarySizeProps = {
+  size: number
+}
+
 export type WordDefinitionsProps = {
   definitions: string[],
   numOfDefs ?: number
@@ -40,7 +44,8 @@ export type WordDefinitionsProps = {
 
 export type LexiconCardProps = {
   title: string,
-  searchTerm: string
+  searchTerm ?: string,
+  definition ?: WordDefinition
 }
 
 export type LexiconConfirmSearchProps = {

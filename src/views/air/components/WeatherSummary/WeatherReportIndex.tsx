@@ -4,7 +4,7 @@ import camelcaseKeys from 'camelcase-keys';
 import { useQuery } from 'react-query';
 import Loader from '@/components/Misc/Loader';
 import { LiveWeatherReport } from '@/dataSource/types/apiTypes';
-import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
+import { airApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import { ErrorView } from '@/components/Error/ErrorView';
 
 export function WeatherReportIndex() {

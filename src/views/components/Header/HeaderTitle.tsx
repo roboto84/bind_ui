@@ -1,6 +1,7 @@
 import React from 'react';
 import { HeaderProps } from '@/views/components/Header/types/headerTypes';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+// @ts-ignore
 import appLogoIcon from '@/assets/images/app_icon.webp';
 import {
   TitleContainer,

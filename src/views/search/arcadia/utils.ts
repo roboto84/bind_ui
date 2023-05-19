@@ -4,8 +4,12 @@ import {
   ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 
-export function shouldDictionarySearch(term: string) {
-  return term.indexOf('_') < 0 && term.match(/^[a-zA-Z]+$/);
+export function dictionarySearchTermValidator(term: string) {
+  return (term.indexOf('_') < 0 && term.match(/^[a-zA-Z]+$/));
+}
+
+export function searchTags(tagSearchTerm: string, arcadiaTags: string[]): string[] {
+  return arcadiaTags.filter((value: string) => value.indexOf(tagSearchTerm) > -1);
 }
 
 export function organizeNodes(nodes: ArcSearchResultPackage) {
@@ -68,5 +72,17 @@ export const quickSearchSystems: {[key: string]: Function} = {
   },
   r(searchTerm: string) {
     return `https://www.reddit.com/search/?q=${searchTerm}`;
+  },
+  u(searchTerm: string) {
+    return `https://www.urbandictionary.com/define.php?term=${searchTerm}`;
+  },
+  yt(searchTerm: string) {
+    return `https://www.youtube.com/results?search_query=${searchTerm}`;
+  },
+  wolf(searchTerm: string) {
+    return `https://www.wolframalpha.com/input?i=${searchTerm}`;
+  },
+  gm(searchTerm: string) {
+    return `https://www.google.com/maps?hl=en&q=${searchTerm}`;
   },
 };

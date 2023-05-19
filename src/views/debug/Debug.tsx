@@ -9,7 +9,7 @@ import { useQuery } from 'react-query';
 import Loader from '@/components/Misc/Loader';
 import { ErrorView } from '@/components/Error/ErrorView';
 import { DebugMessage, DebugApiResponse } from '@/dataSource/types/apiTypes';
-import { debugApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
+import { debugApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { DebugMessageContainer } from './components/DebugMessage';
 

@@ -5,6 +5,7 @@ import {
   HomeContainer,
   HomeRightContainer,
 } from '@/views/home/styles/homeStyles';
+// @ts-ignore
 import appLogo from '@/assets/images/app_logo.webp';
 import { AppDescriptions } from './components/AppDescriptions/AppDescriptions';
 

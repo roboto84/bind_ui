@@ -9,7 +9,7 @@ import { RouterItemConfig } from '@/types';
 import { AirLocation } from '@/views/air/components/AirLocation/AirLocation';
 import { useQuery } from 'react-query';
 import { WeatherBasics } from '@/dataSource/types/apiTypes';
-import { airApiEndpoints } from '@/dataSource/restApis/robotoRestApi';
+import { airApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';

@@ -12,7 +12,7 @@ import {
   ArcSearchResults,
   ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
-import { LexiconCard } from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
+import LexiconCard from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
 import { ArcResultSubNode } from '@/views/search/arcadia/components/ArcResultSubNode';
 import { organizeNodes } from '@/views/search/arcadia/utils';
 import { ArcSearchPageInnerLinks } from '@/views/search/arcadia/components/ArcSearchPageInnerLinks';

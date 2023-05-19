@@ -3,7 +3,7 @@ export interface GlobalThemeType {
 }
 
 export type HomeThemeType = {
-  robotoDescription: {
+  bindDescription: {
     borderColor: string,
     backgroundColor: string,
   },
