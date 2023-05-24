@@ -4,7 +4,7 @@ import { device } from '@/styles/responsive';
 
 export const DebugHomeContainer = styled.div`
   margin: auto;
-  width: calc(100vw - 100px);
+  width: calc(100% - 100px);
   min-width: 400px;
   font-size: 14px;
 
@@ -34,7 +34,7 @@ export const LatestMessage = styled.ul`{
   li {
     list-style: none;
   }
-  
+
   @media ${device.tabletS} {
     margin: 0;
   }
@@ -54,20 +54,20 @@ export const MessageHistory = styled.ul`{
   li {
     list-style: none;
   }
-  
+
   @media ${device.tabletS} {
     margin: 0;
   }
 }`;
 
 export const MessageContainer = styled.li`
-    margin-bottom: 5px;
-    white-space: break-spaces;
-    word-break: break-word;
-  
+  margin-bottom: 5px;
+  white-space: break-spaces;
+  word-break: break-word;
+
   .appTitle{
     color: ${(props: GlobalThemeType) => props.theme.debug.messageTitleColor};
-    
+
     .messageId{
       color: ${(props: GlobalThemeType) => props.theme.debug.messageId};
     }

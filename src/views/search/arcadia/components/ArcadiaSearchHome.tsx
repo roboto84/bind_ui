@@ -18,7 +18,6 @@ import TagGroup from '@/views/search/arcadia/components/TagGroup';
 import { searchTags } from '@/views/search/arcadia/utils';
 import { ArcadiaGraphCoherence } from '@/views/search/arcadia/components/ArcadiaGraphCoherence';
 import { LexiconDictionarySize } from '@/views/search/lexicon/components/LexiconDictionarySize';
-import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
 import { ArcRandomRecord } from '@/views/search/arcadia/components/ArcRandomRecord';
 
 function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
@@ -74,29 +73,22 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
           tagList={relevantTags}
           onTagClick={onTagClick}
         />
-        <LexiconCard
-          title="Word of the Day"
-          definition={lexiconSummaryResponse.wordOfDay}
-        />
       </ArcInitialDataContainer>
       <ArcInitialDataContainer>
         <ArcadiaGraphCoherence
           numberOfSubjects={arcadiaSummaryResponse.numberOfSubjects}
           numberOfUrlRecords={arcadiaSummaryResponse.numberOfUrlRecords}
         />
-        <LexiconDictionarySize size={lexiconSummaryResponse.numberOfWords} />
         <ArcRandomRecord
-          record={{
-            id: 3,
-            timeStamp: '',
-            data: 'google.com',
-            tags: [],
-            dataType: 'url',
-            title: 'Temp',
-            description: 'Doing stuff',
-            image: '',
-          }}
+          record={arcadiaSummaryResponse.randomItemSample}
           onTagClick={onTagClick}
+        />
+      </ArcInitialDataContainer>
+      <ArcInitialDataContainer>
+        <LexiconDictionarySize size={lexiconSummaryResponse.numberOfWords} />
+        <LexiconCard
+          title="Word of the Day"
+          definition={lexiconSummaryResponse.wordOfDay}
         />
       </ArcInitialDataContainer>
     </>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { TagsSection } from '@/views/search/arcadia/styles/arcadiaStyles';
+import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { device } from '@/styles/responsive';
 
@@ -13,6 +13,8 @@ export const IconContainer = styled.div`
 
 export const LexiconOverviewContainer = styled.div`
   width: 100%;
+  max-height: 170px;
+  overflow: auto;
 `;
 
 export const LexiconConfirmSearchContainer = styled.div`
@@ -22,30 +24,16 @@ export const LexiconConfirmSearchContainer = styled.div`
 `;
 
 export const LexiconCardExternalContainer = styled.section`
-  flex-grow: 1;
-  min-width: 50%;
+  width: 100%;
 `;
 
-export const LexiconCardContainer = styled(TagsSection)`
+export const LexiconCardContainer = styled(ArcResultContainer)`
+  font-size: 16px;
   max-width: 100%;
   min-width: 100px;
-  padding: 15px 8px 10px 20px;
-  display: flex;
+  padding: 10px 8px 10px 20px;
   gap: 0 8px;
   flex-direction: row;
-`;
-
-export const LexiconDictionarySizeValueContainer = styled(LexiconCardContainer)`
-  font-size: 50px;
-  justify-content: center;
-`;
-
-export const LexiconDictionarySizeContainer = styled.div`
-  flex-grow: 1;
-`;
-
-export const LexiconWordListContainer = styled(LexiconCardContainer)`
-  padding: 15px;
 `;
 
 export const GeneralDictionarySection = styled(GeneralSection)`
