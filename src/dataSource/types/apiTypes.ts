@@ -52,7 +52,7 @@ export type ArcadiaSummaryApiResult = {
   numberOfUrlRecords: number,
   randomSubjectSample: string[],
   subjects: string[],
-  randomRecordSample: ArcResultPackage
+  randomItemSample: ArcResultPackage
 }
 
 export type ArcadiaTagsApiResult = {

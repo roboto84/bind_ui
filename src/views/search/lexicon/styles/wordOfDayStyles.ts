@@ -6,14 +6,11 @@ import { GlobalThemeType } from '@/types';
 const generalDefinitionStyle: string = 'margin: 0 10px;';
 
 const GeneralStyle = styled.li`
-  margin: 0 8px; 
+  margin: 0 8px;
   color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
 `;
 
 export const WordOfDayContainer = styled.div`
-  height: 220px;
-  overflow: auto;
-  
   @media ${device.tabletS} {
     font-size: 16px;
   }
@@ -24,7 +21,7 @@ export const DayWordInfo = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  
+
   li {
     list-style: none;
   }
@@ -42,7 +39,7 @@ export const DayWord = styled(Hoverable)`
 `;
 
 export const DayWordDate = styled(GeneralStyle)`
-  margin: 0 8px 0 0;
+  margin: 0 8px 0 5px;
 `;
 
 export const DayWordPartOfSpeech = styled(GeneralStyle)``;

@@ -25,7 +25,7 @@ export const lexiconLight:LexiconThemeType = {
   searchBar: {
     inputFontColor: '#454545',
     inputFontFocusColor: 'black',
-    inputBackgroundColor: '#d4d4d4',
+    inputBackgroundColor: '#dedede',
     inputBackgroundFocusColor: '#e3e3e3',
     borderColor: 'grey',
     borderFocusColor: 'grey',

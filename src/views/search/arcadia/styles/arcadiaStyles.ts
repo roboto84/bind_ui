@@ -7,11 +7,24 @@ import { InputTextArea } from '@/components/Input/InputTextArea';
 import { TagGroupSectionProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export const ArcadiaContainer = styled.div`
-  width: 90%;
+  width: 75%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 
   @media ${device.laptopL} {
-    width: 99%;
+    width: 80%;
+  }
+
+  @media ${device.laptop} {
+    width: 90%;
+  }
+
+  @media ${device.tablet} {
+    width: 95%;
   }
 `;
 
@@ -19,16 +32,19 @@ export const ColoredHeader = styled.h1`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.alphabetHeaderColor};
 `;
 
+export const ArcRandomRecordContainer = styled.div`
+  width: 100%;
+`;
+
 export const AlphabetHeader = styled(ColoredHeader)`
   margin-left: 0;
 `;
 
 export const SubTagHeader = styled(NonListHoverable)`
-  color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
-  background-color: ${(props: GlobalThemeType) => props.theme.core.section.backgroundColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
   padding: 5px 10px;
   border-radius: 5px;
-  font-size: 18px;
+  font-size: 17px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
 
   a:link {
@@ -48,7 +64,7 @@ export const SubTagHeaderContainer = styled.div`
 
 export const ArcResultOuterContainer = styled.div`
   padding-left: 25px;
-  
+
   @media ${device.mobileXL} {
     padding-left: 0;
   }
@@ -71,9 +87,8 @@ export const ArcResultContainer = styled(Section)`
   border: 0;
   margin: 20px 0;
   font-size: 20px;
-  //clip-path: polygon(20px 0%,calc(100% - 0px) 0%,100% 20px,100% calc(100% - 20px),calc(100% - 20px) 100%,0px 100%,0% calc(100% - 20px),0% 20px);
   box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
-  
+
   a:link {
     text-decoration: none;
   }
@@ -88,6 +103,7 @@ export const ArcAddContainer = styled(ArcResultContainer)`
 `;
 
 export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
+  max-height: 170px;
   flex-direction: column;
   padding: 10px;
   font-size: 16px;
@@ -98,7 +114,7 @@ export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
 export const ArcImageContainer = styled.div`
   margin: 10px 0 0 0;
   display: inherit;
-  
+
   @media ${device.tablet} {
     display: none;
   }
@@ -148,7 +164,7 @@ export const ArcResultTextContainer = styled.div`
 export const ArcResultFirstLine = styled.div`
   display: flex;
   justify-content: space-between;
-  
+
   @media ${device.laptop} {
     flex-direction: column;
   }
@@ -181,7 +197,7 @@ export const ArcInput = styled(Input)`
   font-size: 12px;
   width: calc(100% - 26px);
   border-radius: 5px;
-  
+
   :focus{
     border-color: #696969;
     background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
@@ -197,19 +213,15 @@ export const ArcInputTextArea = styled(InputTextArea)`
 `;
 
 export const ArcInitialDataContainer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: baseline;
   column-gap: 20px;
+  justify-content: center;
 
-  @media ${device.laptopL} {
-    width: 97vw;
-  }
-  
   @media ${device.tablet} {
-    width: 100%;
     flex-wrap: wrap;
-    column-gap: 0;
   }
 `;
 
@@ -226,20 +238,33 @@ export const ArcChangeStatusContainer = styled.div`
   padding-top: 5px;
 `;
 
-export const ArcadiaGraphCoherenceDataContainer = styled(ArcResultContainer)`
+export const ArcadiaStatsContainer = styled.div`
+  min-width: 230px;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
+`;
+
+export const ArcadiaStatsDataContainer = styled(ArcResultContainer)`
   flex-direction: column;
   flex-grow: 1;
   text-align: center;
+  align-items: center;
 `;
 
-export const ArcadiaGraphCoherenceContainer = styled.div`
-  flex-grow: 1;
+export const ArcadiaStatsCircle = styled.div`
+  font-size: 30px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  line-height: 110px;
+  text-align: center;
+  color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
+  background-color: ${(props: GlobalThemeType) => props.theme.arcadia.search.subTitleColor};
 `;
 
-export const ArcadiaGraphCoherenceMainNumber = styled.div`
-  font-size: 50px;
-`;
-
-export const ArcadiaGraphCoherenceFormulaContainer = styled.div`
-  margin-top: 20px;
+export const ArcadiaStatsLabel = styled.div`
+  margin-top: 14px;
+  font-size: 18px;
 `;

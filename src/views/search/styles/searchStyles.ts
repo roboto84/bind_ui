@@ -35,28 +35,30 @@ export const GeneralSection = styled(LexiconSection)`
   background-color: inherit;
   border: 0;
   box-shadow: none;
-  padding: 20px 0 0 0;
+  padding: 0;
+  width: 100%;
 `;
 
 export const TagGroupSection = styled(GeneralSection)`
-  flex-grow: 1;
-  min-width: 50%;
+  width: 100%;
 `;
 
 export const Tag = styled(Hoverable)``;
 
 export const LatestTagsListContainer = styled.ul`{
   all: unset;
-  margin: 0 5px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  max-height: 225px;
   overflow: auto;
-  justify-content: center;
-  
+  gap: 10px;
+
   li {
     list-style: none
+  }
+
+  h1 {
+    margin-bottom: 8px;
   }
 }`;
 
