@@ -1,9 +1,10 @@
 import axios, { AxiosPromise } from 'axios';
 import {
   AirEndpointsType,
-  LexiconEndpointsType,
-  DebugEndpointsType,
   ArcadiaEndpointsType,
+  DebugEndpointsType,
+  LexiconEndpointsType,
+  LexiconSearchType,
 } from '@/dataSource/types/apiTypes';
 import { FULL_API_URL } from '@/dataSource/urls';
 import { ArcEditPackage } from '@/views/search/arcadia/types/arcadiaTypes';
@@ -22,7 +23,8 @@ export const lexiconApiEndpoints: LexiconEndpointsType = {
   summary: '/lexicon/summary',
   wordOfDay: '/lexicon/word_of_day',
   latestWords: '/lexicon/words/30',
-  wordSearch: '/lexicon/word_search/',
+  globalWordSearch: '/lexicon/global_word_search/',
+  cachedWordSearch: '/lexicon/cached_word_search/',
 };
 
 export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
@@ -43,8 +45,11 @@ export async function getData(path: string): Promise<AxiosPromise> {
   return axios.get(FULL_API_URL.concat(`${path}`));
 }
 
-export async function getLexiconWordSearch(word: string) {
-  return axios.get(FULL_API_URL.concat(`${lexiconApiEndpoints.wordSearch}${word}`));
+export async function getLexiconWordSearch(word: string, searchType: LexiconSearchType) {
+  if (searchType === LexiconSearchType.CACHE) {
+    return axios.get(FULL_API_URL.concat(`${lexiconApiEndpoints.cachedWordSearch}${word}`));
+  }
+  return axios.get(FULL_API_URL.concat(`${lexiconApiEndpoints.globalWordSearch}${word}`));
 }
 
 export async function getArcadiaWordSearch(word: string) {

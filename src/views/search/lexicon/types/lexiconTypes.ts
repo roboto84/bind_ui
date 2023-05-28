@@ -1,4 +1,6 @@
 import { Size } from '@/types';
+import { LexiconSearchType } from '@/dataSource/types/apiTypes';
+import { CamelCaseKeys } from 'camelcase-keys';
 
 export type WordDefinition = {
   word: string,
@@ -49,6 +51,7 @@ export type LexiconCardProps = {
 }
 
 export type LexiconConfirmSearchProps = {
+  searchTerm: string,
   shouldSearch: CallableFunction
 }
 

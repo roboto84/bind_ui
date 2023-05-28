@@ -14,6 +14,7 @@ import {
   ArcSearchResults,
 } from '@/views/search/arcadia/types/arcadiaTypes';
 import { ArcAddPackage } from '@/views/search/types/searchTypes';
+import { LexiconSearchType } from '@/dataSource/types/apiTypes';
 
 const defaultQueryFn = async ({ queryKey }: any) => {
   const { data } = await getData(queryKey[0]);
@@ -26,14 +27,14 @@ export const reactQueryConfig = {
   },
 };
 
-const getLexiconSearch = async (word: string): Promise<any> => {
-  const { data } = await getLexiconWordSearch(word);
+const getLexiconSearch = async (word: string, searchType: LexiconSearchType): Promise<any> => {
+  const { data } = await getLexiconWordSearch(word, searchType);
   return data;
 };
 
-export const useLexiconWordSearch = (word: string): UseQueryResult<
+export const useLexiconWordSearch = (word: string, searchType: LexiconSearchType): UseQueryResult<
   WordDefinition, QueryHookError> => (
-  useQuery(['lexiconWordSearch', word], () => getLexiconSearch(word))
+  useQuery([`lexiconWordSearch-${searchType}`, word], () => getLexiconSearch(word, searchType))
 );
 
 const getArcadiaSearch = async (word: string): Promise<any> => {

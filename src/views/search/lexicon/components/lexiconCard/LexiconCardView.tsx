@@ -11,10 +11,13 @@ import {
   LexiconSearchDefinition,
 } from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
 import { Size } from '@/types';
+import { LexiconSearchType } from '@/dataSource/types/apiTypes';
 
 export function LexiconCardView(props: LexiconCardViewProps) {
   const { searchTerm } = props;
-  const { data, error, isLoading, isError } = useLexiconWordSearch(searchTerm);
+  const {
+    data, error, isLoading, isError,
+  } = useLexiconWordSearch(searchTerm, LexiconSearchType.GLOBAL);
 
   if (isLoading) {
     return (<Loader size={Size.small} />);

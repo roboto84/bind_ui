@@ -21,17 +21,26 @@ import {
 
 function LexiconCard(props: LexiconCardProps) {
   const { title, searchTerm, definition } = props;
-  const [shouldSearchDefinition, setShouldSearchDefinition] = useState<boolean>(false);
+  const [shouldGlobalSearchDefinition, setShouldGlobalSearchDefinition] = useState<boolean>(false);
   const displayDictionaryDefinition = (definition || dictionarySearchTermValidator(searchTerm));
 
   if (displayDictionaryDefinition) {
     let definitionView: JSX.Element;
     if (definition) {
       definitionView = <LexiconSearchDefinition size={Size.small} wordDefinition={definition} />;
-    } else if (shouldSearchDefinition) {
-      definitionView = <LexiconCardView searchTerm={searchTerm} />;
+    } else if (shouldGlobalSearchDefinition) {
+      definitionView = (
+        <LexiconCardView
+          searchTerm={searchTerm}
+        />
+      );
     } else {
-      definitionView = <LexiconConfirmSearch shouldSearch={setShouldSearchDefinition} />;
+      definitionView = (
+        <LexiconConfirmSearch
+          searchTerm={searchTerm}
+          shouldSearch={setShouldGlobalSearchDefinition}
+        />
+      );
     }
 
     return (

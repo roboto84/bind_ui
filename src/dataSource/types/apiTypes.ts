@@ -30,7 +30,13 @@ export type LexiconEndpointsType = {
   summary: string,
   wordOfDay: string,
   latestWords: string,
-  wordSearch: string
+  globalWordSearch: string,
+  cachedWordSearch: string
+}
+
+export enum LexiconSearchType {
+  GLOBAL = 'GLOBAL',
+  CACHE = 'CACHE'
 }
 
 export type ArcadiaEndpointsType = {
