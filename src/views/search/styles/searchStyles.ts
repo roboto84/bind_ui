@@ -16,7 +16,7 @@ export const SearchMainContainer = styled.div`
 `;
 
 export const SearchMenuContainer = styled.div`
-  margin: 0 auto 40px;
+  margin: 0 auto 20px;
   display: flex;
   justify-content: center;
   width: 98%;
