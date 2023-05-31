@@ -8,7 +8,7 @@ export const BindDescriptionContainer = styled.div`
   border: 2px dashed ${(props: GlobalThemeType) => props.theme.home.bindDescription.borderColor};
   border-radius: 5px;
   box-shadow: ${(props: GlobalThemeType) => props.theme.core.basicShadow};
-  padding: 15px 0;
+  padding: 15px;
 
   @media ${device.tablet} {
     margin: 10px;
