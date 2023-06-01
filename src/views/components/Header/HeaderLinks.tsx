@@ -9,7 +9,7 @@ import { NavigationOptional } from '@/views/components/Header/styles/headerStyle
 export default function HeaderLinks() {
   const { state, dispatch } = useContext(GlobalContext);
   const wh00tState = useWh00tWebsocket().state;
-  const githubUrl: string = 'https://github.com/roboto84';
+  const githubUrl: string = 'https://github.com/roboto84/bind';
   const iconPadding: string = '4px 8px';
   const iconFontSize: string = '21px';
   const borderRadius: string = '3px';
@@ -48,7 +48,7 @@ export default function HeaderLinks() {
         {state.theme === ThemeModeEnum.LIGHT ? <BsMoonFill /> : <BsFillSunFill />}
       </NavigationLink>
       <NavigationLink
-        title="Project Github"
+        title="Github Project"
         borderRadius={borderRadius}
         padding={iconPadding}
         fontSize={iconFontSize}
