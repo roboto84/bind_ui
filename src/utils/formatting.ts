@@ -61,7 +61,7 @@ export function substringDotted(text: string, subStringLength: number): string {
 }
 
 export function formatUrl(url: string): string {
-  return !url.startsWith('http://') && !url.startsWith('https://') ? `https://${url}` : url;
+  return url && !url.startsWith('http://') && !url.startsWith('https://') ? `https://${url}` : url;
 }
 
 export function getBaseUrl(url: string): string {
@@ -72,11 +72,14 @@ export function getBaseUrl(url: string): string {
 }
 
 export function urlArrowSplit(url: string): string {
-  const urlSplit = url.split('/');
-  let newUrlView = `${urlSplit[0]}${urlSplit[1]}//`.concat(urlSplit.slice(2).join(' › '));
-  newUrlView = newUrlView[newUrlView.length - 2] === '›'
-    ? newUrlView.substring(0, newUrlView.length - 3)
-    : newUrlView;
+  let newUrlView = '';
+  if (url) {
+    const urlSplit = url.split('/');
+    newUrlView = `${urlSplit[0]}${urlSplit[1]}//`.concat(urlSplit.slice(2).join(' › '));
+    newUrlView = newUrlView[newUrlView.length - 2] === '›'
+      ? newUrlView.substring(0, newUrlView.length - 3)
+      : newUrlView;
+  }
   return newUrlView;
 }
 

@@ -10,7 +10,9 @@ import { ArcadiaGraphCoherenceProps } from '@/views/search/arcadia/types/arcadia
 
 export function ArcadiaGraphCoherence(props: ArcadiaGraphCoherenceProps) {
   const { numberOfSubjects, numberOfUrlRecords } = props;
-  const graphCoherence: string = (numberOfUrlRecords / numberOfSubjects).toFixed(2);
+  const graphCoherence: string = numberOfSubjects !== 0
+    ? (numberOfUrlRecords / numberOfSubjects).toFixed(2)
+    : '∞';
   return (
     <ArcadiaStatsContainer>
       <AlphabetHeader>Graph Coherence</AlphabetHeader>

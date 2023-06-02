@@ -43,7 +43,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
     );
   }
 
-  const wordStemsView: JSX.Element[] = wordDefinition.stems.map(
+  const wordStemsView: JSX.Element[]| JSX.Element = 'stems' in wordDefinition ? wordDefinition.stems.map(
     (wordStem:string) => (
       <Stem
         key={'wordStem-'.concat(wordStem)}
@@ -52,7 +52,7 @@ export function LexiconSearchDefinition(props: WordSearchDefinitionProps) {
         {wordStem}
       </Stem>
     ),
-  );
+  ) : <span />;
 
   if (size === Size.small) {
     return <LexiconSearchDefinitionSmallView wordDefinition={wordDefinition} />;

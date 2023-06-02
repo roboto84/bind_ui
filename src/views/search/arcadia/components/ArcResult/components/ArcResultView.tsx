@@ -24,11 +24,11 @@ import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 export function ArcResultView(props: ArcResultViewProps) {
   const { arcResultPackage, onEdit, onDelete, onSubTagClick, displayMessage } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
-  const formattedTimeStamp: string = timeStamp.indexOf('Z') > -1
+  const formattedTimeStamp: string = timeStamp && timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp, true)
     : timeStamp;
 
-  const isImageValid = image !== 'None';
+  const isImageValid = image && image !== 'None';
   const resultImage: JSX.Element = isImageValid
     ? (
       <ImageWithPlaceHolder
@@ -42,11 +42,11 @@ export function ArcResultView(props: ArcResultViewProps) {
     )
     : <div />;
 
-  const tagsView = tags.map((tag: string) => (
+  const tagsView = tags ? tags.map((tag: string) => (
     <Pill key={'resultTagListItem'.concat(tag)} onClick={() => onSubTagClick(tag)}>
       {tag}
     </Pill>
-  ));
+  )) : <span />;
 
   const descriptionView: JSX.Element = description !== 'None'
     ? <ArcResultDescription><span>{`${description}`}</span></ArcResultDescription>

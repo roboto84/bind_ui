@@ -32,30 +32,34 @@ export function ArcResult(props: ArcResultProps) {
     setTimeout(() => setEditMessage(''), 5000);
   };
 
-  if (display === ArcResultDisplay.VIEW) {
-    body = (
-      <ArcResultView
-        arcResultPackage={resultPackage}
-        onDelete={setDisplay}
-        onEdit={setDisplay}
-        onSubTagClick={onSubTagClick}
-        displayMessage={editMessage}
-      />
-    );
-  } else if (display === ArcResultDisplay.DELETE) {
-    body = <ArcResultDelete itemKey={resultPackage.data} onReset={setDisplay} />;
-  } else if (display === ArcResultDisplay.EDIT) {
-    body = (
-      <ArcResultEdit
-        itemKey={resultPackage.data}
-        image={resultPackage.image}
-        tags={resultPackage.tags.join(',')}
-        title={resultPackage.title}
-        description={resultPackage.description}
-        onReset={setDisplay}
-        onEditConfirmed={updateResultOnEdit}
-      />
-    );
+  if ('id' in arcResultPackage) {
+    if (display === ArcResultDisplay.VIEW) {
+      body = (
+        <ArcResultView
+          arcResultPackage={resultPackage}
+          onDelete={setDisplay}
+          onEdit={setDisplay}
+          onSubTagClick={onSubTagClick}
+          displayMessage={editMessage}
+        />
+      );
+    } else if (display === ArcResultDisplay.DELETE) {
+      body = <ArcResultDelete itemKey={resultPackage.data} onReset={setDisplay} />;
+    } else if (display === ArcResultDisplay.EDIT) {
+      body = (
+        <ArcResultEdit
+          itemKey={resultPackage.data}
+          image={resultPackage.image}
+          tags={resultPackage.tags.join(',')}
+          title={resultPackage.title}
+          description={resultPackage.description}
+          onReset={setDisplay}
+          onEditConfirmed={updateResultOnEdit}
+        />
+      );
+    }
+  } else {
+    body = <span>Entry not available</span>;
   }
 
   return (
