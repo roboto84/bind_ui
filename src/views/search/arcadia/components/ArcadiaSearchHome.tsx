@@ -31,7 +31,7 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     return <Loader />;
   }
 
-  if (lexiconSummary.isError || arcadiaSummary.error) {
+  if (lexiconSummary.isError || arcadiaSummary.isError) {
     const message = 'Error has occurred getting system summaries';
     return (
       <ArcadiaSearchHomeContainer>
