@@ -42,6 +42,7 @@ export function SearchBar(props: SearchBarProps) {
     searchSystem.onSearchKeyUp(searchInputRef.current.value);
     setHasSearchTerm(false);
     updateSearchWord();
+    searchInputRef.current.focus();
   };
 
   return (

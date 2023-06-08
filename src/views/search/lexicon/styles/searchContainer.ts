@@ -32,12 +32,9 @@ export const SearchInput = styled(Input)<{ hasSearchTerm: boolean }>`
     background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundFocusColor};
     color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontFocusColor};
     outline: none;
-    
+
     &:hover {
-      background-color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
-      border-color: #a3ff0000;
-      color: ${(props: GlobalThemeType) => props.theme.button.transitionFontColor};
-      cursor: pointer;
+      color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
     }
   }
 `;
@@ -77,4 +74,11 @@ export const ClearSearchButton = styled(Button)<{ hasSearchTerm: boolean }>`
   color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputFontColor};
   border: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderColor} 2px solid;
   border-left: none;
+  transition: none;
+
+  &:hover {
+    background-color: ${(props:ButtonProps) => props.theme.lexicon.searchBar.inputBackgroundColor};
+    border-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderColor};
+    color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
+  }
 `;
