@@ -12,11 +12,17 @@ import { WordDefinition } from '@/views/search/lexicon/types/lexiconTypes';
 import camelcaseKeys from 'camelcase-keys';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
 import { ArcadiaSearchHomeContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
+import { LexiconSearchType } from '@/dataSource/types/apiTypes';
 
 export function LexiconSearchHome() {
   const [searchParams] = useSearchParams();
   const searchWord: string = searchParams.get('word');
-  const { data, error, isLoading, isError } = useLexiconWordSearch(searchWord);
+  const {
+    data,
+    error,
+    isLoading,
+    isError,
+  } = useLexiconWordSearch(searchWord, LexiconSearchType.GLOBAL);
 
   if (isLoading) {
     return (<Loader />);
