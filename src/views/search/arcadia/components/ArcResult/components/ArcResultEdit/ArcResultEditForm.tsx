@@ -62,7 +62,7 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
             />
           </div>
           <div style={{ marginTop: '10px' }}>
-            <ArcInputTitle>Tags (comma seperated)</ArcInputTitle>
+            <ArcInputTitle>Tags (comma separated)</ArcInputTitle>
             <ArcInput
               title="Tags Edit"
               type="text"

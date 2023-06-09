@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
 import { AddRecordForm } from '@/views/search/components/AddRecord/AddRecordForm/AddRecordForm';
-import {
-  AddRecordProps,
-  ArcAddPackage,
-} from '@/views/search/types/searchTypes';
+import { AddRecordProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 import { ArcEditPackage } from '@/views/search/arcadia/types/arcadiaTypes';
-import {
-  AddRecordConfirm,
-} from '@/views/search/components/AddRecord/AddRecordForm/AddRecordConfirm';
+import { AddRecordConfirm } from '@/views/search/components/AddRecord/AddRecordForm/AddRecordConfirm';
 import { SearchAddRecordContainer } from '@/views/search/styles/searchStyles';
-import {
-  ArcAddContainer,
-  ArcChangeStatusContainer,
-} from '@/views/search/arcadia/styles/arcadiaStyles';
+import { ArcAddContainer, ArcChangeStatusContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 export function AddRecord(props: AddRecordProps) {
   const { isAddRecordViewable, cancelAddRecordFormView } = props;
   const [confirmAdd, setConfirmAdd] = useState<boolean>(false);
+  const [confirmMessage, setConfirmMessage] = useState<string>('');
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [addItemPackage, setAddItemPackage] = useState<ArcAddPackage>(null);
   const [isFormActive, setIsFormActive] = useState<boolean>(true);
 
+  const { ref } = useClickOutside(() => {
+    setConfirmMessage('');
+  });
+
   const addItem = (itemPackage: ArcEditPackage) => {
+    setIsSuccess(false);
     setAddItemPackage(itemPackage);
     setIsFormActive(false);
     setConfirmAdd(true);
   };
 
-  const resetFormAfterConfirm = () => {
+  const resetFormAfterConfirm = (message: string, success: boolean) => {
+    setConfirmMessage(message);
+    setIsSuccess(success);
     setAddItemPackage(null);
     setConfirmAdd(false);
     setIsFormActive(true);
@@ -37,11 +39,15 @@ export function AddRecord(props: AddRecordProps) {
     let addRecordCall: JSX.Element = <div />;
     if (confirmAdd) {
       addRecordCall = (
+        <AddRecordConfirm
+          itemAddPackage={addItemPackage}
+          onConfirmation={resetFormAfterConfirm}
+        />
+      );
+    } else if (confirmMessage) {
+      addRecordCall = (
         <ArcChangeStatusContainer>
-          <AddRecordConfirm
-            itemAddPackage={addItemPackage}
-            onConfirmation={resetFormAfterConfirm}
-          />
+          {confirmMessage}
         </ArcChangeStatusContainer>
       );
     }
@@ -50,9 +56,11 @@ export function AddRecord(props: AddRecordProps) {
       <SearchAddRecordContainer>
         <ArcAddContainer>
           <AddRecordForm
+            _ref={ref}
             cancelAddForm={cancelAddRecordFormView}
             onAddItem={addItem}
             isFormActive={isFormActive}
+            isSuccess={isSuccess}
           />
           {addRecordCall}
         </ArcAddContainer>

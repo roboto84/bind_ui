@@ -100,6 +100,7 @@ export const ArcResultContainer = styled(Section)`
 
 export const ArcAddContainer = styled(ArcResultContainer)`
   flex-direction: column;
+  margin-bottom: 0;
 `;
 
 export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
@@ -108,7 +109,7 @@ export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   padding: 10px;
   font-size: 16px;
   border: ${(props: TagGroupSectionProps) => (
-    props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
+          props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
 `;
 
 export const ArcImageContainer = styled.div`
@@ -145,11 +146,23 @@ export const ArcEditButtonsContainer = styled.div`
   gap: 20px;
 `;
 
+export const ArcRecordFormContainer = styled.form<{ show: boolean }>`
+  display: ${(props) => (props.show ? 'block' : 'none')};
+`;
+
 export const ArcAddFieldContainer = styled.div`
   width: 100%;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+`;
+
+export const ArcAddThrobberContainer = styled.div`
+  height: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const ArcAddInputContainer = styled.div`

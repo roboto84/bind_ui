@@ -5,15 +5,13 @@ import { RouterItemConfig } from '@/types';
 import { RoutesGenerator } from '@/components/Nav/RoutesGenerator';
 import { Arcadia } from '@/views/search/arcadia/Arcadia';
 import { ArcadiaSearch } from '@/views/search/arcadia/components/ArcadiaSearch';
-import {
-  LexiconSearchHome,
-} from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
+import { LexiconSearchHome } from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchHome';
 import { ArcadiaView, SearchSystem } from '@/views/search/types/searchTypes';
 import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecordButton';
 import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
 import { openInNewTab, quickSearchSystems } from '@/views/search/arcadia/utils';
 import { useClickOutside } from '@/hooks/useClickOutside';
-import { SearchMainContainer, SearchMenuContainer } from './styles/searchStyles';
+import { SearchMainContainer, SearchRefContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
   const [searchContext, setSearchContext] = useState<string>('');
@@ -90,7 +88,7 @@ export function Search() {
 
   return (
     <SearchMainContainer>
-      <div ref={ref}>
+      <SearchRefContainer ref={ref}>
         <SearchMenuContainer>
           <SearchBar searchSystem={arcadiaSys} />
           <AddSearchRecordButton activateAction={activateAddRecordFormView} />
@@ -99,7 +97,7 @@ export function Search() {
           isAddRecordViewable={isAddRecordViewable}
           cancelAddRecordFormView={hideAddRecordFormView}
         />
-      </div>
+      </SearchRefContainer>
       <RoutesGenerator routerRoutesConfig={routerConfig} />
     </SearchMainContainer>
   );

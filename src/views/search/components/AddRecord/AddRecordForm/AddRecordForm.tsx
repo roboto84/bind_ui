@@ -1,16 +1,23 @@
 import {
-  ArcAddFieldContainer, ArcAddInputContainer,
-  ArcInput,
-  ArcInputTitle,
+  ArcRecordFormContainer, ArcAddFieldContainer, ArcAddInputContainer,
+  ArcInput, ArcInputTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Button } from '@/components/Nav/Button';
 import { AddRecordFormProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 
 export function AddRecordForm(props: AddRecordFormProps) {
-  const { cancelAddForm, onAddItem, isFormActive } = props;
+  const { _ref, cancelAddForm, onAddItem, isFormActive, isSuccess } = props;
   const urlInputRef: React.MutableRefObject<any> = useRef();
   const tagsInputRef: React.MutableRefObject<any> = useRef();
+
+  useEffect(() => {
+    if (isSuccess) {
+      urlInputRef.current.value = '';
+      tagsInputRef.current.value = '';
+      urlInputRef.current.focus();
+    }
+  }, [isSuccess]);
 
   const addItem = () => {
     if (urlInputRef.current.value !== '') {
@@ -22,13 +29,13 @@ export function AddRecordForm(props: AddRecordFormProps) {
     }
   };
 
-  if (isFormActive && urlInputRef.current && tagsInputRef.current) {
-    urlInputRef.current.value = '';
-    tagsInputRef.current.value = '';
-  }
+  const handleSubmit = (e: { preventDefault: () => void; }): void => {
+    e.preventDefault();
+    addItem();
+  };
 
   return (
-    <>
+    <ArcRecordFormContainer show={isFormActive} onSubmit={handleSubmit}>
       <ArcAddFieldContainer>
         <ArcAddInputContainer>
           <ArcInputTitle>URL</ArcInputTitle>
@@ -40,7 +47,7 @@ export function AddRecordForm(props: AddRecordFormProps) {
           />
         </ArcAddInputContainer>
         <ArcAddInputContainer>
-          <ArcInputTitle>Tags (comma seperated)</ArcInputTitle>
+          <ArcInputTitle>Tags (comma separated)</ArcInputTitle>
           <ArcInput
             title="Tags Edit"
             type="text"
@@ -52,12 +59,13 @@ export function AddRecordForm(props: AddRecordFormProps) {
       <ArcAddFieldContainer style={{ marginTop: '20px', justifyContent: 'end' }}>
         <div>
           <Button
+            type="submit"
+            ref={_ref}
             fontSize="14px"
             padding="8px"
             width="74px"
             margin="0 0 15px 0"
             borderRadius="5px"
-            onClick={() => addItem()}
             title="Add"
             disabled={!isFormActive}
           >
@@ -77,6 +85,6 @@ export function AddRecordForm(props: AddRecordFormProps) {
           </Button>
         </div>
       </ArcAddFieldContainer>
-    </>
+    </ArcRecordFormContainer>
   );
 }

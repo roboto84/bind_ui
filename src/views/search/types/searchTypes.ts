@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type SearchSystem = {
   system: string,
   onHomeClick: CallableFunction,
@@ -26,9 +28,11 @@ export type AddRecordProps = {
 }
 
 export type AddRecordFormProps = {
+  _ref?: React.Ref<any>,
   cancelAddForm: CallableFunction,
   onAddItem: CallableFunction,
-  isFormActive: boolean
+  isFormActive: boolean,
+  isSuccess: boolean
 }
 
 export type ArcAddPackage = {
@@ -37,6 +41,6 @@ export type ArcAddPackage = {
 }
 
 export type AddRecordConfirmProps = {
-  itemAddPackage: ArcAddPackage
+  itemAddPackage: ArcAddPackage,
   onConfirmation: CallableFunction
 }

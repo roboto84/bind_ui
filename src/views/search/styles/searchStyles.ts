@@ -15,6 +15,11 @@ export const SearchMainContainer = styled.div`
   }
 `;
 
+export const SearchRefContainer = styled.div`
+  display: table;
+  margin: auto;
+`;
+
 export const SearchMenuContainer = styled.div`
   margin: 0 auto 20px;
   display: flex;
