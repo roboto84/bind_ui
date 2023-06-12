@@ -46,16 +46,6 @@ export const SubTagHeader = styled(NonListHoverable)`
   border-radius: 5px;
   font-size: 17px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
-
-  a:link {
-    text-decoration: none;
-    color: inherit
-  }
-
-  a:hover {
-    text-decoration: none;
-    color: inherit
-  }
 `;
 
 export const SubTagHeaderContainer = styled.div`
@@ -71,10 +61,15 @@ export const ArcResultOuterContainer = styled.div`
 `;
 
 export const InnerLinks = styled.div`
-  margin: 20px 0;
+  margin: 24px 0 43px 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 7px 5px;
+  gap: 16px 5px;
+
+  a:link, a:hover {
+    text-decoration: none;
+    color: inherit
+  }
 `;
 export const InlineHeader = styled.span`
   font-size: 25px;
@@ -109,7 +104,7 @@ export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   padding: 10px;
   font-size: 16px;
   border: ${(props: TagGroupSectionProps) => (
-          props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
+    props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
 `;
 
 export const ArcImageContainer = styled.div`
