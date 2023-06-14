@@ -1,4 +1,5 @@
 import { GlobalThemeType } from '@/types';
+import React from 'react';
 
 export enum ArcResultDisplay {
   VIEW = 'VIEW',
@@ -37,6 +38,7 @@ export type ArcResultProps = {
 }
 
 export type ArcResultViewProps = {
+  _ref: React.Ref<any>,
   arcResultPackage: ArcResultPackage,
   onDelete: CallableFunction,
   onEdit: CallableFunction,
@@ -45,6 +47,7 @@ export type ArcResultViewProps = {
 }
 
 export type ArcResultDeleteProps = {
+  _ref: React.Ref<any>,
   itemKey: string,
   onReset: CallableFunction
 }
@@ -70,11 +73,13 @@ export type ArcResultEditViewProps = {
 }
 
 export type ArcResultDeleteQuestionProps = {
+  itemKey: string,
   onConfirm: CallableFunction,
   onDeny: CallableFunction,
 }
 
 export type ArcResultDeleteConfirmProps = {
+  _ref: React.Ref<any>,
   itemKey: string
 }
 

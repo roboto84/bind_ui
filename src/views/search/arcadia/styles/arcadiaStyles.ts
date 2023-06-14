@@ -104,7 +104,7 @@ export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   padding: 10px;
   font-size: 16px;
   border: ${(props: TagGroupSectionProps) => (
-    props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
+          props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
 `;
 
 export const ArcImageContainer = styled.div`
@@ -160,6 +160,10 @@ export const ArcAddThrobberContainer = styled.div`
   align-items: center;
 `;
 
+export const ArcEditThrobberContainer = styled(ArcAddThrobberContainer)`
+  height: 150px;
+`;
+
 export const ArcAddInputContainer = styled.div`
   margin-top: 10px;
   flex-grow: 1;
@@ -192,9 +196,26 @@ export const ArcResultTimeStamp = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.arcadia.search.timeColor};
 `;
 
-export const ArcResultDeleteQuestionContainer = styled.div``;
+export const ArcResultDeleteQuestionContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 
 export const ArcResultDeleteMessage = styled.div``;
+
+export const ArcResultDeleteConfirmContainer = styled(ArcResultDeleteQuestionContainer)``;
+
+export const ArcResultDeleteURL = styled.a`
+  margin-top: 5px;
+`;
+
+export const ArcResultDeleteButtonContainer = styled.div`
+  margin-top: 5px;
+`;
 
 export const ArcInputTitle = styled.div`
   font-size: 16px;

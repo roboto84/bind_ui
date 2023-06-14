@@ -11,7 +11,7 @@ import {
 } from '@/views/search/arcadia/components/ArcResult/components/ArcResultDelete/ArcResultDeleteConfirm';
 
 export function ArcResultDelete(props: ArcResultDeleteProps) {
-  const { itemKey, onReset } = props;
+  const { _ref, itemKey, onReset } = props;
   const [confirmDelete, setConfirmDelete] = useState<boolean>(false);
   const deleteItem = () => {
     setConfirmDelete(true);
@@ -23,14 +23,21 @@ export function ArcResultDelete(props: ArcResultDeleteProps) {
 
   let body: JSX.Element;
   if (confirmDelete) {
-    body = <ArcResultDeleteConfirm itemKey={itemKey} />;
+    body = (
+      <ArcResultDeleteConfirm
+        _ref={_ref}
+        itemKey={itemKey}
+      />
+    );
   } else {
-    body = <ArcResultDeleteQuestion onConfirm={deleteItem} onDeny={resetDeleteView} />;
+    body = (
+      <ArcResultDeleteQuestion
+        itemKey={itemKey}
+        onConfirm={deleteItem}
+        onDeny={resetDeleteView}
+      />
+    );
   }
 
-  return (
-    <div>
-      {body}
-    </div>
-  );
+  return body;
 }

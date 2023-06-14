@@ -1,5 +1,5 @@
 import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ArcResultProps,
   ArcResultDisplay,
@@ -8,13 +8,31 @@ import {
 import { ArcResultView } from '@/views/search/arcadia/components/ArcResult/components/ArcResultView';
 import { ArcResultDelete } from '@/views/search/arcadia/components/ArcResult/components/ArcResultDelete/ArcResultDelete';
 import { ArcResultEdit } from '@/views/search/arcadia/components/ArcResult/components/ArcResultEdit/ArcResultEdit';
+import { useClickOutside } from '@/hooks/useClickOutside';
+import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
+import { QueryClient, useQueryClient } from 'react-query';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage, onSubTagClick } = props;
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
   const [editMessage, setEditMessage] = useState<string>('');
   const [resultPackage, setResultPackage] = useState<ArcResultPackage>(arcResultPackage);
+  const queryClient: QueryClient = useQueryClient();
   let body: JSX.Element;
+
+  useEffect(() => {
+    setResultPackage(arcResultPackage);
+  }, [arcResultPackage]);
+
+  const { ref: editRef } = useClickOutside(() => {
+    setEditMessage('');
+  });
+
+  const { ref: deleteRef } = useClickOutside(() => {
+    queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
+    queryClient.invalidateQueries('arcadiaWordSearch');
+    setDisplay(ArcResultDisplay.VIEW);
+  });
 
   const updateResultOnEdit = (editingPackage: ArcResultEditingPackage):void => {
     setResultPackage({
@@ -29,13 +47,13 @@ export function ArcResult(props: ArcResultProps) {
     });
     setEditMessage(editingPackage.editingMessage);
     setDisplay(ArcResultDisplay.VIEW);
-    setTimeout(() => setEditMessage(''), 5000);
   };
 
   if ('id' in arcResultPackage) {
     if (display === ArcResultDisplay.VIEW) {
       body = (
         <ArcResultView
+          _ref={editRef}
           arcResultPackage={resultPackage}
           onDelete={setDisplay}
           onEdit={setDisplay}
@@ -44,7 +62,7 @@ export function ArcResult(props: ArcResultProps) {
         />
       );
     } else if (display === ArcResultDisplay.DELETE) {
-      body = <ArcResultDelete itemKey={resultPackage.data} onReset={setDisplay} />;
+      body = <ArcResultDelete _ref={deleteRef} itemKey={resultPackage.data} onReset={setDisplay} />;
     } else if (display === ArcResultDisplay.EDIT) {
       body = (
         <ArcResultEdit

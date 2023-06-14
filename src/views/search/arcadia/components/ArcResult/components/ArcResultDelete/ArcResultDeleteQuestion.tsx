@@ -3,41 +3,44 @@ import { ArcResultDeleteQuestionProps } from '@/views/search/arcadia/types/arcad
 import { Button } from '@/components/Nav/Button';
 import {
   ArcResultDeleteQuestionContainer,
-  ArcResultDeleteMessage,
+  ArcResultDeleteMessage, ArcResultDeleteURL, ArcResultDeleteButtonContainer,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function ArcResultDeleteQuestion(props: ArcResultDeleteQuestionProps) {
-  const { onConfirm, onDeny } = props;
-  const buttonFontSize = '18px';
-  const buttonPadding = '8px';
+  const { itemKey, onConfirm, onDeny } = props;
+  const buttonFontSize = '15px';
+  const buttonPadding = '5px 15px';
   const buttonMargin = '10px';
   const buttonRadius = '5px';
   return (
     <ArcResultDeleteQuestionContainer>
       <ArcResultDeleteMessage>
-        Are you sure you would like to delete this item?
+        Are you sure you would like to delete this entry?
       </ArcResultDeleteMessage>
-      <div style={{ marginTop: '5px' }}>
+      <ArcResultDeleteURL style={{ fontSize: '16px' }} href={itemKey} rel="noreferrer" target="_blank">
+        {itemKey}
+      </ArcResultDeleteURL>
+      <ArcResultDeleteButtonContainer>
+        <Button
+          fontSize={buttonFontSize}
+          padding={buttonPadding}
+          borderRadius={buttonRadius}
+          onClick={() => onDeny()}
+          title="Cancel"
+        >
+          Cancel
+        </Button>
         <Button
           fontSize={buttonFontSize}
           padding={buttonPadding}
           margin={buttonMargin}
           borderRadius={buttonRadius}
           onClick={() => onConfirm()}
-          title="Affirm"
+          title="Yes"
         >
-          Yes
+          Yes, Delete
         </Button>
-        <Button
-          fontSize={buttonFontSize}
-          padding={buttonPadding}
-          borderRadius={buttonRadius}
-          onClick={() => onDeny()}
-          title="Deny"
-        >
-          No
-        </Button>
-      </div>
+      </ArcResultDeleteButtonContainer>
     </ArcResultDeleteQuestionContainer>
   );
 }

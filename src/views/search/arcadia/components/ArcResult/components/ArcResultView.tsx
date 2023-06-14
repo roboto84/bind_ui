@@ -22,7 +22,7 @@ import { BsFillImageFill } from 'react-icons/bs';
 import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 
 export function ArcResultView(props: ArcResultViewProps) {
-  const { arcResultPackage, onEdit, onDelete, onSubTagClick, displayMessage } = props;
+  const { _ref, arcResultPackage, onEdit, onDelete, onSubTagClick, displayMessage } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
   const formattedTimeStamp: string = timeStamp && timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp, true)
@@ -53,7 +53,7 @@ export function ArcResultView(props: ArcResultViewProps) {
     : <div />;
 
   const changeMessage: JSX.Element = displayMessage !== ''
-    ? <ArcChangeStatusContainer>{displayMessage}</ArcChangeStatusContainer>
+    ? <ArcChangeStatusContainer ref={_ref}>{displayMessage}</ArcChangeStatusContainer>
     : <div />;
 
   return (
