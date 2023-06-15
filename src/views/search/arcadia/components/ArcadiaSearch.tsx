@@ -42,11 +42,11 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
   const { searchResults, similarTags } = camelcaseKeys<ArcSearchResults>(data, { deep: true });
   const { urlCache, tagCache } = organizeNodes(searchResults);
 
-  const innerLinks: JSX.Element = tagCache.length > 1
+  const innerLinks: JSX.Element = tagCache.length
     ? (<ArcSearchPageInnerLinks tags={tagCache} />)
     : <div />;
 
-  const tagView: JSX.Element = similarTags.length > 1
+  const tagView: JSX.Element = similarTags.length
     ? (<TagGroup title="Similar Tags" tagList={similarTags} onTagClick={onSubTagClick} />)
     : <div />;
 
