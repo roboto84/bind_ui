@@ -36,6 +36,14 @@ export const Button = styled.button<ButtonProps>`
   }
 `;
 
+export const FocusableButton = styled(Button)`
+  &:focus {
+    background-color: ${(props:ButtonProps) => props.theme.core.mainThemeColor};
+    border-color: #a3ff0000;
+    color: ${(props:ButtonProps) => props.theme.button.transitionFontColor};
+  }
+`;
+
 export const SubButton = styled(Button)`
   margin: 0;
   color: ${(props: ButtonProps) => props.theme.subButton.fontColor};

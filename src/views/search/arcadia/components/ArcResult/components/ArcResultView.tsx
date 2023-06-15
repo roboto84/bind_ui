@@ -73,24 +73,24 @@ export function ArcResultView(props: ArcResultViewProps) {
               <Button
                 fontSize="12px"
                 letterSpacing="2px"
-                padding="1px 5px"
+                padding="2px 8px"
                 margin="3px"
                 borderRadius="5px"
                 onClick={() => onEdit(ArcResultDisplay.EDIT)}
                 title="Edit Item"
               >
-                edit
+                Edit
               </Button>
               <Button
                 fontSize="12px"
                 letterSpacing="2px"
-                padding="1px 5px"
+                padding="2px 8px"
                 margin="3px"
                 borderRadius="5px"
                 onClick={() => onDelete(ArcResultDisplay.DELETE)}
                 title="Delete Item"
               >
-                delete
+                Delete
               </Button>
             </span>
           </span>

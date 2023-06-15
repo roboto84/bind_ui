@@ -12,8 +12,8 @@ import {
   ArcResultDisplay,
   ArcResultEditViewProps,
 } from '@/views/search/arcadia/types/arcadiaTypes';
-import React, { useRef } from 'react';
-import { Button } from '@/components/Nav/Button';
+import React, { useRef, useEffect } from 'react';
+import { FocusableButton } from '@/components/Nav/Button';
 
 export function ArcResultEditForm(props: ArcResultEditViewProps) {
   const { itemKey, tags, title, description, image, onReset, onEdit } = props;
@@ -22,6 +22,10 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
   const tagsInputRef: React.MutableRefObject<any> = useRef();
   const titleInputRef: React.MutableRefObject<any> = useRef();
   const descriptionInputRef: React.MutableRefObject<any> = useRef();
+
+  useEffect(() => {
+    titleInputRef.current.focus();
+  }, []);
 
   const editItem = () => {
     const editItemPackage: ArcEditPackage = {
@@ -39,8 +43,13 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
     onReset(ArcResultDisplay.VIEW);
   };
 
+  const handleSubmit = (e: { preventDefault: () => void; }): void => {
+    e.preventDefault();
+    editItem();
+  };
+
   return (
-    <ArcEditFormContainer>
+    <ArcEditFormContainer onSubmit={handleSubmit}>
       <ArcEditFormInputGroupContainer>
         <ArcEditFieldContainer>
           <div>
@@ -97,31 +106,27 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
         </ArcEditFieldContainer>
       </ArcEditFormInputGroupContainer>
       <ArcEditButtonsContainer>
-        <div>
-          <Button
-            fontSize="14px"
-            padding="8px"
-            margin="0 0 15px 0"
-            width="74px"
-            borderRadius="5px"
-            onClick={() => editItem()}
-            title="Update"
-          >
-            Update
-          </Button>
-        </div>
-        <div>
-          <Button
-            fontSize="14px"
-            padding="8px"
-            width="74px"
-            borderRadius="5px"
-            onClick={() => resetEditView()}
-            title="Cancel"
-          >
-            Cancel
-          </Button>
-        </div>
+        <FocusableButton
+          type="button"
+          fontSize="14px"
+          padding="5px 15px"
+          margin="10px"
+          borderRadius="5px"
+          onClick={resetEditView}
+          title="Cancel"
+        >
+          Cancel
+        </FocusableButton>
+        <FocusableButton
+          type="submit"
+          fontSize="14px"
+          padding="5px 15px"
+          margin="10px"
+          borderRadius="5px"
+          title="Update"
+        >
+          Update
+        </FocusableButton>
       </ArcEditButtonsContainer>
     </ArcEditFormContainer>
   );

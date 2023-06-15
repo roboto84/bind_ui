@@ -116,7 +116,7 @@ export const ArcImageContainer = styled.div`
   }
 `;
 
-export const ArcEditFormContainer = styled.div`
+export const ArcEditFormContainer = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -138,7 +138,6 @@ export const ArcEditButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: end;
-  gap: 20px;
 `;
 
 export const ArcRecordFormContainer = styled.form<{ show: boolean }>`
@@ -237,8 +236,18 @@ export const ArcInput = styled(Input)`
 `;
 
 export const ArcInputTextArea = styled(InputTextArea)`
+  border-width: 2px;
   border-radius: 5px;
   width: calc(100% - 26px);
+  font-size: 12px;
+  font-family: Open Sans,Helvetica,Verdana,sans-serif;
+  letter-spacing: 2px;
+
+  :focus {
+    border-color: #696969;
+    background-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.inputBackgroundColor};
+    color: ${(props: GlobalThemeType) => props.theme.wh00t.miniWh00t.inputColor};
+  }
 `;
 
 export const ArcInitialDataContainer = styled.div`

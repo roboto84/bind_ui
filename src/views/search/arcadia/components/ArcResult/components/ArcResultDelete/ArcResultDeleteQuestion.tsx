@@ -8,7 +8,7 @@ import {
 
 export function ArcResultDeleteQuestion(props: ArcResultDeleteQuestionProps) {
   const { itemKey, onConfirm, onDeny } = props;
-  const buttonFontSize = '15px';
+  const buttonFontSize = '14px';
   const buttonPadding = '5px 15px';
   const buttonMargin = '10px';
   const buttonRadius = '5px';
