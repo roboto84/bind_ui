@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { QueryClient, useQueryClient } from 'react-query';
 import { AddRecordForm } from '@/views/search/components/AddRecord/AddRecordForm/AddRecordForm';
 import { AddRecordProps, ArcAddPackage } from '@/views/search/types/searchTypes';
 import { ArcEditPackage } from '@/views/search/arcadia/types/arcadiaTypes';
@@ -14,6 +15,7 @@ export function AddRecord(props: AddRecordProps) {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [addItemPackage, setAddItemPackage] = useState<ArcAddPackage>(null);
   const [isFormActive, setIsFormActive] = useState<boolean>(true);
+  const queryClient: QueryClient = useQueryClient();
 
   const { ref } = useClickOutside(() => {
     setConfirmMessage('');
@@ -32,6 +34,8 @@ export function AddRecord(props: AddRecordProps) {
     setAddItemPackage(null);
     setConfirmAdd(false);
     setIsFormActive(true);
+
+    queryClient.invalidateQueries('arcadiaWordSearch');
   };
 
   let body: JSX.Element;

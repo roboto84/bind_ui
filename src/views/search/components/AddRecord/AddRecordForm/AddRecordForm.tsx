@@ -14,7 +14,6 @@ export function AddRecordForm(props: AddRecordFormProps) {
   useEffect(() => {
     if (isSuccess) {
       urlInputRef.current.value = '';
-      tagsInputRef.current.value = '';
       urlInputRef.current.focus();
     }
   }, [isSuccess]);

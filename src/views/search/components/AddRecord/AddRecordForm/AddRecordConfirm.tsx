@@ -25,7 +25,7 @@ export function AddRecordConfirm(props: AddRecordConfirmProps) {
 
       if (recordAddResult.addedItem) {
         success = true;
-        message = <span>Record Successfully Added</span>;
+        message = <span>Entry Successfully Added</span>;
       } else {
         switch (recordAddResult.reason) {
           case 'item_duplicate':
