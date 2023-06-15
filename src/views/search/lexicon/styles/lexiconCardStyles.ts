@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GlobalThemeType } from '@/types';
 import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { device } from '@/styles/responsive';
@@ -21,6 +22,15 @@ export const LexiconConfirmSearchContainer = styled.div`
   padding-left: 20px;
   display: flex;
   flex-direction: column;
+
+  b {
+    color: ${(props: GlobalThemeType) => props.theme.core.mainThemeColor};
+  }
+`;
+
+export const LexiconThrobberContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 export const LexiconCardExternalContainer = styled.section`

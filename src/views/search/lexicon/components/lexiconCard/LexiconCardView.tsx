@@ -12,6 +12,7 @@ import {
 } from '@/views/search/lexicon/components/lexiconSearchDefinition/LexiconSearchDefinition';
 import { Size } from '@/types';
 import { LexiconSearchType } from '@/dataSource/types/apiTypes';
+import { LexiconThrobberContainer } from '@/views/search/lexicon/styles/lexiconCardStyles';
 
 export function LexiconCardView(props: LexiconCardViewProps) {
   const { searchTerm } = props;
@@ -20,7 +21,11 @@ export function LexiconCardView(props: LexiconCardViewProps) {
   } = useLexiconWordSearch(searchTerm, LexiconSearchType.GLOBAL);
 
   if (isLoading) {
-    return (<Loader size={Size.small} />);
+    return (
+      <LexiconThrobberContainer>
+        <Loader size={Size.small} />
+      </LexiconThrobberContainer>
+    );
   }
   if (isError) {
     const errorMessage: string = error

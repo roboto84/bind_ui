@@ -4,7 +4,7 @@ import {
   LexiconConfirmSearchProps,
   WordDefinition,
 } from '@/views/search/lexicon/types/lexiconTypes';
-import { LexiconConfirmSearchContainer } from '@/views/search/lexicon/styles/lexiconCardStyles';
+import { LexiconConfirmSearchContainer, LexiconThrobberContainer } from '@/views/search/lexicon/styles/lexiconCardStyles';
 import { useLexiconWordSearch } from '@/dataSource/reactQueryHooks';
 import { LexiconSearchType } from '@/dataSource/types/apiTypes';
 import Loader from '@/components/Misc/Loader';
@@ -17,15 +17,16 @@ import {
 
 export function LexiconConfirmSearch(props: LexiconConfirmSearchProps) {
   const { searchTerm, shouldSearch } = props;
-  const setShouldSearch = () => {
-    shouldSearch(true);
-  };
   const {
     data, error, isLoading, isError,
   } = useLexiconWordSearch(searchTerm, LexiconSearchType.CACHE);
 
   if (isLoading) {
-    return (<Loader size={Size.small} />);
+    return (
+      <LexiconThrobberContainer>
+        <Loader size={Size.small} />
+      </LexiconThrobberContainer>
+    );
   }
   if (isError) {
     const errorMessage: string = error
@@ -48,7 +49,7 @@ export function LexiconConfirmSearch(props: LexiconConfirmSearchProps) {
   return (
     <LexiconConfirmSearchContainer>
       <p>
-        Would you like a dictionary definition for that search ?
+        Would you like a dictionary definition for <b>{searchTerm}</b>?
       </p>
       <Button
         fontSize="14px"
@@ -56,8 +57,8 @@ export function LexiconConfirmSearch(props: LexiconConfirmSearchProps) {
         margin="0 0 15px 0"
         width="74px"
         borderRadius="5px"
-        onClick={() => setShouldSearch()}
-        title="Update"
+        onClick={() => shouldSearch(true)}
+        title="Yes"
       >
         Yes
       </Button>
