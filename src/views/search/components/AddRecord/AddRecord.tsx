@@ -7,6 +7,7 @@ import { AddRecordConfirm } from '@/views/search/components/AddRecord/AddRecordF
 import { SearchAddRecordContainer } from '@/views/search/styles/searchStyles';
 import { ArcAddContainer, ArcChangeStatusContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 
 export function AddRecord(props: AddRecordProps) {
   const { isAddRecordViewable, cancelAddRecordFormView } = props;
@@ -36,6 +37,7 @@ export function AddRecord(props: AddRecordProps) {
     setIsFormActive(true);
 
     queryClient.invalidateQueries('arcadiaWordSearch');
+    queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
   };
 
   let body: JSX.Element;
