@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   SpellingErrorDisplay,
   SpellingErrorMessage,
@@ -10,13 +11,12 @@ import {
   LatestWordListContainer,
   LexiconSection,
 } from '@/views/search/lexicon/styles/lexiconHomeStyles';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Size } from '@/types';
 import { ArcadiaSearchHomeContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
   const { wordDefinition, size } = props;
-  const navigate: NavigateFunction = useNavigate();
+  const navLocation: string = '/search/system/lexicon/definition?word=';
 
   const mainBody: JSX.Element = (
     <>
@@ -27,12 +27,11 @@ export function LexiconSpellingIssue(props: WordSearchDefinitionProps) {
       <SpellingSuggestions size={size}>
         <LatestWordListContainer>
           { wordDefinition.spellingSuggestions.map((word: string) => (
-            <SpellingSuggestion
-              key={'spelling-suggestion-'.concat(word)}
-              onClick={() => navigate(`/search/system/lexicon/definition?word=${word}`)}
-            >
-              {word}
-            </SpellingSuggestion>
+            <Link to={navLocation.concat(word)}>
+              <SpellingSuggestion key={'spelling-suggestion-'.concat(word)}>
+                {word}
+              </SpellingSuggestion>
+            </Link>
           )) }
         </LatestWordListContainer>
       </SpellingSuggestions>

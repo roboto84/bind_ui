@@ -15,6 +15,7 @@ import {
   ArcResultTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArcResultViewProps, ArcResultDisplay } from '@/views/search/arcadia/types/arcadiaTypes';
 import { Pill, PillContainer } from '@/views/styles/appStyles';
 import { Button } from '@/components/Nav/Button';
@@ -22,7 +23,7 @@ import { BsFillImageFill } from 'react-icons/bs';
 import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
 
 export function ArcResultView(props: ArcResultViewProps) {
-  const { _ref, arcResultPackage, onEdit, onDelete, onSubTagClick, displayMessage } = props;
+  const { _ref, arcResultPackage, onEdit, onDelete, navigate, displayMessage } = props;
   const { timeStamp, data, tags, title, description, image } = arcResultPackage;
   const formattedTimeStamp: string = timeStamp && timeStamp.indexOf('Z') > -1
     ? getLocalStandardDateTime(true, timeStamp, true)
@@ -43,9 +44,11 @@ export function ArcResultView(props: ArcResultViewProps) {
     : <div />;
 
   const tagsView = tags ? tags.map((tag: string) => (
-    <Pill key={'resultTagListItem'.concat(tag)} onClick={() => onSubTagClick(tag)}>
-      {tag}
-    </Pill>
+    <Link to={navigate.concat(tag)}>
+      <Pill key={'resultTagListItem'.concat(tag)}>
+        {tag}
+      </Pill>
+    </Link>
   )) : <span />;
 
   const descriptionView: JSX.Element = description !== 'None'

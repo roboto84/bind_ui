@@ -21,7 +21,7 @@ import { LexiconDictionarySize } from '@/views/search/lexicon/components/Lexicon
 import { ArcRandomRecord } from '@/views/search/arcadia/components/ArcRandomRecord';
 
 function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
-  const { tagSearchTerm, onTagClick } = props;
+  const { tagSearchTerm, navigate } = props;
   const lexiconSummary: UseQueryResult<LexiconSummaryApiResult> = useQuery<LexiconSummaryApiResult,
     Error>(lexiconApiEndpoints.summary);
   const arcadiaSummary: UseQueryResult<ArcadiaSummaryApiResult> = useQuery<ArcadiaSummaryApiResult,
@@ -71,7 +71,7 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
           highlight={highlightTags}
           title={tagGroupTitle}
           tagList={relevantTags}
-          onTagClick={onTagClick}
+          navigate={navigate}
         />
       </ArcInitialDataContainer>
       <ArcInitialDataContainer>
@@ -81,7 +81,7 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
         />
         <ArcRandomRecord
           record={arcadiaSummaryResponse.randomItemSample}
-          onTagClick={onTagClick}
+          navigate={navigate}
         />
       </ArcInitialDataContainer>
       <ArcInitialDataContainer>

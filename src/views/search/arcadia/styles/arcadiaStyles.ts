@@ -50,6 +50,11 @@ export const SubTagHeader = styled(NonListHoverable)`
 
 export const SubTagHeaderContainer = styled.div`
   padding: 25px 0 0;
+
+  a:link {
+    text-decoration: none;
+    color: inherit
+  }
 `;
 
 export const ArcResultOuterContainer = styled.div`
@@ -66,7 +71,7 @@ export const InnerLinks = styled.div`
   flex-wrap: wrap;
   gap: 16px 5px;
 
-  a:link, a:hover {
+  a:link {
     text-decoration: none;
     color: inherit
   }

@@ -15,8 +15,13 @@ export const LatestWordListContainer = styled.ul`{
   height: 100%;
   flex-wrap: wrap;
   column-gap: 15px;
-  
+
   li {
     list-style: none
+  }
+
+  a:link {
+    text-decoration: none;
+    color: inherit
   }
 }`;

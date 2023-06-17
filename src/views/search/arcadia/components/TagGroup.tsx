@@ -8,29 +8,31 @@ import {
   TagGroupSection,
 } from '@/views/search/styles/searchStyles';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TagGroupProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 function TagGroup(props: TagGroupProps) {
-  const { title, tagList, onTagClick, highlight } = props;
+  const { title, tagList, navigate, highlight } = props;
   let viewBody: JSX.Element;
   if (tagList && tagList.length > 0) {
     viewBody = (
       <>
         {
-        tagList.map((tag: string) => (
-          <SubTagHeader
-            key={'tagListItem'.concat(tag)}
-            onClick={() => onTagClick(tag)}
-            style={{
-              minWidth: 'auto',
-              width: 'auto',
-              boxShadow: 'none',
-            }}
-          >
-            {tag}
-          </SubTagHeader>
-        ))
-      }
+          tagList.map((tag: string) => (
+            <Link to={navigate.concat(tag)}>
+              <SubTagHeader
+                key={'tagListItem'.concat(tag)}
+                style={{
+                  minWidth: 'auto',
+                  width: 'auto',
+                  boxShadow: 'none',
+                }}
+              >
+                {tag}
+              </SubTagHeader>
+            </Link>
+          ))
+        }
       </>
     );
   } else {

@@ -36,7 +36,7 @@ export const Hoverable = styled.li`
   min-width: 170px;
   transition: 0.4s;
 
-  :hover{
+  :hover {
     background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
     color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
   }
@@ -53,7 +53,7 @@ export const NonListHoverable = styled.span`
   min-width: 170px;
   transition: 0.4s;
 
-  :hover{
+  :hover {
     background-color: ${(props:GlobalThemeType) => props.theme.core.mainThemeColor};
     color: ${(props:GlobalThemeType) => props.theme.button.transitionFontColor};
   }
@@ -63,7 +63,7 @@ export const Pill = styled(NonListHoverable)`
   font-size: 17px;
   background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
   margin: 0;
-  padding: 1px 8px;
+  padding: 4px 12px;
   min-width: auto;
   width: auto;
 `;
@@ -74,6 +74,11 @@ export const PillContainer = styled.div`
   width: 100%;
   flex-wrap: wrap;
   gap: 8px;
+
+  a:link, a:hover {
+    text-decoration: none !important;
+    color: inherit
+  }
 `;
 
 export interface SectionProps extends GlobalThemeType{

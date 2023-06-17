@@ -14,7 +14,6 @@ import { useClickOutside } from '@/hooks/useClickOutside';
 import { SearchMainContainer, SearchRefContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
-  const [searchContext, setSearchContext] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
   const navigate: NavigateFunction = useNavigate();
   const { pathname } = useLocation();
@@ -55,7 +54,6 @@ export function Search() {
     system: 'Arcadia',
     onHomeClick: () => {
       navigate('/search');
-      setSearchContext('');
     },
     onSearchKeyUp: (value: string) => {
       setSearchTerm(value);
@@ -64,7 +62,6 @@ export function Search() {
       }
     },
     onSendSearch: (value: string) => {
-      setSearchContext(value);
       generalSearch('/search/system/arcadia/data?word=', encodeURIComponent(value));
     },
   };
@@ -73,17 +70,17 @@ export function Search() {
     {
       index: true,
       element: (
-        <Arcadia view={ArcadiaView.MAIN} searchTerm={searchTerm} setContext={setSearchContext} />
+        <Arcadia view={ArcadiaView.MAIN} searchTerm={searchTerm} />
       ),
     },
     {
       path: 'arcadia/index',
       element: (
-        <Arcadia view={ArcadiaView.INDEX} searchTerm={searchTerm} setContext={setSearchContext} />
+        <Arcadia view={ArcadiaView.INDEX} searchTerm={searchTerm} />
       ),
     },
     { path: 'lexicon/definition', element: <LexiconSearchHome /> },
-    { path: 'arcadia/data', element: <ArcadiaSearch setContext={setSearchContext} /> },
+    { path: 'arcadia/data', element: <ArcadiaSearch /> },
   ];
 
   return (

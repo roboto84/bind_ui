@@ -25,6 +25,11 @@ export const DayWordInfo = styled.ul`
   li {
     list-style: none;
   }
+
+  a:link {
+    text-decoration: none;
+    color: inherit
+  }
 `;
 
 export const DayWord = styled(Hoverable)`

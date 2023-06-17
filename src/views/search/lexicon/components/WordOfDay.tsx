@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   DayWord,
   DayWordBreak,
@@ -13,13 +13,12 @@ import {
 } from '@/views/search/lexicon/styles/wordOfDayStyles';
 import DefinitionListView from '@/views/search/lexicon/components/DefintitionListView';
 import { AudioPlayer } from '@/components/Audio/AudioPlayer';
-import { Size } from '@/types';
 import { isAudioAvailable, pronunciationView, wordExampleView, wordParamBasicView } from '../utils';
 import { WordOfDayProps } from '../types/lexiconTypes';
 
 export function WordOfDay(props: WordOfDayProps) {
   const { wordDefinition } = props;
-  const navigate: NavigateFunction = useNavigate();
+  const navLocation: string = '/search/system/lexicon/definition?word=';
 
   let view: JSX.Element = (
     <WordOfDayContainer>
@@ -32,10 +31,6 @@ export function WordOfDay(props: WordOfDayProps) {
   );
 
   if (wordDefinition && wordDefinition.word) {
-    const navigateToWord: CallableFunction = () => {
-      navigate(`/search/system/lexicon/definition?word=${wordDefinition.word}`);
-    };
-
     const wordAudioComponent: JSX.Element = isAudioAvailable(wordDefinition.audio)
       ? <AudioPlayer src={wordDefinition.audio} />
       : <span />;
@@ -43,11 +38,11 @@ export function WordOfDay(props: WordOfDayProps) {
     view = (
       <WordOfDayContainer>
         <DayWordInfo>
-          <DayWord
-            onClick={() => navigateToWord()}
-          >
-            {wordDefinition.word}
-          </DayWord>
+          <Link to={navLocation.concat(wordDefinition.word)}>
+            <DayWord>
+              {wordDefinition.word}
+            </DayWord>
+          </Link>
           <DayWordDate>{wordParamBasicView(wordDefinition.dateFirstUsed)}</DayWordDate>
           <DayWordPartOfSpeech>
             {wordParamBasicView(wordDefinition.partOfSpeech)}

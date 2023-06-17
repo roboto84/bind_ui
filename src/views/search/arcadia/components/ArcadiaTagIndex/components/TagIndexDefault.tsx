@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { TagIndexProps } from '@/views/search/arcadia/types/arcadiaTypes';
 import { GeneralDictionarySection } from '@/views/search/lexicon/styles/lexiconCardStyles';
 import {
@@ -16,7 +17,7 @@ const getTagsCount = (arcadiaTags: [string, string[]][]) => arcadiaTags.reduce(
 );
 
 export function TagIndexDefault(props: TagIndexProps) {
-  const { arcadiaTags, onTagClick } = props;
+  const { arcadiaTags, navigate } = props;
   const tagsCount: number = getTagsCount(arcadiaTags);
 
   let viewBody: JSX.Element = (
@@ -39,12 +40,11 @@ export function TagIndexDefault(props: TagIndexProps) {
                     <TagIndexListContainer>
                       {
                         tags.map((tag: string) => (
-                          <Tag
-                            onClick={() => onTagClick(tag)}
-                            key={'tagListItem'.concat(tag)}
-                          >
-                            {tag}
-                          </Tag>
+                          <Link to={navigate.concat(tag)}>
+                            <Tag key={'tagListItem'.concat(tag)}>
+                              {tag}
+                            </Tag>
+                          </Link>
                         ))
                       }
                     </TagIndexListContainer>

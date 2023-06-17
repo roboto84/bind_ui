@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigateFunction, useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useArcadiaWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
@@ -8,7 +8,6 @@ import { GeneralSection } from '@/views/search/styles/searchStyles';
 import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
 import TagGroup from '@/views/search/arcadia/components/TagGroup';
 import {
-  ArcadiaSearchProps,
   ArcSearchResults,
   ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
@@ -19,12 +18,11 @@ import { ArcSearchPageInnerLinks } from '@/views/search/arcadia/components/ArcSe
 import { ArcSearchPageHeader } from '@/views/search/arcadia/components/ArcSearchPageHeader';
 import { ArcadiaContainer, ArcInitialDataContainer } from '../styles/arcadiaStyles';
 
-export function ArcadiaSearch(props: ArcadiaSearchProps) {
-  const { setContext } = props;
-  const navigate: NavigateFunction = useNavigate();
+export function ArcadiaSearch() {
   const [searchParams] = useSearchParams();
   const searchWord: string = searchParams.get('word');
   const { data, error, isLoading, isError } = useArcadiaWordSearch(searchWord);
+  const navLocation: string = '/search/system/arcadia/data?word=';
 
   if (isLoading) {
     return (<Loader />);
@@ -34,11 +32,6 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     return (<ErrorViewDefault errorMessage={error.message} />);
   }
 
-  const onSubTagClick = (term: string) => {
-    setContext(term);
-    navigate(`/search/system/arcadia/data?word=${term}`);
-  };
-
   const { searchResults, similarTags } = camelcaseKeys<ArcSearchResults>(data, { deep: true });
   const { urlCache, tagCache } = organizeNodes(searchResults);
 
@@ -47,7 +40,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
     : <div />;
 
   const tagView: JSX.Element = similarTags.length
-    ? (<TagGroup title="Similar Tags" tagList={similarTags} onTagClick={onSubTagClick} />)
+    ? (<TagGroup title="Similar Tags" tagList={similarTags} navigate={navLocation} />)
     : <div />;
 
   const mainNode: JSX.Element|JSX.Element[] = searchResults.mainNode
@@ -55,7 +48,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
       <ArcResult
         key={'arcResultItem'.concat(url.id.toString())}
         arcResultPackage={url}
-        onSubTagClick={onSubTagClick}
+        navigate={navLocation}
       />
     ))
     : <div />;
@@ -65,7 +58,7 @@ export function ArcadiaSearch(props: ArcadiaSearchProps) {
       <ArcResultSubNode
         key={'subNodeSubject'.concat(element.subject)}
         node={element}
-        onTagClick={onSubTagClick}
+        navigate={navLocation}
       />
     ),
   );

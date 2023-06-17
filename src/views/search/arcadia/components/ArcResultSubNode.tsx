@@ -5,19 +5,21 @@ import {
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArcResultSubNodeProps } from '@/views/search/arcadia/types/arcadiaTypes';
 
 export function ArcResultSubNode(props: ArcResultSubNodeProps) {
-  const { node, onTagClick } = props;
+  const { node, navigate } = props;
   return (
     <div>
       <SubTagHeaderContainer>
-        <SubTagHeader
-          id={'SubTagHeader-'.concat(node.subject)}
-          onClick={() => onTagClick(node.subject)}
-        >
-          {node.subject}
-        </SubTagHeader>
+        <Link to={navigate.concat(node.subject)}>
+          <SubTagHeader
+            id={'SubTagHeader-'.concat(node.subject)}
+          >
+            {node.subject}
+          </SubTagHeader>
+        </Link>
       </SubTagHeaderContainer>
       <ArcResultOuterContainer>
         {
@@ -25,7 +27,7 @@ export function ArcResultSubNode(props: ArcResultSubNodeProps) {
             <ArcResult
               key={'arcResultItem'.concat(url.id.toString())}
               arcResultPackage={url}
-              onSubTagClick={onTagClick}
+              navigate={navigate}
             />
           ))
         }

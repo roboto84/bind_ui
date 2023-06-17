@@ -4,13 +4,13 @@ import React from 'react';
 import { ArcRandomRecordContainer, AlphabetHeader } from '@/views/search/arcadia/styles/arcadiaStyles';
 
 export function ArcRandomRecord(props: ArcRandomRecordProps) {
-  const { record, onTagClick } = props;
+  const { record, navigate } = props;
   return (
     <ArcRandomRecordContainer>
       <AlphabetHeader>Entry of the Day</AlphabetHeader>
       <ArcResult
         arcResultPackage={record}
-        onSubTagClick={onTagClick}
+        navigate={navigate}
       />
     </ArcRandomRecordContainer>
   );

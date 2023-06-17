@@ -48,15 +48,18 @@ export const TagGroupSection = styled(GeneralSection)`
   width: 100%;
 `;
 
-export const Tag = styled(Hoverable)``;
+export const Tag = styled(Hoverable)`
+  background-color: ${(props: GlobalThemeType) => props.theme.button.backgroundColor};
+`;
 
-export const LatestTagsListContainer = styled.ul`{
+export const LatestTagsListContainer = styled.div`{
   all: unset;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   overflow: auto;
-  gap: 10px;
+  gap: 20px 10px;
+  padding: 5px 0 5px 0;
 
   li {
     list-style: none
@@ -65,10 +68,16 @@ export const LatestTagsListContainer = styled.ul`{
   h1 {
     margin-bottom: 8px;
   }
+
+  a:link {
+    text-decoration: none;
+    color: inherit
+  }
 }`;
 
 export const TagIndexListContainer = styled(LatestTagsListContainer)`
   max-height: 100%;
   overflow: auto;
   justify-content: left;
+  gap: 15px 25px;
 `;

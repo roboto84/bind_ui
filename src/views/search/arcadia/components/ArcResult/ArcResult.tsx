@@ -13,7 +13,7 @@ import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import { QueryClient, useQueryClient } from 'react-query';
 
 export function ArcResult(props: ArcResultProps) {
-  const { arcResultPackage, onSubTagClick } = props;
+  const { arcResultPackage, navigate } = props;
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
   const [editMessage, setEditMessage] = useState<string>('');
   const [resultPackage, setResultPackage] = useState<ArcResultPackage>(arcResultPackage);
@@ -57,7 +57,7 @@ export function ArcResult(props: ArcResultProps) {
           arcResultPackage={resultPackage}
           onDelete={setDisplay}
           onEdit={setDisplay}
-          onSubTagClick={onSubTagClick}
+          navigate={navigate}
           displayMessage={editMessage}
         />
       );

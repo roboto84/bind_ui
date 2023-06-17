@@ -34,7 +34,7 @@ export type ArcEditPackage = {
 
 export type ArcResultProps = {
   arcResultPackage: ArcResultPackage,
-  onSubTagClick: CallableFunction
+  navigate: string
 }
 
 export type ArcResultViewProps = {
@@ -42,7 +42,7 @@ export type ArcResultViewProps = {
   arcResultPackage: ArcResultPackage,
   onDelete: CallableFunction,
   onEdit: CallableFunction,
-  onSubTagClick: CallableFunction
+  navigate: string
   displayMessage: string
 }
 
@@ -85,18 +85,14 @@ export type ArcResultDeleteConfirmProps = {
 
 export type ArcResultSubNodeProps = {
   node: ArcSearchResultsNode,
-  onTagClick: CallableFunction
-}
-
-export type ArcadiaSearchProps = {
-  setContext: CallableFunction
+  navigate: string
 }
 
 export type TagGroupProps = {
   highlight ?: boolean,
   title: string,
   tagList: string[],
-  onTagClick: CallableFunction
+  navigate: string
 }
 
 export interface TagGroupSectionProps extends GlobalThemeType {
@@ -155,7 +151,7 @@ export type ArcSearchPageHeaderProps = {
 
 export type ArcadiaSearchHomeProps = {
   tagSearchTerm ?: string
-  onTagClick: CallableFunction
+  navigate: string
 }
 
 export type ArcadiaGraphCoherenceProps = {
@@ -165,15 +161,15 @@ export type ArcadiaGraphCoherenceProps = {
 
 export type ArcRandomRecordProps = {
   record: ArcResultPackage,
-  onTagClick: CallableFunction
+  navigate: string
 }
 
 export type ArcadiaTagIndexProps = {
   searchTerm: string,
-  onTagClick: CallableFunction
+  navigate: string
 }
 
 export type TagIndexProps = {
   arcadiaTags: [string, string[]][],
-  onTagClick: CallableFunction
+  navigate: string
 }
