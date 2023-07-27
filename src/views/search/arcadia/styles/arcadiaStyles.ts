@@ -51,7 +51,7 @@ export const SubTagHeader = styled(NonListHoverable)`
 export const SubTagHeaderContainer = styled.div`
   padding: 25px 0 0;
 
-  a:link {
+  a:link, a:visited {
     text-decoration: none;
     color: inherit
   }
@@ -71,7 +71,7 @@ export const InnerLinks = styled.div`
   flex-wrap: wrap;
   gap: 16px 5px;
 
-  a:link {
+  a:link, a:visited {
     text-decoration: none;
     color: inherit
   }
@@ -89,7 +89,7 @@ export const ArcResultContainer = styled(Section)`
   font-size: 20px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
 
-  a:link {
+  a:link, a:visited {
     text-decoration: none;
   }
 
@@ -109,7 +109,7 @@ export const TagsSection = styled(ArcResultContainer)<TagGroupSectionProps>`
   padding: 10px;
   font-size: 16px;
   border: ${(props: TagGroupSectionProps) => (
-          props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
+    props.isHighLight ? '3px' : '0px')} solid ${(props: TagGroupSectionProps) => (props.isHighLight ? props.theme.core.mainThemeColor : props.theme.air.weatherSubcategory.borderColor)};
 `;
 
 export const ArcImageContainer = styled.div`

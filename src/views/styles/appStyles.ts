@@ -12,7 +12,7 @@ export const AppContainer = styled.div`
   left: 0;
   height: 99vh;
   width: 100vw;
-  
+
   @media ${device.mobileXL} {
     height: inherit;
   }
@@ -75,7 +75,7 @@ export const PillContainer = styled.div`
   flex-wrap: wrap;
   gap: 8px;
 
-  a:link, a:hover {
+  a:link, a:hover, a:visited {
     text-decoration: none !important;
     color: inherit
   }

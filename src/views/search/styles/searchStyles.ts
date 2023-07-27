@@ -69,7 +69,7 @@ export const LatestTagsListContainer = styled.div`{
     margin-bottom: 8px;
   }
 
-  a:link {
+  a:link, a:visited {
     text-decoration: none;
     color: inherit
   }

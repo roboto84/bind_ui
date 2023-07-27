@@ -26,7 +26,7 @@ export const DayWordInfo = styled.ul`
     list-style: none;
   }
 
-  a:link {
+  a:link, a:visited {
     text-decoration: none;
     color: inherit
   }
