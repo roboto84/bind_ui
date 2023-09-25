@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { GlobalThemeType } from '@/types';
+
 // @ts-ignore
 import RobotoWoffTwo from '@/assets/fonts/roboto/roboto-v30-latin-300.woff2';
 // @ts-ignore
@@ -14,11 +15,13 @@ export const GlobalStyle = createGlobalStyle`
       url('${RobotoWoffTwo}') format('woff2'),
       url('${RobotoWoff}') format('woff');
   }
-
-    h1 {
+  
+  h1 {
     font-family: ${(props: GlobalThemeType) => props.theme.shared.fonts.primary};
     font-size: 25px;
     margin: 15px 20px 0 15px;
+    font-style: normal;
+    font-weight: normal;
   }
 
   h2 {

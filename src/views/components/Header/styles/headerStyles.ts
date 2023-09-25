@@ -39,11 +39,11 @@ export const HeaderTitleContainer = styled.div`
 export const Title = styled.h1`
   display: flex;
   margin-left: 8px;
-  margin-top: 10px;
+  margin-top: 12px;
   
   @media ${device.tablet} {
     font-size: 27px;
-    margin: 29px 0 0 8px;
+    margin: 28px 0 0 4px;
   }
 `;
 
@@ -57,7 +57,15 @@ export const SmallHeaderIconContainer = styled.span`
   }
 
   @media ${device.tablet} {
-    margin: 19px 0 0 0;
+    margin: 26px 0 0 0;
+  }
+`;
+
+export const HeaderIcon = styled.img`
+  width: 44px;
+
+  @media ${device.tablet} {
+    width: 32px;
   }
 `;
 
@@ -73,7 +81,8 @@ export const ColoredTitle = styled.span`
   filter: ${(props:GlobalThemeType) => props.theme.header.secondaryTitleBrightness};
   
   @media ${device.tablet} {
-    margin: -2px 0 0 8px;
+    margin: -5px 0 0 6px;
+    font-size: 32px;
   }
 `;
 

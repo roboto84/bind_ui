@@ -9,7 +9,9 @@ import {
   Title,
   ColoredTitle,
   PrimaryTitle,
-  SmallHeaderIconContainer, HeaderTitleContainer,
+  SmallHeaderIconContainer,
+  HeaderTitleContainer,
+  HeaderIcon,
 } from './styles/headerStyles';
 
 export default function HeaderTitle(props: HeaderProps) {
@@ -21,7 +23,7 @@ export default function HeaderTitle(props: HeaderProps) {
   return (
     <HeaderTitleContainer>
       <SmallHeaderIconContainer onClick={() => navigate('/')}>
-        <img src={appLogoIcon} alt="Bind logo" />
+        <HeaderIcon className="HeaderIcon" src={appLogoIcon} alt="Bind logo" />
       </SmallHeaderIconContainer>
       <TitleContainer>
         <Title title={htmlTitle}>
