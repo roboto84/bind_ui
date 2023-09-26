@@ -15,7 +15,10 @@ export const SearchContainer = styled.menu`
   }
 `;
 
-export const SearchInput = styled(Input)<{ hasSearchTerm: boolean }>`
+export const SearchInput = styled(Input)<{
+  hasSearchTerm: boolean,
+  rightSideWindowOpen: boolean,
+}>`
   width: ${(props) => (props.hasSearchTerm ? '456px' : '500px')};
   border-right: ${(props) => (props.hasSearchTerm ? 'none' : '')};;
   min-width: 100px;
@@ -23,8 +26,24 @@ export const SearchInput = styled(Input)<{ hasSearchTerm: boolean }>`
   border-radius: 5px 0 0 5px;
   transition: none;
 
+  @media ${device.laptop} {
+    width: ${(props) => (props.rightSideWindowOpen ? '350px' : '430px')};
+  }
+  
   @media ${device.tablet} {
-    width: 100%
+    width: ${(props) => (props.rightSideWindowOpen ? '100%' : '430px')};
+  }
+
+  @media ${device.mobileXL} {
+    width: ${(props) => (props.rightSideWindowOpen ? '100%' : '325px')};
+  }
+
+  @media ${device.mobileLL} {
+    width: ${(props) => (props.rightSideWindowOpen ? '100%' : '295px')};
+  }
+
+  @media ${device.mobileL} {
+    width: 100%;
   }
 
   :focus + button {

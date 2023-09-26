@@ -39,7 +39,7 @@ export const HeaderTitleContainer = styled.div`
 export const Title = styled.h1`
   display: flex;
   margin-left: 8px;
-  margin-top: 12px;
+  margin-top: 10px;
   
   @media ${device.tablet} {
     font-size: 27px;
@@ -49,7 +49,7 @@ export const Title = styled.h1`
 
 export const SmallHeaderIconContainer = styled.span`
   color: ${(props: GlobalThemeType) => props.theme.header.iconColor};
-  margin-top: 14px;
+  margin-top: 12px;
 
   &:hover {
     cursor: pointer;

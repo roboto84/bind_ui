@@ -2,6 +2,8 @@ import React, { KeyboardEvent, useRef, useState } from 'react';
 import { SearchBarProps } from '@/views/search/types/searchTypes';
 import { acceptableCharactersTest } from '@/utils/utils';
 import { IoMdClose } from 'react-icons/io';
+import { useWh00tWebsocket } from '@/context/wh00tContext';
+import { Wh00tWindowStateEnum } from '@/context/types/enums';
 import {
   ClearSearchButton,
   SearchButton,
@@ -11,6 +13,7 @@ import {
 
 export function SearchBar(props: SearchBarProps) {
   const { searchSystem } = props;
+  const { state } = useWh00tWebsocket();
   const searchInputRef: React.MutableRefObject<any> = useRef();
   const [hasSearchTerm, setHasSearchTerm] = useState(false);
 
@@ -55,6 +58,7 @@ export function SearchBar(props: SearchBarProps) {
         onKeyUp={searchKeyInput}
         autoFocus
         hasSearchTerm={hasSearchTerm}
+        rightSideWindowOpen={state.wh00tWindowState === Wh00tWindowStateEnum.MAX}
       />
       <ClearSearchButton hasSearchTerm={hasSearchTerm} onClick={clearSearch}>
         <IoMdClose />
