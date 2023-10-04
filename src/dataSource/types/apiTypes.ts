@@ -42,6 +42,7 @@ export enum LexiconSearchType {
 export type ArcadiaEndpointsType = {
   summary: string,
   randomTags: string,
+  tagsIndex: string,
   tags: string,
   wordSearch: string,
   removeItem: string,
@@ -51,6 +52,11 @@ export type ArcadiaEndpointsType = {
 
 export type ArcadiaTagsIndex = {
   [key: string]: string[]
+}
+
+export type ArcadiaTags = {
+  numberOfSubjects: number,
+  subjects: string[],
 }
 
 export type ArcadiaSummaryApiResult = {

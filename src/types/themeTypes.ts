@@ -45,6 +45,15 @@ export type SubButtonStyleType = {
   borderColor: string,
 }
 
+export type InputStyleType = {
+  autocompleteOptions: {
+    fontColor: string,
+    backgroundColor: string,
+    activeFontColor: string,
+    activeBackground: string,
+  }
+}
+
 export type ChartStyleType = {
   border: string,
   axisLabelFontColor: string,
@@ -212,6 +221,7 @@ export type ThemeType = {
   throbber: ThrobberStyleType,
   button: ButtonStyleType,
   subButton: SubButtonStyleType,
+  input: InputStyleType,
   chart: ChartStyleType,
   header: HeaderStyleType,
   home: HomeThemeType,

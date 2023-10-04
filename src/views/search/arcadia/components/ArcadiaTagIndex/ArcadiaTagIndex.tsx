@@ -14,7 +14,7 @@ import camelcaseKeys from 'camelcase-keys';
 export function ArcadiaTagIndex(props: ArcadiaTagIndexProps) {
   const { searchTerm, navigate } = props;
   const arcadiaTagsHook: UseQueryResult<ArcadiaTagsApiResult> = useQuery<ArcadiaTagsApiResult,
-    Error>(arcadiaApiEndpoints.tags);
+    Error>(arcadiaApiEndpoints.tagsIndex);
 
   if (arcadiaTagsHook.isLoading) {
     return <Loader />;

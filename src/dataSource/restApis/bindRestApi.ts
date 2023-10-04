@@ -30,7 +30,8 @@ export const lexiconApiEndpoints: LexiconEndpointsType = {
 export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
   summary: '/arcadia/summary',
   randomTags: '/arcadia/random_subjects',
-  tags: '/arcadia/subjects_index',
+  tagsIndex: '/arcadia/subjects_index',
+  tags: '/arcadia/subjects',
   wordSearch: '/arcadia/word_search/',
   removeItem: '/arcadia/remove/',
   editItem: '/arcadia/update/',

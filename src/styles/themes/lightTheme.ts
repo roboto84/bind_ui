@@ -55,6 +55,14 @@ export const LightTheme: ThemeType = {
     transitionFontColor: '#e9e9e9',
     borderColor: '#848585',
   },
+  input: {
+    autocompleteOptions: {
+      fontColor: '#A16000',
+      backgroundColor: '#dedede',
+      activeFontColor: '#FFF',
+      activeBackground: '#A16000',
+    },
+  },
   chart: {
     border: '#d1d1d1',
     axisLabelFontColor: '#565656',

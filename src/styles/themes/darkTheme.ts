@@ -75,6 +75,14 @@ export const DarkTheme: ThemeType = {
     transitionFontColor: '#252525',
     borderColor: '#484c58',
   },
+  input: {
+    autocompleteOptions: {
+      fontColor: '#FF9800',
+      backgroundColor: '#444e5c',
+      activeFontColor: '#000',
+      activeBackground: '#FF9800',
+    },
+  },
   header: {
     iconColor: '#dadada',
     iconHoverColor: customThemeDark.mainThemeColor,

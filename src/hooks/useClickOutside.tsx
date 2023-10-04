@@ -1,9 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 
 export const useClickOutside = (handler: Function) => {
-  const ref = useRef(null);
-
-  const handleClickOutside = (event: { target: any }) => {
+  const ref: React.MutableRefObject<any> = useRef(null);
+  const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target)) {
       handler();
     }

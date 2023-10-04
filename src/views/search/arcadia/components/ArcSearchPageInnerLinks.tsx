@@ -8,9 +8,8 @@ export function ArcSearchPageInnerLinks(props: ArcSearchPageInnerLinksProps) {
     <InnerLinks>
       {
         tags.map((tag: string) => (
-          <a href={'#SubTagHeader-'.concat(tag)}>
+          <a key={'tagInnerLink'.concat(tag)}  href={'#SubTagHeader-'.concat(tag)}>
             <SubTagHeader
-              key={'tagInnerLink'.concat(tag)}
               style={{ minWidth: 'auto', width: 'auto', fontSize: '16px' }}
             >
               {tag}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useArcadiaWordSearch } from '@/dataSource/reactQueryHooks';
 import Loader from '@/components/Misc/Loader';
@@ -16,20 +16,43 @@ import { ArcResultSubNode } from '@/views/search/arcadia/components/ArcResultSub
 import { organizeNodes } from '@/views/search/arcadia/utils';
 import { ArcSearchPageInnerLinks } from '@/views/search/arcadia/components/ArcSearchPageInnerLinks';
 import { ArcSearchPageHeader } from '@/views/search/arcadia/components/ArcSearchPageHeader';
+import { useQuery, UseQueryResult } from 'react-query';
+import {
+  ArcadiaTags,
+} from '@/dataSource/types/apiTypes';
+import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
+import { SearchContext } from '@/context/searchContext';
+import { SearchActionsEnum } from '@/context/types/enums';
 import { ArcadiaContainer, ArcInitialDataContainer } from '../styles/arcadiaStyles';
 
 export function ArcadiaSearch() {
+  const { state, dispatch } = useContext(SearchContext);
   const [searchParams] = useSearchParams();
   const searchWord: string = searchParams.get('word');
-  const { data, error, isLoading, isError } = useArcadiaWordSearch(searchWord);
   const navLocation: string = '/search/system/arcadia/data?word=';
+  const { data, isLoading, isError } = useArcadiaWordSearch(searchWord);
+  const arcadiaSubjects: UseQueryResult<ArcadiaTags> = useQuery<ArcadiaTags,
+    Error>(arcadiaApiEndpoints.tags);
 
-  if (isLoading) {
+  if (isLoading || arcadiaSubjects.isLoading) {
     return (<Loader />);
   }
 
-  if (isError) {
-    return (<ErrorViewDefault errorMessage={error.message} />);
+  if (isError || arcadiaSubjects.isError) {
+    const message: string = 'Error has occurred getting search data or subjects';
+    return (<ErrorViewDefault errorMessage={message} />);
+  }
+
+  const arcadiaSubjectsResponse: ArcadiaTags = camelcaseKeys<ArcadiaTags>(
+    arcadiaSubjects.data,
+    { deep: true },
+  );
+
+  // TODO: Update this to not use a setTimeout
+  if (state.tags.length !== arcadiaSubjectsResponse.numberOfSubjects) {
+    setTimeout(() => {
+      dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjects });
+    }, 0);
   }
 
   const { searchResults, similarTags } = camelcaseKeys<ArcSearchResults>(data, { deep: true });
