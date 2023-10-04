@@ -19,9 +19,8 @@ function TagGroup(props: TagGroupProps) {
       <>
         {
           tagList.map((tag: string) => (
-            <Link to={navigate.concat(tag)}>
+            <Link key={'tagListItem'.concat(tag)} to={navigate.concat(tag)}>
               <SubTagHeader
-                key={'tagListItem'.concat(tag)}
                 style={{
                   minWidth: 'auto',
                   width: 'auto',

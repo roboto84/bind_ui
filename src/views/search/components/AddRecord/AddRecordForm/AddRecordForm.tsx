@@ -1,12 +1,18 @@
 import {
-  ArcRecordFormContainer, ArcAddFieldContainer, ArcAddInputContainer,
-  ArcInput, ArcInputTitle,
+  ArcRecordFormContainer,
+  ArcAddFieldContainer,
+  ArcAddInputContainer,
+  ArcInput,
+  ArcInputTitle,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext, FormEventHandler } from 'react';
 import { Button } from '@/components/Nav/Button';
 import { AddRecordFormProps, ArcAddPackage } from '@/views/search/types/searchTypes';
+import { SearchContext } from '@/context/searchContext';
+import MultiTextInputWithAutocomplete from '@/components/Input/MultiTextInputWithAutocomplete';
 
 export function AddRecordForm(props: AddRecordFormProps) {
+  const { state } = useContext(SearchContext);
   const { _ref, cancelAddForm, onAddItem, isFormActive, isSuccess } = props;
   const urlInputRef: React.MutableRefObject<any> = useRef();
   const tagsInputRef: React.MutableRefObject<any> = useRef();
@@ -20,15 +26,19 @@ export function AddRecordForm(props: AddRecordFormProps) {
 
   const addItem = () => {
     if (urlInputRef.current.value !== '') {
+      const tagsFromInput: string = tagsInputRef.current.value.endsWith(',')
+        ? tagsInputRef.current.value.substring(0, tagsInputRef.current.value.length - 1)
+        : tagsInputRef.current.value;
+
       const addItemPackage: ArcAddPackage = {
         data: urlInputRef.current.value,
-        tags: String(tagsInputRef.current.value).replace(/\s+/g, '').split(','),
+        tags: String(tagsFromInput).replace(/\s+/g, '').split(','),
       };
       onAddItem(addItemPackage);
     }
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }): void => {
+  const handleSubmit: FormEventHandler = (e) => {
     e.preventDefault();
     addItem();
   };
@@ -45,15 +55,13 @@ export function AddRecordForm(props: AddRecordFormProps) {
             disabled={!isFormActive}
           />
         </ArcAddInputContainer>
-        <ArcAddInputContainer>
-          <ArcInputTitle>Tags (comma separated)</ArcInputTitle>
-          <ArcInput
-            title="Tags Edit"
-            type="text"
-            ref={tagsInputRef}
-            disabled={!isFormActive}
-          />
-        </ArcAddInputContainer>
+        <MultiTextInputWithAutocomplete
+          label="Tags (comma separated)"
+          title="Tags Edit"
+          isInputActive={isFormActive}
+          autocompleteOptions={state.tags}
+          inputRef={tagsInputRef}
+        />
       </ArcAddFieldContainer>
       <ArcAddFieldContainer style={{ marginTop: '20px', justifyContent: 'end' }}>
         <div>

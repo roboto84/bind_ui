@@ -12,10 +12,13 @@ import {
   ArcResultDisplay,
   ArcResultEditViewProps,
 } from '@/views/search/arcadia/types/arcadiaTypes';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext, FormEventHandler } from 'react';
 import { FocusableButton } from '@/components/Nav/Button';
+import MultiTextInputWithAutocomplete from '@/components/Input/MultiTextInputWithAutocomplete';
+import { SearchContext } from '@/context/searchContext';
 
 export function ArcResultEditForm(props: ArcResultEditViewProps) {
+  const { state } = useContext(SearchContext);
   const { itemKey, tags, title, description, image, onReset, onEdit } = props;
   const imageInputRef: React.MutableRefObject<any> = useRef();
   const urlInputRef: React.MutableRefObject<any> = useRef();
@@ -28,10 +31,14 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
   }, []);
 
   const editItem = () => {
+    const tagsFromInput: string = tagsInputRef.current.value.endsWith(',')
+      ? tagsInputRef.current.value.substring(0, tagsInputRef.current.value.length - 1)
+      : tagsInputRef.current.value;
+
     const editItemPackage: ArcEditPackage = {
       data: itemKey,
       dataUpdate: urlInputRef.current.value,
-      tags: String(tagsInputRef.current.value).replace(/\s+/g, '').split(','),
+      tags: String(tagsFromInput).replace(/\s+/g, '').split(','),
       title: titleInputRef.current.value,
       description: descriptionInputRef.current.value,
       image: imageInputRef.current.value,
@@ -43,7 +50,7 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
     onReset(ArcResultDisplay.VIEW);
   };
 
-  const handleSubmit = (e: { preventDefault: () => void; }): void => {
+  const handleSubmit: FormEventHandler = (e): void => {
     e.preventDefault();
     editItem();
   };
@@ -70,15 +77,13 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
               ref={urlInputRef}
             />
           </div>
-          <div style={{ marginTop: '10px' }}>
-            <ArcInputTitle>Tags (comma separated)</ArcInputTitle>
-            <ArcInput
-              title="Tags Edit"
-              type="text"
-              defaultValue={tags}
-              ref={tagsInputRef}
-            />
-          </div>
+          <MultiTextInputWithAutocomplete
+            label="Tags (comma separated)"
+            title="Tags Edit"
+            defaultValue={tags}
+            autocompleteOptions={state.tags}
+            inputRef={tagsInputRef}
+          />
         </ArcEditFieldContainer>
         <ArcEditFieldContainer>
           <div>

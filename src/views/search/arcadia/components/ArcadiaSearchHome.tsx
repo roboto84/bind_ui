@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useQuery, UseQueryResult } from 'react-query';
 import Loader from '@/components/Misc/Loader';
 import camelcaseKeys from 'camelcase-keys';
@@ -19,9 +19,12 @@ import { searchTags } from '@/views/search/arcadia/utils';
 import { ArcadiaGraphCoherence } from '@/views/search/arcadia/components/ArcadiaGraphCoherence';
 import { LexiconDictionarySize } from '@/views/search/lexicon/components/LexiconDictionarySize';
 import { ArcRandomRecord } from '@/views/search/arcadia/components/ArcRandomRecord';
+import { SearchContext } from '@/context/searchContext';
+import { SearchActionsEnum } from '@/context/types/enums';
 
 function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
   const { tagSearchTerm, navigate } = props;
+  const { state, dispatch } = useContext(SearchContext);
   const lexiconSummary: UseQueryResult<LexiconSummaryApiResult> = useQuery<LexiconSummaryApiResult,
     Error>(lexiconApiEndpoints.summary);
   const arcadiaSummary: UseQueryResult<ArcadiaSummaryApiResult> = useQuery<ArcadiaSummaryApiResult,
@@ -54,6 +57,13 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
   let relevantTags: string[];
   let tagGroupTitle: string;
   let highlightTags: boolean = false;
+
+  // TODO: Update this to not use a setTimeout
+  if (state.tags.length !== arcadiaSummaryResponse.subjects.length) {
+    setTimeout(() => {
+      dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSummaryResponse.subjects });
+    }, 0);
+  }
 
   if (isSearch) {
     relevantTags = searchTags(tagSearchTerm, arcadiaSummaryResponse.subjects);

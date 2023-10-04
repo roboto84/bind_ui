@@ -47,3 +47,22 @@ export function acceptableCharactersTest(key: string):boolean {
 
   return nonAcceptableKeys.indexOf(key) === -1;
 }
+
+export const appendStringBeforeFirstComma = (firstString: string, secondString: string): string => {
+  let lastCommaIndex = firstString.lastIndexOf(',');
+  if (lastCommaIndex !== -1) {
+      let substring = firstString.slice(0, lastCommaIndex+1);
+      return `${substring}${secondString},`;
+  } else {
+      return `${secondString},`;
+  }
+}
+
+export const stripBeforeLastComma = (inputString: string): string => {
+  let lastCommaIndex = inputString.lastIndexOf(',');
+  if (lastCommaIndex !== -1) {
+      return inputString.slice(lastCommaIndex + 1).trim();
+  } else {
+      return inputString;
+  }
+}

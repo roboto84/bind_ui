@@ -11,6 +11,7 @@ import { AddSearchRecordButton } from '@/views/search/components/AddSearchRecord
 import { AddRecord } from '@/views/search/components/AddRecord/AddRecord';
 import { openInNewTab, quickSearchSystems } from '@/views/search/arcadia/utils';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import SearchProvider from '@/context/searchContext';
 import { SearchMainContainer, SearchRefContainer, SearchMenuContainer } from './styles/searchStyles';
 
 export function Search() {
@@ -84,18 +85,20 @@ export function Search() {
   ];
 
   return (
-    <SearchMainContainer>
-      <SearchRefContainer ref={ref}>
-        <SearchMenuContainer>
-          <SearchBar searchSystem={arcadiaSys} />
-          <AddSearchRecordButton activateAction={activateAddRecordFormView} />
-        </SearchMenuContainer>
-        <AddRecord
-          isAddRecordViewable={isAddRecordViewable}
-          cancelAddRecordFormView={hideAddRecordFormView}
-        />
-      </SearchRefContainer>
-      <RoutesGenerator routerRoutesConfig={routerConfig} />
-    </SearchMainContainer>
+    <SearchProvider>
+      <SearchMainContainer>
+        <SearchRefContainer ref={ref}>
+          <SearchMenuContainer>
+            <SearchBar searchSystem={arcadiaSys} />
+            <AddSearchRecordButton activateAction={activateAddRecordFormView} />
+          </SearchMenuContainer>
+          <AddRecord
+            isAddRecordViewable={isAddRecordViewable}
+            cancelAddRecordFormView={hideAddRecordFormView}
+          />
+        </SearchRefContainer>
+        <RoutesGenerator routerRoutesConfig={routerConfig} />
+      </SearchMainContainer>
+    </SearchProvider>
   );
 }

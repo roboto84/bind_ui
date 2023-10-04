@@ -171,6 +171,7 @@ export const ArcEditThrobberContainer = styled(ArcAddThrobberContainer)`
 export const ArcAddInputContainer = styled.div`
   margin-top: 10px;
   flex-grow: 1;
+  position: relative;
 `;
 
 export const ArcResultTextContainer = styled.div`
@@ -238,6 +239,35 @@ export const ArcInput = styled(Input)`
   }
 
   @media ${device.tabletS} {}
+`;
+
+export const AutoCompleteContainer = styled.ul<{ show: boolean }>`
+  display: ${(props) => (props.show ? 'block' : 'none')};
+  width: calc(100% - 12px);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid #696969;
+  border-top: 0;
+  background-color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.backgroundColor};
+  color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.fontColor};
+  font-size: 16px;
+  position: absolute;
+  padding: 10px 3px;
+  margin: -3px 0;
+  max-height: 225px;
+  overflow-y: scroll;
+
+  li {
+    list-style: none;
+    padding: 5px;
+  }
+
+  .active{
+    background-color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.activeBackground};
+    color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.activeFontColor
+};
+    border-radius: 3px;
+  }
 `;
 
 export const ArcInputTextArea = styled(InputTextArea)`

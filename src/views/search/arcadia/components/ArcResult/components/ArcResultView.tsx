@@ -44,8 +44,8 @@ export function ArcResultView(props: ArcResultViewProps) {
     : <div />;
 
   const tagsView = tags ? tags.map((tag: string) => (
-    <Link to={navigate.concat(tag)}>
-      <Pill key={'resultTagListItem'.concat(tag)}>
+    <Link key={'resultTagListItem'.concat(tag)} to={navigate.concat(tag)}>
+      <Pill>
         {tag}
       </Pill>
     </Link>

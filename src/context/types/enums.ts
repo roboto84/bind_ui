@@ -2,6 +2,10 @@ export enum GlobalActionsEnum {
   TOGGLE_THEME = 'TOGGLE_THEME'
 }
 
+export enum SearchActionsEnum {
+  LOAD_TAGS = 'LOAD_TAGS'
+}
+
 export enum Wh00tActionsEnum {
   WINDOW_MIN = 'WINDOW_MIN',
   WINDOW_MED = 'WINDOW_MED',
