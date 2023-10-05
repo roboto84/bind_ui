@@ -8,7 +8,7 @@ export type SearchSystem = {
 }
 
 export type SearchBarProps = {
-  searchSystem: SearchSystem
+  searchSystem: SearchSystem,
 }
 
 export enum ArcadiaView {

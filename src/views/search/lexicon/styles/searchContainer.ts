@@ -4,6 +4,10 @@ import { Input } from '@/components/Input/Input';
 import { Button, ButtonProps } from '@/components/Nav/Button';
 import { device } from '@/styles/responsive';
 
+export const SearchWrapper = styled.div`
+  position: relative;
+`;
+
 export const SearchContainer = styled.menu`
   all: unset;
   font-size: 13px;
@@ -55,6 +59,37 @@ export const SearchInput = styled(Input)<{
     &:hover {
       color: ${(props: GlobalThemeType) => props.theme.lexicon.secondaryTextColor};
     }
+  }
+`;
+
+export const SearchAutoCompleteContainer = styled.ul<{ show: boolean }>`
+  display: ${(props) => (props.show ? 'block' : 'none')};
+  width: calc(100% - 91px);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid;
+  border-color: ${(props: GlobalThemeType) => props.theme.lexicon.searchBar.borderFocusColor};
+  border-top: 0;
+  background-color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.backgroundColor};
+  color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.fontColor};
+  font-size: 16px;
+  position: absolute;
+  padding: 10px 3px;
+  margin:  -16px 0;
+  max-height: 225px;
+  overflow-y: scroll;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+
+  li {
+    list-style: none;
+    padding: 5px;
+  }
+
+  .active{
+    background-color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.activeBackground};
+    color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.activeFontColor
+};
+    border-radius: 3px;
   }
 `;
 
