@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArcadiaProps, ArcadiaView } from '@/views/search/types/searchTypes';
-import ArcadiaSearchHome from '@/views/search/arcadia/components/ArcadiaSearchHome';
+import { ArcadiaSearchHome } from '@/views/search/arcadia/components/ArcadiaSearchHome';
 import { ArcadiaTagIndex } from '@/views/search/arcadia/components/ArcadiaTagIndex/ArcadiaTagIndex';
 import { ArcadiaContainer } from './styles/arcadiaStyles';
 
@@ -12,12 +12,7 @@ export function Arcadia(props: ArcadiaProps) {
   if (view === ArcadiaView.INDEX) {
     viewBody = <ArcadiaTagIndex searchTerm={searchTerm} navigate={navLocation} />;
   } else {
-    viewBody = (
-      <ArcadiaSearchHome
-        tagSearchTerm={searchTerm}
-        navigate={navLocation}
-      />
-    );
+    viewBody = <ArcadiaSearchHome navigate={navLocation} />;
   }
 
   return (

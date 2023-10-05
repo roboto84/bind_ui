@@ -15,15 +15,14 @@ import {
 import { ArcadiaSearchHomeProps } from '@/views/search/arcadia/types/arcadiaTypes';
 import LexiconCard from '@/views/search/lexicon/components/lexiconCard/LexiconCard';
 import TagGroup from '@/views/search/arcadia/components/TagGroup';
-import { searchTags } from '@/views/search/arcadia/utils';
 import { ArcadiaGraphCoherence } from '@/views/search/arcadia/components/ArcadiaGraphCoherence';
 import { LexiconDictionarySize } from '@/views/search/lexicon/components/LexiconDictionarySize';
 import { ArcRandomRecord } from '@/views/search/arcadia/components/ArcRandomRecord';
 import { SearchContext } from '@/context/searchContext';
 import { SearchActionsEnum } from '@/context/types/enums';
 
-function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
-  const { tagSearchTerm, navigate } = props;
+export function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
+  const { navigate } = props;
   const { state, dispatch } = useContext(SearchContext);
   const lexiconSummary: UseQueryResult<LexiconSummaryApiResult> = useQuery<LexiconSummaryApiResult,
     Error>(lexiconApiEndpoints.summary);
@@ -53,25 +52,15 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     { deep: true },
   );
 
-  const isSearch: boolean = tagSearchTerm.length > 0;
-  let relevantTags: string[];
-  let tagGroupTitle: string;
-  let highlightTags: boolean = false;
+  const relevantTags: string[] = arcadiaSummaryResponse.randomSubjectSample;
+  const tagGroupTitle: string = 'Interesting Tags';
+  const highlightTags: boolean = false;
 
   // TODO: Update this to not use a setTimeout
   if (state.tags.length !== arcadiaSummaryResponse.subjects.length) {
     setTimeout(() => {
       dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSummaryResponse.subjects });
     }, 0);
-  }
-
-  if (isSearch) {
-    relevantTags = searchTags(tagSearchTerm, arcadiaSummaryResponse.subjects);
-    tagGroupTitle = `Tag Search (${relevantTags.length})`;
-    highlightTags = true;
-  } else {
-    relevantTags = arcadiaSummaryResponse.randomSubjectSample;
-    tagGroupTitle = 'Interesting Tags';
   }
 
   return (
@@ -104,9 +93,3 @@ function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     </>
   );
 }
-
-ArcadiaSearchHome.defaultProps = {
-  tagSearchTerm: '',
-};
-
-export default ArcadiaSearchHome;

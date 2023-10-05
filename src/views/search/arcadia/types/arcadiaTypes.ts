@@ -150,7 +150,6 @@ export type ArcSearchPageHeaderProps = {
 }
 
 export type ArcadiaSearchHomeProps = {
-  tagSearchTerm ?: string
   navigate: string
 }
 
