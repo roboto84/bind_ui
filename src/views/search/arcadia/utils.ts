@@ -3,6 +3,7 @@ import {
   ArcSearchResultPackage,
   ArcSearchResultsNode,
 } from '@/views/search/arcadia/types/arcadiaTypes';
+import { BaseObjectOfFunctions } from '@/dataSource/types/apiTypes';
 
 export function dictionarySearchTermValidator(term: string) {
   return (term.indexOf('_') < 0 && term.match(/^[a-zA-Z]+$/));
@@ -54,7 +55,7 @@ export function openInNewTab(url: string) {
   window.open(url, '_blank').focus();
 }
 
-export const quickSearchSystems: {[key: string]: Function} = {
+export const quickSearchSystems: BaseObjectOfFunctions = {
   ph(searchTerm: string) {
     return `https://www.phind.com/search?q=${searchTerm}&source=searchbox`;
   },

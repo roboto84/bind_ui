@@ -1,6 +1,8 @@
 // Organized from https://emojipedia.org/
 
-export const EmojiOptions: { [key: string]: string } = {
+import { BaseObject } from '@/views/air/types/airTypes';
+
+export const EmojiOptions: BaseObject = {
   ':thumbsup:': '👍',
   ':thumbsdown:': '👎',
   ':clap:': '👏',

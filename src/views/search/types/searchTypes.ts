@@ -1,5 +1,9 @@
 import React from 'react';
 
+export interface IStringIndexedObject {
+  [key: string]: any
+}
+
 export type SearchSystem = {
   system: string,
   onHomeClick: CallableFunction,

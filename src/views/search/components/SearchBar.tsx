@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { SearchBarProps } from '@/views/search/types/searchTypes';
+import { IStringIndexedObject, SearchBarProps } from '@/views/search/types/searchTypes';
 import {
   acceptableCharactersTest,
   stripBeforeLastComma,
@@ -34,7 +34,7 @@ export function SearchBar(props: SearchBarProps) {
   const [showAutoCompleteOptions, setShowAutoCompleteOptions] = useState(false);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [listValues, setListValues] = useState([]);
-  const itemRefs: React.MutableRefObject<{}> = useRef({});
+  const itemRefs: React.MutableRefObject<IStringIndexedObject> = useRef({});
 
   useEffect(() => {
     if (itemRefs.current[`${activeItemIndex}`]) {
