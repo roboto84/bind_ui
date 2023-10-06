@@ -39,6 +39,7 @@ export function ArcResultView(props: ArcResultViewProps) {
         src={imageUrlCompletion(data, image)}
         alt="img"
         placeHolderImage={<BsFillImageFill style={{ fontSize: '60px' }} />}
+        lazyLoad
       />
     )
     : <div />;
