@@ -6,8 +6,9 @@ import {
   ItalicText, TextMessage,
 } from '@/views/wh00t/components/Wh00tMessage/styles/wh00tMessageStyle';
 import React from 'react';
+import { BaseObjectOfFunctions } from '@/dataSource/types/apiTypes';
 
-const tokenTransforms: { [key: string]: Function } = {
+const tokenTransforms: BaseObjectOfFunctions = {
   '`': (text: string): JSX.Element => (<code key={randomUuid()}>{text}</code>),
   '*': (text: string): JSX.Element => (<BoldText key={randomUuid()}>{text}</BoldText>),
   '_': (text: string): JSX.Element => (<ItalicText key={randomUuid()}>{text}</ItalicText>),
@@ -19,7 +20,7 @@ export function noneTokenTextSpanElement(htmlText: string): JSX.Element {
 }
 
 export function textTransform(text: string): JSX.Element[] {
-  const transformTokens = Object.keys(tokenTransforms);
+  const transformTokens: string[] = Object.keys(tokenTransforms);
   const transformedTextArr: JSX.Element[] = [];
   let noneTokenText: string = '';
   let currentToken: string = null;

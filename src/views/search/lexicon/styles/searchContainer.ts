@@ -74,6 +74,7 @@ export const SearchAutoCompleteContainer = styled.ul<{ show: boolean }>`
   color: ${(props: GlobalThemeType) => props.theme.input.autocompleteOptions.fontColor};
   font-size: 16px;
   position: absolute;
+  z-index: 1;
   padding: 10px 3px;
   margin:  -16px 0;
   max-height: 225px;

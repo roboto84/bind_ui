@@ -1,4 +1,6 @@
-function helpMenuTableRow(commands: {[key: string]: string}): string {
+import { BaseObject } from '@/views/air/types/airTypes';
+
+function helpMenuTableRow(commands: BaseObject): string {
   return ''.concat(...Object.keys(commands).map(
     (command:string) => (`
     <tr>
@@ -13,7 +15,7 @@ function helpMenuTableGenerator(
   title: string,
   firstColumnTitle: string,
   secondColumnTitle: string,
-  commands: {[key: string]: string},
+  commands: BaseObject,
 ): string {
   return `
   <h2 class="tableHeader">${title}</h2>
@@ -35,7 +37,7 @@ export function helpMenu(): string {
     + 'that also has access to socket based connections.  It has no major external dependencies.  '
     + 'This makes it a pretty good local LAN chat system with chatbot support.';
 
-  const commands: {[key: string]: string} = {
+  const commands: BaseObject = {
     '/help, /h': 'Print out help menu',
     '/exit': 'Logout of chat',
     '/clear, /c': 'Clear chat history',
@@ -50,14 +52,14 @@ export function helpMenu(): string {
     '/arc': '🤖 Hyperlink bookmark and search chatbot',
   };
 
-  const formattingSymbols: {[key: string]: string} = {
+  const formattingSymbols: BaseObject = {
     '_word_': 'Word or phrase surrounded by a pair of spaced underscores is italicize',
     '*word*': 'Word or phrase surrounded by a pair of spaced asterisks is emboldened',
     '`word`': 'Word or phrase surrounded by spaced backticks is placed as inline code',
     '```word```': 'Word or phrase surrounded by 3 backticks is placed as a code block',
   };
 
-  const specialHandlers: {[key: string]: string} = {
+  const specialHandlers: BaseObject = {
     '[web_URL]': 'Any web address is shown in chat as a hyperlink that opens a new tab',
     '[image_URL]': 'Popular image type URLs are attempted to be shown as a scaled image or hyperlink',
   };

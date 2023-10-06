@@ -50,8 +50,12 @@ export type ArcadiaEndpointsType = {
   addItem: string
 }
 
-export type ArcadiaTagsIndex = {
+export type BaseObjectOfStringArrays = {
   [key: string]: string[]
+}
+
+export type BaseObjectOfFunctions = {
+  [key: string]: Function
 }
 
 export type ArcadiaTags = {
@@ -68,7 +72,7 @@ export type ArcadiaSummaryApiResult = {
 }
 
 export type ArcadiaTagsApiResult = {
-  subjectIndex: ArcadiaTagsIndex
+  subjectIndex: BaseObjectOfStringArrays
 }
 
 export type LexiconSummaryApiResult = {

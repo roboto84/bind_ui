@@ -6,6 +6,7 @@ import {
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import React, { ChangeEventHandler, KeyboardEventHandler, useEffect, useState, useRef } from 'react';
 import { appendStringBeforeFirstComma, stripBeforeLastComma } from '@/utils/utils';
+import { IStringIndexedObject } from '@/views/search/types/searchTypes';
 
 type MultiTextInputWithAutocompleteProps = {
   label ?: string,
@@ -22,7 +23,7 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
   const [showAutoCompleteOptions, setShowAutoCompleteOptions] = useState(false);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const [listValues, setListValues] = useState([]);
-  const itemRefs: React.MutableRefObject<{}> = useRef({});
+  const itemRefs: React.MutableRefObject<IStringIndexedObject> = useRef({});
 
   useEffect(() => {
     if (inputValue !== '') {
