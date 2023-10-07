@@ -20,7 +20,9 @@ import { ArcResultViewProps, ArcResultDisplay } from '@/views/search/arcadia/typ
 import { Pill, PillContainer } from '@/views/styles/appStyles';
 import { Button } from '@/components/Nav/Button';
 import { BsFillImageFill } from 'react-icons/bs';
+import { BiCopy } from 'react-icons/bi';
 import { ImageWithPlaceHolder } from '@/components/Images/ImageWithPlaceHolder';
+import { copyToClipboard } from '@/utils/utils';
 
 export function ArcResultView(props: ArcResultViewProps) {
   const { _ref, arcResultPackage, onEdit, onDelete, navigate, displayMessage } = props;
@@ -74,6 +76,17 @@ export function ArcResultView(props: ArcResultViewProps) {
           </span>
           <span>
             <span style={{ display: 'flex' }}>
+              <Button
+                fontSize="12px"
+                letterSpacing="2px"
+                padding="2px 8px 0 8px"
+                margin="3px"
+                borderRadius="5px"
+                onClick={() => copyToClipboard(data)}
+                title="Copy Link"
+              >
+                <BiCopy />
+              </Button>
               <Button
                 fontSize="12px"
                 letterSpacing="2px"
