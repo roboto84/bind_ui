@@ -260,6 +260,16 @@ export const AutoCompleteContainer = styled.ul<{ show: boolean }>`
   li {
     list-style: none;
     padding: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    .left {
+      margin-left: 3px;
+    }
+
+    .right {
+      margin-right: 5px;
+    }
   }
 
   .active{

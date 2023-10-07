@@ -32,6 +32,7 @@ export const arcadiaApiEndpoints: ArcadiaEndpointsType = {
   randomTags: '/arcadia/random_subjects',
   tagsIndex: '/arcadia/subjects_index',
   tags: '/arcadia/subjects',
+  tagsWithCounts: '/arcadia/subjects_with_counts',
   wordSearch: '/arcadia/word_search/',
   removeItem: '/arcadia/remove/',
   editItem: '/arcadia/update/',

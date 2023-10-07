@@ -15,6 +15,7 @@ import { IoMdClose } from 'react-icons/io';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
 import { Wh00tWindowStateEnum } from '@/context/types/enums';
 import { SearchContext } from '@/context/searchContext';
+import { TagWithCount } from '@/dataSource/types/apiTypes';
 import {
   ClearSearchButton,
   SearchAutoCompleteContainer,
@@ -45,7 +46,7 @@ export function SearchBar(props: SearchBarProps) {
   useEffect(() => {
     if (inputValue !== '') {
       const MAX_OPTIONS: number = 50;
-      const filteredOptions: string[] = searchContext.tags.filter((item) => item.includes(
+      const filteredOptions: TagWithCount[] = searchContext.tags.filter((item) => item.tag.includes(
         stripBeforeLastComma(inputValue),
       )).slice(0, MAX_OPTIONS);
 
@@ -57,6 +58,7 @@ export function SearchBar(props: SearchBarProps) {
       }
     } else {
       setShowAutoCompleteOptions(false);
+      setHasSearchTerm(false);
     }
   }, [inputValue]);
 
@@ -91,7 +93,7 @@ export function SearchBar(props: SearchBarProps) {
         if (showAutoCompleteOptions) {
           e.preventDefault();
           setShowAutoCompleteOptions(false);
-          addToInput(listValues[activeItemIndex]);
+          addToInput(listValues[activeItemIndex].tag);
         } else {
           sendSearchWord();
         }
@@ -120,7 +122,7 @@ export function SearchBar(props: SearchBarProps) {
   };
 
   const addToInputOnclick = (index: number) => {
-    addToInput(listValues[index]);
+    addToInput(listValues[index].tag);
     searchInputRef.current.focus();
   };
 
@@ -132,17 +134,20 @@ export function SearchBar(props: SearchBarProps) {
     setShowAutoCompleteOptions(false);
   };
 
-  const autoCompleteOptionList: JSX.Element[] = listValues.map((item: string, index: number) => (
-    <li
-      key={item}
-      ref={(e: HTMLLIElement) => (addToListItemRefs(index, e))}
-      onMouseEnter={() => setActiveItemIndex(index)}
-      onMouseDown={() => addToInputOnclick(index)}
-      className={index === activeItemIndex ? 'active' : ''}
-    >
-      {item}
-    </li>
-  ));
+  const autoCompleteOptionList: JSX.Element[] = listValues.map(
+    (item: TagWithCount, index: number) => (
+      <li
+        key={item.tag}
+        ref={(e: HTMLLIElement) => (addToListItemRefs(index, e))}
+        onMouseEnter={() => setActiveItemIndex(index)}
+        onMouseDown={() => addToInputOnclick(index)}
+        className={index === activeItemIndex ? 'active' : ''}
+      >
+        <span className="left">{item.tag}</span>
+        <span className="right">{item.count}</span>
+      </li>
+    ),
+  );
 
   return (
     <SearchWrapper onBlur={handleBlur}>
