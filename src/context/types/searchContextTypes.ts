@@ -1,10 +1,11 @@
 import { SearchActionsEnum } from '@/context/types/enums';
+import { TagWithCount } from '@/dataSource/types/apiTypes';
 
 export type SearchContextStateType = {
-  tags: string[]
+  tags: TagWithCount[]
 }
 
 export type SearchContextActionType = {
   type: SearchActionsEnum,
-  value: string[]
+  value: TagWithCount[]
 }

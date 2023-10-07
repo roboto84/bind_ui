@@ -44,6 +44,7 @@ export type ArcadiaEndpointsType = {
   randomTags: string,
   tagsIndex: string,
   tags: string,
+  tagsWithCounts: string,
   wordSearch: string,
   removeItem: string,
   editItem: string,
@@ -63,11 +64,20 @@ export type ArcadiaTags = {
   subjects: string[],
 }
 
+export type TagWithCount = {
+  tag: string,
+  count: number,
+}
+
+export type ArcadiaTagsWithCounts = {
+  numberOfSubjects: number,
+  subjectsCounts: TagWithCount[],
+}
+
 export type ArcadiaSummaryApiResult = {
   numberOfSubjects: number,
   numberOfUrlRecords: number,
   randomSubjectSample: string[],
-  subjects: string[],
   randomItemSample: ArcResultPackage
 }
 

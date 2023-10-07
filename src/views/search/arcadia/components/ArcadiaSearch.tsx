@@ -17,9 +17,7 @@ import { organizeNodes } from '@/views/search/arcadia/utils';
 import { ArcSearchPageInnerLinks } from '@/views/search/arcadia/components/ArcSearchPageInnerLinks';
 import { ArcSearchPageHeader } from '@/views/search/arcadia/components/ArcSearchPageHeader';
 import { useQuery, UseQueryResult } from 'react-query';
-import {
-  ArcadiaTags,
-} from '@/dataSource/types/apiTypes';
+import { ArcadiaTagsWithCounts } from '@/dataSource/types/apiTypes';
 import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import { SearchContext } from '@/context/searchContext';
 import { SearchActionsEnum } from '@/context/types/enums';
@@ -31,27 +29,29 @@ export function ArcadiaSearch() {
   const searchWord: string = searchParams.get('word');
   const navLocation: string = '/search/system/arcadia/data?word=';
   const { data, isLoading, isError } = useArcadiaWordSearch(searchWord);
-  const arcadiaSubjects: UseQueryResult<ArcadiaTags> = useQuery<ArcadiaTags,
-    Error>(arcadiaApiEndpoints.tags);
+  const arcadiaSubjectsWithCounts: UseQueryResult<ArcadiaTagsWithCounts> = useQuery<
+    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts);
 
-  if (isLoading || arcadiaSubjects.isLoading) {
+  if (isLoading || arcadiaSubjectsWithCounts.isLoading) {
     return (<Loader />);
   }
 
-  if (isError || arcadiaSubjects.isError) {
+  if (isError || arcadiaSubjectsWithCounts.isError) {
     const message: string = 'Error has occurred getting search data or subjects';
     return (<ErrorViewDefault errorMessage={message} />);
   }
 
-  const arcadiaSubjectsResponse: ArcadiaTags = camelcaseKeys<ArcadiaTags>(
-    arcadiaSubjects.data,
+  const arcadiaSubjectsResponse: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+    arcadiaSubjectsWithCounts.data,
     { deep: true },
   );
 
   // TODO: Update this to not use a setTimeout
   if (state.tags.length !== arcadiaSubjectsResponse.numberOfSubjects) {
     setTimeout(() => {
-      dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjects });
+      dispatch(
+        { type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjectsCounts },
+      );
     }, 0);
   }
 

@@ -5,6 +5,7 @@ import camelcaseKeys from 'camelcase-keys';
 import { arcadiaApiEndpoints, lexiconApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import {
   ArcadiaSummaryApiResult,
+  ArcadiaTagsWithCounts,
   LexiconSummaryApiResult,
 } from '@/dataSource/types/apiTypes';
 import ErrorViewDefault from '@/components/Error/ErrorViewDefault';
@@ -28,12 +29,14 @@ export function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     Error>(lexiconApiEndpoints.summary);
   const arcadiaSummary: UseQueryResult<ArcadiaSummaryApiResult> = useQuery<ArcadiaSummaryApiResult,
     Error>(arcadiaApiEndpoints.summary);
+  const arcadiaSubjectsWithCounts: UseQueryResult<ArcadiaTagsWithCounts> = useQuery<
+    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts);
 
-  if (lexiconSummary.isLoading || arcadiaSummary.isLoading) {
+  if (lexiconSummary.isLoading || arcadiaSummary.isLoading || arcadiaSubjectsWithCounts.isLoading) {
     return <Loader />;
   }
 
-  if (lexiconSummary.isError || arcadiaSummary.isError) {
+  if (lexiconSummary.isError || arcadiaSummary.isError || arcadiaSubjectsWithCounts.isError) {
     const message = 'Error has occurred getting system summaries';
     return (
       <ArcadiaSearchHomeContainer>
@@ -52,16 +55,23 @@ export function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     { deep: true },
   );
 
+  const arcadiaSubjectsResponse: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+    arcadiaSubjectsWithCounts.data,
+    { deep: true },
+  );
+
+  // TODO: Update this to not use a setTimeout
+  if (state.tags.length !== arcadiaSubjectsResponse.numberOfSubjects) {
+    setTimeout(() => {
+      dispatch(
+        { type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjectsCounts },
+      );
+    }, 0);
+  }
+
   const relevantTags: string[] = arcadiaSummaryResponse.randomSubjectSample;
   const tagGroupTitle: string = 'Interesting Tags';
   const highlightTags: boolean = false;
-
-  // TODO: Update this to not use a setTimeout
-  if (state.tags.length !== arcadiaSummaryResponse.subjects.length) {
-    setTimeout(() => {
-      dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSummaryResponse.subjects });
-    }, 0);
-  }
 
   return (
     <>

@@ -7,12 +7,13 @@ import {
 import React, { ChangeEventHandler, KeyboardEventHandler, useEffect, useState, useRef } from 'react';
 import { appendStringBeforeFirstComma, stripBeforeLastComma } from '@/utils/utils';
 import { IStringIndexedObject } from '@/views/search/types/searchTypes';
+import { TagWithCount } from '@/dataSource/types/apiTypes';
 
 type MultiTextInputWithAutocompleteProps = {
   label ?: string,
   title: string,
   defaultValue ?: string,
-  autocompleteOptions: string[],
+  autocompleteOptions: TagWithCount[],
   isInputActive ?: boolean,
   inputRef: React.MutableRefObject<any>,
 }
@@ -28,9 +29,11 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
   useEffect(() => {
     if (inputValue !== '') {
       const MAX_OPTIONS: number = 50;
-      const filteredOptions: string[] = autocompleteOptions.filter((item) => item.includes(
-        stripBeforeLastComma(inputValue),
-      )).slice(0, MAX_OPTIONS);
+      const filteredOptions: TagWithCount[] = autocompleteOptions.filter(
+        (item) => item.tag.includes(
+          stripBeforeLastComma(inputValue),
+        ),
+      ).slice(0, MAX_OPTIONS);
 
       if (filteredOptions.length > 0) {
         setListValues(filteredOptions);
@@ -84,7 +87,7 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
         if (showAutoCompleteOptions) {
           e.preventDefault();
           setShowAutoCompleteOptions(false);
-          addOptionToInput(listValues[activeItemIndex]);
+          addOptionToInput(listValues[activeItemIndex].tag);
         }
       } else if (e.key === 'Escape') {
         e.preventDefault();
@@ -100,7 +103,7 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
     // Needed for pushing this action to the end of the call stack, in case other functions need
     // to resolve before the <li> elements disappear. An example is the useClickOutside hook.
     setTimeout(() => {
-      addOptionToInput(listValues[index]);
+      addOptionToInput(listValues[index].tag);
       inputRef.current.focus();
     }, 0);
   };
@@ -109,17 +112,20 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
     itemRefs.current[`${index}`] = e;
   };
 
-  const autoCompleteOptionList: JSX.Element[] = listValues.map((item: string, index: number) => (
-    <li
-      key={item}
-      ref={(e: HTMLLIElement) => (addToListItemRefs(index, e))}
-      onMouseEnter={() => setActiveItemIndex(index)}
-      onMouseDown={() => addOptionOnclick(index)}
-      className={index === activeItemIndex ? 'active' : ''}
-    >
-      {item}
-    </li>
-  ));
+  const autoCompleteOptionList: JSX.Element[] = listValues.map(
+    (item: TagWithCount, index: number) => (
+      <li
+        key={item.tag}
+        ref={(e: HTMLLIElement) => (addToListItemRefs(index, e))}
+        onMouseEnter={() => setActiveItemIndex(index)}
+        onMouseDown={() => addOptionOnclick(index)}
+        className={index === activeItemIndex ? 'active' : ''}
+      >
+        <span className="left">{item.tag}</span>
+        <span className="right">{item.count}</span>
+      </li>
+    )
+  );
 
   return (
     <ArcAddInputContainer onBlur={handleBlur}>
