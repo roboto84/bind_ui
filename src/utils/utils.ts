@@ -49,20 +49,26 @@ export function acceptableCharactersTest(key: string):boolean {
 }
 
 export const appendStringBeforeFirstComma = (firstString: string, secondString: string): string => {
-  let lastCommaIndex = firstString.lastIndexOf(',');
+  const lastCommaIndex = firstString.lastIndexOf(',');
   if (lastCommaIndex !== -1) {
-      let substring = firstString.slice(0, lastCommaIndex+1);
-      return `${substring}${secondString},`;
-  } else {
-      return `${secondString},`;
+    const substring = firstString.slice(0, lastCommaIndex + 1);
+    return `${substring}${secondString},`;
   }
-}
+  return `${secondString},`;
+};
 
 export const stripBeforeLastComma = (inputString: string): string => {
-  let lastCommaIndex = inputString.lastIndexOf(',');
+  const lastCommaIndex = inputString.lastIndexOf(',');
   if (lastCommaIndex !== -1) {
-      return inputString.slice(lastCommaIndex + 1).trim();
-  } else {
-      return inputString;
+    return inputString.slice(lastCommaIndex + 1).trim();
+  }
+  return inputString;
+};
+
+export async function copyToClipboard(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    // do nothing for now
   }
 }
