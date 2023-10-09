@@ -30,7 +30,18 @@ export function ArcadiaSearch() {
   const navLocation: string = '/search/system/arcadia/data?word=';
   const { data, isLoading, isError } = useArcadiaWordSearch(searchWord);
   const arcadiaSubjectsWithCounts: UseQueryResult<ArcadiaTagsWithCounts> = useQuery<
-    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts);
+    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts, {
+      onSuccess: (arcadiaSubjectsWithCountsData: ArcadiaTagsWithCounts) => {
+        const camelCasedData: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+          arcadiaSubjectsWithCountsData,
+          { deep: true },
+        );
+
+        if (state.tags.length !== camelCasedData.numberOfSubjects) {
+          dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
+        }
+      },
+    });
 
   if (isLoading || arcadiaSubjectsWithCounts.isLoading) {
     return (<Loader />);
@@ -39,20 +50,6 @@ export function ArcadiaSearch() {
   if (isError || arcadiaSubjectsWithCounts.isError) {
     const message: string = 'Error has occurred getting search data or subjects';
     return (<ErrorViewDefault errorMessage={message} />);
-  }
-
-  const arcadiaSubjectsResponse: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
-    arcadiaSubjectsWithCounts.data,
-    { deep: true },
-  );
-
-  // TODO: Update this to not use a setTimeout
-  if (state.tags.length !== arcadiaSubjectsResponse.numberOfSubjects) {
-    setTimeout(() => {
-      dispatch(
-        { type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjectsCounts },
-      );
-    }, 0);
   }
 
   const { searchResults, similarTags } = camelcaseKeys<ArcSearchResults>(data, { deep: true });

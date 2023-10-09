@@ -9,7 +9,6 @@ import React, {
 import { IStringIndexedObject, SearchBarProps } from '@/views/search/types/searchTypes';
 import {
   acceptableCharactersTest,
-  stripBeforeLastComma,
 } from '@/utils/utils';
 import { IoMdClose } from 'react-icons/io';
 import { useWh00tWebsocket } from '@/context/wh00tContext';
@@ -47,7 +46,7 @@ export function SearchBar(props: SearchBarProps) {
     if (inputValue !== '') {
       const MAX_OPTIONS: number = 50;
       const filteredOptions: TagWithCount[] = searchContext.tags.filter((item) => item.tag.includes(
-        stripBeforeLastComma(inputValue),
+        inputValue,
       )).slice(0, MAX_OPTIONS);
 
       if (filteredOptions.length > 0) {
@@ -58,7 +57,6 @@ export function SearchBar(props: SearchBarProps) {
       }
     } else {
       setShowAutoCompleteOptions(false);
-      setHasSearchTerm(false);
     }
   }, [inputValue]);
 
@@ -78,9 +76,9 @@ export function SearchBar(props: SearchBarProps) {
     }
   };
 
-  const onInputKeydown: KeyboardEventHandler = (e) => {
+  const onInputKeyUp: KeyboardEventHandler = (e) => {
     const specialKeys: string[] = ['ArrowUp', 'ArrowDown', 'Enter', 'Escape'];
-    setHasSearchTerm(Boolean(searchInputRef.current.value));
+    setHasSearchTerm(searchInputRef.current.value !== '');
 
     if (specialKeys.includes(e.key)) {
       if (e.key === 'ArrowUp') {
@@ -123,7 +121,7 @@ export function SearchBar(props: SearchBarProps) {
 
   const addToInputOnclick = (index: number) => {
     addToInput(listValues[index].tag);
-    searchInputRef.current.focus();
+    setTimeout(() => searchInputRef.current.focus(), 0);
   };
 
   const addToListItemRefs = (index: number, e: HTMLLIElement) => {
@@ -157,7 +155,7 @@ export function SearchBar(props: SearchBarProps) {
           type="text"
           placeholder="Search Term"
           ref={searchInputRef}
-          onKeyDown={onInputKeydown}
+          onKeyUp={onInputKeyUp}
           onChange={onInputChange}
           autoFocus
           hasSearchTerm={hasSearchTerm}

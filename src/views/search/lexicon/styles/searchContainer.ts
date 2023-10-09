@@ -27,6 +27,7 @@ export const SearchInput = styled(Input)<{
   border-right: ${(props) => (props.hasSearchTerm ? 'none' : '')};;
   min-width: 100px;
   margin: 13px 0;
+  padding: 0 10px;
   border-radius: 5px 0 0 5px;
   transition: none;
 

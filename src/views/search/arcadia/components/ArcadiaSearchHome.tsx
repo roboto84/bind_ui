@@ -30,7 +30,18 @@ export function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
   const arcadiaSummary: UseQueryResult<ArcadiaSummaryApiResult> = useQuery<ArcadiaSummaryApiResult,
     Error>(arcadiaApiEndpoints.summary);
   const arcadiaSubjectsWithCounts: UseQueryResult<ArcadiaTagsWithCounts> = useQuery<
-    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts);
+    ArcadiaTagsWithCounts, Error>(arcadiaApiEndpoints.tagsWithCounts, {
+      onSuccess: (arcadiaSubjectsWithCountsData: ArcadiaTagsWithCounts) => {
+        const camelCasedData: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+          arcadiaSubjectsWithCountsData,
+          { deep: true },
+        );
+
+        if (state.tags.length !== camelCasedData.numberOfSubjects) {
+          dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
+        }
+      },
+    });
 
   if (lexiconSummary.isLoading || arcadiaSummary.isLoading || arcadiaSubjectsWithCounts.isLoading) {
     return <Loader />;
@@ -54,20 +65,6 @@ export function ArcadiaSearchHome(props: ArcadiaSearchHomeProps) {
     arcadiaSummary.data,
     { deep: true },
   );
-
-  const arcadiaSubjectsResponse: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
-    arcadiaSubjectsWithCounts.data,
-    { deep: true },
-  );
-
-  // TODO: Update this to not use a setTimeout
-  if (state.tags.length !== arcadiaSubjectsResponse.numberOfSubjects) {
-    setTimeout(() => {
-      dispatch(
-        { type: SearchActionsEnum.LOAD_TAGS, value: arcadiaSubjectsResponse.subjectsCounts },
-      );
-    }, 0);
-  }
 
   const relevantTags: string[] = arcadiaSummaryResponse.randomSubjectSample;
   const tagGroupTitle: string = 'Interesting Tags';
