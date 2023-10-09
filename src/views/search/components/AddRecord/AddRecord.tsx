@@ -8,6 +8,9 @@ import { SearchAddRecordContainer } from '@/views/search/styles/searchStyles';
 import { ArcAddContainer, ArcChangeStatusContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
+import { SearchActionsEnum } from '@/context/types/enums';
+import { ArcadiaTagsWithCounts } from '@/dataSource/types/apiTypes';
+import camelcaseKeys from 'camelcase-keys';
 
 export function AddRecord(props: AddRecordProps) {
   const { isAddRecordViewable, cancelAddRecordFormView } = props;
@@ -38,6 +41,7 @@ export function AddRecord(props: AddRecordProps) {
 
     queryClient.invalidateQueries('arcadiaWordSearch');
     queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
+    // TODO: Figure out how to reload (arcadiaApiEndpoints.tagsWithCounts) query into context
   };
 
   let body: JSX.Element;

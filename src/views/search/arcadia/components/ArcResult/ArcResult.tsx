@@ -26,6 +26,7 @@ export function ArcResult(props: ArcResultProps) {
   const invalidateArcQueries = () => {
     queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
     queryClient.invalidateQueries('arcadiaWordSearch');
+    // TODO: Figure out how to reload (arcadiaApiEndpoints.tagsWithCounts) query into context
   };
 
   const { ref: deleteRef } = useClickOutside(() => {
