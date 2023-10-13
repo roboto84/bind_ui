@@ -46,6 +46,20 @@ export const SubTagHeader = styled(NonListHoverable)`
   border-radius: 5px;
   font-size: 17px;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.06) ,0 2px 2px rgba(0,0,0,0.04) ,0 4px 4px rgba(0,0,0,0.05) ,0 6px 6px rgba(0,0,0,0.06);
+  display: flex;
+`;
+
+export const SubTagCount = styled.span`
+  background-color: ${(props: GlobalThemeType) => props.theme.pill.circle.backgroundColor};
+  color: #010101;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  font-style: unset;
+  display: inline-block;
+  text-align: center;
+  margin: 3px 0 0 5px;
+  font-size: 13px;
 `;
 
 export const SubTagHeaderContainer = styled.div`

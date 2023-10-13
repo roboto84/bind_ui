@@ -45,6 +45,12 @@ export type SubButtonStyleType = {
   borderColor: string,
 }
 
+export type PillStyleType = {
+  circle: {
+    backgroundColor: string,
+  }
+}
+
 export type InputStyleType = {
   autocompleteOptions: {
     fontColor: string,
@@ -221,6 +227,7 @@ export type ThemeType = {
   throbber: ThrobberStyleType,
   button: ButtonStyleType,
   subButton: SubButtonStyleType,
+  pill: PillStyleType,
   input: InputStyleType,
   chart: ChartStyleType,
   header: HeaderStyleType,

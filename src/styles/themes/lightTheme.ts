@@ -55,6 +55,11 @@ export const LightTheme: ThemeType = {
     transitionFontColor: '#e9e9e9',
     borderColor: '#848585',
   },
+  pill: {
+    circle: {
+      backgroundColor: '#cfcfcf',
+    },
+  },
   input: {
     autocompleteOptions: {
       fontColor: '#A16000',
