@@ -32,7 +32,8 @@ export function SearchBar(props: SearchBarProps) {
   const [hasSearchTerm, setHasSearchTerm] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [showAutoCompleteOptions, setShowAutoCompleteOptions] = useState(false);
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
+  const inactiveItemsIndex: number = -1;
+  const [activeItemIndex, setActiveItemIndex] = useState(inactiveItemsIndex);
   const [listValues, setListValues] = useState([]);
   const itemRefs: React.MutableRefObject<IStringIndexedObject> = useRef({});
 
@@ -51,6 +52,7 @@ export function SearchBar(props: SearchBarProps) {
 
       if (filteredOptions.length > 0) {
         setListValues(filteredOptions);
+        setActiveItemIndex(inactiveItemsIndex);
         setShowAutoCompleteOptions(true);
       } else {
         setShowAutoCompleteOptions(false);
@@ -63,7 +65,6 @@ export function SearchBar(props: SearchBarProps) {
   const addToInput = (capturedTag: string) => {
     if (capturedTag !== '') {
       setListValues([]);
-      setActiveItemIndex(0);
       setInputValue('');
       searchInputRef.current.value = capturedTag;
     }
@@ -88,11 +89,12 @@ export function SearchBar(props: SearchBarProps) {
         e.preventDefault();
         setActiveItemIndex((prevIndex) => Math.min(prevIndex + 1, listValues.length - 1));
       } else if (e.key === 'Enter') {
-        if (showAutoCompleteOptions) {
+        if (showAutoCompleteOptions && activeItemIndex !== inactiveItemsIndex) {
           e.preventDefault();
           setShowAutoCompleteOptions(false);
           addToInput(listValues[activeItemIndex].tag);
         } else {
+          setShowAutoCompleteOptions(false);
           sendSearchWord();
         }
       } else if (e.key === 'Escape') {
@@ -100,7 +102,6 @@ export function SearchBar(props: SearchBarProps) {
         setShowAutoCompleteOptions(false);
         setInputValue('');
         setListValues([]);
-        setActiveItemIndex(0);
       }
     } else if (acceptableCharactersTest(e.key)) {
       updateSearchWord();
