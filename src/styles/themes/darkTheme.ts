@@ -75,6 +75,11 @@ export const DarkTheme: ThemeType = {
     transitionFontColor: '#252525',
     borderColor: '#484c58',
   },
+  pill: {
+    circle: {
+      backgroundColor: '#9c9c9c',
+    },
+  },
   input: {
     autocompleteOptions: {
       fontColor: '#FF9800',

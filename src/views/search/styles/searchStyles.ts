@@ -58,7 +58,7 @@ export const LatestTagsListContainer = styled.div`{
   flex-wrap: wrap;
   width: 100%;
   overflow: auto;
-  gap: 20px 10px;
+  gap: 10px;
   padding: 5px 0 5px 0;
 
   li {
