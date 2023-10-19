@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { QueryClient, useQueryClient } from 'react-query';
 import { AddRecordForm } from '@/views/search/components/AddRecord/AddRecordForm/AddRecordForm';
 import { AddRecordProps, ArcAddPackage } from '@/views/search/types/searchTypes';
@@ -11,9 +11,11 @@ import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import { SearchActionsEnum } from '@/context/types/enums';
 import { ArcadiaTagsWithCounts } from '@/dataSource/types/apiTypes';
 import camelcaseKeys from 'camelcase-keys';
+import { SearchContext } from '@/context/searchContext';
 
 export function AddRecord(props: AddRecordProps) {
   const { isAddRecordViewable, cancelAddRecordFormView } = props;
+  const { state, dispatch } = useContext(SearchContext);
   const [confirmAdd, setConfirmAdd] = useState<boolean>(false);
   const [confirmMessage, setConfirmMessage] = useState<string>('');
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -41,7 +43,20 @@ export function AddRecord(props: AddRecordProps) {
 
     queryClient.invalidateQueries('arcadiaWordSearch');
     queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
-    // TODO: Figure out how to reload (arcadiaApiEndpoints.tagsWithCounts) query into context
+    queryClient.invalidateQueries(arcadiaApiEndpoints.tagsWithCounts).then(() => {
+      const arcadiaSubjectsWithCountsData: ArcadiaTagsWithCounts = queryClient.getQueryData(
+        arcadiaApiEndpoints.tagsWithCounts,
+      );
+
+      const camelCasedData: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+        arcadiaSubjectsWithCountsData,
+        { deep: true },
+      );
+
+      if (state.tags.length !== camelCasedData.numberOfSubjects) {
+        dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
+      }
+    });
   };
 
   let body: JSX.Element;
