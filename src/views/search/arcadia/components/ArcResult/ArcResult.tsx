@@ -1,5 +1,5 @@
 import { ArcResultContainer } from '@/views/search/arcadia/styles/arcadiaStyles';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   ArcResultProps,
   ArcResultDisplay,
@@ -11,9 +11,14 @@ import { ArcResultEdit } from '@/views/search/arcadia/components/ArcResult/compo
 import { useClickOutside } from '@/hooks/useClickOutside';
 import { arcadiaApiEndpoints } from '@/dataSource/restApis/bindRestApi';
 import { QueryClient, useQueryClient } from 'react-query';
+import { ArcadiaTagsWithCounts } from '@/dataSource/types/apiTypes';
+import camelcaseKeys from 'camelcase-keys';
+import { SearchActionsEnum } from '@/context/types/enums';
+import { SearchContext } from '@/context/searchContext';
 
 export function ArcResult(props: ArcResultProps) {
   const { arcResultPackage, navigate } = props;
+  const { state, dispatch } = useContext(SearchContext);
   const [display, setDisplay] = useState<string>(ArcResultDisplay.VIEW);
   const [editMessage, setEditMessage] = useState<string>('');
   const queryClient: QueryClient = useQueryClient();
@@ -26,7 +31,20 @@ export function ArcResult(props: ArcResultProps) {
   const invalidateArcQueries = () => {
     queryClient.invalidateQueries(arcadiaApiEndpoints.summary);
     queryClient.invalidateQueries('arcadiaWordSearch');
-    // TODO: Figure out how to reload (arcadiaApiEndpoints.tagsWithCounts) query into context
+    queryClient.invalidateQueries(arcadiaApiEndpoints.tagsWithCounts).then(() => {
+      const arcadiaSubjectsWithCountsData: ArcadiaTagsWithCounts = queryClient.getQueryData(
+        arcadiaApiEndpoints.tagsWithCounts,
+      );
+
+      const camelCasedData: ArcadiaTagsWithCounts = camelcaseKeys<ArcadiaTagsWithCounts>(
+        arcadiaSubjectsWithCountsData,
+        { deep: true },
+      );
+
+      if (state.tags.length !== camelCasedData.numberOfSubjects) {
+        dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
+      }
+    });
   };
 
   const { ref: deleteRef } = useClickOutside(() => {
