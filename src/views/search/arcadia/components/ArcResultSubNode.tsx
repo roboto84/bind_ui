@@ -1,23 +1,26 @@
 import {
   ArcResultOuterContainer,
+  SubTagCount,
   SubTagHeader,
   SubTagHeaderContainer,
 } from '@/views/search/arcadia/styles/arcadiaStyles';
 import { ArcResult } from '@/views/search/arcadia/components/ArcResult/ArcResult';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { ArcResultSubNodeProps } from '@/views/search/arcadia/types/arcadiaTypes';
+import { SearchContext } from '@/context/searchContext';
 
 export function ArcResultSubNode(props: ArcResultSubNodeProps) {
   const { node, navigate } = props;
+  const tagsCountHashMap: Map<string, number> = useContext(SearchContext).state.tagsHashMap;
+
   return (
     <div>
       <SubTagHeaderContainer>
-        <Link to={navigate.concat(node.subject)}>
-          <SubTagHeader
-            id={'SubTagHeader-'.concat(node.subject)}
-          >
-            {node.subject}
+        <Link style={{ width: '100%' }} to={navigate.concat(node.subject)}>
+          <SubTagHeader id={'SubTagHeader-'.concat(node.subject)}>
+            <span>{node.subject}</span>
+            <SubTagCount> {tagsCountHashMap.get(node.subject)}</SubTagCount>
           </SubTagHeader>
         </Link>
       </SubTagHeaderContainer>
