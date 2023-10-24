@@ -21,8 +21,8 @@ function TagGroup(props: TagGroupProps) {
   const tagsCountHashMap: Map<string, number> = useContext(SearchContext).state.tagsHashMap;
   const tagsWithCount: TagWithCount[] = tagList.map((tag: string) => ({
     tag,
-    count: tagsCountHashMap.get(tag),
-  })).slice(0, 18);
+    count: tagsCountHashMap.get(tag) || 0,
+  })).slice(0, 20);
 
   tagsWithCount.sort((a, b) => (a.count < b.count ? 1 : -1));
 
