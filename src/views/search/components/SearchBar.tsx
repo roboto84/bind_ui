@@ -91,7 +91,7 @@ export function SearchBar(props: SearchBarProps) {
       } else if (e.key === 'Enter') {
         e.preventDefault();
         setShowAutoCompleteOptions(false);
-        if (activeItemIndex > inactiveItemsIndex) {
+        if (listValues.length && activeItemIndex > inactiveItemsIndex) {
           addToInput(listValues[activeItemIndex].tag);
         }
         sendSearchWord();
