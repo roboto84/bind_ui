@@ -53,9 +53,7 @@ export function AddRecord(props: AddRecordProps) {
         { deep: true },
       );
 
-      if (state.tags.length !== camelCasedData.numberOfSubjects) {
-        dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
-      }
+      dispatch({ type: SearchActionsEnum.LOAD_TAGS, value: camelCasedData.subjectsCounts });
     });
   };
 
