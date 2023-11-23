@@ -22,7 +22,6 @@ export function ArcResultEditConfirm(props: ArcResultEditConfirmProps) {
   if (!isFetching) {
     if (isError && error) {
       editResult.editingMessage = `An error has occurred editing: ${itemEditPackage.data}`;
-      onEditConfirmed(editResult);
     } else if (data) {
       const arcDeleteResult: ArcEditItemResults = camelcaseKeys<ArcEditItemResults>(
         data,
@@ -34,8 +33,9 @@ export function ArcResultEditConfirm(props: ArcResultEditConfirmProps) {
       } else {
         editResult.editingMessage = 'There was an issue with editing this record';
       }
-      onEditConfirmed(editResult);
     }
+    // TODO: Rid ourselves of the dependence on JS call stack manipulation here
+    setTimeout(() => onEditConfirmed(editResult), 0);
   }
 
   return (
