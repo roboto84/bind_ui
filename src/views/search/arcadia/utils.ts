@@ -57,7 +57,7 @@ export function openInNewTab(url: string) {
 
 export const quickSearchSystems: BaseObjectOfFunctions = {
   ph(searchTerm: string) {
-    return `https://www.phind.com/search?q=${searchTerm}&source=searchbox`;
+    return `https://www.phind.com/search?q=${searchTerm}`;
   },
   g(searchTerm: string) {
     return `https://www.google.com/search?q=${searchTerm}`;
