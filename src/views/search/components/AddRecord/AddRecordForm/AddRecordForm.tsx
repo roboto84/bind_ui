@@ -61,6 +61,7 @@ export function AddRecordForm(props: AddRecordFormProps) {
           isInputActive={isFormActive}
           autocompleteOptions={state.tags}
           inputRef={tagsInputRef}
+          isForcedLowercase
         />
       </ArcAddFieldContainer>
       <ArcAddFieldContainer style={{ marginTop: '20px', justifyContent: 'end' }}>

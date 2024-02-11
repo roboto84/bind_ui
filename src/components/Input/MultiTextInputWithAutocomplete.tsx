@@ -15,6 +15,7 @@ type MultiTextInputWithAutocompleteProps = {
   defaultValue ?: string,
   autocompleteOptions: TagWithCount[],
   isInputActive ?: boolean,
+  isForcedLowercase ?: boolean,
   inputRef: React.MutableRefObject<any>,
 }
 
@@ -66,7 +67,12 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
   };
 
   const onInputChange: ChangeEventHandler = () => {
-    setInputValue(inputRef.current.value);
+    const { isForcedLowercase } = props;
+    const CurrentValue: string = isForcedLowercase
+      ? inputRef.current.value.toLowerCase()
+      : inputRef.current.value;
+
+    setInputValue(CurrentValue);
   };
 
   const handleBlur = () => {
@@ -124,7 +130,7 @@ function MultiTextInputWithAutocomplete(props: MultiTextInputWithAutocompletePro
         <span className="left">{item.tag}</span>
         <span className="right">{item.count}</span>
       </li>
-    )
+    ),
   );
 
   return (
@@ -150,6 +156,7 @@ MultiTextInputWithAutocomplete.defaultProps = {
   label: '',
   defaultValue: '',
   isInputActive: true,
+  isForcedLowercase: false,
 };
 
 export default MultiTextInputWithAutocomplete;

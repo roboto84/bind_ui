@@ -38,7 +38,7 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
     const editItemPackage: ArcEditPackage = {
       data: itemKey,
       dataUpdate: urlInputRef.current.value,
-      tags: String(tagsFromInput).replace(/\s+/g, '').split(','),
+      tags: String(tagsFromInput.toLowerCase()).replace(/\s+/g, '').split(','),
       title: titleInputRef.current.value,
       description: descriptionInputRef.current.value,
       image: imageInputRef.current.value,
@@ -83,6 +83,7 @@ export function ArcResultEditForm(props: ArcResultEditViewProps) {
             defaultValue={tags}
             autocompleteOptions={state.tags}
             inputRef={tagsInputRef}
+            isForcedLowercase
           />
         </ArcEditFieldContainer>
         <ArcEditFieldContainer>
